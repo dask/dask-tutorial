@@ -1,6 +1,30 @@
 Dask Tutorial
 =============
 
+Dask provides multi-core execution on larger-than-memory datasets.
+
+We can think of dask at a high and a low level
+
+*  **High level:**  Dask provides high-level Array, DataFrame collections that
+    mimic NumPy, and Pandas but can operate in parallel on datasets that don't
+    fit into main memory.
+*  **Low Level:** Dask provides dynamic task schedulers that can execute
+   complex graphs of tasks with data dependencies.  These execution engines run
+   the high-level collections but can also be used for other custom workloads.
+   These schedulers are low-latency (around 1ms) and work hard to run
+   computations in a small memory footprint.
+
+Different users operate at different levels but it is useful to understand
+both.  This tutorial will interleave between high-level use of `dask.array` and
+`dask.dataframe` (even sections) and low-level use of dask graphs and
+schedulers (odd sections.)
+
+Links
+-----
+
+*  [Code](https://github.com/ContinuumIO/dask/)
+*  [Docs](https://dask.pydata.org/en/latest/)
+
 Outline
 -------
 
