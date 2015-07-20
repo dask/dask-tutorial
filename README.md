@@ -6,7 +6,7 @@ Outline
 
 0.  Dask Arrays
 
-    *  [Arrays](00-Arrays.ipynb)
+    *  [Arrays](00-Array.ipynb)
 
 1.  Dask graphs and other fundamentals
 
