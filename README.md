@@ -19,7 +19,7 @@ Outline
 
 3.  Imperative Programming
 
-    *  ...
+    *  [Imperative - `do`](04-Imperative.ipynb)
 
 4.  Semi-structured data with Bag
 
