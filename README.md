@@ -32,15 +32,15 @@ Links
 Outline
 -------
 
-1.  Dask Arrays
+1.  Arrays
 
     *  [Arrays](01-Array.ipynb)
 
-2.  Dask graphs and other fundamentals
+2.  Task graphs and other fundamentals
 
     *  [Foundations](02-Foundations.ipynb)
 
-3.  Tabular compuations with DataFrames
+3.  DataFrames
 
     *  [DataFrames](03a-DataFrame.ipynb)
     *  [DataFrame Storage](03b-DataFrame-Storage.ipynb)
@@ -49,10 +49,10 @@ Outline
 
     *  [Imperative - `do`](04-Imperative.ipynb)
 
-5.  Semi-structured data with Bag
+5.  Bags of semi-structured data
 
-    *  ...
+    *  [Bag - Parallel lists](05-Bag.ipynb)
 
-6.  Graph analysis, optimization, and diagnostics
+6.  Analysis, optimization, and diagnostics
 
     *  ...

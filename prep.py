@@ -21,9 +21,28 @@ def accounts_csvs(num_files, n, k):
     fn = os.path.join('data', 'accounts.%d.csv' % (num_files - 1))
 
     if not os.path.exists(fn):
-        args = account_params(k)
+        return
 
-        for i in range(num_files):
-            df = account_entries(n, *args)
-            df.to_csv(os.path.join('data', 'accounts.%d.csv' % i),
-                      index=False)
+    args = account_params(k)
+
+    for i in range(num_files):
+        df = account_entries(n, *args)
+        df.to_csv(os.path.join('data', 'accounts.%d.csv' % i),
+                  index=False)
+
+
+def accounts_json(num_files, n, k):
+    from accounts import account_params, json_entries
+    import json
+    import gzip
+    fn = os.path.join('data', 'accounts.%d.csv' % (num_files - 1))
+    if os.path.exists(fn):
+        return
+
+    args = account_params(k)
+
+    for i in range(num_files):
+        seq = json_entries(n, *args)
+        fn = os.path.join('data', 'accounts.%02d.json.gz' % i)
+        with gzip.open(fn, 'w') as f:
+            f.write(os.linesep.join(map(json.dumps, seq)))

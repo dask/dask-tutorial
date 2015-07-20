@@ -35,3 +35,21 @@ def accounts(n, k):
     df = account_entries(n, ids, names, wealth_mag, wealth_trend, freq)
     return df
 
+
+def json_entries(n, *args):
+    df = account_entries(n, *args)
+    g = df.groupby(df.id).groups
+
+    data = []
+    for k in g:
+        sub = df.iloc[g[k]]
+        d = dict(id=int(k), name=sub['names'].iloc[0],
+                transactions=[{'transaction-id': int(i), 'amount': int(a)}
+                              for i, a in list(zip(sub.index, sub.amount))])
+        data.append(d)
+
+    return data
+
+def accounts_json(n, k):
+    args = account_params(k)
+    return json_entries(n, *args)
