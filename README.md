@@ -4,6 +4,10 @@ Dask Tutorial
 Outline
 -------
 
+0.  Dask Arrays
+
+    *  [Arrays](00-Arrays.ipynb)
+
 1.  Dask graphs and other fundamentals
 
     *  [Foundations](01-Foundations.ipynb)
