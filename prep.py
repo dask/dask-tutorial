@@ -53,8 +53,8 @@ def accounts_json(num_files, n, k):
     for i in range(num_files):
         seq = json_entries(n, *args)
         fn = os.path.join('data', 'accounts.%02d.json.gz' % i)
-        with gzip.open(fn, 'w') as f:
-            f.write(os.linesep.join(map(json.dumps, seq)))
+        with gzip.open(fn, 'wb') as f:
+            f.write(os.linesep.join(map(json.dumps, seq)).encode())
 
 
 def create_weather(growth=3200):
