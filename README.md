@@ -23,6 +23,28 @@ both.  This tutorial will interleave between high-level use of `dask.array` and
 `dask.dataframe` (even sections) and low-level use of dask graphs and
 schedulers (odd sections.)
 
+Prepare
+-------
+
+You will need the following libraries
+
+    conda install numpy pandas h5py matplotlib dask scipy
+    or
+    pip install numpy pandas h5py matplotlib dask[complete]
+
+You may also want to install `graphviz` for graph visualization
+
+    apt-get install graphviz
+    or
+    brew install graphviz
+    and
+    pip install graphviz
+
+You should clone this repository and then run a script to prepare
+artificial data.
+
+    python prep.py
+
 Links
 -----
 
