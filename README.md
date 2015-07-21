@@ -32,11 +32,13 @@ Links
 Outline
 -------
 
-1.  Arrays
+Introduction - [slides](http://ContinuumIO.github.io/dask-tutorial/introduction.html)
+
+1.  Arrays - [slides](http://ContinuumIO.github.io/dask-tutorial/array.html)
 
     *  [Arrays](01-Array.ipynb)
 
-2.  Task graphs and other fundamentals
+2.  Task graphs and other fundamentals - [slides](http://ContinuumIO.github.io/dask-tutorial/graphs.html)
 
     *  [Foundations](02-Foundations.ipynb)
 
