@@ -80,7 +80,7 @@ def create_weather(growth=3200):
         out_fn = os.path.join('data', 'weather-big', os.path.split(fn)[-1])
 
         with h5py.File(out_fn) as f:
-            f.create_dataset('/t2m', data=y)
+            f.create_dataset('/t2m', data=y, chunks=(500, 500))
 
 
 if __name__ == '__main__':

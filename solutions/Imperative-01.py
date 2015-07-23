@@ -1,0 +1,7 @@
+a = do(pd.read_csv)(filenames[0])
+b = do(pd.read_csv)(filenames[1])
+c = do(pd.read_csv)(filenames[2])
+na = do(len)(a)
+nb = do(len)(b)
+nc = do(len)(c)
+total = do(sum)([na, nb, nc])

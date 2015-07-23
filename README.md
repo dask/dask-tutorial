@@ -32,17 +32,17 @@ You will need the following libraries
     or
     pip install numpy pandas h5py matplotlib dask[complete]
 
-You may also want to install `graphviz` for graph visualization
+You may find the following libraries helpful for some exercises
 
-    apt-get install graphviz
-    or
-    brew install graphviz
-    and
-    pip install graphviz
+    castra graphviz
 
-You should clone this repository and then run a script to prepare
-artificial data.
+You should clone this repository
 
+    git clone http://github.com/ContinuumIO/dask-tutorial
+
+and then run a script to prepare artificial data.
+
+    cd dask-tutorial
     python prep.py
 
 Links

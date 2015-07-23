@@ -4,5 +4,4 @@ dsk = {'a': (pd.read_csv, filenames[0]),
        'na': (len, 'a'),
        'nb': (len, 'b'),
        'nc': (len, 'c'),
-       'total': (sum, ['na', 'nb',
-       'nc'])}
+       'total': (sum, ['na', 'nb', 'nc'])}
