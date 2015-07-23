@@ -5,18 +5,18 @@ Dask provides multi-core execution on larger-than-memory datasets.
 
 We can think of dask at a high and a low level
 
-*  **High level collections:**  Dask provides high-level Array, DataFrame
-   collections that mimic NumPy, and Pandas but can operate in parallel on
+*  **High level collections:**  Dask provides high-level Array, Bag, and DataFrame
+   collections that mimic NumPy, lists, and Pandas but can operate in parallel on
    datasets that don't fit into main memory.  Dask's high-level collections are
    alternatives to NumPy and Pandas for large datasets.
 *  **Low Level schedulers:** Dask provides dynamic task schedulers that
    execute task graphs in parallel.  These execution engines power the
-   high-level collections mentioned above but can also power custom workloads.
-   These schedulers are low-latency (around 1ms) and work hard to run
-   computations in a small memory footprint.  Dask's schedulers are an
-   alternative to direct use of `threading` or `multiprocessing` libraries in
-   complex cases or other task scheduling systems like `Luigi` or
-   `IPython parallel`.
+   high-level collections mentioned above but can also power custom,
+   user-defined workloads.  These schedulers are low-latency (around 1ms) and
+   work hard to run computations in a small memory footprint.  Dask's
+   schedulers are an alternative to direct use of `threading` or
+   `multiprocessing` libraries in complex cases or other task scheduling
+   systems like `Luigi` or `IPython parallel`.
 
 Different users operate at different levels but it is useful to understand
 both.  This tutorial will interleave between high-level use of `dask.array` and
@@ -26,11 +26,13 @@ schedulers (odd sections.)
 Prepare
 -------
 
-You will need the following libraries
+You will need the following core libraries
 
-    conda install numpy pandas h5py matplotlib dask scipy
-    or
-    pip install numpy pandas h5py matplotlib dask[complete]
+    numpy pandas h5py pil matplotlib scipy toolz matplotlib
+
+And a recently updated version of dask
+
+    dask
 
 You may find the following libraries helpful for some exercises
 
@@ -40,7 +42,7 @@ You should clone this repository
 
     git clone http://github.com/ContinuumIO/dask-tutorial
 
-and then run a script to prepare artificial data.
+and then run this script to prepare artificial data.
 
     cd dask-tutorial
     python prep.py
