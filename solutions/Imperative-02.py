@@ -1,13 +1,17 @@
 @do
-def total_chunk(nsamples):
-    total = 0
-    for i in range(nsamples):
-        x = random()
-        y = random()
-        if x*x + y*y <= 1:
-            total += 1
-    return total
+def point_chunk():
+    """Generates a random x, y point, returns 1 if in circle, else returns 0."""
+    x = random()
+    y = random()
+    if x*x + y*y <= 1:
+        return 1
+    else:
+        return 0
 
-def parallel_estimate_pi(nsamples, npartitions):
-    totals = [total_chunk(n) for n in partition(nsamples, npartitions)]
-    return 4.*sum(totals)/nsamples
+def parallel_estimate_pi(nsamples):
+    points = []
+    for i in range(nsamples):
+        points.append(point_chunk())
+    total = do(sum)(points)
+    result = 4.*total/nsamples
+    return result.compute(get=get)
