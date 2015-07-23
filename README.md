@@ -77,6 +77,6 @@ Introduction - [slides](http://ContinuumIO.github.io/dask-tutorial/introduction.
 
     *  [Bag - Parallel lists](05-Bag.ipynb)
 
-6.  Analysis, optimization, and diagnostics
+6.  Homework - large datasets with which to play at home
 
-    *  ...
+    *  [Homework](Homework.ipynb)
