@@ -123,3 +123,41 @@ Dead simple task scheduling
 
 ### Dask is a convenient way to make libraries like dask.array
 
+
+### Or use dask in custom parallel workloads
+
+
+### Python's options for Parallelism
+
+Explicit control -- Fast but hard
+
+*  Threads/Processes/MPI/ZeroMQ
+*  Concurrent.futures/Joblib/...
+*  .
+*  .
+*  .
+*  IPython parallel
+*  Luigi
+*  PySpark
+*  Hadoop (mrjob)
+*  SQL: Hive, Pig, Impala
+
+Implicit control -- Restrictive but easy
+
+
+### Python's options for Parallelism
+
+Explicit control -- Fast but hard
+
+*  Threads/Processes/MPI/ZeroMQ
+*  Concurrent.futures/Joblib/...
+*  .
+*  .  <-- dask core lives here
+*  .
+*  IPython parallel
+*  Luigi
+*  PySpark
+*  Hadoop (mrjob)
+*  SQL: Hive, Pig, Impala
+
+Implicit control -- Restrictive but easy
