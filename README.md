@@ -82,3 +82,5 @@ Introduction - [slides](http://ContinuumIO.github.io/dask-tutorial/introduction.
 6.  Homework - large datasets with which to play at home
 
     *  [Homework](Homework.ipynb)
+
+End - [slides](http://ContinuumIO.github.io/dask-tutorial/end.html)
