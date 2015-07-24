@@ -4,9 +4,12 @@
 
 Continuum Analytics
 
-[http://github.com/ContinuumIO/dask-tutorial/](http://github.com/ContinuumIO/dask-tutorial/)
-
+    git clone http://github.com/ContinuumIO/dask-tutorial
+    cd dask-tutorial
     python prep.py  # create artificial datasets
+
+    conda install dask pandas
+    pip install castra graphviz  # optional
 
 
 ### **tl;dr**: `dask` enables parallel computing
@@ -14,7 +17,7 @@ Continuum Analytics
 ### on larger-than-memory data
 
 
-### `dask` collections mimic known libraries
+### High Level: `dask` collections mimic known libraries
 
 *  `dask.array` = `numpy` + `threading`
 *  `dask.dataframe` = `pandas` + `threading`
@@ -22,7 +25,7 @@ Continuum Analytics
 
 <hr>
 
-### `dask` schedulers provide custom parallelism
+### Low Level: `dask` schedulers provide custom parallelism
 
 *  Dynamic and low-latency
 *  Memory aware
@@ -30,9 +33,12 @@ Continuum Analytics
 *  Arbitrary and simple graph structure
 
 
-* High level code creates task graph
+*  High level NumPy/Pandas code
 
         x.dot(y) - y.mean(axis=0)
+        df.groupby(df.name).amount.mean()
+
+*  Creates task graph with dependencies
 
 <img src="images/fail-case.png" width=50%>
 
@@ -43,11 +49,11 @@ Continuum Analytics
 
 ### Goals
 
-*  Learn to use `dask.array/dataframe/bag`
+*  High Level: Learn `dask.array/dataframe/bag`
 
     to handle 10-100GB datasets on a single machine
 
-*  Learn to use dynamic task scheduling
+*  Low Level: Learn dynamic task scheduling
 
     to solve custom problems
 
@@ -55,9 +61,8 @@ Continuum Analytics
 
 ### Outline
 
-1.  `dask.array`
-2.  Foundations
-3.  `dask.dataframe`
-4.  Imperative graph construction
-5.  `dask.bag`
-6.  Diagnostics, optimizations, etc..
+1.  `dask.array` (high)
+2.  Foundations (low)
+3. `dask.dataframe` (high)
+4.  Custom algorithms (low)
+5.  `dask.bag` (high)
