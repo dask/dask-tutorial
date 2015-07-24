@@ -28,7 +28,14 @@ Prepare
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py pil matplotlib scipy toolz matplotlib
+    conda install numpy pandas h5py pil matplotlib scipy toolz matplotlib pytables
+
+**Note:**
+
+If you're on a Mac you need to install particular versions of h5py and pytables:
+
+    conda install numpy pandas h5py=2.4.0 pil matplotlib scipy toolz matplotlib pytables=3.1.1
+
 
 And a recently updated version of dask
 
