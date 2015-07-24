@@ -50,8 +50,15 @@ and then run this script to prepare artificial data.
 Links
 -----
 
-*  [Code](https://github.com/ContinuumIO/dask/)
-*  [Docs](https://dask.pydata.org/en/latest/)
+*  Reference
+    *  [Docs](https://dask.pydata.org/en/latest/)
+    *  [Code](https://github.com/ContinuumIO/dask/)
+    *  [Blog](http://matthewrocklin.com/blog/)
+*  Ask for help
+    *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow
+    *   [github issues](https://github.com/ContinuumIO/dask/issues/new) for bug reports and feature requests
+    *   [blaze-dev](http://groups.google.com/a/continuum.io/forum/#!forum/blaze-dev)  mailing list for community discussion
+    *   Please ask questions during a live tutorial
 
 Outline
 -------
