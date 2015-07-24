@@ -12,7 +12,16 @@ Continuum Analytics
     pip install castra graphviz  # optional
 
 
-### **tl;dr**: `dask` enables parallel computing
+### NumPy and Pandas are foundational data structures
+
+<hr>
+
+### But they are mostly limited to memory and a single core
+
+
+### `dask` enables parallel computing
+
+<hr>
 
 ### on larger-than-memory data
 
