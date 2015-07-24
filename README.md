@@ -28,15 +28,15 @@ Prepare
 
 You will need the following core libraries
 
-    numpy pandas h5py pil matplotlib scipy toolz matplotlib
+    conda install numpy pandas h5py pil matplotlib scipy toolz matplotlib
 
 And a recently updated version of dask
 
-    dask
+    conda/pip install dask
 
 You may find the following libraries helpful for some exercises
 
-    castra graphviz
+    pip install castra graphviz
 
 You should clone this repository
 
