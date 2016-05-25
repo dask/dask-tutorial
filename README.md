@@ -40,7 +40,7 @@ You may find the following libraries helpful for some exercises
 
 You should clone this repository
 
-    git clone http://github.com/ContinuumIO/dask-tutorial
+    git clone http://github.com/dask/dask-tutorial
 
 and then run this script to prepare artificial data.
 
@@ -52,24 +52,24 @@ Links
 
 *  Reference
     *  [Docs](https://dask.pydata.org/en/latest/)
-    *  [Code](https://github.com/ContinuumIO/dask/)
+    *  [Code](https://github.com/dask/dask/)
     *  [Blog](http://matthewrocklin.com/blog/)
 *  Ask for help
     *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow
-    *   [github issues](https://github.com/ContinuumIO/dask/issues/new) for bug reports and feature requests
+    *   [github issues](https://github.com/dask/dask/issues/new) for bug reports and feature requests
     *   [blaze-dev](http://groups.google.com/a/continuum.io/forum/#!forum/blaze-dev)  mailing list for community discussion
     *   Please ask questions during a live tutorial
 
 Outline
 -------
 
-Introduction - [slides](http://ContinuumIO.github.io/dask-tutorial/introduction.html)
+Introduction - [slides](http://dask.github.io/dask-tutorial/introduction.html)
 
-1.  Arrays - [slides](http://ContinuumIO.github.io/dask-tutorial/array.html)
+1.  Arrays - [slides](http://dask.github.io/dask-tutorial/array.html)
 
     *  [Arrays](01-Array.ipynb)
 
-2.  Task graphs and other fundamentals - [slides](http://ContinuumIO.github.io/dask-tutorial/graphs.html)
+2.  Task graphs and other fundamentals - [slides](http://dask.github.io/dask-tutorial/graphs.html)
 
     *  [Foundations](02-Foundations.ipynb)
 
@@ -90,4 +90,4 @@ Introduction - [slides](http://ContinuumIO.github.io/dask-tutorial/introduction.
 
     *  [Homework](Homework.ipynb)
 
-End - [slides](http://ContinuumIO.github.io/dask-tutorial/end.html)
+End - [slides](http://dask.github.io/dask-tutorial/end.html)
