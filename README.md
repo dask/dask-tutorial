@@ -28,7 +28,7 @@ Prepare
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables
+    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz
 
 And a recently updated version of dask
 
@@ -36,7 +36,7 @@ And a recently updated version of dask
 
 You may find the following libraries helpful for some exercises
 
-    pip install castra graphviz
+    pip install graphviz cachey
 
 You should clone this repository
 
