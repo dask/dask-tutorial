@@ -80,7 +80,7 @@ Introduction - [slides](http://dask.github.io/dask-tutorial/introduction.html)
 
 4.  Imperative Programming
 
-    *  [Imperative - `do`](04-Imperative.ipynb)
+    *  [Imperative - `delayed`](04-Imperative.ipynb)
 
 5.  Bags of semi-structured data
 
