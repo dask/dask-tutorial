@@ -38,6 +38,12 @@ You may find the following libraries helpful for some exercises
 
     pip install castra graphviz
 
+Windows users can install graphviz as follows
+
+1. Install Graphviz from http://www.graphviz.org/Download_windows.php
+2. Add C:\Program Files (x86)\Graphviz2.38\bin to the PATH
+3. Run "pip install graphviz" on the command line
+
 You should clone this repository
 
     git clone http://github.com/dask/dask-tutorial
