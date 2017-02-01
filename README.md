@@ -28,7 +28,7 @@ Prepare
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables
+    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz
 
 And a recently updated version of dask
 
@@ -36,7 +36,13 @@ And a recently updated version of dask
 
 You may find the following libraries helpful for some exercises
 
-    pip install castra graphviz
+    pip install graphviz cachey
+
+Windows users can install graphviz as follows
+
+1. Install Graphviz from http://www.graphviz.org/Download_windows.php
+2. Add C:\Program Files (x86)\Graphviz2.38\bin to the PATH
+3. Run "pip install graphviz" on the command line
 
 You should clone this repository
 
@@ -80,7 +86,7 @@ Introduction - [slides](http://dask.github.io/dask-tutorial/introduction.html)
 
 4.  Imperative Programming
 
-    *  [Imperative - `do`](04-Imperative.ipynb)
+    *  [Imperative - `delayed`](04-Imperative.ipynb)
 
 5.  Bags of semi-structured data
 
