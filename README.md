@@ -69,31 +69,24 @@ Links
 Outline
 -------
 
-Introduction - [slides](http://dask.github.io/dask-tutorial/introduction.html)
+1. [Overview](01_overview.ipynb) - dask's place in the universe
 
-1.  Arrays - [slides](http://dask.github.io/dask-tutorial/array.html)
+2. [Foundations](02_foundations.ipynb) - low-level Dask and how it does what it does
 
-    *  [Arrays](01-Array.ipynb)
+3. [Bag](03_bag.ipynb) - the first high-level collection: a generalized iterator for use
+with a functional programming style and o clean messy data.
+ 
+4. [Distributed](04_distributed.ipynb) - Dask's scheduler for clusters, with details of
+how to view the UI.
 
-2.  Task graphs and other fundamentals - [slides](http://dask.github.io/dask-tutorial/graphs.html)
+5. [Array](05_array.ipynb) - blocked numpy-like functionality with a collection of 
+numpy arrays spread across your cluster.
 
-    *  [Foundations](02-Foundations.ipynb)
+6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed 
+computing, including how to bebug.
 
-3.  DataFrames
+7. [Dataframe](07_dataframe.ipynb) - parallelized operations on many pandas dataframes
+spread across your cluster.
 
-    *  [DataFrames](03a-DataFrame.ipynb)
-    *  [DataFrame Storage](03b-DataFrame-Storage.ipynb)
-
-4.  Imperative Programming
-
-    *  [Imperative - `delayed`](04-Imperative.ipynb)
-
-5.  Bags of semi-structured data
-
-    *  [Bag - Parallel lists](05-Bag.ipynb)
-
-6.  Homework - large datasets with which to play at home
-
-    *  [Homework](Homework.ipynb)
-
-End - [slides](http://dask.github.io/dask-tutorial/end.html)
+8. [Dataframe Storage](08_dataframe_storage.ipynb) - efficient ways to read and write
+dataframes to disc.
