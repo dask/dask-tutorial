@@ -57,7 +57,7 @@ Links
 -----
 
 *  Reference
-    *  [Docs](https://dask.pydata.org/en/latest/)
+    *  [Docs](http://dask.pydata.org/en/latest/)
     *  [Code](https://github.com/dask/dask/)
     *  [Blog](http://matthewrocklin.com/blog/)
 *  Ask for help
