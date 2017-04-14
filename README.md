@@ -33,6 +33,7 @@ You will need the following core libraries
 And a recently updated version of dask
 
     conda/pip install dask
+    conda/pip install distributed
 
 You may find the following libraries helpful for some exercises
 
