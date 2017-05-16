@@ -3,7 +3,7 @@ FROM jupyter/scipy-notebook
 USER root
 # python3 setup
 RUN apt-get update && apt-get install -y graphviz
-RUN conda install -y numpy scipy pandas h5py matplotlib toolz pytables
+RUN conda install -y numpy scipy pandas h5py matplotlib toolz pytables python-graphviz
 RUN conda install -y dask distributed
 RUN conda install -y -c conda-forge fastparquet
 
