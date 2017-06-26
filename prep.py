@@ -66,21 +66,22 @@ def create_weather(growth=3200):
     if all(os.path.exists(fn.replace('small', 'big')) for fn in filenames):
         return
 
-    print("Expand weather data for array exercise")
-
     from scipy.misc import imresize
     import h5py
 
     for fn in filenames:
-        with h5py.File(fn) as f:
+        with h5py.File(fn, mode='r') as f:
             x = f['/t2m'][:]
 
         y = imresize(x, growth)
 
         out_fn = os.path.join('data', 'weather-big', os.path.split(fn)[-1])
 
-        with h5py.File(out_fn) as f:
-            f.create_dataset('/t2m', data=y, chunks=(500, 500))
+        try:
+            with h5py.File(out_fn) as f:
+                f.create_dataset('/t2m', data=y, chunks=(500, 500))
+        except:
+            pass
 
 
 if __name__ == '__main__':
