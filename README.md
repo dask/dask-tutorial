@@ -26,33 +26,69 @@ schedulers (odd sections.)
 Prepare
 -------
 
+You should clone this repository
+
+    git clone http://github.com/dask/dask-tutorial
+
+and then install necessary packages.
+
+a) Install into an existing environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 You will need the following core libraries
 
-    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz
-
-And a recently updated version of dask
-
-    conda/pip install dask
-    conda/pip install distributed
+    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz dask distributed
 
 You may find the following libraries helpful for some exercises
 
     pip install graphviz cachey
+    
+b) Create a new environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the repo directory
+
+    conda env create -f environment.yaml 
+
+and then on osx/linux
+
+    source activate dask-tutorial
+
+on windows
+
+    activate dask-tutorial
+
+c) Use Dockerfile
+~~~~~~~~~~~~~~~~~
+
+You can build a docker image out of the provided Dockerfile.
+
+
+
+Graphviz on Windows
+~~~~~~~~~~~~~~~~~~~
 
 Windows users can install graphviz as follows
 
 1. Install Graphviz from http://www.graphviz.org/Download_windows.php
 2. Add C:\Program Files (x86)\Graphviz2.38\bin to the PATH
-3. Run "pip install graphviz" on the command line
 
-You should clone this repository
 
-    git clone http://github.com/dask/dask-tutorial
 
-and then run this script to prepare artificial data.
+Prepare artificial data.
+~~~~~~~~~~~~~~~~~~~~~~~~
+From the repo directory
 
-    cd dask-tutorial
     python prep.py
+
+
+Launch notebook
+~~~~~~~~~~~~~~~
+
+From the repo directory
+
+    jupyter notebook 
+
 
 Links
 -----
