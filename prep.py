@@ -77,8 +77,12 @@ def extract_flight():
             flights.extractall('data/')
 
 
+def create_json():
+    accounts_json(20, 10000, 500)
+
+
 if __name__ == '__main__':
     random_array()
     create_weather()
-    accounts_json(20, 10000, 500)
+    create_json()
     extract_flight()
