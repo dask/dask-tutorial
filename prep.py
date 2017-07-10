@@ -80,5 +80,5 @@ def extract_flight():
 if __name__ == '__main__':
     random_array()
     create_weather()
-    accounts_json(50, 100000, 500)
+    accounts_json(20, 10000, 500)
     extract_flight()
