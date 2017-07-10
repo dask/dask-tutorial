@@ -1,6 +1,7 @@
+from __future__ import print_function
 import os
 import numpy as np
-import pandas as pd
+import tarfile
 from glob import glob
 
 
@@ -19,23 +20,6 @@ def random_array():
         dset = f.create_dataset('/x', shape=(1000000000,), dtype='f4')
         for i in range(0, 1000000000, 1000000):
             dset[i: i + 1000000] = np.random.exponential(size=1000000)
-
-
-def accounts_csvs(num_files, n, k):
-    from accounts import account_entries, account_params
-    fn = os.path.join('data', 'accounts.%d.csv' % (num_files - 1))
-
-    if os.path.exists(fn):
-        return
-
-    print("Create CSV accounts for dataframe exercise")
-
-    args = account_params(k)
-
-    for i in range(num_files):
-        df = account_entries(n, *args)
-        df.to_csv(os.path.join('data', 'accounts.%d.csv' % i),
-                  index=False)
 
 
 def accounts_json(num_files, n, k):
@@ -84,8 +68,17 @@ def create_weather(growth=3200):
             pass
 
 
+def extract_flight():
+    flightdir = os.path.join('data', 'nycflights')
+    if not os.path.exists(flightdir):
+        print("Extracting flight data")
+        tar_path = os.path.join('data', 'nycflights.tar.gz')
+        with tarfile.open(tar_path, mode='r:gz') as flights:
+            flights.extractall('data/')
+
+
 if __name__ == '__main__':
     random_array()
     create_weather()
-    accounts_csvs(3, 1000000, 500)
     accounts_json(50, 100000, 500)
+    extract_flight()
