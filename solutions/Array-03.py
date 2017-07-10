@@ -13,5 +13,4 @@ x = da.stack(arrays, axis=0)
 
 result = x[:, ::2, ::2]
 
-with dask.set_options(get=dask.get):
-    da.to_hdf5(os.path.join('data', 'myfile.hdf5'), '/output', result)
+da.to_hdf5(os.path.join('data', 'myfile.hdf5'), '/output', result)
