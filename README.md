@@ -73,6 +73,11 @@ Windows users can install graphviz as follows
 1. Install Graphviz from http://www.graphviz.org/Download_windows.php
 2. Add C:\Program Files (x86)\Graphviz2.38\bin to the PATH
 
+Alternatively one can use the following conda commands (one installs graphviz and one installs python-bindings for graphviz):
+
+1. conda install -c conda-forge graphviz
+2. conda install -c conda-forge python-graphviz
+
 
 
 Prepare artificial data.
