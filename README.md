@@ -1,5 +1,4 @@
-Dask Tutorial
-=============
+# Dask Tutorial
 
 Dask provides multi-core execution on larger-than-memory datasets.
 
@@ -23,8 +22,7 @@ both.  This tutorial will interleave between high-level use of `dask.array` and
 `dask.dataframe` (even sections) and low-level use of dask graphs and
 schedulers (odd sections.)
 
-Prepare
--------
+## Prepare
 
 You should clone this repository
 
@@ -32,8 +30,7 @@ You should clone this repository
 
 and then install necessary packages.
 
-a) Install into an existing environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### a) Install into an existing environment
 
 You will need the following core libraries
 
@@ -43,8 +40,7 @@ You may find the following libraries helpful for some exercises
 
     pip install graphviz cachey
     
-b) Create a new environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### b) Create a new environment
 
 In the repo directory
 
@@ -58,15 +54,13 @@ on windows
 
     activate dask-tutorial
 
-c) Use Dockerfile
-~~~~~~~~~~~~~~~~~
+### c) Use Dockerfile
 
 You can build a docker image out of the provided Dockerfile.
 
 
 
-Graphviz on Windows
-~~~~~~~~~~~~~~~~~~~
+### Graphviz on Windows
 
 Windows users can install graphviz as follows
 
@@ -80,23 +74,21 @@ Alternatively one can use the following conda commands (one installs graphviz an
 
 
 
-Prepare artificial data.
-~~~~~~~~~~~~~~~~~~~~~~~~
+### Prepare artificial data.
+
 From the repo directory
 
     python prep.py
 
 
-Launch notebook
-~~~~~~~~~~~~~~~
+### Launch notebook
 
 From the repo directory
 
     jupyter notebook 
 
 
-Links
------
+## Links
 
 *  Reference
     *  [Docs](http://dask.pydata.org/en/latest/)
@@ -108,8 +100,7 @@ Links
     *   [blaze-dev](http://groups.google.com/a/continuum.io/forum/#!forum/blaze-dev)  mailing list for community discussion
     *   Please ask questions during a live tutorial
 
-Outline
--------
+## Outline
 
 1. [Overview](01_overview.ipynb) - dask's place in the universe
 
