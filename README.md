@@ -116,7 +116,7 @@ how to view the UI.
 numpy arrays spread across your cluster.
 
 6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed 
-computing, including how to bebug.
+computing, including how to debug.
 
 7. [Dataframe](07_dataframe.ipynb) - parallelized operations on many pandas dataframes
 spread across your cluster.
