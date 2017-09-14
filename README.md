@@ -44,7 +44,7 @@ You may find the following libraries helpful for some exercises
 
 In the repo directory
 
-    conda env create -f environment.yaml 
+    conda env create -f environment.yml 
 
 and then on osx/linux
 
