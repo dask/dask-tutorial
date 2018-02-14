@@ -57,7 +57,7 @@ def accounts_json(num_files, n, k):
             f.write(os.linesep.join(map(json.dumps, seq)).encode())
 
 
-def create_weather(growth=3200):
+def create_weather(growth=32):
     filenames = sorted(glob(os.path.join('data', 'weather-small', '*.hdf5')))
 
     if not os.path.exists(os.path.join('data', 'weather-big')):
@@ -66,14 +66,14 @@ def create_weather(growth=3200):
     if all(os.path.exists(fn.replace('small', 'big')) for fn in filenames):
         return
 
-    from scipy.misc import imresize
+    from skimage.transform import resize
     import h5py
 
     for fn in filenames:
         with h5py.File(fn, mode='r') as f:
             x = f['/t2m'][:]
 
-        y = imresize(x, growth)
+        y = resize(x, (x.shape[0] * 32, x.shape[1] * 32))
 
         out_fn = os.path.join('data', 'weather-big', os.path.split(fn)[-1])
 
