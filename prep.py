@@ -108,6 +108,7 @@ def create_weather(growth=32):
     from skimage.transform import resize
     import h5py
 
+    print('Exploding weather data')
     for fn in filenames:
         with h5py.File(fn, mode='r') as f:
             x = f['/t2m'][:]
