@@ -1,0 +1,1 @@
+df.groupby("DayOfWeek").DepDelay.mean().compute()
