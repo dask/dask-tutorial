@@ -105,14 +105,17 @@ with a functional programming style and to clean messy data.
 3. [Array](03_array.ipynb) - blocked numpy-like functionality with a collection of 
 numpy arrays spread across your cluster.
 
-4. [Distributed](04_distributed.ipynb) - Dask's scheduler for clusters, with details of
+7. [Dataframe](04_dataframe.ipynb) - parallelized operations on many pandas dataframes
+spread across your cluster.
+
+5. [Distributed](05_distributed.ipynb) - Dask's scheduler for clusters, with details of
 how to view the UI.
 
 6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed 
 computing, including how to debug.
 
-7. [Dataframe](07_dataframe.ipynb) - parallelized operations on many pandas dataframes
-spread across your cluster.
-
-8. [Dataframe Storage](08_dataframe_storage.ipynb) - efficient ways to read and write
+7. [Dataframe Storage](07_dataframe_storage.ipynb) - efficient ways to read and write
 dataframes to disc.
+
+
+8. [Machine Learning](08_machine_learning.ipynb) - aaplying dask to machine-learning problems
