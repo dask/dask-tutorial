@@ -113,7 +113,7 @@ def create_weather(growth=32):
         with h5py.File(fn, mode='r') as f:
             x = f['/t2m'][:]
 
-        y = resize(x, (x.shape[0] * 32, x.shape[1] * 32))
+        y = resize(x, (x.shape[0] * 32, x.shape[1] * 32), mode='constant')
 
         out_fn = os.path.join('data', 'weather-big', os.path.split(fn)[-1])
 
