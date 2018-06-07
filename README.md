@@ -33,7 +33,14 @@ You should clone this repository
 
 and then install necessary packages.
 
-### a) Install into an existing environment
+#### a) Create a conda environment (preferred)
+
+In the repo directory
+
+    conda env create -f environment.yml 
+    conda activate dask-tutorial
+
+#### b) Install into an existing environment
 
 You will need the following core libraries
 
@@ -41,36 +48,17 @@ You will need the following core libraries
 
 You may find the following libraries helpful for some exercises
 
-    pip install graphviz cachey
+    pip install graphviz
     
-### b) Create a new environment
-
-In the repo directory
-
-    conda env create -f environment.yml 
-
-and then on osx/linux
-
-    source activate dask-tutorial
-
-on windows
-
-    activate dask-tutorial
-
-### c) Use Dockerfile
+#### c) Use Dockerfile
 
 You can build a docker image out of the provided Dockerfile.
 
 
 
-### Graphviz on Windows
+#### Graphviz on Windows
 
-Windows users can install graphviz as follows
-
-1. Install Graphviz from http://www.graphviz.org/Download_windows.php
-2. Add C:\Program Files (x86)\Graphviz2.38\bin to the PATH
-
-Alternatively one can use the following conda commands (one installs graphviz and one installs python-bindings for graphviz):
+You may need to do the following
 
 1. conda install -c conda-forge graphviz
 2. conda install -c conda-forge python-graphviz
@@ -98,31 +86,36 @@ From the repo directory
     *  [Code](https://github.com/dask/dask/)
     *  [Blog](http://matthewrocklin.com/blog/)
 *  Ask for help
-    *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow
+    *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow, for usage questions
     *   [github issues](https://github.com/dask/dask/issues/new) for bug reports and feature requests
-    *   [blaze-dev](http://groups.google.com/a/continuum.io/forum/#!forum/blaze-dev)  mailing list for community discussion
-    *   Please ask questions during a live tutorial
+    *   [gitter chat](https://gitter.im/dask/dask) for general, non-bug, discussion
+    *   Attend a live tutorial
 
 ## Outline
 
-1. [Overview](01_overview.ipynb) - dask's place in the universe
+0. [Overview](00_overview.ipynb) - dask's place in the universe
 
-2. [Foundations](02_foundations.ipynb) - low-level Dask and how it does what it does
+1. [Delayed](01_dask.delayed.ipynb) - the single-function way to parallelize general python code
 
-3. [Bag](03_bag.ipynb) - the first high-level collection: a generalized iterator for use
-with a functional programming style and o clean messy data.
+1x. [Lazy](01x_lazy.ipynb) - some of the principles behing laxy execution, for the interested.
+
+2. [Bag](02_bag.ipynb) - the first high-level collection: a generalized iterator for use
+with a functional programming style and to clean messy data.
  
-4. [Distributed](04_distributed.ipynb) - Dask's scheduler for clusters, with details of
-how to view the UI.
-
-5. [Array](05_array.ipynb) - blocked numpy-like functionality with a collection of 
+3. [Array](03_array.ipynb) - blocked numpy-like functionality with a collection of 
 numpy arrays spread across your cluster.
+
+7. [Dataframe](04_dataframe.ipynb) - parallelized operations on many pandas dataframes
+spread across your cluster.
+
+5. [Distributed](05_distributed.ipynb) - Dask's scheduler for clusters, with details of
+how to view the UI.
 
 6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed 
 computing, including how to debug.
 
-7. [Dataframe](07_dataframe.ipynb) - parallelized operations on many pandas dataframes
-spread across your cluster.
-
-8. [Dataframe Storage](08_dataframe_storage.ipynb) - efficient ways to read and write
+7. [Dataframe Storage](07_dataframe_storage.ipynb) - efficient ways to read and write
 dataframes to disc.
+
+
+8. [Machine Learning](08_machine_learning.ipynb) - aaplying dask to machine-learning problems

@@ -1,0 +1,1 @@
+df.groupby("Origin").DepDelay.mean().compute()

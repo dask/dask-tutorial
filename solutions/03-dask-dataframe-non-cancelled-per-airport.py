@@ -1,0 +1,1 @@
+df[~df.Cancelled].groupby('Origin').Origin.count().compute()
