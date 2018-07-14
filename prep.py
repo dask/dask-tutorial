@@ -7,7 +7,11 @@ import urllib.request
 import zipfile
 
 here = os.path.dirname(__file__)
+
 data_dir = os.path.join(here, 'data')
+if not os.path.exists(data_dir):
+    raise OSError('data/ directory not found, aborting data preparation')
+
 
 def flights():
     flights_raw = os.path.join(data_dir, 'nycflights.tar.gz')
@@ -91,10 +95,6 @@ def accounts_json(num_files, n, k):
 
 def create_weather(growth=32):
     filenames = sorted(glob(os.path.join('data', 'weather-small', '*.hdf5')))
-
-    if not filenames:
-            ws_dir = os.path.join('data', 'weather-small')
-            raise ValueError("Did not find any hdf5 files in {}".format(ws_dir))
 
     if not os.path.exists(os.path.join('data', 'weather-big')):
         os.mkdir(os.path.join('data', 'weather-big'))
