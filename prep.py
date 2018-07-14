@@ -10,8 +10,9 @@ here = os.path.dirname(__file__)
 
 data_dir = os.path.abspath(os.path.join(here, 'data'))
 if not os.path.exists(data_dir):
-    raise OSError('data/ directory not found, aborting data preparation.' \
-                  'Please re-clone the dask-tutorial directory.')
+    raise OSError('data/ directory not found, aborting data preparation. ' \
+                  'Restore it with "git checkout data" from the base ' \
+                  'directory.')
 
 
 def flights():
