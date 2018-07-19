@@ -93,11 +93,11 @@ From the repo directory
 
 ## Outline
 
-0. [Overview](00_overview.ipynb) - dask's place in the universe
+0. [Overview](00_overview.ipynb) - dask's place in the universe.
 
-1. [Delayed](01_dask.delayed.ipynb) - the single-function way to parallelize general python code
+1. [Delayed](01_dask.delayed.ipynb) - the single-function way to parallelize general python code.
 
-1x. [Lazy](01x_lazy.ipynb) - some of the principles behing laxy execution, for the interested.
+1x. [Lazy](01x_lazy.ipynb) - some of the principles behind lazy execution, for the interested.
 
 2. [Bag](02_bag.ipynb) - the first high-level collection: a generalized iterator for use
 with a functional programming style and to clean messy data.
@@ -117,5 +117,4 @@ computing, including how to debug.
 7. [Dataframe Storage](07_dataframe_storage.ipynb) - efficient ways to read and write
 dataframes to disc.
 
-
-8. [Machine Learning](08_machine_learning.ipynb) - aaplying dask to machine-learning problems
+8. [Machine Learning](08_machine_learning.ipynb) - applying dask to machine-learning problems.
