@@ -54,7 +54,13 @@ You may find the following libraries helpful for some exercises
 
 You can build a docker image out of the provided Dockerfile.
 
+    $ docker build . # This will build
 
+Run a container.
+
+    $ docker run -it -p 8888:8888 <container_id_or_tag>
+
+The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which can be used to access the notebook from browser.
 
 #### Graphviz on Windows
 
