@@ -58,10 +58,10 @@ You can build a docker image out of the provided Dockerfile.
 
 #### Graphviz on Windows
 
-You may need to do the following
+You may need to do install the dependencies like this:
 
-1. conda install -c conda-forge graphviz
-2. conda install -c conda-forge python-graphviz
+    conda install -c conda-forge graphviz
+    conda install -c conda-forge python-graphviz
 
 
 
