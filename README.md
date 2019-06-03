@@ -55,19 +55,12 @@ You may find the following libraries helpful for some exercises
 You can build a docker image out of the provided Dockerfile.
 
 
-
-#### Graphviz on Windows
-
-You may need to do install the dependencies like this:
-
-    conda install -c conda-forge graphviz
-    conda install -c conda-forge python-graphviz
-
-
-
 ### Prepare artificial data.
 
-From the repo directory
+This is also done in the first notebook, but will only make data not
+already created.
+
+From the repo directory 
 
     python prep.py
 
@@ -82,9 +75,10 @@ From the repo directory
 ## Links
 
 *  Reference
-    *  [Docs](http://dask.pydata.org/en/latest/)
+    *  [Docs](https://dask.org/)
+    *  [Examples](https://examples.dask.org/)
     *  [Code](https://github.com/dask/dask/)
-    *  [Blog](http://matthewrocklin.com/blog/)
+    *  [Blog](https://blog.dask.org/)
 *  Ask for help
     *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow, for usage questions
     *   [github issues](https://github.com/dask/dask/issues/new) for bug reports and feature requests
