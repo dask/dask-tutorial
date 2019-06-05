@@ -60,20 +60,16 @@ Run a container.
 
     $ docker run -it -p 8888:8888 <container_id_or_tag>
 
-The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which can be used to access the notebook from browser.
-
-#### Graphviz on Windows
-
-You may need to do the following
-
-1. conda install -c conda-forge graphviz
-2. conda install -c conda-forge python-graphviz
-
-
+The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which 
+can be used to access the notebook from browser. You may need to replace the given hostname with "localhost" or
+"127.0.0.1".
 
 ### Prepare artificial data.
 
-From the repo directory
+This is also done in the first notebook, but will only make data not
+already created.
+
+From the repo directory 
 
     python prep.py
 
@@ -88,9 +84,10 @@ From the repo directory
 ## Links
 
 *  Reference
-    *  [Docs](http://dask.pydata.org/en/latest/)
+    *  [Docs](https://dask.org/)
+    *  [Examples](https://examples.dask.org/)
     *  [Code](https://github.com/dask/dask/)
-    *  [Blog](http://matthewrocklin.com/blog/)
+    *  [Blog](https://blog.dask.org/)
 *  Ask for help
     *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow, for usage questions
     *   [github issues](https://github.com/dask/dask/issues/new) for bug reports and feature requests
