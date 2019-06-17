@@ -44,21 +44,24 @@ In the repo directory
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz dask distributed
+    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz dask distributed -c conda-forge
 
 You may find the following libraries helpful for some exercises
 
-    pip install graphviz
+    conda install python-graphviz -c conda-forge
+    
+Note that this options will alter your existing environment, potentially changing the versions of packages you already 
+have installed. 
     
 #### c) Use Dockerfile
 
 You can build a docker image out of the provided Dockerfile.
 
-    $ docker build . # This will build
+    $ docker build . # This will build using the same env as in a)
 
-Run a container.
+Run a container, replacing the ID with the output of the previous command
 
-    $ docker run -it -p 8888:8888 <container_id_or_tag>
+    $ docker run -it -p 8888:8888 -p 8787:8787 <container_id_or_tag>
 
 The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which 
 can be used to access the notebook from browser. You may need to replace the given hostname with "localhost" or
@@ -67,9 +70,10 @@ can be used to access the notebook from browser. You may need to replace the giv
 ### Prepare artificial data.
 
 This is also done in the first notebook, but will only make data not
-already created.
+already created. You may skip this and only make artificial data as required in the specific sections of the
+tutorial.
 
-From the repo directory 
+From the repo directory (within the running notebook server if using method c) ) 
 
     python prep.py
 
@@ -80,6 +84,7 @@ From the repo directory
 
     jupyter notebook 
 
+This was already done for method c) and does not need repeating.
 
 ## Links
 
