@@ -1,7 +1,7 @@
 # Dask Tutorial
 
-This tutorial was last given at SciPy 2017 in Austin Texas.
-[A video is available online](https://www.youtube.com/watch?v=mbfsog3e5DA).
+This tutorial was last given at SciPy 2018 in Austin Texas.
+[A video is available online](https://www.youtube.com/watch?v=mqdglv9GnM8).
 
 Dask provides multi-core execution on larger-than-memory datasets.
 
