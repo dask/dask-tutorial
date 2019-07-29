@@ -128,6 +128,9 @@ def create_weather(growth=32):
 
 
 if __name__ == '__main__':
+    import ssl
+    ssl._create_default_https_context = ssl._create_unverified_context
+
     random_array()
     create_weather()
     accounts_csvs(3, 1000000, 500)
