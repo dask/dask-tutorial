@@ -7,4 +7,4 @@ RUN apt-get update && apt-get install -y graphviz
 USER jovyan
 
 RUN git clone https://github.com/dask/dask-tutorial.git ./dask-tutorial
-RUN cd dask-tutorial && conda env update && python prep.py && cd ..
+RUN cd dask-tutorial && conda env update -f binder/environment.yml && python prep.py && cd ..
