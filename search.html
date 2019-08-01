@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Search &mdash; Dask Tutorial  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script type="text/javascript" src="_static/searchtools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="#" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  
+
+<nav id="explore-links">
+  <a href="https://docs.dask.org/">
+    <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
+  </a>
+
+  <ul>
+    <li>
+      <a>Get Started</a>
+      <ul>
+        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+        <li><a href="https://examples.dask.org"> Examples </a></li>
+        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="">Algorithms</a>
+      <ul>
+        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+        <li><a href="http://ml.dask.org">Machine Learning</a></li>
+        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="https://docs.dask.org/en/latest/setup.html">Deploy</a>
+      <ul>
+        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/kubernetes-helm.html"> Helm </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a>Community</a>
+      <ul>
+        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+        <li><a href="https://github.com/dask">Github</a></li>
+        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+
+
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dask Tutorial
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dask Tutorial</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <noscript>
+  <div id="fallback" class="admonition warning">
+    <p class="last">
+      Please activate JavaScript to enable the search
+      functionality.
+    </p>
+  </div>
+  </noscript>
+
+  
+  <div id="search-results">
+  
+  </div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Dask Developers
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+  
+  <script type="text/javascript" id="searchindexloader"></script>
+   
+
+
+</body>
+</html>
