@@ -1,0 +1,1 @@
+print("{:0.2f} GB".format(df.memory_usage().sum().compute() / 1e9))
