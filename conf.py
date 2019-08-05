@@ -51,10 +51,11 @@ nbsphinx_execute = 'never'
 nbsphinx_prolog = """
 {% set docname = env.doc2path(env.docname, base=None) %}
 
-You can run this notebook in a `live session <https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}>`_ |Binder| or view it `on Github <https://github.com/dask/dask-examples/blob/master/{{ docname }}>`_.
+You can run this notebook in a `live session <https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/{{
+docname }}>`_ |Binder| or view it `on Github <https://github.com/dask/dask-tutorial/blob/master/{{ docname }}>`_.
 
 .. |Binder| image:: https://mybinder.org/badge.svg
-   :target: https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab/tree/{{ docname }}
+   :target: https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/{{ docname }}
 """
 
 
@@ -155,7 +156,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'daskexamples', 'Dask Tutorial Documentation',
+    (master_doc, 'dasktutorial', 'Dask Tutorial Documentation',
      [author], 1)
 ]
 
