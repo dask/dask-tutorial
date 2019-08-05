@@ -656,7 +656,8 @@ div.rendered_html tbody tr:hover {
 <p>Advantages: * scalable, secure storage</p>
 <p>Disadvantages: * network speed becomes bottleneck</p>
 <p>The way to set up dataframes (and other collections) remains very similar to before. Note that the data here is available anonymously, but in general an extra parameter <code class="docutils literal notranslate"><span class="pre">storage_options=</span></code> can be passed with further details about how to interact with the remote storage.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">taxi</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;s3://nyc-tlc/trip data/yellow_tripdata_2015-*.csv&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">taxi</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;s3://nyc-tlc/trip data/yellow_tripdata_2015-*.csv&#39;</span><span class="p">,</span>
+                   <span class="n">storage_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;anon&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
 </pre></div>
 </div>
 <p><strong>Warning</strong>: operations over the Internet can take a long time to run. Such operations work really well in a cloud clustered set-up, e.g., amazon EC2 machines reading from S3 or Google compute machines reading from GCS.</p>

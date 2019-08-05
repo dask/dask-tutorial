@@ -302,9 +302,7 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {
-    "collapsed": true
-   },
+   "metadata": {},
    "source": [
     "Rerun the sum computation above for this version of the data, and time how long it takes. You may want to try this more than once - it is common for many libraries to do various setup work when called for the first time."
    ]
@@ -361,7 +359,8 @@
     "The way to set up dataframes (and other collections) remains very similar to before. Note that the data here is available anonymously, but in general an extra parameter `storage_options=` can be passed with further details about how to interact with the remote storage.\n",
     "\n",
     "```python\n",
-    "taxi = dd.read_csv('s3://nyc-tlc/trip data/yellow_tripdata_2015-*.csv')\n",
+    "taxi = dd.read_csv('s3://nyc-tlc/trip data/yellow_tripdata_2015-*.csv',\n",
+    "                   storage_options={'anon': True})\n",
     "```"
    ]
   },
@@ -390,9 +389,9 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.7.2"
   }
  },
  "nbformat": 4,
- "nbformat_minor": 1
+ "nbformat_minor": 2
 }

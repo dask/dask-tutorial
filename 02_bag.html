@@ -491,7 +491,8 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Requires `s3fs` library</span>
 <span class="c1"># each partition is a remote CSV text file</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s1">&#39;s3://dask-data/nyc-taxi/2015/yellow_tripdata_2015-01.csv&#39;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="s1">&#39;s3://dask-data/nyc-taxi/2015/yellow_tripdata_2015-01.csv&#39;</span><span class="p">,</span>
+                 <span class="n">storage_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;anon&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 <span class="n">b</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
