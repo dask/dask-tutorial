@@ -532,17 +532,16 @@
     "## Dask DataFrame Data Model\n",
     "\n",
     "For the most part, a Dask DataFrame feels like a pandas DataFrame.\n",
-    "So far, the biggest difference we've seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in [Schedulers](04-schedulers.ipynb)).\n",
+    "So far, the biggest difference we've seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in [Schedulers](05_distributed.ipynb)).\n",
     "This lets Dask do operations in parallel and out of core.\n",
     "\n",
-    "In [Dask Arrays](02-dask-arrays.ipynb), we saw that a `dask.array` was composed of many NumPy arrays, chunked along one or more dimensions.\n",
+    "In [Dask Arrays](03_array.ipynb), we saw that a `dask.array` was composed of many NumPy arrays, chunked along one or more dimensions.\n",
     "It's similar for `dask.dataframe`: a Dask DataFrame is composed of many pandas DataFrames. For `dask.dataframe` the chunking happens only along the index.\n",
     "\n",
     "<img src=\"http://dask.pydata.org/en/latest/_images/dask-dataframe.svg\" width=\"30%\">\n",
     "\n",
     "We call each chunk a *partition*, and the upper / lower bounds are *divisions*.\n",
-    "Dask *can* store information about the divisions. We'll cover this in more detail in [Distributed DataFrames](05-distributed-dataframes-and-efficiency.ipynb).\n",
-    "For now, partitions come up when you write custom functions to apply to Dask DataFrames"
+    "Dask *can* store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames"
    ]
   },
   {
@@ -795,9 +794,9 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.7.2"
   }
  },
  "nbformat": 4,
- "nbformat_minor": 1
+ "nbformat_minor": 2
 }

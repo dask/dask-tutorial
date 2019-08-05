@@ -143,10 +143,8 @@
               
             
             
-              <p class="caption"><span class="caption-text">Basic Tutorial:</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="00_overview.html#Overview">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
@@ -843,9 +841,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Dask-DataFrame-Data-Model">
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
-<p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference external" href="04-schedulers.ipynb">Schedulers</a>). This lets Dask do operations in parallel and out of core.</p>
-<p>In <a class="reference external" href="02-dask-arrays.ipynb">Dask Arrays</a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. We’ll cover this in more detail in <a class="reference external" href="05-distributed-dataframes-and-efficiency.ipynb">Distributed DataFrames</a>. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
+<p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
+<p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
+<p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">
 <h2>Converting <code class="docutils literal notranslate"><span class="pre">CRSDepTime</span></code> to a timestamp<a class="headerlink" href="#Converting-CRSDepTime-to-a-timestamp" title="Permalink to this headline">¶</a></h2>

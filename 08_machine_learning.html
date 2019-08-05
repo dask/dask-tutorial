@@ -439,7 +439,7 @@ div.rendered_html tbody tr:hover {
 <li>Large Models: Data fits in RAM, but training takes too long. Many hyperparameter combinations, a large ensemble of many models, etc.</li>
 <li>Large Datasets: Data is larger than RAM, and sampling isn’t an option.</li>
 </ol>
-<p><img alt="image0" src="static/sklearn-parallel-dask.png" /></p>
+<p><img alt="image0" src="_images/merged_grid_search_graph.svg" /></p>
 <ul class="simple">
 <li>For in-memory problems, just use scikit-learn (or your favorite ML library).</li>
 <li>For large models, use <code class="docutils literal notranslate"><span class="pre">dask_ml.joblib</span></code> and your favorite scikit-learn estimator</li>
@@ -574,7 +574,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Single-machine-parallelism-with-scikit-learn">
 <h2>Single-machine parallelism with scikit-learn<a class="headerlink" href="#Single-machine-parallelism-with-scikit-learn" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image0" src="static/sklearn-parallel-dask.png" /></p>
+<p><img alt="image0" src="_images/merged_grid_search_graph.svg" /></p>
 <p>Scikit-Learn has nice <em>single-machine</em> parallelism, via Joblib. Any scikit-learn estimator that can operate in parallel exposes an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> keyword. This controls the number of CPU cores that will be used.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -590,7 +590,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Multi-machine-parallelism-with-Dask">
 <h2>Multi-machine parallelism with Dask<a class="headerlink" href="#Multi-machine-parallelism-with-Dask" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image0" src="static/sklearn-parallel-dask.png" /></p>
+<p><img alt="image0" src="_images/merged_grid_search_graph.svg" /></p>
 <p>Dask can talk to scikit-learn (via joblib) so that your <em>cluster</em> is used to train a model.</p>
 <p>If you run this on a laptop, it will take quite some time, but the CPU usage will be satisfyingly near 100% for the duration. To run faster, you would need a disrtibuted cluster. That would mean putting something in the call to <code class="docutils literal notranslate"><span class="pre">Client</span></code> something like</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;tcp://my.scheduler.address:8786&#39;</span><span class="p">)</span>
