@@ -3,7 +3,7 @@
 This tutorial was last given at SciPy 2018 in Austin Texas.
 [A video is available online](https://www.youtube.com/watch?v=mqdglv9GnM8).
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/quasiben/dask-tutorial/add-binder)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab)
 
 Dask provides multi-core execution on larger-than-memory datasets.
 
