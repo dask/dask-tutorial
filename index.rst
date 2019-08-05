@@ -4,7 +4,7 @@ Dask Tutorial
 You can run this tutorial in a live session here: |Binder|
 
 This tutorial was last given at SciPy 2018 in Austin Texas.
-`A video is available online <https://www.youtube.com/watch?v=mqdglv9GnM>`_.
+`A video is available online <https://www.youtube.com/watch?v=mqdglv9GnM8>`_.
 
 
 ..
