@@ -6,4 +6,6 @@ sed -i -e "s|DASK_DASHBOARD_URL|/user/${JUPYTERHUB_USER}/proxy/8787|g" binder/ju
 # Import the workspace
 jupyter lab workspaces import binder/jupyterlab-workspace.json
 
+python prep.py > prep-download-data.log &
+
 exec "$@"
