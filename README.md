@@ -46,7 +46,7 @@ In the "binder" directory of the main repo
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz scikit-image dask distributed -c conda-forge
+    conda install numpy pandas h5py pillow matplotlib scipy toolz pytables snakeviz scikit-image dask distributed -c conda-forge
     conda install nomkl -c anaconda
 
 You may find the following libraries helpful for some exercises
