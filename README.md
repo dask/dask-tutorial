@@ -37,16 +37,16 @@ and then install necessary packages.
 
 #### a) Create a conda environment (preferred)
 
-In the repo directory
+In the main repo directory
 
-    conda env create -f environment.yml 
+    conda env create -f binder/environment.yml 
     conda activate dask-tutorial
 
 #### b) Install into an existing environment
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py Pillow matplotlib scipy toolz pytables snakeviz dask distributed -c conda-forge
+    conda install numpy pandas h5py pillow matplotlib scipy toolz pytables snakeviz scikit-image dask distributed -c conda-forge
 
 You may find the following libraries helpful for some exercises
 
