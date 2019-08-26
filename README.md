@@ -39,7 +39,7 @@ and then install necessary packages.
 
 In the repo directory
 
-    conda env create -f environment.yml 
+    conda env create -f binder/environment.yml 
     conda activate dask-tutorial
 
 #### b) Install into an existing environment
