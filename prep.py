@@ -128,6 +128,20 @@ def create_weather(growth=32):
 
 
 if __name__ == '__main__':
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Downloads, generates and prepares data for the Dask tutorial.')
+    parser.add_argument('--no-ssl-verify', dest='no_ssl_verify', action='store_true',
+                        default=False, help='Disables SSL verification.')
+
+    args = parser.parse_args()
+
+    if (args.no_ssl_verify):
+        print("- Disabling SSL Verification... ", end='', flush=True)
+        import ssl
+        ssl._create_default_https_context = ssl._create_unverified_context
+        print("done", flush=True)
+
     random_array()
     create_weather()
     accounts_csvs(3, 1000000, 500)
