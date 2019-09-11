@@ -512,6 +512,7 @@ div.rendered_html tbody tr:hover {
 <p>By building a specification of the calculation we want to carry out before executing anything, we can pass the specification to an <em>execution engine</em> for evaluation. In the case of Dask, this execution engine could be running on many nodes of a cluster, so you have access to the full number of CPU cores and memory across all the machines. Dask will intelligently execute your calculation with care for minimizing the amount of data held in memory, while parallelizing over the tasks that make up a
 graph. Notice that in the animated diagram below, where four workers are processing the (simple) graph, execution progresses vertically up the branches first, so that intermediate results can be expunged before moving onto a new branch.</p>
 <p>With <code class="docutils literal notranslate"><span class="pre">delayed</span></code> and normal pythonic looped code, very complex graphs can be built up and passed on to Dask for execution. See a nice example of <a class="reference external" href="http://matthewrocklin.com/blog/work/2017/01/24/dask-custom">simulated complex ETL</a> work flow.</p>
+<p><img alt="this" src="_images/grid_search_schedule.gif" /></p>
 <div class="section" id="Exercise">
 <h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
 <p>We will apply <code class="docutils literal notranslate"><span class="pre">delayed</span></code> to a real data processing task, albeit a simple one.</p>
