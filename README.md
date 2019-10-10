@@ -41,6 +41,7 @@ In the main repo directory
 
     conda env create -f binder/environment.yml 
     conda activate dask-tutorial
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 #### b) Install into an existing environment
 
