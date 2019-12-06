@@ -26,7 +26,7 @@ install:
     - source activate test
 
     # Install testing dependencies
-    - conda install pathlib nbconvert nbformat jupyter_client ipykernel
+    - conda install -c conda-forge nbconvert nbformat jupyter_client ipykernel
 
     # Install documentation dependencies
     - pip install nbsphinx dask-sphinx-theme
@@ -34,6 +34,7 @@ install:
 script:
     - set -e
     - source activate test
+    - python prep.py --small
     - sphinx-build -M html . _build -vv
     - pip install doctr
     - doctr deploy --built-docs _build/html .
