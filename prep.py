@@ -80,6 +80,7 @@ def flights(small=False):
             df.to_json(os.path.join(data_dir, 'flightjson', prefix + '.json'),
                        orient='records', lines=True)
         print("done", flush=True)
+    else:
         return
 
     end = time.time()
