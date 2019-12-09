@@ -151,6 +151,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html#Close-the-Client">Close the Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
@@ -498,8 +499,10 @@ execution, and in particular, the distributed scheduler, which comes with additi
 <li><p>How much faster was using threads over a single thread? Why does this differ from the optimal speedup?</p></li>
 <li><p>Why is the multiprocessing scheduler so much slower here?</p></li>
 </ul>
-<p>For single-machine use, the threaded and multiprocessing schedulers are fine choices. They are solid, mature and performant, and require absolutely no set-up. As a rule of thumb, threaded will work well when the functions called release the <a class="reference external" href="https://wiki.python.org/moin/GlobalInterpreterLock">GIL</a>, whereas multiprocessing will always have a slower start-up time and suffer where a lot of communication is required between tasks. The <em>number</em> of workers is, in general, also important.</p>
-<p>For scaling out work across a cluster, the distributed scheduler is required. Indeed, this is now generally preferred for all work, because it gives you additional monitoring information not available in the other schedulers. (Some of this monitoring is also available with an explicit progress bar and profiler, see <a class="reference external" href="https://docs.dask.org/en/latest/diagnostics-local.html">here</a>.)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">threaded</span></code> scheduler is a fine choice for working with large datasets out-of-core on a single machine, as long as the functions being used release the <a class="reference external" href="https://wiki.python.org/moin/GlobalInterpreterLock">GIL</a> most of the time. NumPy and pandas release the GIL in most places, so the <code class="docutils literal notranslate"><span class="pre">threaded</span></code> scheduler is the default for <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> and <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>. The distributed scheduler, perhaps with <code class="docutils literal notranslate"><span class="pre">processes=False</span></code>, will also work well for these workloads on a single machine.</p>
+<p>For workloads that do hold the GIL, as is common with <code class="docutils literal notranslate"><span class="pre">dask.bag</span></code> and custom code wrapped with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>, we recommend using the distributed scheduler, even on a single machine. Generally speaking, it’s more intelligent and provides better diagnostics than the <code class="docutils literal notranslate"><span class="pre">processes</span></code> scheduler.</p>
+<p><a class="reference external" href="https://docs.dask.org/en/latest/scheduling.html">https://docs.dask.org/en/latest/scheduling.html</a> provides some additional details on choosing a scheduler.</p>
+<p>For scaling out work across a cluster, the distributed scheduler is required.</p>
 <div class="section" id="Making-a-cluster">
 <h3>Making a cluster<a class="headerlink" href="#Making-a-cluster" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -522,7 +525,7 @@ execution, and in particular, the distributed scheduler, which comes with additi
 </pre></div>
 </div>
 </div>
-<p>Be sure to click the <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> link to open up the diagnostics dashboard.</p>
+<p>If you aren’t in jupyterlab and using the <code class="docutils literal notranslate"><span class="pre">dask-labextension</span></code>, be sure to click the <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> link to open up the diagnostics dashboard.</p>
 <div class="section" id="Executing-with-the-distributed-client">
 <h3>Executing with the distributed client<a class="headerlink" href="#Executing-with-the-distributed-client" title="Permalink to this headline">¶</a></h3>
 <p>Consider some trivial calculation, such as we’ve used before, where we have added sleep statements in order to simulate real work being done.</p>
@@ -628,6 +631,15 @@ compared to the threaded scheduler, so there will be rare cases where it perform
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Average departure delay per day-of-week</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofweek</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">client</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

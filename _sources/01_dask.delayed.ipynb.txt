@@ -20,6 +20,24 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
+    "As well see in the [distributed scheduler notebook](05_distributed.ipynb), Dask has several ways of executing code in parallel. We'll use the distributed scheduler by creating a `dask.distributed.Client`. For now, this will provide us with some nice diagnostics. We'll talk about schedulers in depth later."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from dask.distributed import Client\n",
+    "\n",
+    "client = Client()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
     "## Basics\n",
     "\n",
     "First let's make some toy functions, `inc` and `add`, that sleep for a while to simulate work. We'll then time running these functions normally.\n",
@@ -117,7 +135,7 @@
    "outputs": [],
    "source": [
     "%%time\n",
-    "# This actually runs our computation using a local thread pool\n",
+    "# This actually runs our computation using a local process pool\n",
     "\n",
     "z.compute()"
    ]
@@ -625,6 +643,24 @@
     "- Experiment with delaying the call to `sum`. What does the graph look like if `sum` is delayed? What does the graph look like if it isn't?\n",
     "- Can you think of any reason why you'd want to do the reduction one way over the other?"
    ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Close the Client\n",
+    "\n",
+    "Before moving on to the next exercise, make sure to close your client or stop this kernel."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "client.close()"
+   ]
   }
  ],
  "metadata": {
@@ -643,9 +679,9 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.7"
+   "version": "3.7.3"
   }
  },
  "nbformat": 4,
- "nbformat_minor": 2
+ "nbformat_minor": 4
 }

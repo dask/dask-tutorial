@@ -151,6 +151,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html#Close-the-Client">Close the Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bag: Parallel Lists for semi-structured data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Creation">Creation</a></li>
@@ -170,6 +171,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Shutdown">Shutdown</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
@@ -459,6 +461,18 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="http://dask.pydata.org/en/latest/bag.html">Bag Documenation</a></p></li>
 <li><p><a class="reference external" href="http://dask.pydata.org/en/latest/bag-api.html">Bag API</a></p></li>
 </ul>
+<p>Again, we’ll use the distributed scheduler. Schedulers will be explained in depth <a class="reference internal" href="05_distributed.html"><span class="doc">later</span></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="Creation">
 <h2>Creation<a class="headerlink" href="#Creation" title="Permalink to this headline">¶</a></h2>
 <p>You can create a <code class="docutils literal notranslate"><span class="pre">Bag</span></code> from a Python sequence, from files, from data on S3, etc. We demonstrate using <code class="docutils literal notranslate"><span class="pre">.take()</span></code> to show elements of the data. (Doing <code class="docutils literal notranslate"><span class="pre">.take(1)</span></code> results in a tuple with one element)</p>
@@ -876,12 +890,15 @@ div.rendered_html tbody tr:hover {
 <li><p>Bag operations tend to be slower than array/dataframe computations in the same way that Python tends to be slower than NumPy/Pandas</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Bag.groupby</span></code> is slow. You should try to use <code class="docutils literal notranslate"><span class="pre">Bag.foldby</span></code> if possible. Using <code class="docutils literal notranslate"><span class="pre">Bag.foldby</span></code> requires more thought. Even better, consider creating a normalised dataframe.</p></li>
 </ol>
+</div>
+<div class="section" id="Shutdown">
+<h2>Shutdown<a class="headerlink" href="#Shutdown" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<span></span><span class="n">client</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
