@@ -177,16 +177,15 @@ def create_weather(small=False):
 
         if small:
              y = x
+             chunks = (180, 180)
         else:
             y = resize(x, (x.shape[0] * growth, x.shape[1] * growth), mode='constant')
+            chunks = (500, 500)
 
         out_fn = os.path.join(data_dir, 'weather-big', os.path.split(fn)[-1])
 
-        try:
-            with h5py.File(out_fn, mode='w') as f:
-                f.create_dataset('/t2m', data=y, chunks=(500, 500))
-        except:
-            pass
+        with h5py.File(out_fn, mode='w') as f:
+            f.create_dataset('/t2m', data=y, chunks=chunks)
     t1 = time.time()
     print("Created weather dataset in {:0.2f}s".format(t1 - t0))
 
