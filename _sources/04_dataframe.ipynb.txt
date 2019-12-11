@@ -25,7 +25,8 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<img src=\"images/pandas_logo.png\" align=\"right\" width=\"40%\">\n",
+    "<img src=\"images/pandas_logo.png\" align=\"right\" width=\"28%\">\n",
+    "\n",
     "The `dask.dataframe` module implements a blocked parallel `DataFrame` object that mimics a large subset of the Pandas `DataFrame`. One Dask `DataFrame` is comprised of many in-memory pandas `DataFrames` separated along the index. One operation on a Dask `DataFrame` triggers many pandas operations on the constituent pandas `DataFrame`s in a way that is mindful of potential parallelism and memory constraints.\n",
     "\n",
     "**Related Documentation**\n",
@@ -180,7 +181,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "tags": [
+     "raises-exception"
+    ]
+   },
    "outputs": [],
    "source": [
     "df.tail()  # this fails"
@@ -315,7 +320,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "%load solutions/03-dask-dataframe-rows.py"
+    "len(df)"
    ]
   },
   {
@@ -342,7 +347,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "%load solutions/03-dask-dataframe-non-cancelled.py"
+    "len(df[~df.Cancelled])"
    ]
   },
   {
@@ -369,7 +374,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "%load solutions/03-dask-dataframe-non-cancelled-per-airport.py"
+    "df[~df.Cancelled].groupby('Origin').Origin.count().compute()"
    ]
   },
   {
@@ -396,16 +401,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "df.columns"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "%load solutions/03-dask-dataframe-delay-per-airport.py"
+    "df.groupby(\"Origin\").DepDelay.mean().compute()"
    ]
   },
   {
@@ -430,7 +426,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "%load solutions/03-dask-dataframe-delay-per-day.py"
+    "df.groupby(\"DayOfWeek\").DepDelay.mean().compute()"
    ]
   },
   {
@@ -694,34 +690,45 @@
    "outputs": [],
    "source": [
     "def compute_departure_timestamp(df):\n",
-    "    # TODO"
+    "    pass  # TODO: implement this"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "tags": [
+     "raises-exception"
+    ]
+   },
    "outputs": [],
    "source": [
-    "departure_timestamp = df.map_partitions(compute_departure_timestamp)"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
+    "departure_timestamp = df.map_partitions(compute_departure_timestamp)\n",
+    "\n",
     "departure_timestamp.head()"
    ]
   },
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
-    "%load solutions/03-dask-dataframe-map-partitions.py"
+    "def compute_departure_timestamp(df):\n",
+    "    hours = df.CRSDepTime // 100\n",
+    "    hours_timedelta = pd.to_timedelta(hours, unit='h')\n",
+    "\n",
+    "    minutes = df.CRSDepTime % 100\n",
+    "    minutes_timedelta = pd.to_timedelta(minutes, unit='m')\n",
+    "\n",
+    "    return df.Date + hours_timedelta + minutes_timedelta\n",
+    "\n",
+    "departure_timestamp = df.map_partitions(compute_departure_timestamp)\n",
+    "departure_timestamp.head()"
    ]
   },
   {

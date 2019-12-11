@@ -18,10 +18,10 @@
     "There are a couple of distinct scaling problems you might face.\n",
     "The scaling strategy depends on which problem you're facing.\n",
     "\n",
-    "1. Large Models: Data fits in RAM, but training takes too long. Many hyperparameter combinations, a large ensemble of many models, etc.\n",
-    "2. Large Datasets: Data is larger than RAM, and sampling isn't an option.\n",
+    "1. CPU-Bound: Data fits in RAM, but training takes too long. Many hyperparameter combinations, a large ensemble of many models, etc.\n",
+    "2. Memory-bound: Data is larger than RAM, and sampling isn't an option.\n",
     "\n",
-    "![](static/ml-dimensions-color.png)"
+    "![](images/ml-dimensions.png)"
    ]
   },
   {
@@ -265,9 +265,9 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "# follow insluctions to know what to pass to Client!\n",
-    "from sklearn.externals import joblib\n",
+    "import joblib\n",
     "import dask.distributed\n",
+    "\n",
     "c = dask.distributed.Client()"
    ]
   },
@@ -279,12 +279,21 @@
    "source": [
     "param_grid = {\n",
     "    'C': [0.001, 0.1, 1.0, 2.5, 5, 10.0],\n",
-    "    'kernel': ['rbf', 'poly', 'linear'],\n",
-    "    'shrinking': [True, False],\n",
+    "    # Uncomment this for larger Grid searches on a cluster\n",
+    "    # 'kernel': ['rbf', 'poly', 'linear'],\n",
+    "    # 'shrinking': [True, False],\n",
     "}\n",
     "\n",
-    "grid_search = GridSearchCV(estimator, param_grid, verbose=2, cv=5, n_jobs=-1)\n",
-    "\n",
+    "grid_search = GridSearchCV(estimator, param_grid, verbose=2, cv=5, n_jobs=-1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%time\n",
     "with joblib.parallel_backend(\"dask\", scatter=[X, y]):\n",
     "    grid_search.fit(X, y)"
    ]
@@ -462,9 +471,12 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.7"
+   "version": "3.7.3"
+  },
+  "nbsphinx": {
+   "execute": "never"
   }
  },
  "nbformat": 4,
- "nbformat_minor": 2
+ "nbformat_minor": 4
 }

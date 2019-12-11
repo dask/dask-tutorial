@@ -28,6 +28,7 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script type="text/javascript" src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script type="text/javascript" src="_static/js/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -465,7 +466,7 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="http://dask.readthedocs.io/en/latest/array-api.html">API reference</a></p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -483,7 +484,7 @@ div.rendered_html tbody tr:hover {
 <p>We do exactly this with Python and NumPy in the following example:</p>
 <p><strong>Create random dataset</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -508,8 +509,8 @@ div.rendered_html tbody tr:hover {
 <li><p>Computing the sum of the 1,000 intermediate sums</p></li>
 </ol>
 <p>Note that this is a sequential process in the notebook kernel, both the loading and summing.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -524,6 +525,14 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5002497.6875
+</pre></div></div>
+</div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
 <h3>Exercise: Compute the mean using a blocked algorithm<a class="headerlink" href="#Exercise:-Compute-the-mean-using-a-blocked-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>Now that we’ve seen the simple example above try doing a slightly more complicated problem, compute the mean of the array, assuming for a moment that we don’t happen to already know how many elements are in the data. You can do this by changing the code above with the following alterations:</p>
@@ -534,7 +543,7 @@ div.rendered_html tbody tr:hover {
 </ol>
 <p>This approach is overkill for our case but does nicely generalize if we don’t know the size of the array or individual blocks beforehand.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -542,14 +551,32 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load</span> solutions/Array-01.py
+<span></span><span class="n">sums</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000000000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">):</span>
+    <span class="n">chunk</span> <span class="o">=</span> <span class="n">dset</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1000000</span><span class="p">]</span>  <span class="c1"># pull out numpy array</span>
+    <span class="n">sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span>
+<span class="n">length</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span> <span class="o">/</span> <span class="n">length</span><span class="p">)</span>
+
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0004995375
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -563,7 +590,7 @@ div.rendered_html tbody tr:hover {
 <li><p><code class="docutils literal notranslate"><span class="pre">chunks</span></code>: A chunk size to tell us how to block up our array, like <code class="docutils literal notranslate"><span class="pre">(1000000,)</span></code></p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -579,8 +606,8 @@ div.rendered_html tbody tr:hover {
 <p><code class="docutils literal notranslate"><span class="pre">dask_array.sum()</span></code> builds an expression of the computation. It does not do the computation yet. <code class="docutils literal notranslate"><span class="pre">numpy_array.sum()</span></code> computes the sum immediately.</p>
 <p><em>Why the difference?</em></p>
 <p>Dask arrays are split into chunks. Each chunk must have computations run on that chunk explicitly. If the desired answer comes from a small slice of the entire dataset, running the computation over all data would be wasteful of CPU and memory.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -589,17 +616,52 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 4 B </td> <td> 4 B </td></tr>
+    <tr><th> Shape </th><td> () </td> <td> () </td></tr>
+    <tr><th> Count </th><td> 14 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+
+</td>
+</tr>
+</table></div>
+</div>
 <p><strong>Compute result</strong></p>
 <p>Dask.array objects are lazily evaluated. Operations like <code class="docutils literal notranslate"><span class="pre">.sum</span></code> build up a graph of blocked tasks to execute.</p>
 <p>We ask for the final result with a call to <code class="docutils literal notranslate"><span class="pre">.compute()</span></code>. This triggers the actual computation.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">result</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5002498.0
+</pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
 <h3>Exercise: Compute the mean<a class="headerlink" href="#Exercise:-Compute-the-mean" title="Permalink to this headline">¶</a></h3>
@@ -633,7 +695,7 @@ div.rendered_html tbody tr:hover {
 <li><p>Take every 100th element</p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -646,8 +708,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -655,8 +717,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.2
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -664,6 +735,63 @@ div.rendered_html tbody tr:hover {
 <span class="n">y</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>     <span class="c1"># Time to compute the result</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 28.1 s, sys: 268 ms, total: 28.4 s
+Wall time: 14.5 s
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 9.99847853,  9.99898504, 10.00045645,  9.99992809, 10.00101674,
+        9.99883599, 10.00074577, 10.00052051,  9.99991036, 10.00003977,
+       10.00032044,  9.99999469,  9.99926676,  9.9995876 ,  9.99893307,
+        9.9996993 , 10.00004639, 10.00007133, 10.00000739,  9.99942841,
+        9.99946355, 10.000377  ,  9.99994274,  9.99931745, 10.00016066,
+        9.99993154, 10.00060088,  9.99917896,  9.99958078,  9.9996784 ,
+       10.00079436, 10.00043619, 10.00107649, 10.0002494 ,  9.99955049,
+       10.00017916,  9.99916975, 10.00019388, 10.00080966,  9.99948707,
+        9.99923049, 10.00040289, 10.00058112,  9.99917879, 10.00018666,
+       10.00054064, 10.00084081, 10.00054432, 10.00054951,  9.999834  ,
+        9.99979431, 10.00087298,  9.99971458, 10.00039998,  9.9996237 ,
+        9.99960948,  9.99940803, 10.00005833,  9.99906365, 10.00042808,
+        9.99968353, 10.00049468, 10.00054652,  9.99927255, 10.00114512,
+        9.9996892 ,  9.99871319,  9.99965457, 10.00050466,  9.99892897,
+        9.99971304, 10.00000741, 10.00104679, 10.00040633, 10.00014514,
+        9.99862794, 10.00123386,  9.99999602, 10.00002316, 10.0006788 ,
+       10.00049536, 10.00034978, 10.0001222 ,  9.99915745,  9.99908966,
+       10.00065   , 10.00014141,  9.99808918,  9.99975481, 10.00006037,
+        9.99946404,  9.9999825 ,  9.99997355, 10.00053859, 10.00088282,
+       10.00047342,  9.99946713, 10.00063576, 10.00077637, 10.00059439,
+       10.00026023, 10.00061814,  9.99957339, 10.00100617,  9.99932748,
+        9.99946286,  9.99975168,  9.9992821 ,  9.99868497, 10.0004272 ,
+        9.99936137,  9.99946136,  9.99994503,  9.998847  , 10.00036186,
+        9.99873286,  9.99887622,  9.99928459, 10.00075071,  9.99980548,
+       10.00047198, 10.00008832,  9.99985236,  9.99986855, 10.00031777,
+        9.99954434,  9.99909898,  9.99975444,  9.99977867,  9.99977031,
+        9.99998017,  9.99888507,  9.99939011, 10.00015703, 10.00022129,
+        9.99872662, 10.00087978,  9.99881548,  9.99931425,  9.99959012,
+        9.99971019, 10.00075143, 10.00058592, 10.0003591 ,  9.99903718,
+        9.99904313,  9.99909818, 10.00049463, 10.00016194, 10.00100126,
+        9.99988674, 10.00028503,  9.99888875, 10.00041929, 10.00082659,
+        9.99911818, 10.00152228,  9.99951633, 10.00032942, 10.00073367,
+        9.99966734, 10.00009702, 10.00102921,  9.99959462, 10.00009942,
+       10.00054523, 10.00092079,  9.99814535, 10.00042781,  9.99962813,
+        9.99963498, 10.00053974, 10.00064151, 10.00048329,  9.99984619,
+        9.99987916,  9.99980711,  9.998526  ,  9.99952109, 10.00018698,
+       10.00059227,  9.99858852, 10.00097526,  9.99960726, 10.00008333,
+       10.00060078, 10.00020995,  9.99979234,  9.99958336,  9.99947101,
+       10.00017533, 10.00062202,  9.99909177,  9.9997213 , 10.00013829,
+        9.99905597, 10.00000076,  9.99961563, 10.00042995,  9.99939188])
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -723,7 +851,7 @@ div.rendered_html tbody tr:hover {
 <li><p>Visualize the result with <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow</span></code></p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -732,8 +860,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -747,6 +875,15 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;HDF5 dataset &#34;t2m&#34;: shape (180, 360), type &#34;&lt;f8&#34;&gt;
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -756,8 +893,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -765,8 +902,21 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[84.75, 84.75, 84.75, 84.75, 84.75],
+       [83.  , 83.  , 83.  , 83.  , 83.  ],
+       [84.5 , 84.  , 84.  , 84.  , 84.  ],
+       [81.25, 81.25, 81.25, 81.25, 81.25],
+       [77.75, 77.75, 77.75, 77.75, 77.75]])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -776,6 +926,22 @@ div.rendered_html tbody tr:hover {
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dsets</span><span class="p">[</span><span class="mi">0</span><span class="p">][::</span><span class="mi">4</span><span class="p">,</span> <span class="p">::</span><span class="mi">4</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7f14a2cc7d30&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/03_array_54_1.png" src="_images/03_array_54_1.png" />
 </div>
 </div>
 <p><strong>Integrate with ``dask.array``</strong></p>
@@ -789,14 +955,54 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">load</span> <span class="n">solutions</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">dask</span><span class="o">-</span><span class="n">arrays</span><span class="o">-</span><span class="n">make</span><span class="o">-</span><span class="n">arrays</span><span class="o">.</span><span class="n">py</span>
+<span></span><span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">dset</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span> <span class="k">for</span> <span class="n">dset</span> <span class="ow">in</span> <span class="n">dsets</span><span class="p">]</span>
+<span class="n">arrays</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;,
+ dask.array&lt;array, shape=(180, 360), dtype=float64, chunksize=(180, 360), chunktype=numpy.ndarray&gt;]
+</pre></div></div>
 </div>
 <p><strong>Stack this list of ``dask.array`` objects into a single ``dask.array`` object with ``da.stack``</strong></p>
 <p>Stack these along the first axis so that the shape of the resulting array is <code class="docutils literal notranslate"><span class="pre">(31,</span> <span class="pre">5760,</span> <span class="pre">11520)</span></code>.</p>
@@ -809,18 +1015,144 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load</span> solutions/02-dask-arrays-stacked.py
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 16.07 MB </td> <td> 518.40 kB </td></tr>
+    <tr><th> Shape </th><td> (31, 180, 360) </td> <td> (1, 180, 360) </td></tr>
+    <tr><th> Count </th><td> 93 Tasks </td><td> 31 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="202" height="132" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="32" y2="22" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="32" y2="82" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="10" y2="60" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="13" y1="3" x2="13" y2="63" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="17" y1="7" x2="17" y2="67" />
+  <line x1="17" y1="7" x2="17" y2="67" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="21" y1="11" x2="21" y2="71" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="25" y1="15" x2="25" y2="75" />
+  <line x1="25" y1="15" x2="25" y2="75" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="28" y1="18" x2="28" y2="78" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" />
+  <line x1="32" y1="22" x2="32" y2="82" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 32.207396,22.207396 32.207396,82.207396 10.000000,60.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="130" y2="0" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="13" y1="3" x2="133" y2="3" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="17" y1="7" x2="137" y2="7" />
+  <line x1="17" y1="7" x2="137" y2="7" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="21" y1="11" x2="141" y2="11" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="25" y1="15" x2="145" y2="15" />
+  <line x1="25" y1="15" x2="145" y2="15" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="28" y1="18" x2="148" y2="18" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" />
+  <line x1="32" y1="22" x2="152" y2="22" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="32" y2="22" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="152" y2="22" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 130.000000,0.000000 152.207396,22.207396 32.207396,22.207396" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="32" y1="22" x2="152" y2="22" style="stroke-width:2" />
+  <line x1="32" y1="82" x2="152" y2="82" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="32" y1="22" x2="32" y2="82" style="stroke-width:2" />
+  <line x1="152" y1="22" x2="152" y2="82" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="32.207396,22.207396 152.207396,22.207396 152.207396,82.207396 32.207396,82.207396" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="92.207396" y="102.207396" font-size="1.0rem" font-weight="100" text-anchor="middle" >360</text>
+  <text x="172.207396" y="52.207396" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,172.207396,52.207396)">180</text>
+  <text x="11.103698" y="91.103698" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,11.103698,91.103698)">31</text>
+</svg>
+</td>
+</tr>
+</table></div>
+</div>
 <p><strong>Plot the mean of this array along the time (``0th``) axis</strong></p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -830,13 +1162,95 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-18-1c468311ac00&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># complete the following</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> fig <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">16</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;RdBu_r&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, shape, filternorm, filterrad, imlim, resample, url, data, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2675</span>         filternorm<span class="ansi-blue-fg">=</span>filternorm<span class="ansi-blue-fg">,</span> filterrad<span class="ansi-blue-fg">=</span>filterrad<span class="ansi-blue-fg">,</span> imlim<span class="ansi-blue-fg">=</span>imlim<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2676</span>         resample=resample, url=url, **({&#34;data&#34;: data} if data is not
+<span class="ansi-green-fg">-&gt; 2677</span><span class="ansi-red-fg">         None else {}), **kwargs)
+</span><span class="ansi-green-intense-fg ansi-bold">   2678</span>     sci<span class="ansi-blue-fg">(</span>__ret<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2679</span>     <span class="ansi-green-fg">return</span> __ret
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1597</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1598</span>         <span class="ansi-green-fg">if</span> data <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1599</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>map<span class="ansi-blue-fg">(</span>sanitize_sequence<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1600</span>
+<span class="ansi-green-intense-fg ansi-bold">   1601</span>         bound <span class="ansi-blue-fg">=</span> new_sig<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/matplotlib/cbook/deprecation.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    367</span>                 <span class="ansi-blue-fg">f&#34;%(removal)s.  If any parameter follows {name!r}, they &#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    368</span>                 f&#34;should be pass as keyword, not positionally.&#34;)
+<span class="ansi-green-fg">--&gt; 369</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    370</span>
+<span class="ansi-green-intense-fg ansi-bold">    371</span>     <span class="ansi-green-fg">return</span> wrapper
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/matplotlib/cbook/deprecation.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    367</span>                 <span class="ansi-blue-fg">f&#34;%(removal)s.  If any parameter follows {name!r}, they &#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">    368</span>                 f&#34;should be pass as keyword, not positionally.&#34;)
+<span class="ansi-green-fg">--&gt; 369</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    370</span>
+<span class="ansi-green-intense-fg ansi-bold">    371</span>     <span class="ansi-green-fg">return</span> wrapper
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/matplotlib/axes/_axes.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, shape, filternorm, filterrad, imlim, resample, url, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5677</span>                               resample=resample, **kwargs)
+<span class="ansi-green-intense-fg ansi-bold">   5678</span>
+<span class="ansi-green-fg">-&gt; 5679</span><span class="ansi-red-fg">         </span>im<span class="ansi-blue-fg">.</span>set_data<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5680</span>         im<span class="ansi-blue-fg">.</span>set_alpha<span class="ansi-blue-fg">(</span>alpha<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5681</span>         <span class="ansi-green-fg">if</span> im<span class="ansi-blue-fg">.</span>get_clip_path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">set_data</span><span class="ansi-blue-fg">(self, A)</span>
+<span class="ansi-green-intense-fg ansi-bold">    683</span>                 not np.can_cast(self._A.dtype, float, &#34;same_kind&#34;)):
+<span class="ansi-green-intense-fg ansi-bold">    684</span>             raise TypeError(&#34;Image data of dtype {} cannot be converted to &#34;
+<span class="ansi-green-fg">--&gt; 685</span><span class="ansi-red-fg">                             &#34;float&#34;.format(self._A.dtype))
+</span><span class="ansi-green-intense-fg ansi-bold">    686</span>
+<span class="ansi-green-intense-fg ansi-bold">    687</span>         if not (self._A.ndim == 2
+
+<span class="ansi-red-fg">TypeError</span>: Image data of dtype object cannot be converted to float
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/03_array_64_1.png" src="_images/03_array_64_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load</span> solutions/02-dask-arrays-weather-mean.py
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7f14a29cd828&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/03_array_65_1.png" src="_images/03_array_65_1.png" />
 </div>
 </div>
 <p><strong>Plot the difference of the first day from the mean</strong></p>
@@ -849,13 +1263,31 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load</span> solutions/02-dask-arrays-weather-difference.py
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7f14a29998d0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/03_array_68_1.png" src="_images/03_array_68_1.png" />
 </div>
 </div>
 </div>
@@ -905,11 +1337,26 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">load</span> solutions/Array-03.py
+<span></span><span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;weather-big&#39;</span><span class="p">,</span> <span class="s1">&#39;*.hdf5&#39;</span><span class="p">)))</span>
+<span class="n">dsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)[</span><span class="s1">&#39;/t2m&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+
+<span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">dset</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span> <span class="k">for</span> <span class="n">dset</span> <span class="ow">in</span> <span class="n">dsets</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">da</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;myfile.zarr&#39;</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -920,7 +1367,7 @@ div.rendered_html tbody tr:hover {
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones</a> is used in partical simuluations in physics, chemistry and engineering. It is highly parallelizable.</p>
 <p>First, we’ll run and profile the Numpy version on 7,000 particles.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -954,7 +1401,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -962,8 +1409,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -971,9 +1418,27 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 4.2 s, sys: 1.62 s, total: 5.82 s
+Wall time: 5.62 s
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-0.21282893668845293
+</pre></div></div>
+</div>
 <p>Notice that the most time consuming function is <code class="docutils literal notranslate"><span class="pre">distances</span></code>.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -986,12 +1451,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
 <div class="section" id="Dask-version">
 <h3>Dask version<a class="headerlink" href="#Dask-version" title="Permalink to this headline">¶</a></h3>
 <p>Here’s the Dask version. Only the <code class="docutils literal notranslate"><span class="pre">potential</span></code> function needs to be rewritten to best utilize Dask.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">da.nansum</span></code> has been used over the full <span class="math notranslate nohighlight">\(NxN\)</span> distance matrix to improve parallel efficiency.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1008,7 +1481,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Let’s convert the NumPy array to a Dask array. Since the entire NumPy array fits in memory it is more computationally efficient to chunk the array by number of CPU cores.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1019,8 +1492,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>This step should scale quite well with number of cores. The warnings are complaining about dividing by zero, which is why we used <code class="docutils literal notranslate"><span class="pre">da.nansum</span></code> in <code class="docutils literal notranslate"><span class="pre">potential_dask</span></code>.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1028,6 +1501,35 @@ div.rendered_html tbody tr:hover {
 <span class="o">%</span><span class="k">time</span> e.compute()
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/core.py:119: RuntimeWarning: divide by zero encountered in true_divide
+  return func(*args2)
+/home/travis/miniconda/envs/test/lib/python3.7/site-packages/dask/core.py:119: RuntimeWarning: invalid value encountered in subtract
+  return func(*args2)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CPU times: user 8.87 s, sys: 1.3 s, total: 10.2 s
+Wall time: 5.23 s
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-0.21282893668845299
+</pre></div></div>
 </div>
 </div>
 </div>
@@ -1041,7 +1543,7 @@ div.rendered_html tbody tr:hover {
 <li><p>Dask development is driven by immediate need, and so many lesser used functions, like <code class="docutils literal notranslate"><span class="pre">np.full_like</span></code> have not been implemented purely out of laziness. These would make excellent community contributions.</p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
