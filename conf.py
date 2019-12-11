@@ -45,7 +45,6 @@ extensions = [
 
 nbsphinx_timeout = 600
 # nbsphinx_execute = "always"
-nbsphinx_execute = 'never'
 
 
 nbsphinx_prolog = """
