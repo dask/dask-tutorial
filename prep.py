@@ -214,7 +214,6 @@ def main(args=None):
         ssl._create_default_https_context = ssl._create_unverified_context
         print("done", flush=True)
 
-    breakpoint()
     if args.dataset == "random" or args.dataset == "all":
         random_array(args.small)
     if args.dataset == "weather" or args.dataset == "all":
