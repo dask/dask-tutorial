@@ -25,7 +25,8 @@ def parse_args(args=None):
     parser = argparse.ArgumentParser(description='Downloads, generates and prepares data for the Dask tutorial.')
     parser.add_argument('--no-ssl-verify', dest='no_ssl_verify', action='store_true',
                         default=False, help='Disables SSL verification.')
-    parser.add_argument("--small", action="store_true", help="Whether to use smaller example datasets.")
+    parser.add_argument("--small", action="store_true", default=None,
+                        help="Whether to use smaller example datasets. Checks DASK_TUTORIAL_SMALL environment variable.")
     parser.add_argument("-d", "--dataset", choices=DATASETS, help="Datasets to generate.", default="all")
 
     return parser.parse_args(args)
@@ -38,11 +39,13 @@ if not os.path.exists(data_dir):
                   'directory.')
 
 
-def flights(small=False):
+def flights(small=None):
     start = time.time()
     flights_raw = os.path.join(data_dir, 'nycflights.tar.gz')
     flightdir = os.path.join(data_dir, 'nycflights')
     jsondir = os.path.join(data_dir, 'flightjson')
+    if small is None:
+        small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
 
     if small:
         N = 500
@@ -86,7 +89,10 @@ def flights(small=False):
     end = time.time()
     print("** Created flights dataset! in {:0.2f}s**".format(end - start))
 
-def random_array(small=False):
+def random_array(small=None):
+    if small is None:
+        small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
+
     if small:
         blocksize = 5000
     else:
@@ -108,8 +114,11 @@ def random_array(small=False):
     print("Created random data for array exercise in {:0.2f}s".format(t1 - t0))
 
 
-def accounts_csvs(small=False):
+def accounts_csvs(small=None):
     t0 = time.time()
+    if small is None:
+        small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
+
     if small:
         num_files, n, k = 3, 10000, 100
     else:
@@ -131,8 +140,11 @@ def accounts_csvs(small=False):
     print("Created CSV acccouts in {:0.2f}s".format(t1 - t0))
 
 
-def accounts_json(small=False):
+def accounts_json(small=None):
     t0 = time.time()
+    if small is None:
+        small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
+
     if small:
         num_files, n, k = 50, 10000, 250
     else:
@@ -153,8 +165,11 @@ def accounts_json(small=False):
     print("Created CSV acccouts in {:0.2f}s".format(t1 - t0))
 
 
-def create_weather(small=False):
+def create_weather(small=None):
     t0 = time.time()
+    if small is None:
+        small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
+
     if small:
         growth = 1
     else:
@@ -199,6 +214,7 @@ def main(args=None):
         ssl._create_default_https_context = ssl._create_unverified_context
         print("done", flush=True)
 
+    breakpoint()
     if args.dataset == "random" or args.dataset == "all":
         random_array(args.small)
     if args.dataset == "weather" or args.dataset == "all":
