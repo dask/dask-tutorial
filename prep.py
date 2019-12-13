@@ -26,7 +26,7 @@ def parse_args(args=None):
     parser.add_argument('--no-ssl-verify', dest='no_ssl_verify', action='store_true',
                         default=False, help='Disables SSL verification.')
     parser.add_argument("--small", action="store_true", default=None,
-                        help="Whether to use smaller example datasets. Checks DASK_TUTORIAL_SMALL environment variable.")
+                        help="Whether to use smaller example datasets. Checks DASK_TUTORIAL_SMALL environment variable if not specified.")
     parser.add_argument("-d", "--dataset", choices=DATASETS, help="Datasets to generate.", default="all")
 
     return parser.parse_args(args)
