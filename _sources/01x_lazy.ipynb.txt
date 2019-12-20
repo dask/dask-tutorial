@@ -35,11 +35,12 @@
     "As Python programmers, you probably already perform certain *tricks* to enable computation of larger-than-memory datasets, parallel execution or delayed/background execution. Perhaps with this phrasing, it is not clear what we mean, but a few examples should make things clearer. The point of Dask is to make simple things easy and complex things possible!\n",
     "\n",
     "Aside from the [detailed introduction](http://dask.pydata.org/en/latest/), we can summarize the basics of Dask as follows:\n",
+    "\n",
     "- process data that doesn't fit into memory by breaking it into blocks and specifying task chains\n",
     "- parallelize execution of tasks across cores and even nodes of a cluster\n",
-    "- move computation to the data rather than the other way around, to minimize communication overheads\n",
+    "- move computation to the data rather than the other way around, to minimize communication overhead\n",
     "\n",
-    "All of this allows you to get the most out of your computation resources, but program in a way that is very familiar: for-loops to build basic tasks, Python iterators, and the Numpy (array) and Pandas (dataframe) functions for multi-dimensional or tabular data, respectively.\n",
+    "All of this allows you to get the most out of your computation resources, but program in a way that is very familiar: for-loops to build basic tasks, Python iterators, and the NumPy (array) and Pandas (dataframe) functions for multi-dimensional or tabular data, respectively.\n",
     "\n",
     "The remainder of this notebook will take you through the first of these programming paradigms. This is more detail than some users will want, who can skip ahead to the iterator, array and dataframe sections; but there will be some data processing tasks that don't easily fit into those abstractions and need to fall back to the methods here.\n",
     "\n",
@@ -81,7 +82,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Here we have used the delayed annotation to show that we want these functions to operate lazily - to save the set of inputs and execute only on demand. `dask.delayed` is also a function which can do this, without the annotation, leaving the original function unchanged, e.g., \n",
+    "Here we have used the delayed annotation to show that we want these functions to operate lazily — to save the set of inputs and execute only on demand. `dask.delayed` is also a function which can do this, without the annotation, leaving the original function unchanged, e.g.,\n",
     "```python\n",
     "    delayed_inc = delayed(inc)\n",
     "```"
@@ -146,7 +147,7 @@
     "\n",
     "By building a specification of the calculation we want to carry out before executing anything, we can pass the specification to an *execution engine* for evaluation. In the case of Dask, this execution engine could be running on many nodes of a cluster, so you have access to the full number of CPU cores and memory across all the machines. Dask will intelligently execute your calculation with care for minimizing the amount of data held in memory, while parallelizing over the tasks that make up a graph. Notice that in the animated diagram below, where four workers are processing the (simple) graph, execution progresses vertically up the branches first, so that intermediate results can be expunged before moving onto a new branch.\n",
     "\n",
-    "With `delayed` and normal pythonic looped code, very complex graphs can be built up and passed on to Dask for execution. See a nice example of [simulated complex ETL](http://matthewrocklin.com/blog/work/2017/01/24/dask-custom) work flow.\n",
+    "With `delayed` and normal pythonic looped code, very complex graphs can be built up and passed on to Dask for execution. See a nice example of [simulated complex ETL](https://blog.dask.org/2017/01/24/dask-custom) work flow.\n",
     "\n",
     "![this](images/grid_search_schedule.gif)"
    ]
@@ -251,11 +252,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "jupyter": {
-     "source_hidden": true
-    }
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "## verbose version\n",
