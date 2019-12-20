@@ -12,7 +12,7 @@
     "\n",
     "# Dask DataFrames\n",
     "\n",
-    "We finished Chapter 02 by building a parallel dataframe computation over a directory of CSV files using `dask.delayed`.  In this section we use `dask.dataframe` to automatically build similiar computations, for the common case of tabular computations.  Dask dataframes look and feel like Pandas dataframes but they run on the same infrastructure that powers `dask.delayed`.\n",
+    "We finished Chapter 1 by building a parallel dataframe computation over a directory of CSV files using `dask.delayed`.  In this section we use `dask.dataframe` to automatically build similiar computations, for the common case of tabular computations.  Dask dataframes look and feel like Pandas dataframes but they run on the same infrastructure that powers `dask.delayed`.\n",
     "\n",
     "In this notebook we use the same airline data as before, but now rather than write for-loops we let `dask.dataframe` construct our computations for us.  The `dask.dataframe.read_csv` function can take a globstring like `\"data/nycflights/*.csv\"` and build parallel computations on all of our data at once.\n",
     "\n",
@@ -31,13 +31,16 @@
     "\n",
     "**Related Documentation**\n",
     "\n",
-    "*  [Dask DataFrame documentation](http://dask.pydata.org/en/latest/dataframe.html)\n",
-    "*  [Pandas documentation](http://pandas.pydata.org/)\n",
+    "* [DataFrame documentation](https://docs.dask.org/en/latest/dataframe.html)\n",
+    "* [DataFrame screencast](https://youtu.be/AT2XtFehFSQ)\n",
+    "* [DataFrame API](https://docs.dask.org/en/latest/dataframe-api.html)\n",
+    "* [DataFrame examples](https://examples.dask.org/dataframe.html)\n",
+    "* [Pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)\n",
     "\n",
     "**Main Take-aways**\n",
     "\n",
-    "1.  Dask.dataframe should be familiar to Pandas users\n",
-    "2.  The partitioning of dataframes is important for efficient queries"
+    "1.  Dask DataFrame should be familiar to Pandas users\n",
+    "2.  The partitioning of dataframes is important for efficient execution"
    ]
   },
   {
@@ -55,7 +58,7 @@
    "source": [
     "from dask.distributed import Client\n",
     "\n",
-    "client = Client()"
+    "client = Client(n_workers=4)"
    ]
   },
   {
@@ -76,23 +79,15 @@
     "\n",
     "import os\n",
     "import dask\n",
-    "filename = os.path.join('data', 'accounts.*.csv')"
+    "filename = os.path.join('data', 'accounts.*.csv')\n",
+    "filename"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "This works just like `pandas.read_csv`, except on multiple csv files at once."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "filename"
+    "Filename includes a glob pattern `*`, so all files in the path matching that pattern will be read into the same Dask DataFrame."
    ]
   },
   {
@@ -103,7 +98,6 @@
    "source": [
     "import dask.dataframe as dd\n",
     "df = dd.read_csv(filename)\n",
-    "# load and count number of rows\n",
     "df.head()"
    ]
   },
@@ -113,6 +107,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "# load and count number of rows\n",
     "len(df)"
    ]
   },
@@ -150,7 +145,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Notice that the respresentation of the dataframe object contains no data - Dask has just done enough to read the start of the first file, and infer the column names and types."
+    "Notice that the respresentation of the dataframe object contains no data - Dask has just done enough to read the start of the first file, and infer the column names and dtypes."
    ]
   },
   {
@@ -317,7 +312,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
     "len(df)"
@@ -344,7 +343,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
     "len(df[~df.Cancelled])"
@@ -371,7 +374,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
     "df[~df.Cancelled].groupby('Origin').Origin.count().compute()"
@@ -398,7 +405,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
     "df.groupby(\"Origin\").DepDelay.mean().compute()"
@@ -423,7 +434,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
     "df.groupby(\"DayOfWeek\").DepDelay.mean().compute()"
@@ -518,7 +533,7 @@
    "source": [
     "Pandas is more mature and fully featured than `dask.dataframe`.  If your data fits in memory then you should use Pandas.  The `dask.dataframe` module gives you a limited `pandas` experience when you operate on datasets that don't fit comfortably in memory.\n",
     "\n",
-    "During this tutorial we provide a small dataset consisting of a few CSV files.  This dataset is 45MB on disk that expands to about 400MB in memory (the difference is caused by using `object` dtype for strings).  This dataset is small enough that you would normally use Pandas.\n",
+    "During this tutorial we provide a small dataset consisting of a few CSV files.  This dataset is 45MB on disk that expands to about 400MB in memory. This dataset is small enough that you would normally use Pandas.\n",
     "\n",
     "We've chosen this size so that exercises finish quickly.  Dask.dataframe only really becomes meaningful for problems significantly larger than this, when Pandas breaks with the dreaded \n",
     "\n",
@@ -763,35 +778,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "### What definitely works?"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "* Trivially parallelizable operations (fast):\n",
-    "    *  Elementwise operations:  ``df.x + df.y``\n",
-    "    *  Row-wise selections:  ``df[df.x > 0]``\n",
-    "    *  Loc:  ``df.loc[4.0:10.5]``\n",
-    "    *  Common aggregations:  ``df.x.max()``\n",
-    "    *  Is in:  ``df[df.x.isin([1, 2, 3])]``\n",
-    "    *  Datetime/string accessors:  ``df.timestamp.month``\n",
-    "* Cleverly parallelizable operations (also fast):\n",
-    "    *  groupby-aggregate (with common aggregations): ``df.groupby(df.x).y.max()``\n",
-    "    *  value_counts:  ``df.x.value_counts``\n",
-    "    *  Drop duplicates:  ``df.x.drop_duplicates()``\n",
-    "    *  Join on index:  ``dd.merge(df1, df2, left_index=True, right_index=True)``\n",
-    "* Operations requiring a shuffle (slow-ish, unless on index)\n",
-    "    *  Set index:  ``df.set_index(df.x)``\n",
-    "    *  groupby-apply (with anything):  ``df.groupby(df.x).apply(myfunc)``\n",
-    "    *  Join not on the index:  ``pd.merge(df1, df2, on='name')``\n",
-    "* Ingest operations\n",
-    "    *  Files: ``dd.read_csv, dd.read_parquet, dd.read_json, dd.read_orc``, etc.\n",
-    "    *  Pandas: ``dd.from_pandas``\n",
-    "    *  Anything supporting numpy slicing: ``dd.from_array``\n",
-    "    *  From any set of functions creating sub dataframes via ``dd.from_delayed``.\n",
-    "    *  Dask.bag: ``mybag.to_dataframe(columns=[...])``"
+    "## Learn More\n",
+    "\n",
+    "\n",
+    "* [DataFrame documentation](https://docs.dask.org/en/latest/dataframe.html)\n",
+    "* [DataFrame screencast](https://youtu.be/AT2XtFehFSQ)\n",
+    "* [DataFrame API](https://docs.dask.org/en/latest/dataframe-api.html)\n",
+    "* [DataFrame examples](https://examples.dask.org/dataframe.html)\n",
+    "* [Pandas documentation](https://pandas.pydata.org/pandas-docs/stable/)"
    ]
   },
   {

@@ -13,7 +13,15 @@
     "\n",
     "In this section we parallelize simple for-loop style code with Dask and `dask.delayed`. Often, this is the only function that you will need to convert functions for use with Dask.\n",
     "\n",
-    "This is a simple way to use `dask` to parallelize existing codebases or build [complex systems](http://matthewrocklin.com/blog/work/2018/02/09/credit-models-with-dask).  This will also help us to develop an understanding for later sections."
+    "This is a simple way to use `dask` to parallelize existing codebases or build [complex systems](https://blog.dask.org/2018/02/09/credit-models-with-dask).  This will also help us to develop an understanding for later sections.\n",
+    "\n",
+    "**Related Documentation**\n",
+    "\n",
+    "* [Delayed documentation](https://docs.dask.org/en/latest/delayed.html)\n",
+    "* [Delayed screencast](https://www.youtube.com/watch?v=SHqFmynRxVU)\n",
+    "* [Delayed API](https://docs.dask.org/en/latest/delayed-api.html)\n",
+    "* [Delayed examples](https://examples.dask.org/delayed.html)\n",
+    "* [Delayed best practices](https://docs.dask.org/en/latest/delayed-best-practices.html)"
    ]
   },
   {
@@ -31,7 +39,7 @@
    "source": [
     "from dask.distributed import Client\n",
     "\n",
-    "client = Client()"
+    "client = Client(n_workers=4)"
    ]
   },
   {
@@ -698,7 +706,11 @@
     "- How much speedup did you get? Is this how much speedup you'd expect?\n",
     "- Experiment with where to call `compute`. What happens when you call it on `sums` and `counts`? What happens if you wait and call it on `mean`?\n",
     "- Experiment with delaying the call to `sum`. What does the graph look like if `sum` is delayed? What does the graph look like if it isn't?\n",
-    "- Can you think of any reason why you'd want to do the reduction one way over the other?"
+    "- Can you think of any reason why you'd want to do the reduction one way over the other?\n",
+    "\n",
+    "### Learn More\n",
+    "\n",
+    "Visit the [Delayed documentation](https://docs.dask.org/en/latest/delayed.html). In particular, this [delayed screencast](https://www.youtube.com/watch?v=SHqFmynRxVU) will reinforce the concepts you learned here and the [delayed best practices](https://docs.dask.org/en/latest/delayed-best-practices.html) document collects advice on using `dask.delayed` well."
    ]
   },
   {
