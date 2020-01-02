@@ -16,7 +16,7 @@ from skimage.transform import resize
 
 from accounts import account_entries, account_params, json_entries
 
-DATASETS = ["random", "weather", "accounts", "accounts", "flights", "all"]
+DATASETS = ["random", "weather", "accounts", "flights", "all"]
 here = os.path.dirname(__file__)
 data_dir = os.path.abspath(os.path.join(here, 'data'))
 
@@ -162,7 +162,7 @@ def accounts_json(small=None):
             f.write(os.linesep.join(map(json.dumps, seq)).encode())
 
     t1 = time.time()
-    print("Created CSV acccouts in {:0.2f}s".format(t1 - t0))
+    print("Created JSON acccouts in {:0.2f}s".format(t1 - t0))
 
 
 def create_weather(small=None):
