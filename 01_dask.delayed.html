@@ -165,8 +165,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#Some-questions-to-consider:">Some questions to consider:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Exercise:-Parallelizing-a-Pandas-Groupby-Reduction">Exercise: Parallelizing a Pandas Groupby Reduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Prep-data">Prep data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise:-Parallelizing-a-Pandas-Groupby-Reduction">Exercise: Parallelizing a Pandas Groupby Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-data">Create data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Inspect-data">Inspect data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Read-one-file-with-pandas.read_csv-and-compute-mean-departure-delay">Read one file with <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> and compute mean departure delay</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Sequential-code:-Mean-Departure-Delay-Per-Airport">Sequential code: Mean Departure Delay Per Airport</a></li>
@@ -519,7 +519,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 112 ms, sys: 8.69 ms, total: 120 ms
+CPU times: user 97.7 ms, sys: 18.5 ms, total: 116 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -555,8 +555,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 643 µs, sys: 0 ns, total: 643 µs
-Wall time: 546 µs
+CPU times: user 449 µs, sys: 0 ns, total: 449 µs
+Wall time: 410 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -578,7 +578,7 @@ Wall time: 546 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 88.3 ms, sys: 2.32 ms, total: 90.6 ms
+CPU times: user 78 ms, sys: 10.5 ms, total: 88.5 ms
 Wall time: 2.02 s
 </pre></div></div>
 </div>
@@ -611,7 +611,7 @@ Wall time: 2.02 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-9b2f905d-c0f1-46f4-bc11-9721fe685738&#39;)
+Delayed(&#39;add-45f2b53f-2afe-47fb-af18-1867c2b2d12c&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -676,7 +676,7 @@ Delayed(&#39;add-9b2f905d-c0f1-46f4-bc11-9721fe685738&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 282 ms, sys: 27.4 ms, total: 309 ms
+CPU times: user 267 ms, sys: 30.7 ms, total: 298 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -713,8 +713,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1e+03 ns, sys: 0 ns, total: 1e+03 ns
-Wall time: 4.53 µs
+CPU times: user 2 µs, sys: 1e+03 ns, total: 3 µs
+Wall time: 4.05 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -740,7 +740,7 @@ Wall time: 4.53 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-45703568-e443-46f5-9390-4f6717afdb84&#39;)
+Before computing: Delayed(&#39;sum-6c0b6f33-d811-486c-9028-4bda13c9e128&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -796,7 +796,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 373 ms, sys: 28.4 ms, total: 401 ms
+CPU times: user 327 ms, sys: 35.6 ms, total: 362 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -817,7 +817,7 @@ Wall time: 10 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 1e+03 ns, total: 3 µs
+CPU times: user 2 µs, sys: 0 ns, total: 2 µs
 Wall time: 4.29 µs
 </pre></div></div>
 </div>
@@ -852,8 +852,8 @@ Wall time: 4.29 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 125 ms, sys: 10 ms, total: 135 ms
-Wall time: 3.03 s
+CPU times: user 119 ms, sys: 5.98 ms, total: 125 ms
+Wall time: 3.02 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -895,18 +895,18 @@ Wall time: 3.03 s
 <h2>Exercise: Parallelizing a Pandas Groupby Reduction<a class="headerlink" href="#Exercise:-Parallelizing-a-Pandas-Groupby-Reduction" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise we read several CSV files and perform a groupby operation in parallel. We are given sequential code to do this and parallelize it with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>.</p>
 <p>The computation we will parallelize is to compute the mean departure delay per airport from some historical flight data. We will do this by using <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> together with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. In a future section we will do this same exercise with <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>.</p>
-<div class="section" id="Prep-data">
-<h3>Prep data<a class="headerlink" href="#Prep-data" title="Permalink to this headline">¶</a></h3>
-<p>First, run this code to prep some data, if you have not already done so.</p>
+</div>
+<div class="section" id="Create-data">
+<h2>Create data<a class="headerlink" href="#Create-data" title="Permalink to this headline">¶</a></h2>
+<p>Run this code to prep some data.</p>
 <p>This downloads and extracts some historical flight data for flights out of NYC between 1990 and 2000. The data is originally from <a class="reference external" href="http://stat-computing.org/dataexpo/2009/the-data.html">here</a>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">run</span> prep.py
+<span></span><span class="o">%</span><span class="k">run</span> prep.py -d flights
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="Inspect-data">
@@ -1261,8 +1261,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 56 ms, sys: 4.22 ms, total: 60.2 ms
-Wall time: 59.4 ms
+CPU times: user 55.6 ms, sys: 0 ns, total: 55.6 ms
+Wall time: 54.5 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1359,8 +1359,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 53.9 ms, sys: 837 µs, total: 54.8 ms
-Wall time: 53.4 ms
+CPU times: user 53.5 ms, sys: 0 ns, total: 53.5 ms
+Wall time: 52.1 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1400,8 +1400,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 4.53 µs
+CPU times: user 3 µs, sys: 1e+03 ns, total: 4 µs
+Wall time: 5.25 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>

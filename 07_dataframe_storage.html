@@ -159,7 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Storage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-data">Create data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Read-CSV">Read CSV</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Write-to-HDF5">Write to HDF5</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Compare-CSV-to-HDF5-speeds">Compare CSV to HDF5 speeds</a></li>
@@ -453,17 +453,14 @@ div.rendered_html tbody tr:hover {
 <li><p>Text data will keep even a fast format like HDF5 slow</p></li>
 <li><p>A combination of binary formats, column storage, and partitioned data turns one second wait times into 80ms wait times.</p></li>
 </ol>
-<div class="section" id="Setup">
-<h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
-<p>Create data if we don’t have any</p>
+<div class="section" id="Create-data">
+<h2>Create data<a class="headerlink" href="#Create-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">prep</span> <span class="kn">import</span> <span class="n">accounts_csvs</span>
-<span class="n">accounts_csvs</span><span class="p">()</span>
-
+<span></span><span class="o">%</span><span class="k">run</span> prep.py -d accounts
 </pre></div>
 </div>
 </div>
@@ -534,33 +531,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>88</td>
-      <td>Yvonne</td>
-      <td>61</td>
+      <td>42</td>
+      <td>Michael</td>
+      <td>1081</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>76</td>
-      <td>Yvonne</td>
-      <td>269</td>
+      <td>81</td>
+      <td>Michael</td>
+      <td>2576</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>39</td>
-      <td>Edith</td>
-      <td>1923</td>
+      <td>54</td>
+      <td>Wendy</td>
+      <td>1381</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>52</td>
-      <td>Kevin</td>
-      <td>1089</td>
+      <td>68</td>
+      <td>Sarah</td>
+      <td>31</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>9</td>
-      <td>Norbert</td>
-      <td>-21</td>
+      <td>44</td>
+      <td>Hannah</td>
+      <td>1252</td>
     </tr>
   </tbody>
 </table>
@@ -604,8 +601,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 170 ms, sys: 19.6 ms, total: 189 ms
-Wall time: 193 ms
+CPU times: user 143 ms, sys: 32 ms, total: 175 ms
+Wall time: 178 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -659,33 +656,33 @@ Wall time: 193 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>88</td>
-      <td>Yvonne</td>
-      <td>61</td>
+      <td>42</td>
+      <td>Michael</td>
+      <td>1081</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>76</td>
-      <td>Yvonne</td>
-      <td>269</td>
+      <td>81</td>
+      <td>Michael</td>
+      <td>2576</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>39</td>
-      <td>Edith</td>
-      <td>1923</td>
+      <td>54</td>
+      <td>Wendy</td>
+      <td>1381</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>52</td>
-      <td>Kevin</td>
-      <td>1089</td>
+      <td>68</td>
+      <td>Sarah</td>
+      <td>31</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>9</td>
-      <td>Norbert</td>
-      <td>-21</td>
+      <td>44</td>
+      <td>Hannah</td>
+      <td>1252</td>
     </tr>
   </tbody>
 </table>
@@ -709,8 +706,8 @@ Wall time: 193 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 34.2 ms, sys: 363 µs, total: 34.6 ms
-Wall time: 29 ms
+CPU times: user 22.1 ms, sys: 8.38 ms, total: 30.5 ms
+Wall time: 28.9 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -719,7 +716,7 @@ Wall time: 29 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-29661860
+26843841
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -736,8 +733,8 @@ Wall time: 29 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36.7 ms, sys: 103 µs, total: 36.8 ms
-Wall time: 36.1 ms
+CPU times: user 34.8 ms, sys: 187 µs, total: 35 ms
+Wall time: 34.8 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -746,7 +743,7 @@ Wall time: 36.1 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-29661860
+26843841
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -775,8 +772,8 @@ Wall time: 36.1 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 114 ms, sys: 7.61 ms, total: 121 ms
-Wall time: 121 ms
+CPU times: user 109 ms, sys: 4.08 ms, total: 113 ms
+Wall time: 113 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -830,33 +827,33 @@ Wall time: 121 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>88</td>
-      <td>Yvonne</td>
-      <td>61</td>
+      <td>42</td>
+      <td>Michael</td>
+      <td>1081</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>76</td>
-      <td>Yvonne</td>
-      <td>269</td>
+      <td>81</td>
+      <td>Michael</td>
+      <td>2576</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>39</td>
-      <td>Edith</td>
-      <td>1923</td>
+      <td>54</td>
+      <td>Wendy</td>
+      <td>1381</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>52</td>
-      <td>Kevin</td>
-      <td>1089</td>
+      <td>68</td>
+      <td>Sarah</td>
+      <td>31</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>9</td>
-      <td>Norbert</td>
-      <td>-21</td>
+      <td>44</td>
+      <td>Hannah</td>
+      <td>1252</td>
     </tr>
   </tbody>
 </table>
@@ -877,8 +874,8 @@ Wall time: 121 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 22.9 ms, sys: 3.8 ms, total: 26.7 ms
-Wall time: 26.1 ms
+CPU times: user 19.4 ms, sys: 3.93 ms, total: 23.3 ms
+Wall time: 22.7 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -887,7 +884,7 @@ Wall time: 26.1 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-29661860
+26843841
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
@@ -924,11 +921,11 @@ Wall time: 26.1 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-rw-r-- 1 travis travis    723 Dec 31 16:58 _common_metadata
--rw-rw-r-- 1 travis travis   1932 Dec 31 16:58 _metadata
--rw-rw-r-- 1 travis travis 251808 Dec 31 16:58 part.0.parquet
--rw-rw-r-- 1 travis travis 251808 Dec 31 16:58 part.1.parquet
--rw-rw-r-- 1 travis travis 251808 Dec 31 16:58 part.2.parquet
+-rw-rw-r-- 1 travis travis    723 Jan  2 15:44 _common_metadata
+-rw-rw-r-- 1 travis travis   1932 Jan  2 15:44 _metadata
+-rw-rw-r-- 1 travis travis 251807 Jan  2 15:44 part.0.parquet
+-rw-rw-r-- 1 travis travis 251807 Jan  2 15:44 part.1.parquet
+-rw-rw-r-- 1 travis travis 251807 Jan  2 15:44 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -970,8 +967,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 195 ms, sys: 7.78 ms, total: 203 ms
-Wall time: 199 ms
+CPU times: user 178 ms, sys: 16.2 ms, total: 195 ms
+Wall time: 192 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -980,7 +977,7 @@ Wall time: 199 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-29661860
+26843841
 </pre></div></div>
 </div>
 <p>When archiving data, it is common to sort and partition by a column with unique identifiers, to facilitate fast look-ups later. For this data, that column is <code class="docutils literal notranslate"><span class="pre">id</span></code>. Time how long it takes to retrieve the rows corresponding to <code class="docutils literal notranslate"><span class="pre">id==100</span></code> from the raw CSV, from HDF5 and parquet versions, and finally from a new parquet version written after applying <code class="docutils literal notranslate"><span class="pre">set_index('id')</span></code>.</p>
