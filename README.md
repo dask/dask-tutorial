@@ -70,17 +70,6 @@ The above command will give an URL (`Like http://(container_id or 127.0.0.1):888
 can be used to access the notebook from browser. You may need to replace the given hostname with "localhost" or
 "127.0.0.1".
 
-### Prepare artificial data.
-
-This is also done in the first notebook, but will only make data not
-already created. You may skip this and only make artificial data as required in the specific sections of the
-tutorial.
-
-From the repo directory (within the running notebook server if using method c) ) 
-
-    python prep.py
-
-
 ### Launch notebook
 
 From the repo directory
