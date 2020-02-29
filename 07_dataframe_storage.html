@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -34,83 +48,75 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Parallel and Distributed Machine Learning" href="08_machine_learning.html" />
     <link rel="prev" title="Distributed, Advanced" href="06_distributed_advanced.html" />
-  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -119,7 +125,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Dask Tutorial
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Dask Tutorial
           
 
           
@@ -142,6 +148,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -178,6 +185,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -304,8 +312,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -329,7 +337,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -402,6 +409,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -531,33 +559,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>91</td>
-      <td>Kevin</td>
-      <td>575</td>
+      <td>71</td>
+      <td>Ray</td>
+      <td>-1057</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>10</td>
-      <td>Charlie</td>
-      <td>421</td>
+      <td>36</td>
+      <td>Wendy</td>
+      <td>-157</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>38</td>
-      <td>Ursula</td>
-      <td>2056</td>
+      <td>81</td>
+      <td>Bob</td>
+      <td>437</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>98</td>
-      <td>Frank</td>
-      <td>2818</td>
+      <td>60</td>
+      <td>Jerry</td>
+      <td>-241</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>95</td>
-      <td>Ingrid</td>
-      <td>197</td>
+      <td>84</td>
+      <td>Yvonne</td>
+      <td>-2</td>
     </tr>
   </tbody>
 </table>
@@ -601,8 +629,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 151 ms, sys: 15.9 ms, total: 167 ms
-Wall time: 170 ms
+CPU times: user 208 ms, sys: 28 ms, total: 237 ms
+Wall time: 240 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -656,33 +684,33 @@ Wall time: 170 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>91</td>
-      <td>Kevin</td>
-      <td>575</td>
+      <td>71</td>
+      <td>Ray</td>
+      <td>-1057</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>10</td>
-      <td>Charlie</td>
-      <td>421</td>
+      <td>36</td>
+      <td>Wendy</td>
+      <td>-157</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>38</td>
-      <td>Ursula</td>
-      <td>2056</td>
+      <td>81</td>
+      <td>Bob</td>
+      <td>437</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>98</td>
-      <td>Frank</td>
-      <td>2818</td>
+      <td>60</td>
+      <td>Jerry</td>
+      <td>-241</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>95</td>
-      <td>Ingrid</td>
-      <td>197</td>
+      <td>84</td>
+      <td>Yvonne</td>
+      <td>-2</td>
     </tr>
   </tbody>
 </table>
@@ -706,8 +734,8 @@ Wall time: 170 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 32.6 ms, sys: 54 µs, total: 32.7 ms
-Wall time: 26.6 ms
+CPU times: user 29.3 ms, sys: 4.14 ms, total: 33.4 ms
+Wall time: 27.5 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -716,7 +744,7 @@ Wall time: 26.6 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-43699504
+27733789
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -733,8 +761,8 @@ Wall time: 26.6 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 28.2 ms, sys: 3.46 ms, total: 31.7 ms
-Wall time: 31.2 ms
+CPU times: user 36.3 ms, sys: 0 ns, total: 36.3 ms
+Wall time: 35.7 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -743,7 +771,7 @@ Wall time: 31.2 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-43699504
+27733789
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -772,8 +800,8 @@ Wall time: 31.2 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 109 ms, sys: 0 ns, total: 109 ms
-Wall time: 108 ms
+CPU times: user 116 ms, sys: 8.02 ms, total: 124 ms
+Wall time: 123 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -827,33 +855,33 @@ Wall time: 108 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>91</td>
-      <td>Kevin</td>
-      <td>575</td>
+      <td>71</td>
+      <td>Ray</td>
+      <td>-1057</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>10</td>
-      <td>Charlie</td>
-      <td>421</td>
+      <td>36</td>
+      <td>Wendy</td>
+      <td>-157</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>38</td>
-      <td>Ursula</td>
-      <td>2056</td>
+      <td>81</td>
+      <td>Bob</td>
+      <td>437</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>98</td>
-      <td>Frank</td>
-      <td>2818</td>
+      <td>60</td>
+      <td>Jerry</td>
+      <td>-241</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>95</td>
-      <td>Ingrid</td>
-      <td>197</td>
+      <td>84</td>
+      <td>Yvonne</td>
+      <td>-2</td>
     </tr>
   </tbody>
 </table>
@@ -874,8 +902,8 @@ Wall time: 108 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 20.8 ms, sys: 4.11 ms, total: 24.9 ms
-Wall time: 24.3 ms
+CPU times: user 22 ms, sys: 4.21 ms, total: 26.2 ms
+Wall time: 25.5 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -884,7 +912,7 @@ Wall time: 24.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-43699504
+27733789
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
@@ -921,11 +949,11 @@ Wall time: 24.3 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-rw-r-- 1 travis travis    723 Jan  7 00:58 _common_metadata
--rw-rw-r-- 1 travis travis   1932 Jan  7 00:58 _metadata
--rw-rw-r-- 1 travis travis 251801 Jan  7 00:58 part.0.parquet
--rw-rw-r-- 1 travis travis 251801 Jan  7 00:58 part.1.parquet
--rw-rw-r-- 1 travis travis 251801 Jan  7 00:58 part.2.parquet
+-rw-rw-r-- 1 travis travis    871 Feb 29 00:16 _common_metadata
+-rw-rw-r-- 1 travis travis   2080 Feb 29 00:16 _metadata
+-rw-rw-r-- 1 travis travis 251956 Feb 29 00:16 part.0.parquet
+-rw-rw-r-- 1 travis travis 251956 Feb 29 00:16 part.1.parquet
+-rw-rw-r-- 1 travis travis 251956 Feb 29 00:16 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -967,8 +995,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 179 ms, sys: 4.18 ms, total: 183 ms
-Wall time: 180 ms
+CPU times: user 118 ms, sys: 11.9 ms, total: 130 ms
+Wall time: 127 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -977,7 +1005,7 @@ Wall time: 180 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-43699504
+27733789
 </pre></div></div>
 </div>
 <p>When archiving data, it is common to sort and partition by a column with unique identifiers, to facilitate fast look-ups later. For this data, that column is <code class="docutils literal notranslate"><span class="pre">id</span></code>. Time how long it takes to retrieve the rows corresponding to <code class="docutils literal notranslate"><span class="pre">id==100</span></code> from the raw CSV, from HDF5 and parquet versions, and finally from a new parquet version written after applying <code class="docutils literal notranslate"><span class="pre">set_index('id')</span></code>.</p>

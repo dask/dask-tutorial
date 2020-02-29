@@ -1,8 +1,14 @@
 
 
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -17,7 +23,15 @@
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -34,83 +48,75 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bag: Parallel Lists for semi-structured data" href="02_bag.html" />
     <link rel="prev" title="Parallelize code with dask.delayed" href="01_dask.delayed.html" />
-  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
-
+    <link rel="shortcut icon" href="_static/images/favicon.ico"/>
+  
 </head>
 
 <body class="wy-body-for-nav">
 
   
+    <nav id="explore-links">
+        <a href="https://docs.dask.org/">
+        <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
+        </a>
 
-<nav id="explore-links">
-  <a href="https://docs.dask.org/">
-    <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
-  </a>
+        <ul>
+        <li>
+            <a>Get Started</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
+            <li><a href="https://examples.dask.org"> Examples </a></li>
+            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
+            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
+            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
+            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://dask.org/slides"> Slides </a></li>
+            </ul>
+        </li>
 
-  <ul>
-    <li>
-      <a>Get Started</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-        <li><a href="https://examples.dask.org"> Examples </a></li>
-        <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-        <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-        <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-        <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-        <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
-        <li><a href="https://dask.org/slides"> Slides </a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="">Algorithms</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
+            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
+            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
+            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
+            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
+            <li><a href="http://ml.dask.org">Machine Learning</a></li>
+            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="">Algorithms</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-        <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-        <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-        <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-        <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-        <li><a href="http://ml.dask.org">Machine Learning</a></li>
-        <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-      </ul>
-    </li>
+        <li>
+            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
+            <ul>
+            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
+            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
+            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
+            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
+            </ul>
+        </li>
 
-    <li>
-      <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-      <ul>
-        <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-        <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-        <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-        <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-      </ul>
-    </li>
+        <li>
+            <a>Community</a>
+            <ul>
+            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
+            <li><a href="https://github.com/dask">Github</a></li>
+            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
+            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
+            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
+            </ul>
+        </li>
+        </ul>
 
-    <li>
-      <a>Community</a>
-      <ul>
-        <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-        <li><a href="https://github.com/dask">Github</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-        <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-        <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-      </ul>
-    </li>
-  </ul>
-
-</nav>
-
-
+    </nav>
+  
   <div class="wy-grid-for-nav">
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
@@ -119,7 +125,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Dask Tutorial
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Dask Tutorial
           
 
           
@@ -142,6 +148,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -181,6 +188,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -307,8 +315,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 7ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -332,7 +340,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -405,6 +412,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -601,8 +629,8 @@ graph. Notice that in the animated diagram below, where four workers are process
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 30000
-CPU times: user 9.04 ms, sys: 4.17 ms, total: 13.2 ms
-Wall time: 12.9 ms
+CPU times: user 15.8 ms, sys: 0 ns, total: 15.8 ms
+Wall time: 15.6 ms
 </pre></div></div>
 </div>
 <p>Your task is to recreate this graph again using the delayed function on the original Python code. The three functions you want to delay are <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>..</p>
@@ -672,11 +700,11 @@ Wall time: 12.9 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 30000
-CPU times: user 14.6 ms, sys: 4.42 ms, total: 19 ms
-Wall time: 13.6 ms
+CPU times: user 21.5 ms, sys: 114 µs, total: 21.6 ms
+Wall time: 15.7 ms
 30000
-CPU times: user 11.7 ms, sys: 3.96 ms, total: 15.6 ms
-Wall time: 11.4 ms
+CPU times: user 14.8 ms, sys: 4.24 ms, total: 19 ms
+Wall time: 13.3 ms
 </pre></div></div>
 </div>
 <p><strong>Notes</strong></p>
@@ -791,7 +819,7 @@ in the meantime.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/images/branding/googleg/1x/googleg_standard_color_128dp.png&#34; itemprop=&#34;image&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;/jLZNQqHVc4rVNsK9fepeA==&#34;&gt;(function(){window.google={kEI:\&#39;1dYTXtehEoKW5wLfg6W4BA\&#39;,kEXPI:\&#39;0,1353746,5663,731,223,3657,1069,379,206,2415,540,249,10,713,338,175,364,671,254,51,178,3,209,69,4,60,195,120,375,62,198,10,427,33,135,1128873,143,1197777,372,38,329080,1294,12383,4855,32692,15247,867,19397,9287,369,3314,5505,8384,1700,3158,1362,4323,4968,773,2250,2821,1923,3118,6196,1719,1808,1976,2044,5766,1,3142,5297,2054,920,873,1217,2975,4294,2136,1142,2291,1617,2382,1571,1683,620,2883,21,317,3173,975,1,368,2778,519,400,992,1287,6,85,2711,969,610,14,1279,1974,238,202,328,149,1103,327,513,517,318,821,1,277,49,8,48,157,663,3438,260,52,1135,1,3,2669,1839,184,595,1182,143,377,686,1261,748,218,64,1,145,44,1009,93,328,1285,15,84,417,2426,1639,607,474,1339,29,719,1039,3227,773,953,595,524,7,523,205,592,1574,1879,35,2756,69,3,6510,299,2533,257,215,367,1040,1043,128,246,2084,1226,1456,6,2070,1865,1274,108,1246,26,440,561,654,39,441,908,2,433,508,513,1735,366,753,132,989,523,359,1157,8,276,2,149,507,78,458,302,1062,121,532,53,355,619,473,129,780,48,1,137,704,66,2,1,106,10,2,16,146,138,442,373,701,258,523,601,410,189,6,15,199,71,5,33,242,203,91,1,265,85,364,326,373,751,83,5,24,194,1291,156,228,101,1114,5857694,3198,1802696,4194805,45,2801172,549,333,444,1,2,80,1,900,896,1,8,1,2,2551,1,748,141,59,736,563,1,4265,1,1,1,1,137,1,879,9,309,112,25,3365601,20598661\&#39;,authuser:0,kGL:\&#39;US\&#39;,kBL:\&#39;jSId\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;google.jsfs=\&#39;Ffpdje\&#39;;})();(function(){google.lc=[];google.li=0;google.getEI=function(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||google.kEI};google.getLEI=function(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b};google.ml=function(){return null};google.time=function(){return(new Date).getTime()};google.log=function(a,b,e,c,g){if(a=google.logUrl(a,b,e,c,g)){b=new Image;var d=google.lc,f=google.li;d[f]=b;b.onerror=b.onload=b.onabort=function(){delete d[f]};google.vel&amp;&amp;google.vel.lu&amp;&amp;google.vel.lu(a);b.src=a;google.li=f+1}};google.logUrl=function(a,b,e,c,g){var d=&#34;&#34;,f=google.ls||&#34;&#34;;e||-1!=b.search(&#34;&amp;ei=&#34;)||(d=&#34;&amp;ei=&#34;+google.getEI(c),-1==b.search(&#34;&amp;lei=&#34;)&amp;&amp;(c=google.getLEI(c))&amp;&amp;(d+=&#34;&amp;lei=&#34;+c));c=&#34;&#34;;!e&amp;&amp;google.cshid&amp;&amp;-1==b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!=a&amp;&amp;(c=&#34;&amp;cshid=&#34;+google.cshid);a=e||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+d+f+&#34;&amp;zx=&#34;+google.time()+c;/^http:/i.test(a)&amp;&amp;&#34;https:&#34;==window.location.protocol&amp;&amp;(google.ml(Error(&#34;a&#34;),!1,{src:a,glmm:1}),a=&#34;&#34;);return a};}).call(this);(function(){google.y={};google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;==c||&#34;q&#34;==c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);}).call(this);\nvar a=window.location,b=a.href.indexOf(&#34;#&#34;);if(0&lt;=b){var c=a.href.substring(b+1);/(^|&amp;)q=/.test(c)&amp;&amp;-1==c.indexOf(&#34;#&#34;)&amp;&amp;a.replace(&#34;/search?&#34;+c.replace(/(^|&amp;)fp=[^&amp;]*/g,&#34;&#34;)+&#34;&amp;cad=h&#34;)};&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#36c}.q{color:#00c}.ts td{padding:0}.ts{border-collapse:collapse}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}a.gb1,a.gb2,a.gb3,a.gb4{color:#11c !important}body{background:#fff;color:black}a{color:#11c;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#36c}a:visited{color:#551a8b}a.gb1,a.gb4{text-decoration:underline}a.gb3:hover{text-decoration:none}#ghead a.gb2:hover{color:#fff !important}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#eee;border:solid 1px;border-color:#ccc #999 #999 #ccc;height:30px}.lsbb{display:block}.ftl,#fll a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#ccc}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;/jLZNQqHVc4rVNsK9fepeA==&#34;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;/jLZNQqHVc4rVNsK9fepeA==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt; &lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;http://news.google.com/nwshp?hl=en&amp;tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt; &lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;img alt=&#34;Google&#34; height=&#34;92&#34; src=&#34;/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png&#34; style=&#34;padding:28px 0 14px&#34; width=&#34;272&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;color:#000;margin:0;padding:5px 8px 0 6px;vertical-align:top&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;/jLZNQqHVc4rVNsK9fepeA==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;AAP1E1EAAAAAXhPk5UO-hyqnekrfAORJKEt44D0K7bN0&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;a href=&#34;/language_tools?hl=en&amp;amp;authuser=0&#34;&gt;Language tools&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;/jLZNQqHVc4rVNsK9fepeA==&#34;&gt;(function(){var a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;div id=&#34;prm&#34;&gt;&lt;style&gt;.szppmdbYutt__middle-slot-promo{font-size:small;margin-bottom:32px}.szppmdbYutt__middle-slot-promo a.ZIeIlb{display:inline-block;text-decoration:none}.szppmdbYutt__middle-slot-promo img{border:none;margin-right:5px;vertical-align:middle}&lt;/style&gt;&lt;div class=&#34;szppmdbYutt__middle-slot-promo&#34; data-ved=&#34;0ahUKEwiX4ODGo_DmAhUCy1kKHd9BCUcQnIcBCAQ&#34;&gt;&lt;img height=&#34;48&#34; src=&#34;https://www.google.com/images/hpp/d4g-4.png&#34; width=&#34;48&#34;&gt;&lt;span&gt;Calling all young artists: Submit your artwork for &lt;/span&gt;&lt;a class=&#34;NKcBbd&#34; href=&#34;https://www.google.com/url?q=https://doodles.google.com/d4g/%3Futm_source%3DlaunchHPP%26utm_campaign%3DJan06&amp;amp;source=hpp&amp;amp;id=19015621&amp;amp;ct=3&amp;amp;usg=AFQjCNGxqBxr3InXGK8Kq8fIu9-HVfgXTA&amp;amp;sa=X&amp;amp;ved=0ahUKEwiX4ODGo_DmAhUCy1kKHd9BCUcQ8IcBCAU&#34; rel=&#34;nofollow&#34;&gt;Doodle for Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;fll&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;color:#767676;font-size:8pt&#34;&gt;&amp;copy; 2020 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;/jLZNQqHVc4rVNsK9fepeA==&#34;&gt;(function(){window.google.cdo={height:0,width:0};(function(){var a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.GBWtC82m3hM.O/m\\x3dsb_he,d/am\\x3dAAMCbAQ/d\\x3d1/rs\\x3dACT90oGVQ_TgbLEidTuUiEjMFjASetsFDg\&#39;;\nsetTimeout(function(){var b=document;var a=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(a=a.toLowerCase());a=b.createElement(a);a.src=u;google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);document.body.appendChild(a)},0);})();(function(){window.google.xjsu=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.GBWtC82m3hM.O/m\\x3dsb_he,d/am\\x3dAAMCbAQ/d\\x3d1/rs\\x3dACT90oGVQ_TgbLEidTuUiEjMFjASetsFDg\&#39;;})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.spjs=false;google.snet=true;google.em=[];google.emw=false;})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbpl\\x22:24,\\x22sbpr\\x22:24,\\x22scd\\x22:10,\\x22sce\\x22:5,\\x22stok\\x22:\\x22LhCBl4I4AsP8tRAbG3d1Tsq6uDc\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
+b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/logos/doodles/2020/sir-john-tenniels-200th-birthday-6753651837108300.5-l.png&#34; itemprop=&#34;image&#34;&gt;&lt;meta content=&#34;Sir John Tenniel\&#39;s 200th Birthday&#34; property=&#34;twitter:title&#34;&gt;&lt;meta content=&#34;Sir John Tenniel\&#39;s 200th Birthday! #GoogleDoodle&#34; property=&#34;twitter:description&#34;&gt;&lt;meta content=&#34;Sir John Tenniel\&#39;s 200th Birthday! #GoogleDoodle&#34; property=&#34;og:description&#34;&gt;&lt;meta content=&#34;summary_large_image&#34; property=&#34;twitter:card&#34;&gt;&lt;meta content=&#34;@GoogleDoodles&#34; property=&#34;twitter:site&#34;&gt;&lt;meta content=&#34;https://www.google.com/logos/doodles/2020/sir-john-tenniels-200th-birthday-6753651837108300.3-2x.jpg&#34; property=&#34;twitter:image&#34;&gt;&lt;meta content=&#34;https://www.google.com/logos/doodles/2020/sir-john-tenniels-200th-birthday-6753651837108300.3-2x.jpg&#34; property=&#34;og:image&#34;&gt;&lt;meta content=&#34;760&#34; property=&#34;og:image:width&#34;&gt;&lt;meta content=&#34;440&#34; property=&#34;og:image:height&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;JHbfmD757FR0n5N5k9omYQ==&#34;&gt;(function(){window.google={kEI:\&#39;UqxZXvC6G5TB-wTJm52YDw\&#39;,kEXPI:\&#39;0,1353747,5662,731,223,756,2900,1449,206,2955,249,10,51,1000,175,364,926,363,146,4,60,742,75,383,139,2,105,5,625,390,339,85,328,99,5,99,1127150,1197739,285,125,329118,1294,12383,4855,32691,15248,867,2236,15208,11240,363,8825,8384,4859,1361,283,4040,4968,3020,2824,1923,2898,220,7915,1808,1239,737,2044,5766,1,3142,5297,2974,873,38,1179,2975,6430,1142,9544,620,2884,20,318,235,1746,1191,1345,1396,1381,520,399,2277,8,570,2226,1593,1279,2212,202,39,289,149,1103,327,513,519,1464,8,48,820,3438,312,1135,1,3,2669,1839,184,1920,377,686,1261,747,283,1,145,1033,113,328,1285,15,2209,718,1639,607,474,1339,29,719,1039,3227,773,2072,9,815,502,6314,4683,1830,2663,169,472,2450,2458,1226,1406,52,4,3934,1275,108,594,652,1680,481,908,2,433,508,552,6,536,1520,1882,515,712,4707,225,962,34,830,1,839,188,2,290,1523,244,537,201,186,813,183,388,40,254,1,1668,218,2030,1,707,148,1128,767,277,1329,98,3,402,1,405,483,222,1,354,521,27,130,1,70,48,200,380,2,116,1,57,122,824,272,121,46,42,343,44,600,126,47,264,2,771,50,1,1066,94,456,1014,190,973,828,473,35,180,61,642,838,2,162,251,155,5840164,12,3264,1802618,4194968,2801054,549,333,444,1,2,80,1,900,896,1,8,1,2,2551,1,748,141,59,736,563,1,4265,1,1,1,1,137,1,879,9,305,641,5,14,62,20,3,1,101,8,2,3364885,20598661,24\&#39;,kBL:\&#39;q7xS\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;})();(function(){google.lc=[];google.li=0;google.getEI=function(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||google.kEI};google.getLEI=function(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b};google.ml=function(){return null};google.time=function(){return Date.now()};google.log=function(a,b,e,c,g){if(a=google.logUrl(a,b,e,c,g)){b=new Image;var d=google.lc,f=google.li;d[f]=b;b.onerror=b.onload=b.onabort=function(){delete d[f]};google.vel&amp;&amp;google.vel.lu&amp;&amp;google.vel.lu(a);b.src=a;google.li=f+1}};google.logUrl=function(a,b,e,c,g){var d=&#34;&#34;,f=google.ls||&#34;&#34;;e||-1!=b.search(&#34;&amp;ei=&#34;)||(d=&#34;&amp;ei=&#34;+google.getEI(c),-1==b.search(&#34;&amp;lei=&#34;)&amp;&amp;(c=google.getLEI(c))&amp;&amp;(d+=&#34;&amp;lei=&#34;+c));c=&#34;&#34;;!e&amp;&amp;google.cshid&amp;&amp;-1==b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!=a&amp;&amp;(c=&#34;&amp;cshid=&#34;+google.cshid);a=e||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+d+f+&#34;&amp;zx=&#34;+google.time()+c;/^http:/i.test(a)&amp;&amp;&#34;https:&#34;==window.location.protocol&amp;&amp;(google.ml(Error(&#34;a&#34;),!1,{src:a,glmm:1}),a=&#34;&#34;);return a};}).call(this);(function(){google.y={};google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;==c||&#34;q&#34;==c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);document.documentElement.addEventListener(&#34;click&#34;,function(b){var a;a:{for(a=b.target;a&amp;&amp;a!=document.documentElement;a=a.parentElement)if(&#34;A&#34;==a.tagName){a=&#34;1&#34;==a.getAttribute(&#34;data-nohref&#34;);break a}a=!1}a&amp;&amp;b.preventDefault()},!0);}).call(this);\nvar a=window.location,b=a.href.indexOf(&#34;#&#34;);if(0&lt;=b){var c=a.href.substring(b+1);/(^|&amp;)q=/.test(c)&amp;&amp;-1==c.indexOf(&#34;#&#34;)&amp;&amp;a.replace(&#34;/search?&#34;+c.replace(/(^|&amp;)fp=[^&amp;]*/g,&#34;&#34;)+&#34;&amp;cad=h&#34;)};&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#36c}.q{color:#00c}.ts td{padding:0}.ts{border-collapse:collapse}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}body{background:#fff;color:#000}a{color:#11c;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#36c}a:visited{color:#551a8b}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#eee;border:solid 1px;border-color:#ccc #999 #999 #ccc;height:30px}.lsbb{display:block}.ftl,#fll a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#ccc}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;JHbfmD757FR0n5N5k9omYQ==&#34;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;JHbfmD757FR0n5N5k9omYQ==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt; &lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;http://news.google.com/nwshp?hl=en&amp;tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt; &lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;a href=&#34;/search?ie=UTF-8&amp;amp;q=Sir+John+Tenniel&amp;amp;oi=ddle&amp;amp;ct=144865313&amp;amp;hl=en&amp;amp;kgmid=/m/03_ck&amp;amp;sa=X&amp;amp;ved=0ahUKEwjwq7TtvPXnAhWU4J4KHclNB_MQPQgD&#34;&gt;&lt;img alt=&#34;Sir John Tenniel\&#39;s 200th Birthday&#34; border=&#34;0&#34; height=&#34;220&#34; src=&#34;/logos/doodles/2020/sir-john-tenniels-200th-birthday-6753651837108300.5-l.png&#34; title=&#34;Sir John Tenniel\&#39;s 200th Birthday&#34; width=&#34;400&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;/a&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;color:#000;margin:0;padding:5px 8px 0 6px;vertical-align:top&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;JHbfmD757FR0n5N5k9omYQ==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;AINFCbYAAAAAXlm6YroBAJDnYRoR7GxecdcHa1V--xbG&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;JHbfmD757FR0n5N5k9omYQ==&#34;&gt;(function(){var a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;fll&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;color:#767676;font-size:8pt&#34;&gt;&amp;copy; 2020 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;JHbfmD757FR0n5N5k9omYQ==&#34;&gt;(function(){window.google.cdo={height:0,width:0};(function(){var a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.wEtHRtR2pEE.O/m\\x3dsb_he,d/am\\x3dgAEDbAQ/d\\x3d1/rs\\x3dACT90oGeDBEdTwSMQZ85D3a8Q5AcIzb99Q\&#39;;\nsetTimeout(function(){var b=document;var a=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(a=a.toLowerCase());a=b.createElement(a);a.src=u;google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);document.body.appendChild(a)},0);})();(function(){window.google.xjsu=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.wEtHRtR2pEE.O/m\\x3dsb_he,d/am\\x3dgAEDbAQ/d\\x3d1/rs\\x3dACT90oGeDBEdTwSMQZ85D3a8Q5AcIzb99Q\&#39;;})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.spjs=false;google.snet=true;google.em=[];google.emw=false;google.pdt=0;})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbpl\\x22:16,\\x22sbpr\\x22:16,\\x22scd\\x22:10,\\x22stok\\x22:\\x22IFUSX7wP73a1cj-J7_ICH_HDuLM\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
 </pre></div></div>
 </div>
 <p>Consider: what would you see if there had been an exception within the <code class="docutils literal notranslate"><span class="pre">get_webdata</span></code> function? You could uncomment the <code class="docutils literal notranslate"><span class="pre">raise</span></code> line, above, and re-execute the two cells. What happens? Is there any way to debug the execution to find the lYou may need</p>
@@ -926,7 +954,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;dask.highlevelgraph.HighLevelGraph at 0x7f51ec40c3d0&gt;
+&lt;dask.highlevelgraph.HighLevelGraph at 0x7f4334dcf3d0&gt;
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -944,21 +972,21 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;sum-2cba994e-3d48-4b6c-9e19-ec8736bd2061&#39;: (&lt;function sum(iterable, start=0, /)&gt;,
-  [&#39;len-fe832380-ef28-4371-a714-38e1be9f9090&#39;,
-   &#39;len-4aade36e-f075-48b0-b3c8-46043abd743c&#39;,
-   &#39;len-d711ce73-f051-4417-878d-b17c26f7a4c0&#39;]),
- &#39;len-fe832380-ef28-4371-a714-38e1be9f9090&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-600224a0-6ab0-448e-977c-169453850a60&#39;),
- &#39;read_csv-600224a0-6ab0-448e-977c-169453850a60&#39;: (&lt;function pandas.io.parsers._make_parser_function.&lt;locals&gt;.parser_f(filepath_or_buffer: Union[str, pathlib.Path, IO[~AnyStr]], sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal=b&#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)&gt;,
+{&#39;sum-dacb3ecb-a6da-4f19-a7d0-3c6b29d6dadb&#39;: (&lt;function sum(iterable, start=0, /)&gt;,
+  [&#39;len-62550376-8510-421a-a1eb-38180725ab12&#39;,
+   &#39;len-5ddbda28-49ea-4a5f-be70-da5b3f23573e&#39;,
+   &#39;len-2d5cde78-dee6-4c5d-bc7a-fd41ae3fd4c5&#39;]),
+ &#39;len-62550376-8510-421a-a1eb-38180725ab12&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-311965fb-e77a-4669-8f6d-116a178101bd&#39;),
+ &#39;read_csv-311965fb-e77a-4669-8f6d-116a178101bd&#39;: (&lt;function pandas.io.parsers._make_parser_function.&lt;locals&gt;.parser_f(filepath_or_buffer: Union[str, pathlib.Path, IO[~AnyStr]], sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: str = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)&gt;,
   &#39;data/accounts.0.csv&#39;),
- &#39;len-4aade36e-f075-48b0-b3c8-46043abd743c&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-5ea84818-d499-4ae1-adb6-69acf9aec2f8&#39;),
- &#39;read_csv-5ea84818-d499-4ae1-adb6-69acf9aec2f8&#39;: (&lt;function pandas.io.parsers._make_parser_function.&lt;locals&gt;.parser_f(filepath_or_buffer: Union[str, pathlib.Path, IO[~AnyStr]], sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal=b&#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)&gt;,
+ &#39;len-5ddbda28-49ea-4a5f-be70-da5b3f23573e&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-9bfcd4cb-32eb-40c0-bff4-02e7fee569d9&#39;),
+ &#39;read_csv-9bfcd4cb-32eb-40c0-bff4-02e7fee569d9&#39;: (&lt;function pandas.io.parsers._make_parser_function.&lt;locals&gt;.parser_f(filepath_or_buffer: Union[str, pathlib.Path, IO[~AnyStr]], sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: str = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)&gt;,
   &#39;data/accounts.1.csv&#39;),
- &#39;len-d711ce73-f051-4417-878d-b17c26f7a4c0&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-3003f3a5-05bc-4e4a-9a2b-ccb5ecf8c8cd&#39;),
- &#39;read_csv-3003f3a5-05bc-4e4a-9a2b-ccb5ecf8c8cd&#39;: (&lt;function pandas.io.parsers._make_parser_function.&lt;locals&gt;.parser_f(filepath_or_buffer: Union[str, pathlib.Path, IO[~AnyStr]], sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal=b&#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)&gt;,
+ &#39;len-2d5cde78-dee6-4c5d-bc7a-fd41ae3fd4c5&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-247e99b8-54e9-42aa-8c6e-6349ac623d41&#39;),
+ &#39;read_csv-247e99b8-54e9-42aa-8c6e-6349ac623d41&#39;: (&lt;function pandas.io.parsers._make_parser_function.&lt;locals&gt;.parser_f(filepath_or_buffer: Union[str, pathlib.Path, IO[~AnyStr]], sep=&#39;,&#39;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: str = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None)&gt;,
   &#39;data/accounts.2.csv&#39;)}
 </pre></div></div>
 </div>
