@@ -206,7 +206,11 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {},
+   "metadata": {
+    "jupyter": {
+     "source_hidden": true
+    }
+   },
    "outputs": [],
    "source": [
     "x = c.submit(inc, 1)\n",
@@ -496,7 +500,7 @@
     "    \n",
     "    # update plot\n",
     "    source.stream({'x': [newx], 'y': [newy], 'c': ['grey']}, rollover=20)\n",
-    "    push_notebook(t)\n",
+    "    push_notebook(document=t)\n",
     "    \n",
     "    # add new point, dynamically, to work on the cluster\n",
     "    new_point = c.submit(rosenbrock, (newx, newy))\n",
