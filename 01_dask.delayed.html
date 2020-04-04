@@ -479,6 +479,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/01_dask.delayed.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/01_dask.delayed.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/01_dask.delayed.ipynb">on Github</a>.</p>
 <div class="section" id="Parallelize-code-with-dask.delayed">
@@ -547,7 +569,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 103 ms, sys: 22.2 ms, total: 125 ms
+CPU times: user 77.1 ms, sys: 10.8 ms, total: 88 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -583,8 +605,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.16 ms, sys: 0 ns, total: 1.16 ms
-Wall time: 929 µs
+CPU times: user 450 µs, sys: 66 µs, total: 516 µs
+Wall time: 443 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -606,7 +628,7 @@ Wall time: 929 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 90.6 ms, sys: 9.18 ms, total: 99.8 ms
+CPU times: user 58.9 ms, sys: 11.2 ms, total: 70.1 ms
 Wall time: 2.02 s
 </pre></div></div>
 </div>
@@ -639,7 +661,7 @@ Wall time: 2.02 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-7c3707e7-36c9-4976-9580-882860deb111&#39;)
+Delayed(&#39;add-3fdd18e3-b256-4888-8fb5-59c0f5c54f9a&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -704,7 +726,7 @@ Delayed(&#39;add-7c3707e7-36c9-4976-9580-882860deb111&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 318 ms, sys: 13.2 ms, total: 331 ms
+CPU times: user 191 ms, sys: 42.8 ms, total: 234 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -741,8 +763,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 1 µs, total: 3 µs
-Wall time: 4.53 µs
+CPU times: user 1e+03 ns, sys: 0 ns, total: 1e+03 ns
+Wall time: 3.58 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -768,7 +790,7 @@ Wall time: 4.53 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-d1ef961f-11c4-4317-a023-82fa1eb7a0b8&#39;)
+Before computing: Delayed(&#39;sum-930394a4-60e2-4650-ad1a-be9f92ca2553&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -824,7 +846,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 380 ms, sys: 61.2 ms, total: 442 ms
+CPU times: user 252 ms, sys: 47.1 ms, total: 299 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -846,7 +868,7 @@ Wall time: 10 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 4.29 µs
+Wall time: 3.58 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -880,7 +902,7 @@ Wall time: 4.29 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 137 ms, sys: 8.71 ms, total: 145 ms
+CPU times: user 69.3 ms, sys: 18.3 ms, total: 87.6 ms
 Wall time: 3.03 s
 </pre></div></div>
 </div>
@@ -1289,8 +1311,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 57.2 ms, sys: 3.96 ms, total: 61.1 ms
-Wall time: 59.7 ms
+CPU times: user 55.8 ms, sys: 0 ns, total: 55.8 ms
+Wall time: 54.6 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1387,8 +1409,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 65.3 ms, sys: 3.96 ms, total: 69.2 ms
-Wall time: 64.4 ms
+CPU times: user 50.2 ms, sys: 0 ns, total: 50.2 ms
+Wall time: 48.8 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1429,7 +1451,7 @@ Name: DepDelay, dtype: float64
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 4.77 µs
+Wall time: 3.81 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>

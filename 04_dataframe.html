@@ -484,6 +484,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/04_dataframe.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/04_dataframe.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/04_dataframe.ipynb">on Github</a>.</p>
 <div class="section" id="Dask-DataFrames">
@@ -601,33 +623,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>59</td>
-      <td>Xavier</td>
-      <td>29</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>335</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>88</td>
+      <td>48</td>
       <td>Frank</td>
-      <td>780</td>
+      <td>983</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>71</td>
-      <td>Alice</td>
-      <td>151</td>
+      <td>46</td>
+      <td>Kevin</td>
+      <td>39</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>48</td>
-      <td>George</td>
-      <td>681</td>
+      <td>90</td>
+      <td>Bob</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Quinn</td>
-      <td>7719</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>241</td>
     </tr>
   </tbody>
 </table>
@@ -1426,8 +1448,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 87.9 ms, sys: 7.39 ms, total: 95.2 ms
-Wall time: 595 ms
+CPU times: user 70.9 ms, sys: 0 ns, total: 70.9 ms
+Wall time: 493 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1677,8 +1699,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 160 ms, sys: 631 µs, total: 160 ms
-Wall time: 492 ms
+CPU times: user 137 ms, sys: 2.62 ms, total: 140 ms
+Wall time: 422 ms
 </pre></div></div>
 </div>
 <p>But lets try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1698,8 +1720,8 @@ Wall time: 492 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 106 ms, sys: 3.6 ms, total: 110 ms
-Wall time: 292 ms
+CPU times: user 88 ms, sys: 13.9 ms, total: 102 ms
+Wall time: 260 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>

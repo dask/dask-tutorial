@@ -464,6 +464,28 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/07_dataframe_storage.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/07_dataframe_storage.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/07_dataframe_storage.ipynb">on Github</a>.</p>
 <div class="section" id="Data-Storage">
@@ -559,33 +581,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>59</td>
-      <td>Xavier</td>
-      <td>29</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>335</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>88</td>
+      <td>48</td>
       <td>Frank</td>
-      <td>780</td>
+      <td>983</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>71</td>
-      <td>Alice</td>
-      <td>151</td>
+      <td>46</td>
+      <td>Kevin</td>
+      <td>39</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>48</td>
-      <td>George</td>
-      <td>681</td>
+      <td>90</td>
+      <td>Bob</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Quinn</td>
-      <td>7719</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>241</td>
     </tr>
   </tbody>
 </table>
@@ -629,8 +651,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 207 ms, sys: 32.9 ms, total: 240 ms
-Wall time: 243 ms
+CPU times: user 183 ms, sys: 24 ms, total: 207 ms
+Wall time: 210 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -684,33 +706,33 @@ Wall time: 243 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>59</td>
-      <td>Xavier</td>
-      <td>29</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>335</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>88</td>
+      <td>48</td>
       <td>Frank</td>
-      <td>780</td>
+      <td>983</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>71</td>
-      <td>Alice</td>
-      <td>151</td>
+      <td>46</td>
+      <td>Kevin</td>
+      <td>39</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>48</td>
-      <td>George</td>
-      <td>681</td>
+      <td>90</td>
+      <td>Bob</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Quinn</td>
-      <td>7719</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>241</td>
     </tr>
   </tbody>
 </table>
@@ -734,8 +756,8 @@ Wall time: 243 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 22.4 ms, sys: 11.9 ms, total: 34.2 ms
-Wall time: 28.3 ms
+CPU times: user 23.6 ms, sys: 4.39 ms, total: 28 ms
+Wall time: 23.8 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -744,7 +766,7 @@ Wall time: 28.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-26752665
+22732679
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -761,8 +783,8 @@ Wall time: 28.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36 ms, sys: 3.86 ms, total: 39.9 ms
-Wall time: 38.9 ms
+CPU times: user 27.9 ms, sys: 4.01 ms, total: 31.9 ms
+Wall time: 31.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -771,7 +793,7 @@ Wall time: 38.9 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-26752665
+22732679
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -800,8 +822,8 @@ Wall time: 38.9 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 115 ms, sys: 7.73 ms, total: 122 ms
-Wall time: 121 ms
+CPU times: user 99.4 ms, sys: 8.17 ms, total: 108 ms
+Wall time: 107 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -855,33 +877,33 @@ Wall time: 121 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>59</td>
-      <td>Xavier</td>
-      <td>29</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>335</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>88</td>
+      <td>48</td>
       <td>Frank</td>
-      <td>780</td>
+      <td>983</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>71</td>
-      <td>Alice</td>
-      <td>151</td>
+      <td>46</td>
+      <td>Kevin</td>
+      <td>39</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>48</td>
-      <td>George</td>
-      <td>681</td>
+      <td>90</td>
+      <td>Bob</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Quinn</td>
-      <td>7719</td>
+      <td>77</td>
+      <td>Jerry</td>
+      <td>241</td>
     </tr>
   </tbody>
 </table>
@@ -902,8 +924,8 @@ Wall time: 121 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 25.4 ms, sys: 0 ns, total: 25.4 ms
-Wall time: 24.7 ms
+CPU times: user 23 ms, sys: 269 µs, total: 23.3 ms
+Wall time: 22.7 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -912,7 +934,7 @@ Wall time: 24.7 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-26752665
+22732679
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
@@ -949,11 +971,11 @@ Wall time: 24.7 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-rw-r-- 1 travis travis    871 Mar 10 16:00 _common_metadata
--rw-rw-r-- 1 travis travis   2080 Mar 10 16:00 _metadata
--rw-rw-r-- 1 travis travis 251965 Mar 10 16:00 part.0.parquet
--rw-rw-r-- 1 travis travis 251965 Mar 10 16:00 part.1.parquet
--rw-rw-r-- 1 travis travis 251965 Mar 10 16:00 part.2.parquet
+-rw-rw-r-- 1 travis travis    871 Apr  4 18:40 _common_metadata
+-rw-rw-r-- 1 travis travis   2080 Apr  4 18:40 _metadata
+-rw-rw-r-- 1 travis travis 251965 Apr  4 18:40 part.0.parquet
+-rw-rw-r-- 1 travis travis 251965 Apr  4 18:40 part.1.parquet
+-rw-rw-r-- 1 travis travis 251965 Apr  4 18:40 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -995,8 +1017,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 116 ms, sys: 12.4 ms, total: 129 ms
-Wall time: 125 ms
+CPU times: user 93.5 ms, sys: 12.6 ms, total: 106 ms
+Wall time: 103 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1005,7 +1027,7 @@ Wall time: 125 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-26752665
+22732679
 </pre></div></div>
 </div>
 <p>When archiving data, it is common to sort and partition by a column with unique identifiers, to facilitate fast look-ups later. For this data, that column is <code class="docutils literal notranslate"><span class="pre">id</span></code>. Time how long it takes to retrieve the rows corresponding to <code class="docutils literal notranslate"><span class="pre">id==100</span></code> from the raw CSV, from HDF5 and parquet versions, and finally from a new parquet version written after applying <code class="docutils literal notranslate"><span class="pre">set_index('id')</span></code>.</p>
