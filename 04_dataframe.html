@@ -623,33 +623,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>77</td>
-      <td>Jerry</td>
-      <td>335</td>
+      <td>74</td>
+      <td>Dan</td>
+      <td>161</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>48</td>
-      <td>Frank</td>
-      <td>983</td>
+      <td>64</td>
+      <td>Hannah</td>
+      <td>2771</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>46</td>
-      <td>Kevin</td>
-      <td>39</td>
+      <td>56</td>
+      <td>George</td>
+      <td>2590</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>90</td>
-      <td>Bob</td>
-      <td>14</td>
+      <td>38</td>
+      <td>Edith</td>
+      <td>2593</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>77</td>
-      <td>Jerry</td>
-      <td>241</td>
+      <td>29</td>
+      <td>Xavier</td>
+      <td>235</td>
     </tr>
   </tbody>
 </table>
@@ -1448,8 +1448,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 70.9 ms, sys: 0 ns, total: 70.9 ms
-Wall time: 493 ms
+CPU times: user 72 ms, sys: 1.49 ms, total: 73.5 ms
+Wall time: 484 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1699,8 +1699,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 137 ms, sys: 2.62 ms, total: 140 ms
-Wall time: 422 ms
+CPU times: user 140 ms, sys: 8.34 ms, total: 148 ms
+Wall time: 461 ms
 </pre></div></div>
 </div>
 <p>But lets try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1720,8 +1720,8 @@ Wall time: 422 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 88 ms, sys: 13.9 ms, total: 102 ms
-Wall time: 260 ms
+CPU times: user 101 ms, sys: 1.46 ms, total: 102 ms
+Wall time: 272 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
