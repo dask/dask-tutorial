@@ -7,7 +7,6 @@ import json
 import gzip
 import tarfile
 import urllib.request
-import zipfile
 
 import h5py
 import numpy as np
