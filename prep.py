@@ -15,6 +15,8 @@ from skimage.transform import resize
 
 from accounts import account_entries, account_params, json_entries
 
+import sources
+
 DATASETS = ["random", "weather", "accounts", "flights", "all"]
 here = os.path.dirname(__file__)
 data_dir = os.path.abspath(os.path.join(here, 'data'))
@@ -53,7 +55,7 @@ def flights(small=None):
 
     if not os.path.exists(flights_raw):
         print("- Downloading NYC Flights dataset... ", end='', flush=True)
-        url = "https://storage.googleapis.com/dask-tutorial-data/nycflights.tar.gz"
+        url = sources.flights_url
         urllib.request.urlretrieve(url, flights_raw)
         print("done", flush=True)
 
