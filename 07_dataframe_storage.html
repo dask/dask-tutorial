@@ -311,20 +311,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 7ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -417,7 +430,7 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -488,9 +501,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/07_dataframe_storage.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/07_dataframe_storage.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/07_dataframe_storage.ipynb">on Github</a>.</p>
+<p><a class="reference internal" href="_images/dask_horizontal.svg"><img alt="8107c4c2926f4a5eb7465fb816151464" src="_images/dask_horizontal.svg" width="30%" /></a></p>
 <div class="section" id="Data-Storage">
 <h1>Data Storage<a class="headerlink" href="#Data-Storage" title="Permalink to this headline">¶</a></h1>
-<p>Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
+<p><a class="reference internal" href="_images/hdd.jpg"><img alt="ffc916ccfd884810aaa726ec234e5631" src="_images/hdd.jpg" style="width: 20%;" /></a> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
 <p>Decompressing text and parsing CSV files is expensive. One of the most effective strategies with medium data is to use a binary storage format like HDF5. Often the performance gains from doing this is sufficient so that you can switch back to using Pandas again instead of using <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>.</p>
 <p>In this section we’ll learn how to efficiently arrange and store your datasets in on-disk binary formats. We’ll use the following:</p>
 <ol class="arabic simple">
@@ -581,33 +595,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>84</td>
-      <td>Ingrid</td>
-      <td>546</td>
+      <td>15</td>
+      <td>George</td>
+      <td>264</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50</td>
-      <td>Tim</td>
-      <td>-228</td>
+      <td>61</td>
+      <td>George</td>
+      <td>660</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>11</td>
-      <td>Frank</td>
-      <td>108</td>
+      <td>85</td>
+      <td>Xavier</td>
+      <td>1773</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>47</td>
-      <td>Jerry</td>
-      <td>3091</td>
+      <td>78</td>
+      <td>Laura</td>
+      <td>1491</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>75</td>
-      <td>Dan</td>
-      <td>358</td>
+      <td>6</td>
+      <td>Tim</td>
+      <td>5196</td>
     </tr>
   </tbody>
 </table>
@@ -651,8 +665,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 186 ms, sys: 32.2 ms, total: 218 ms
-Wall time: 221 ms
+CPU times: user 185 ms, sys: 24.2 ms, total: 209 ms
+Wall time: 212 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -706,33 +720,33 @@ Wall time: 221 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>84</td>
-      <td>Ingrid</td>
-      <td>546</td>
+      <td>15</td>
+      <td>George</td>
+      <td>264</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50</td>
-      <td>Tim</td>
-      <td>-228</td>
+      <td>61</td>
+      <td>George</td>
+      <td>660</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>11</td>
-      <td>Frank</td>
-      <td>108</td>
+      <td>85</td>
+      <td>Xavier</td>
+      <td>1773</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>47</td>
-      <td>Jerry</td>
-      <td>3091</td>
+      <td>78</td>
+      <td>Laura</td>
+      <td>1491</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>75</td>
-      <td>Dan</td>
-      <td>358</td>
+      <td>6</td>
+      <td>Tim</td>
+      <td>5196</td>
     </tr>
   </tbody>
 </table>
@@ -756,8 +770,8 @@ Wall time: 221 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 23.5 ms, sys: 7.39 ms, total: 30.9 ms
-Wall time: 25.5 ms
+CPU times: user 29.6 ms, sys: 130 µs, total: 29.7 ms
+Wall time: 24.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -766,7 +780,7 @@ Wall time: 25.5 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-18043565
+37578863
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -783,8 +797,8 @@ Wall time: 25.5 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 33.4 ms, sys: 0 ns, total: 33.4 ms
-Wall time: 33 ms
+CPU times: user 29.5 ms, sys: 3.76 ms, total: 33.3 ms
+Wall time: 32.8 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -793,7 +807,7 @@ Wall time: 33 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-18043565
+37578863
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -822,8 +836,8 @@ Wall time: 33 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 102 ms, sys: 7.81 ms, total: 110 ms
-Wall time: 110 ms
+CPU times: user 105 ms, sys: 4.03 ms, total: 109 ms
+Wall time: 109 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -877,33 +891,33 @@ Wall time: 110 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>84</td>
-      <td>Ingrid</td>
-      <td>546</td>
+      <td>15</td>
+      <td>George</td>
+      <td>264</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50</td>
-      <td>Tim</td>
-      <td>-228</td>
+      <td>61</td>
+      <td>George</td>
+      <td>660</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>11</td>
-      <td>Frank</td>
-      <td>108</td>
+      <td>85</td>
+      <td>Xavier</td>
+      <td>1773</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>47</td>
-      <td>Jerry</td>
-      <td>3091</td>
+      <td>78</td>
+      <td>Laura</td>
+      <td>1491</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>75</td>
-      <td>Dan</td>
-      <td>358</td>
+      <td>6</td>
+      <td>Tim</td>
+      <td>5196</td>
     </tr>
   </tbody>
 </table>
@@ -924,8 +938,8 @@ Wall time: 110 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 22.7 ms, sys: 287 µs, total: 23 ms
-Wall time: 22.4 ms
+CPU times: user 22.1 ms, sys: 182 µs, total: 22.3 ms
+Wall time: 21.9 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -934,7 +948,7 @@ Wall time: 22.4 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-18043565
+37578863
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
@@ -971,11 +985,11 @@ Wall time: 22.4 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-rw-r-- 1 travis travis    871 May  2 16:32 _common_metadata
--rw-rw-r-- 1 travis travis   2080 May  2 16:32 _metadata
--rw-rw-r-- 1 travis travis 251955 May  2 16:32 part.0.parquet
--rw-rw-r-- 1 travis travis 251955 May  2 16:32 part.1.parquet
--rw-rw-r-- 1 travis travis 251955 May  2 16:32 part.2.parquet
+-rw-rw-r-- 1 travis travis    871 May 20 14:48 _common_metadata
+-rw-rw-r-- 1 travis travis   2080 May 20 14:48 _metadata
+-rw-rw-r-- 1 travis travis 251965 May 20 14:48 part.0.parquet
+-rw-rw-r-- 1 travis travis 251965 May 20 14:48 part.1.parquet
+-rw-rw-r-- 1 travis travis 251965 May 20 14:48 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1017,8 +1031,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 98.3 ms, sys: 12.2 ms, total: 110 ms
-Wall time: 108 ms
+CPU times: user 106 ms, sys: 8.19 ms, total: 114 ms
+Wall time: 112 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1027,7 +1041,7 @@ Wall time: 108 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-18043565
+37578863
 </pre></div></div>
 </div>
 <p>When archiving data, it is common to sort and partition by a column with unique identifiers, to facilitate fast look-ups later. For this data, that column is <code class="docutils literal notranslate"><span class="pre">id</span></code>. Time how long it takes to retrieve the rows corresponding to <code class="docutils literal notranslate"><span class="pre">id==100</span></code> from the raw CSV, from HDF5 and parquet versions, and finally from a new parquet version written after applying <code class="docutils literal notranslate"><span class="pre">set_index('id')</span></code>.</p>
