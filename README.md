@@ -1,7 +1,7 @@
 # Dask Tutorial
 
-This tutorial was last given at SciPy 2018 in Austin Texas.
-[A video is available online](https://www.youtube.com/watch?v=mqdglv9GnM8).
+This tutorial was last given at SciPy 2020 which was a virtual conference.
+[A video of the SciPy 2018 tutorial is available online](https://www.youtube.com/watch?v=mqdglv9GnM8).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab)
 
@@ -42,6 +42,7 @@ In the main repo directory
     conda env create -f binder/environment.yml 
     conda activate dask-tutorial
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    jupyter labextension install @bokeh/jupyter_bokeh
 
 #### b) Install into an existing environment
 
