@@ -40,7 +40,7 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
@@ -244,7 +244,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Dask DataFrames</li>
     
@@ -521,7 +521,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/04_dataframe.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/04_dataframe.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/04_dataframe.ipynb">on Github</a>.</p>
-<p><a class="reference internal" href="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg"><img alt="Dask logo\" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></a></p>
+<p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Dask-DataFrames">
 <h1>Dask DataFrames<a class="headerlink" href="#Dask-DataFrames" title="Permalink to this headline">¶</a></h1>
 <p>We finished Chapter 1 by building a parallel dataframe computation over a directory of CSV files using <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>. In this section we use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> to automatically build similiar computations, for the common case of tabular computations. Dask dataframes look and feel like Pandas dataframes but they run on the same infrastructure that powers <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>.</p>
@@ -529,7 +529,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><a class="reference internal" href="_images/pandas_logo.png"><img alt="09088af133a5440f908a43ef919cdda2" src="_images/pandas_logo.png" style="width: 28%;" /></a></p>
+<p><img alt="730abd9277f24e9385081e34f23b9266" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
@@ -638,33 +638,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>15</td>
-      <td>George</td>
-      <td>264</td>
+      <td>73</td>
+      <td>Jerry</td>
+      <td>194</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>61</td>
-      <td>George</td>
-      <td>660</td>
+      <td>92</td>
+      <td>Dan</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>85</td>
-      <td>Xavier</td>
-      <td>1773</td>
+      <td>50</td>
+      <td>Dan</td>
+      <td>390</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>78</td>
-      <td>Laura</td>
-      <td>1491</td>
+      <td>92</td>
+      <td>Dan</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6</td>
-      <td>Tim</td>
-      <td>5196</td>
+      <td>67</td>
+      <td>Edith</td>
+      <td>46</td>
     </tr>
   </tbody>
 </table>
@@ -908,7 +908,7 @@ div.rendered_html tbody tr:hover {
   </tbody>
 </table>
 </div>
-<div>Dask Name: from-delayed, 30 tasks</div></div>
+<div>Dask Name: read-csv, 10 tasks</div></div>
 </div>
 <p>We can view the start and end of the data</p>
 <div class="nbinput docutils container">
@@ -1111,96 +1111,89 @@ div.rendered_html tbody tr:hover {
 <span class="ansi-green-fg">&lt;ipython-input-9-430ef93b601c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>df<span class="ansi-blue-fg">.</span>tail<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>  <span class="ansi-red-fg"># this fails</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">tail</span><span class="ansi-blue-fg">(self, n, compute)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1017</span>
-<span class="ansi-green-intense-fg ansi-bold">   1018</span>         <span class="ansi-green-fg">if</span> compute<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1019</span><span class="ansi-red-fg">             </span>result <span class="ansi-blue-fg">=</span> result<span class="ansi-blue-fg">.</span>compute<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1020</span>         <span class="ansi-green-fg">return</span> result
-<span class="ansi-green-intense-fg ansi-bold">   1021</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">tail</span><span class="ansi-blue-fg">(self, n, compute)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1051</span>
+<span class="ansi-green-intense-fg ansi-bold">   1052</span>         <span class="ansi-green-fg">if</span> compute<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1053</span><span class="ansi-red-fg">             </span>result <span class="ansi-blue-fg">=</span> result<span class="ansi-blue-fg">.</span>compute<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1054</span>         <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   1055</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(self, **kwargs)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(self, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">    164</span>         dask<span class="ansi-blue-fg">.</span>base<span class="ansi-blue-fg">.</span>compute
 <span class="ansi-green-intense-fg ansi-bold">    165</span>         &#34;&#34;&#34;
 <span class="ansi-green-fg">--&gt; 166</span><span class="ansi-red-fg">         </span><span class="ansi-blue-fg">(</span>result<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">=</span> compute<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> traverse<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">    167</span>         <span class="ansi-green-fg">return</span> result
 <span class="ansi-green-intense-fg ansi-bold">    168</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    435</span>     keys <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>x<span class="ansi-blue-fg">.</span>__dask_keys__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> x <span class="ansi-green-fg">in</span> collections<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    436</span>     postcomputes <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>x<span class="ansi-blue-fg">.</span>__dask_postcompute__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> x <span class="ansi-green-fg">in</span> collections<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">--&gt; 437</span><span class="ansi-red-fg">     </span>results <span class="ansi-blue-fg">=</span> schedule<span class="ansi-blue-fg">(</span>dsk<span class="ansi-blue-fg">,</span> keys<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    438</span>     <span class="ansi-green-fg">return</span> repack<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>f<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">,</span> a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>results<span class="ansi-blue-fg">,</span> postcomputes<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    439</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    442</span>         postcomputes<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">.</span>__dask_postcompute__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    443</span>
+<span class="ansi-green-fg">--&gt; 444</span><span class="ansi-red-fg">     </span>results <span class="ansi-blue-fg">=</span> schedule<span class="ansi-blue-fg">(</span>dsk<span class="ansi-blue-fg">,</span> keys<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    445</span>     <span class="ansi-green-fg">return</span> repack<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>f<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">,</span> a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>results<span class="ansi-blue-fg">,</span> postcomputes<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    446</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(self, dsk, keys, restrictions, loose_restrictions, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2593</span>                     should_rejoin <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
-<span class="ansi-green-intense-fg ansi-bold">   2594</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 2595</span><span class="ansi-red-fg">                 </span>results <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>gather<span class="ansi-blue-fg">(</span>packed<span class="ansi-blue-fg">,</span> asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span> direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2596</span>             <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   2597</span>                 <span class="ansi-green-fg">for</span> f <span class="ansi-green-fg">in</span> futures<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(self, dsk, keys, restrictions, loose_restrictions, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2680</span>                     should_rejoin <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
+<span class="ansi-green-intense-fg ansi-bold">   2681</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 2682</span><span class="ansi-red-fg">                 </span>results <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>gather<span class="ansi-blue-fg">(</span>packed<span class="ansi-blue-fg">,</span> asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span> direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2683</span>             <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2684</span>                 <span class="ansi-green-fg">for</span> f <span class="ansi-green-fg">in</span> futures<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, asynchronous)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1891</span>                 direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   1892</span>                 local_worker<span class="ansi-blue-fg">=</span>local_worker<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1893</span><span class="ansi-red-fg">                 </span>asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   1894</span>             )
-<span class="ansi-green-intense-fg ansi-bold">   1895</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, asynchronous)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1974</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1975</span>                 local_worker <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span>
+<span class="ansi-green-fg">-&gt; 1976</span><span class="ansi-red-fg">             return self.sync(
+</span><span class="ansi-green-intense-fg ansi-bold">   1977</span>                 self<span class="ansi-blue-fg">.</span>_gather<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   1978</span>                 futures<span class="ansi-blue-fg">,</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    778</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    779</span>             return sync(
-<span class="ansi-green-fg">--&gt; 780</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">.</span>loop<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">=</span>callback_timeout<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs
-<span class="ansi-green-intense-fg ansi-bold">    781</span>             )
-<span class="ansi-green-intense-fg ansi-bold">    782</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    829</span>             <span class="ansi-green-fg">return</span> future
+<span class="ansi-green-intense-fg ansi-bold">    830</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 831</span><span class="ansi-red-fg">             return sync(
+</span><span class="ansi-green-intense-fg ansi-bold">    832</span>                 self<span class="ansi-blue-fg">.</span>loop<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">=</span>callback_timeout<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs
+<span class="ansi-green-intense-fg ansi-bold">    833</span>             )
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(loop, func, callback_timeout, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    346</span>     <span class="ansi-green-fg">if</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    347</span>         typ<span class="ansi-blue-fg">,</span> exc<span class="ansi-blue-fg">,</span> tb <span class="ansi-blue-fg">=</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">--&gt; 348</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> exc<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>tb<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    349</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    350</span>         <span class="ansi-green-fg">return</span> result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(loop, func, callback_timeout, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">if</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    338</span>         typ<span class="ansi-blue-fg">,</span> exc<span class="ansi-blue-fg">,</span> tb <span class="ansi-blue-fg">=</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 339</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> exc<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>tb<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    340</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    341</span>         <span class="ansi-green-fg">return</span> result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">f</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">    330</span>             <span class="ansi-green-fg">if</span> callback_timeout <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    331</span>                 future <span class="ansi-blue-fg">=</span> asyncio<span class="ansi-blue-fg">.</span>wait_for<span class="ansi-blue-fg">(</span>future<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 332</span><span class="ansi-red-fg">             </span>result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">yield</span> future
-<span class="ansi-green-intense-fg ansi-bold">    333</span>         <span class="ansi-green-fg">except</span> Exception <span class="ansi-green-fg">as</span> exc<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    334</span>             error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">f</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">    321</span>             <span class="ansi-green-fg">if</span> callback_timeout <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    322</span>                 future <span class="ansi-blue-fg">=</span> asyncio<span class="ansi-blue-fg">.</span>wait_for<span class="ansi-blue-fg">(</span>future<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 323</span><span class="ansi-red-fg">             </span>result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">yield</span> future
+<span class="ansi-green-intense-fg ansi-bold">    324</span>         <span class="ansi-green-fg">except</span> Exception <span class="ansi-green-fg">as</span> exc<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    325</span>             error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/tornado/gen.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/tornado/gen.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(self)</span>
 <span class="ansi-green-intense-fg ansi-bold">    733</span>
 <span class="ansi-green-intense-fg ansi-bold">    734</span>                     <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-fg">--&gt; 735</span><span class="ansi-red-fg">                         </span>value <span class="ansi-blue-fg">=</span> future<span class="ansi-blue-fg">.</span>result<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">    736</span>                     <span class="ansi-green-fg">except</span> Exception<span class="ansi-blue-fg">:</span>
 <span class="ansi-green-intense-fg ansi-bold">    737</span>                         exc_info <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">_gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, local_worker)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1750</span>                             exc <span class="ansi-blue-fg">=</span> CancelledError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1751</span>                         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1752</span><span class="ansi-red-fg">                             </span><span class="ansi-green-fg">raise</span> exception<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>traceback<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1753</span>                         <span class="ansi-green-fg">raise</span> exc
-<span class="ansi-green-intense-fg ansi-bold">   1754</span>                     <span class="ansi-green-fg">if</span> errors <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;skip&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">_gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, local_worker)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1839</span>                             exc <span class="ansi-blue-fg">=</span> CancelledError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1840</span>                         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1841</span><span class="ansi-red-fg">                             </span><span class="ansi-green-fg">raise</span> exception<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>traceback<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1842</span>                         <span class="ansi-green-fg">raise</span> exc
+<span class="ansi-green-intense-fg ansi-bold">   1843</span>                     <span class="ansi-green-fg">if</span> errors <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;skip&#34;</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/utils.py</span> in <span class="ansi-cyan-fg">apply</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     27</span> <span class="ansi-green-fg">def</span> apply<span class="ansi-blue-fg">(</span>func<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     28</span>     <span class="ansi-green-fg">if</span> kwargs<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 29</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     30</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     31</span>         <span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/dataframe/io/csv.py</span> in <span class="ansi-cyan-fg">pandas_read_text</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">    149</span>     df <span class="ansi-blue-fg">=</span> reader<span class="ansi-blue-fg">(</span>bio<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    150</span>     <span class="ansi-green-fg">if</span> dtypes<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 151</span><span class="ansi-red-fg">         </span>coerce_dtypes<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">,</span> dtypes<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    152</span>
+<span class="ansi-green-intense-fg ansi-bold">    153</span>     <span class="ansi-green-fg">if</span> enforce <span class="ansi-green-fg">and</span> columns <span class="ansi-green-fg">and</span> <span class="ansi-blue-fg">(</span>list<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">.</span>columns<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">!=</span> list<span class="ansi-blue-fg">(</span>columns<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/io/csv.py</span> in <span class="ansi-cyan-fg">pandas_read_text</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     68</span>     df <span class="ansi-blue-fg">=</span> reader<span class="ansi-blue-fg">(</span>bio<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     69</span>     <span class="ansi-green-fg">if</span> dtypes<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 70</span><span class="ansi-red-fg">         </span>coerce_dtypes<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">,</span> dtypes<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     71</span>
-<span class="ansi-green-intense-fg ansi-bold">     72</span>     <span class="ansi-green-fg">if</span> enforce <span class="ansi-green-fg">and</span> columns <span class="ansi-green-fg">and</span> <span class="ansi-blue-fg">(</span>list<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">.</span>columns<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">!=</span> list<span class="ansi-blue-fg">(</span>columns<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/io/csv.py</span> in <span class="ansi-cyan-fg">coerce_dtypes</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">    172</span>             rule<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>filter<span class="ansi-blue-fg">(</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">[</span>dtype_msg<span class="ansi-blue-fg">,</span> date_msg<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    173</span>         )
-<span class="ansi-green-fg">--&gt; 174</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span>msg<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    175</span>
-<span class="ansi-green-intense-fg ansi-bold">    176</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/dataframe/io/csv.py</span> in <span class="ansi-cyan-fg">coerce_dtypes</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">    253</span>             rule<span class="ansi-blue-fg">.</span>join<span class="ansi-blue-fg">(</span>filter<span class="ansi-blue-fg">(</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">[</span>dtype_msg<span class="ansi-blue-fg">,</span> date_msg<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    254</span>         )
+<span class="ansi-green-fg">--&gt; 255</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span>msg<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    256</span>
+<span class="ansi-green-intense-fg ansi-bold">    257</span>
 
 <span class="ansi-red-fg">ValueError</span>: Mismatched dtypes found in `pd.read_csv`/`pd.read_table`.
 
@@ -1463,8 +1456,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 75.5 ms, sys: 327 µs, total: 75.8 ms
-Wall time: 501 ms
+CPU times: user 45.1 ms, sys: 338 µs, total: 45.4 ms
+Wall time: 420 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1714,8 +1707,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 150 ms, sys: 443 µs, total: 150 ms
-Wall time: 456 ms
+CPU times: user 96.2 ms, sys: 792 µs, total: 97 ms
+Wall time: 335 ms
 </pre></div></div>
 </div>
 <p>But lets try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1735,8 +1728,8 @@ Wall time: 456 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 86.1 ms, sys: 11.5 ms, total: 97.6 ms
-Wall time: 262 ms
+CPU times: user 132 ms, sys: 8.21 ms, total: 140 ms
+Wall time: 273 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1783,7 +1776,7 @@ Wall time: 262 ms
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><a class="reference internal" href="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg"><img alt="293544742cc9467a8b2e3ed877620ebf" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></a></p>
+<p><img alt="6a67769f4e2247b2a000c93d2170c350" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">
@@ -1972,7 +1965,7 @@ map_partitions(func, *args, **kwargs) method of dask.dataframe.core.Series insta
     In the case where the metadata doesn&#39;t change, you can also pass in
     the object itself directly:
 
-    &gt;&gt;&gt; res = ddf.map_partitions(lambda df: df.head(), meta=df)
+    &gt;&gt;&gt; res = ddf.map_partitions(lambda df: df.head(), meta=ddf)
 
     Also note that the index and divisions are assumed to remain unchanged.
     If the function you&#39;re mapping changes the index/divisions, you&#39;ll need
@@ -2023,7 +2016,7 @@ npartitions=10
                ...
                ...
 dtype: datetime64[ns]
-Dask Name: add, 110 tasks
+Dask Name: add, 90 tasks
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -2086,96 +2079,96 @@ dtype: datetime64[ns]
 <span class="ansi-green-intense-fg ansi-bold">      2</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>departure_timestamp<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">head</span><span class="ansi-blue-fg">(self, n, npartitions, compute)</span>
-<span class="ansi-green-intense-fg ansi-bold">    969</span>             Whether to compute the result<span class="ansi-blue-fg">,</span> default <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">.</span>
-<span class="ansi-green-intense-fg ansi-bold">    970</span>         &#34;&#34;&#34;
-<span class="ansi-green-fg">--&gt; 971</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_head<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">=</span>n<span class="ansi-blue-fg">,</span> npartitions<span class="ansi-blue-fg">=</span>npartitions<span class="ansi-blue-fg">,</span> compute<span class="ansi-blue-fg">=</span>compute<span class="ansi-blue-fg">,</span> safe<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    972</span>
-<span class="ansi-green-intense-fg ansi-bold">    973</span>     <span class="ansi-green-fg">def</span> _head<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> n<span class="ansi-blue-fg">,</span> npartitions<span class="ansi-blue-fg">,</span> compute<span class="ansi-blue-fg">,</span> safe<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">_head</span><span class="ansi-blue-fg">(self, n, npartitions, compute, safe)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1002</span>
-<span class="ansi-green-intense-fg ansi-bold">   1003</span>         <span class="ansi-green-fg">if</span> compute<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1004</span><span class="ansi-red-fg">             </span>result <span class="ansi-blue-fg">=</span> result<span class="ansi-blue-fg">.</span>compute<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1005</span>         <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">head</span><span class="ansi-blue-fg">(self, n, npartitions, compute)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1003</span>             Whether to compute the result<span class="ansi-blue-fg">,</span> default <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">True</span><span class="ansi-blue-fg">.</span>
+<span class="ansi-green-intense-fg ansi-bold">   1004</span>         &#34;&#34;&#34;
+<span class="ansi-green-fg">-&gt; 1005</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_head<span class="ansi-blue-fg">(</span>n<span class="ansi-blue-fg">=</span>n<span class="ansi-blue-fg">,</span> npartitions<span class="ansi-blue-fg">=</span>npartitions<span class="ansi-blue-fg">,</span> compute<span class="ansi-blue-fg">=</span>compute<span class="ansi-blue-fg">,</span> safe<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">   1006</span>
+<span class="ansi-green-intense-fg ansi-bold">   1007</span>     <span class="ansi-green-fg">def</span> _head<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> n<span class="ansi-blue-fg">,</span> npartitions<span class="ansi-blue-fg">,</span> compute<span class="ansi-blue-fg">,</span> safe<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(self, **kwargs)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">_head</span><span class="ansi-blue-fg">(self, n, npartitions, compute, safe)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1036</span>
+<span class="ansi-green-intense-fg ansi-bold">   1037</span>         <span class="ansi-green-fg">if</span> compute<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1038</span><span class="ansi-red-fg">             </span>result <span class="ansi-blue-fg">=</span> result<span class="ansi-blue-fg">.</span>compute<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1039</span>         <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   1040</span>
+
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(self, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">    164</span>         dask<span class="ansi-blue-fg">.</span>base<span class="ansi-blue-fg">.</span>compute
 <span class="ansi-green-intense-fg ansi-bold">    165</span>         &#34;&#34;&#34;
 <span class="ansi-green-fg">--&gt; 166</span><span class="ansi-red-fg">         </span><span class="ansi-blue-fg">(</span>result<span class="ansi-blue-fg">,</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">=</span> compute<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> traverse<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">    167</span>         <span class="ansi-green-fg">return</span> result
 <span class="ansi-green-intense-fg ansi-bold">    168</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    435</span>     keys <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>x<span class="ansi-blue-fg">.</span>__dask_keys__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> x <span class="ansi-green-fg">in</span> collections<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    436</span>     postcomputes <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>x<span class="ansi-blue-fg">.</span>__dask_postcompute__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> x <span class="ansi-green-fg">in</span> collections<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">--&gt; 437</span><span class="ansi-red-fg">     </span>results <span class="ansi-blue-fg">=</span> schedule<span class="ansi-blue-fg">(</span>dsk<span class="ansi-blue-fg">,</span> keys<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    438</span>     <span class="ansi-green-fg">return</span> repack<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>f<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">,</span> a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>results<span class="ansi-blue-fg">,</span> postcomputes<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    439</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/base.py</span> in <span class="ansi-cyan-fg">compute</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    442</span>         postcomputes<span class="ansi-blue-fg">.</span>append<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">.</span>__dask_postcompute__<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    443</span>
+<span class="ansi-green-fg">--&gt; 444</span><span class="ansi-red-fg">     </span>results <span class="ansi-blue-fg">=</span> schedule<span class="ansi-blue-fg">(</span>dsk<span class="ansi-blue-fg">,</span> keys<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    445</span>     <span class="ansi-green-fg">return</span> repack<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">[</span>f<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">for</span> r<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">,</span> a<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>results<span class="ansi-blue-fg">,</span> postcomputes<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    446</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(self, dsk, keys, restrictions, loose_restrictions, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2593</span>                     should_rejoin <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
-<span class="ansi-green-intense-fg ansi-bold">   2594</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 2595</span><span class="ansi-red-fg">                 </span>results <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>gather<span class="ansi-blue-fg">(</span>packed<span class="ansi-blue-fg">,</span> asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span> direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2596</span>             <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   2597</span>                 <span class="ansi-green-fg">for</span> f <span class="ansi-green-fg">in</span> futures<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">get</span><span class="ansi-blue-fg">(self, dsk, keys, restrictions, loose_restrictions, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2680</span>                     should_rejoin <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">False</span>
+<span class="ansi-green-intense-fg ansi-bold">   2681</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 2682</span><span class="ansi-red-fg">                 </span>results <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>gather<span class="ansi-blue-fg">(</span>packed<span class="ansi-blue-fg">,</span> asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span> direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2683</span>             <span class="ansi-green-fg">finally</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2684</span>                 <span class="ansi-green-fg">for</span> f <span class="ansi-green-fg">in</span> futures<span class="ansi-blue-fg">.</span>values<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, asynchronous)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1891</span>                 direct<span class="ansi-blue-fg">=</span>direct<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   1892</span>                 local_worker<span class="ansi-blue-fg">=</span>local_worker<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">-&gt; 1893</span><span class="ansi-red-fg">                 </span>asynchronous<span class="ansi-blue-fg">=</span>asynchronous<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   1894</span>             )
-<span class="ansi-green-intense-fg ansi-bold">   1895</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, asynchronous)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1974</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1975</span>                 local_worker <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">None</span>
+<span class="ansi-green-fg">-&gt; 1976</span><span class="ansi-red-fg">             return self.sync(
+</span><span class="ansi-green-intense-fg ansi-bold">   1977</span>                 self<span class="ansi-blue-fg">.</span>_gather<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   1978</span>                 futures<span class="ansi-blue-fg">,</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    778</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    779</span>             return sync(
-<span class="ansi-green-fg">--&gt; 780</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">.</span>loop<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">=</span>callback_timeout<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs
-<span class="ansi-green-intense-fg ansi-bold">    781</span>             )
-<span class="ansi-green-intense-fg ansi-bold">    782</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    829</span>             <span class="ansi-green-fg">return</span> future
+<span class="ansi-green-intense-fg ansi-bold">    830</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 831</span><span class="ansi-red-fg">             return sync(
+</span><span class="ansi-green-intense-fg ansi-bold">    832</span>                 self<span class="ansi-blue-fg">.</span>loop<span class="ansi-blue-fg">,</span> func<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">=</span>callback_timeout<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs
+<span class="ansi-green-intense-fg ansi-bold">    833</span>             )
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(loop, func, callback_timeout, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    346</span>     <span class="ansi-green-fg">if</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    347</span>         typ<span class="ansi-blue-fg">,</span> exc<span class="ansi-blue-fg">,</span> tb <span class="ansi-blue-fg">=</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">--&gt; 348</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> exc<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>tb<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    349</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    350</span>         <span class="ansi-green-fg">return</span> result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">sync</span><span class="ansi-blue-fg">(loop, func, callback_timeout, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    337</span>     <span class="ansi-green-fg">if</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    338</span>         typ<span class="ansi-blue-fg">,</span> exc<span class="ansi-blue-fg">,</span> tb <span class="ansi-blue-fg">=</span> error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
+<span class="ansi-green-fg">--&gt; 339</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> exc<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>tb<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    340</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    341</span>         <span class="ansi-green-fg">return</span> result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">f</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">    330</span>             <span class="ansi-green-fg">if</span> callback_timeout <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    331</span>                 future <span class="ansi-blue-fg">=</span> asyncio<span class="ansi-blue-fg">.</span>wait_for<span class="ansi-blue-fg">(</span>future<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 332</span><span class="ansi-red-fg">             </span>result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">yield</span> future
-<span class="ansi-green-intense-fg ansi-bold">    333</span>         <span class="ansi-green-fg">except</span> Exception <span class="ansi-green-fg">as</span> exc<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    334</span>             error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/utils.py</span> in <span class="ansi-cyan-fg">f</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">    321</span>             <span class="ansi-green-fg">if</span> callback_timeout <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    322</span>                 future <span class="ansi-blue-fg">=</span> asyncio<span class="ansi-blue-fg">.</span>wait_for<span class="ansi-blue-fg">(</span>future<span class="ansi-blue-fg">,</span> callback_timeout<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">--&gt; 323</span><span class="ansi-red-fg">             </span>result<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">yield</span> future
+<span class="ansi-green-intense-fg ansi-bold">    324</span>         <span class="ansi-green-fg">except</span> Exception <span class="ansi-green-fg">as</span> exc<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    325</span>             error<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/tornado/gen.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/tornado/gen.py</span> in <span class="ansi-cyan-fg">run</span><span class="ansi-blue-fg">(self)</span>
 <span class="ansi-green-intense-fg ansi-bold">    733</span>
 <span class="ansi-green-intense-fg ansi-bold">    734</span>                     <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-fg">--&gt; 735</span><span class="ansi-red-fg">                         </span>value <span class="ansi-blue-fg">=</span> future<span class="ansi-blue-fg">.</span>result<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">    736</span>                     <span class="ansi-green-fg">except</span> Exception<span class="ansi-blue-fg">:</span>
 <span class="ansi-green-intense-fg ansi-bold">    737</span>                         exc_info <span class="ansi-blue-fg">=</span> sys<span class="ansi-blue-fg">.</span>exc_info<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">_gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, local_worker)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1750</span>                             exc <span class="ansi-blue-fg">=</span> CancelledError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1751</span>                         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1752</span><span class="ansi-red-fg">                             </span><span class="ansi-green-fg">raise</span> exception<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>traceback<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1753</span>                         <span class="ansi-green-fg">raise</span> exc
-<span class="ansi-green-intense-fg ansi-bold">   1754</span>                     <span class="ansi-green-fg">if</span> errors <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;skip&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ansi-cyan-fg">_gather</span><span class="ansi-blue-fg">(self, futures, errors, direct, local_worker)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1839</span>                             exc <span class="ansi-blue-fg">=</span> CancelledError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1840</span>                         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1841</span><span class="ansi-red-fg">                             </span><span class="ansi-green-fg">raise</span> exception<span class="ansi-blue-fg">.</span>with_traceback<span class="ansi-blue-fg">(</span>traceback<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1842</span>                         <span class="ansi-green-fg">raise</span> exc
+<span class="ansi-green-intense-fg ansi-bold">   1843</span>                     <span class="ansi-green-fg">if</span> errors <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;skip&#34;</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">safe_head</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">   5934</span>
-<span class="ansi-green-intense-fg ansi-bold">   5935</span> <span class="ansi-green-fg">def</span> safe_head<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">,</span> n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 5936</span><span class="ansi-red-fg">     </span>r <span class="ansi-blue-fg">=</span> M<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">,</span> n<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5937</span>     <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">!=</span> n<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   5938</span>         msg = (
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">safe_head</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">   6169</span>
+<span class="ansi-green-intense-fg ansi-bold">   6170</span> <span class="ansi-green-fg">def</span> safe_head<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">,</span> n<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 6171</span><span class="ansi-red-fg">     </span>r <span class="ansi-blue-fg">=</span> M<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span>df<span class="ansi-blue-fg">,</span> n<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   6172</span>     <span class="ansi-green-fg">if</span> len<span class="ansi-blue-fg">(</span>r<span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">!=</span> n<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   6173</span>         msg = (
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.7/site-packages/dask/utils.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">    879</span>
-<span class="ansi-green-intense-fg ansi-bold">    880</span>     <span class="ansi-green-fg">def</span> __call__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> obj<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 881</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> getattr<span class="ansi-blue-fg">(</span>obj<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>method<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    882</span>
-<span class="ansi-green-intense-fg ansi-bold">    883</span>     <span class="ansi-green-fg">def</span> __reduce__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/dask/utils.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">    893</span>
+<span class="ansi-green-intense-fg ansi-bold">    894</span>     <span class="ansi-green-fg">def</span> __call__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> obj<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 895</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> getattr<span class="ansi-blue-fg">(</span>obj<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>method<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    896</span>
+<span class="ansi-green-intense-fg ansi-bold">    897</span>     <span class="ansi-green-fg">def</span> __reduce__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 
 <span class="ansi-red-fg">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;head&#39;
 </pre></div></div>
@@ -2268,11 +2261,19 @@ dtype: datetime64[ns]
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2283,7 +2284,6 @@ dtype: datetime64[ns]
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

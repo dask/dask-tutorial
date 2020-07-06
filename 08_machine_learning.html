@@ -40,7 +40,7 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
@@ -221,7 +221,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Parallel and Distributed Machine Learning</li>
     
@@ -508,7 +508,7 @@ div.rendered_html tbody tr:hover {
 <li><p>CPU-Bound: Data fits in RAM, but training takes too long. Many hyperparameter combinations, a large ensemble of many models, etc.</p></li>
 <li><p>Memory-bound: Data is larger than RAM, and sampling isn’t an option.</p></li>
 </ol>
-<p><img alt="image0" src="_images/merged_grid_search_graph.svg" /></p>
+<p><img alt="image1" src="_images/merged_grid_search_graph.svg" /></p>
 <ul class="simple">
 <li><p>For in-memory problems, just use scikit-learn (or your favorite ML library).</p></li>
 <li><p>For large models, use <code class="docutils literal notranslate"><span class="pre">dask_ml.joblib</span></code> and your favorite scikit-learn estimator</p></li>
@@ -643,7 +643,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Single-machine-parallelism-with-scikit-learn">
 <h2>Single-machine parallelism with scikit-learn<a class="headerlink" href="#Single-machine-parallelism-with-scikit-learn" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image0" src="_images/merged_grid_search_graph.svg" /></p>
+<p><img alt="image1" src="_images/merged_grid_search_graph.svg" /></p>
 <p>Scikit-Learn has nice <em>single-machine</em> parallelism, via Joblib. Any scikit-learn estimator that can operate in parallel exposes an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> keyword. This controls the number of CPU cores that will be used.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -659,7 +659,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Multi-machine-parallelism-with-Dask">
 <h2>Multi-machine parallelism with Dask<a class="headerlink" href="#Multi-machine-parallelism-with-Dask" title="Permalink to this headline">¶</a></h2>
-<p><img alt="image0" src="_images/merged_grid_search_graph.svg" /></p>
+<p><img alt="image1" src="_images/merged_grid_search_graph.svg" /></p>
 <p>Dask can talk to scikit-learn (via joblib) so that your <em>cluster</em> is used to train a model.</p>
 <p>If you run this on a laptop, it will take quite some time, but the CPU usage will be satisfyingly near 100% for the duration. To run faster, you would need a disrtibuted cluster. That would mean putting something in the call to <code class="docutils literal notranslate"><span class="pre">Client</span></code> something like</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;tcp://my.scheduler.address:8786&#39;</span><span class="p">)</span>
@@ -851,11 +851,19 @@ div.rendered_html tbody tr:hover {
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2018, Dask Developers
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -866,7 +874,6 @@ div.rendered_html tbody tr:hover {
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
