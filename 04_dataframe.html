@@ -529,7 +529,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><img alt="e5d43a4cb2174e5db31e6f7a9ca59d14" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
+<p><img alt="0ae3beb0f7404e158b5edc598d5cfe3d" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
@@ -638,33 +638,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
+      <td>72</td>
       <td>Charlie</td>
-      <td>8</td>
+      <td>939</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>83</td>
-      <td>Zelda</td>
-      <td>99</td>
+      <td>35</td>
+      <td>Xavier</td>
+      <td>1389</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>44</td>
-      <td>Ingrid</td>
-      <td>1327</td>
+      <td>14</td>
+      <td>Norbert</td>
+      <td>-1153</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>30</td>
-      <td>Sarah</td>
-      <td>430</td>
+      <td>35</td>
+      <td>Xavier</td>
+      <td>1230</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>50</td>
-      <td>Yvonne</td>
-      <td>342</td>
+      <td>82</td>
+      <td>Zelda</td>
+      <td>479</td>
     </tr>
   </tbody>
 </table>
@@ -1456,8 +1456,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 41.9 ms, sys: 495 µs, total: 42.4 ms
-Wall time: 414 ms
+CPU times: user 42.3 ms, sys: 370 µs, total: 42.6 ms
+Wall time: 405 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1707,8 +1707,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 80.3 ms, sys: 9.8 ms, total: 90.1 ms
-Wall time: 322 ms
+CPU times: user 77.3 ms, sys: 12.8 ms, total: 90.1 ms
+Wall time: 338 ms
 </pre></div></div>
 </div>
 <p>But lets try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1728,8 +1728,8 @@ Wall time: 322 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 130 ms, sys: 5.05 ms, total: 135 ms
-Wall time: 263 ms
+CPU times: user 120 ms, sys: 10.1 ms, total: 130 ms
+Wall time: 259 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1776,7 +1776,7 @@ Wall time: 263 ms
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><img alt="2f5508f2b26848679ffc61442d68a7c1" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
+<p><img alt="6c407fc064fe434abf29274b19d87cd5" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">

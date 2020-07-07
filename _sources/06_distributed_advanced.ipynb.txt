@@ -152,7 +152,8 @@
    "source": [
     "# notice the difference from total.compute()\n",
     "# notice that this cell completes immediately\n",
-    "fut = c.compute(total)"
+    "fut = c.compute(total)\n",
+    "fut"
    ]
   },
   {
@@ -612,7 +613,7 @@
    "outputs": [],
    "source": [
     "import dask\n",
-    "with dask.set_options(get=dask.local.get_sync):\n",
+    "with dask.config.set(scheduler=\"sync\"):\n",
     "    # do NOT use c.compute(out) here - we specifically do not\n",
     "    # want the distributed scheduler\n",
     "    out.compute()"
@@ -625,7 +626,7 @@
    "outputs": [],
    "source": [
     "# uncomment to enter post-mortem debugger\n",
-    "# debug"
+    "# %debug"
    ]
   },
   {
@@ -659,7 +660,7 @@
    "outputs": [],
    "source": [
     "# uncomment to enter post-mortem debugger\n",
-    "# debug"
+    "# %debug"
    ]
   },
   {
@@ -676,7 +677,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "c.cluster.scheduler.nbytes"
+    "[(k, v.state) for k, v in c.cluster.scheduler.tasks.items() if v.exception is not None]"
    ]
   }
  ],
@@ -697,7 +698,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.6"
+   "version": "3.8.3"
   }
  },
  "nbformat": 4,
