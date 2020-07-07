@@ -29,13 +29,15 @@ schedulers (odd sections.)
 
 ## Prepare
 
-You should clone this repository
+1. You should clone this repository
 
     git clone http://github.com/dask/dask-tutorial
 
 and then install necessary packages.
+There are three different ways to achieve this, pick the one that best suits you.
+They are, in order of preference: 
 
-#### a) Create a conda environment (preferred)
+#### 2a) Create a conda environment (preferred)
 
 In the main repo directory
 
@@ -44,7 +46,7 @@ In the main repo directory
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install @bokeh/jupyter_bokeh
 
-#### b) Install into an existing environment
+#### 2b) Install into an existing environment
 
 You will need the following core libraries
 
@@ -57,7 +59,7 @@ You may find the following libraries helpful for some exercises
 Note that this options will alter your existing environment, potentially changing the versions of packages you already 
 have installed. 
     
-#### c) Use Dockerfile
+#### 2c) Use Dockerfile
 
 You can build a docker image out of the provided Dockerfile.
 
@@ -70,6 +72,8 @@ Run a container, replacing the ID with the output of the previous command
 The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which 
 can be used to access the notebook from browser. You may need to replace the given hostname with "localhost" or
 "127.0.0.1".
+
+**You should follow only one of the options above!**
 
 ### Launch notebook
 
