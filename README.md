@@ -81,6 +81,10 @@ From the repo directory
 
     jupyter notebook 
 
+Or
+
+    jupyter lab
+
 This was already done for method c) and does not need repeating.
 
 ## Links
