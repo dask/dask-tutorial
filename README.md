@@ -29,12 +29,12 @@ schedulers (odd sections.)
 
 ## Prepare
 
-1. You should clone this repository
+#### 1. You should clone this repository
 
     git clone http://github.com/dask/dask-tutorial
 
 and then install necessary packages.
-There are three different ways to achieve this, pick the one that best suits you.
+There are three different ways to achieve this, pick the one that best suits you, and ***only pick one option***.
 They are, in order of preference: 
 
 #### 2a) Create a conda environment (preferred)
@@ -73,7 +73,7 @@ The above command will give an URL (`Like http://(container_id or 127.0.0.1):888
 can be used to access the notebook from browser. You may need to replace the given hostname with "localhost" or
 "127.0.0.1".
 
-**You should follow only one of the options above!**
+#### You should follow only one of the options above!
 
 ### Launch notebook
 
