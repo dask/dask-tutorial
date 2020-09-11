@@ -514,7 +514,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/02_bag.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/02_bag.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/02_bag.ipynb">on Github</a>.</p>
-<p><img alt="ccc1e185689a455990c18ebd831d4c84" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="d8d82c6ae2534c14aaa8479bd8d6ab05" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Bag:-Parallel-Lists-for-semi-structured-data">
 <h1>Bag: Parallel Lists for semi-structured data<a class="headerlink" href="#Bag:-Parallel-Lists-for-semi-structured-data" title="Permalink to this headline">¶</a></h1>
 <p>Dask-bag excels in processing data that can be represented as a sequence of arbitrary inputs. We’ll refer to this as “messy” data, because it can contain complex nested structures, missing fields, mixtures of data types, etc. The <em>functional</em> programming style fits very nicely with standard Python iteration, such as can be found in the <code class="docutils literal notranslate"><span class="pre">itertools</span></code> module.</p>
@@ -602,7 +602,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;{&#34;id&#34;: 0, &#34;name&#34;: &#34;Alice&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 11, &#34;amount&#34;: 6129}, {&#34;transaction-id&#34;: 59, &#34;amount&#34;: 5960}, {&#34;transaction-id&#34;: 502, &#34;amount&#34;: 5685}, {&#34;transaction-id&#34;: 621, &#34;amount&#34;: 6004}, {&#34;transaction-id&#34;: 921, &#34;amount&#34;: 6357}, {&#34;transaction-id&#34;: 1423, &#34;amount&#34;: 5755}, {&#34;transaction-id&#34;: 1971, &#34;amount&#34;: 5997}, {&#34;transaction-id&#34;: 2786, &#34;amount&#34;: 6063}, {&#34;transaction-id&#34;: 3677, &#34;amount&#34;: 5715}, {&#34;transaction-id&#34;: 4406, &#34;amount&#34;: 5720}, {&#34;transaction-id&#34;: 5310, &#34;amount&#34;: 6455}, {&#34;transaction-id&#34;: 5490, &#34;amount&#34;: 5775}, {&#34;transaction-id&#34;: 5762, &#34;amount&#34;: 5805}, {&#34;transaction-id&#34;: 5825, &#34;amount&#34;: 6412}, {&#34;transaction-id&#34;: 6257, &#34;amount&#34;: 5575}, {&#34;transaction-id&#34;: 7086, &#34;amount&#34;: 6723}, {&#34;transaction-id&#34;: 7371, &#34;amount&#34;: 5973}, {&#34;transaction-id&#34;: 7465, &#34;amount&#34;: 5767}, {&#34;transaction-id&#34;: 7488, &#34;amount&#34;: 6048}, {&#34;transaction-id&#34;: 9568, &#34;amount&#34;: 5802}]}\n&#39;,)
+(&#39;{&#34;id&#34;: 0, &#34;name&#34;: &#34;Alice&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 26, &#34;amount&#34;: -90}, {&#34;transaction-id&#34;: 29, &#34;amount&#34;: -103}, {&#34;transaction-id&#34;: 381, &#34;amount&#34;: -4}, {&#34;transaction-id&#34;: 471, &#34;amount&#34;: 9}, {&#34;transaction-id&#34;: 492, &#34;amount&#34;: -38}, {&#34;transaction-id&#34;: 1125, &#34;amount&#34;: -7}, {&#34;transaction-id&#34;: 1132, &#34;amount&#34;: -43}, {&#34;transaction-id&#34;: 1482, &#34;amount&#34;: -41}, {&#34;transaction-id&#34;: 1775, &#34;amount&#34;: -19}, {&#34;transaction-id&#34;: 1823, &#34;amount&#34;: -33}, {&#34;transaction-id&#34;: 1950, &#34;amount&#34;: 59}, {&#34;transaction-id&#34;: 2409, &#34;amount&#34;: -22}, {&#34;transaction-id&#34;: 2502, &#34;amount&#34;: -50}, {&#34;transaction-id&#34;: 2643, &#34;amount&#34;: 5}, {&#34;transaction-id&#34;: 2664, &#34;amount&#34;: -103}, {&#34;transaction-id&#34;: 2876, &#34;amount&#34;: 5}, {&#34;transaction-id&#34;: 3301, &#34;amount&#34;: -80}, {&#34;transaction-id&#34;: 3604, &#34;amount&#34;: 28}, {&#34;transaction-id&#34;: 4504, &#34;amount&#34;: -56}, {&#34;transaction-id&#34;: 4559, &#34;amount&#34;: 10}, {&#34;transaction-id&#34;: 4777, &#34;amount&#34;: -67}, {&#34;transaction-id&#34;: 5013, &#34;amount&#34;: -44}, {&#34;transaction-id&#34;: 5024, &#34;amount&#34;: -40}, {&#34;transaction-id&#34;: 5028, &#34;amount&#34;: 41}, {&#34;transaction-id&#34;: 5247, &#34;amount&#34;: -93}, {&#34;transaction-id&#34;: 5391, &#34;amount&#34;: -148}, {&#34;transaction-id&#34;: 5396, &#34;amount&#34;: -143}, {&#34;transaction-id&#34;: 5540, &#34;amount&#34;: -32}, {&#34;transaction-id&#34;: 5722, &#34;amount&#34;: 13}, {&#34;transaction-id&#34;: 6027, &#34;amount&#34;: -101}, {&#34;transaction-id&#34;: 6076, &#34;amount&#34;: -49}, {&#34;transaction-id&#34;: 6356, &#34;amount&#34;: -25}, {&#34;transaction-id&#34;: 6545, &#34;amount&#34;: -86}, {&#34;transaction-id&#34;: 6583, &#34;amount&#34;: -31}, {&#34;transaction-id&#34;: 6652, &#34;amount&#34;: -114}, {&#34;transaction-id&#34;: 6750, &#34;amount&#34;: -185}, {&#34;transaction-id&#34;: 6899, &#34;amount&#34;: -2}, {&#34;transaction-id&#34;: 6930, &#34;amount&#34;: 45}, {&#34;transaction-id&#34;: 7243, &#34;amount&#34;: 8}, {&#34;transaction-id&#34;: 7320, &#34;amount&#34;: -62}, {&#34;transaction-id&#34;: 7532, &#34;amount&#34;: -9}, {&#34;transaction-id&#34;: 7771, &#34;amount&#34;: 59}, {&#34;transaction-id&#34;: 7913, &#34;amount&#34;: -40}, {&#34;transaction-id&#34;: 7916, &#34;amount&#34;: -157}, {&#34;transaction-id&#34;: 7944, &#34;amount&#34;: -35}, {&#34;transaction-id&#34;: 8157, &#34;amount&#34;: 93}, {&#34;transaction-id&#34;: 8341, &#34;amount&#34;: -73}, {&#34;transaction-id&#34;: 8630, &#34;amount&#34;: -64}, {&#34;transaction-id&#34;: 8919, &#34;amount&#34;: -7}, {&#34;transaction-id&#34;: 8976, &#34;amount&#34;: -76}, {&#34;transaction-id&#34;: 9058, &#34;amount&#34;: -29}, {&#34;transaction-id&#34;: 9092, &#34;amount&#34;: -13}, {&#34;transaction-id&#34;: 9194, &#34;amount&#34;: -107}, {&#34;transaction-id&#34;: 9380, &#34;amount&#34;: 2}, {&#34;transaction-id&#34;: 9582, &#34;amount&#34;: -95}, {&#34;transaction-id&#34;: 9765, &#34;amount&#34;: -15}]}\n&#39;,)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -720,9 +720,9 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(&#39;{&#34;id&#34;: 0, &#34;name&#34;: &#34;Alice&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 11, &#34;amount&#34;: 6129}, {&#34;transaction-id&#34;: 59, &#34;amount&#34;: 5960}, {&#34;transaction-id&#34;: 502, &#34;amount&#34;: 5685}, {&#34;transaction-id&#34;: 621, &#34;amount&#34;: 6004}, {&#34;transaction-id&#34;: 921, &#34;amount&#34;: 6357}, {&#34;transaction-id&#34;: 1423, &#34;amount&#34;: 5755}, {&#34;transaction-id&#34;: 1971, &#34;amount&#34;: 5997}, {&#34;transaction-id&#34;: 2786, &#34;amount&#34;: 6063}, {&#34;transaction-id&#34;: 3677, &#34;amount&#34;: 5715}, {&#34;transaction-id&#34;: 4406, &#34;amount&#34;: 5720}, {&#34;transaction-id&#34;: 5310, &#34;amount&#34;: 6455}, {&#34;transaction-id&#34;: 5490, &#34;amount&#34;: 5775}, {&#34;transaction-id&#34;: 5762, &#34;amount&#34;: 5805}, {&#34;transaction-id&#34;: 5825, &#34;amount&#34;: 6412}, {&#34;transaction-id&#34;: 6257, &#34;amount&#34;: 5575}, {&#34;transaction-id&#34;: 7086, &#34;amount&#34;: 6723}, {&#34;transaction-id&#34;: 7371, &#34;amount&#34;: 5973}, {&#34;transaction-id&#34;: 7465, &#34;amount&#34;: 5767}, {&#34;transaction-id&#34;: 7488, &#34;amount&#34;: 6048}, {&#34;transaction-id&#34;: 9568, &#34;amount&#34;: 5802}]}\n&#39;,
- &#39;{&#34;id&#34;: 1, &#34;name&#34;: &#34;Frank&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 114, &#34;amount&#34;: -548}, {&#34;transaction-id&#34;: 1497, &#34;amount&#34;: -222}, {&#34;transaction-id&#34;: 1556, &#34;amount&#34;: 137}, {&#34;transaction-id&#34;: 2044, &#34;amount&#34;: -204}, {&#34;transaction-id&#34;: 2216, &#34;amount&#34;: -214}, {&#34;transaction-id&#34;: 3160, &#34;amount&#34;: -249}, {&#34;transaction-id&#34;: 3843, &#34;amount&#34;: -232}, {&#34;transaction-id&#34;: 4509, &#34;amount&#34;: -195}, {&#34;transaction-id&#34;: 5157, &#34;amount&#34;: -244}, {&#34;transaction-id&#34;: 6504, &#34;amount&#34;: -367}, {&#34;transaction-id&#34;: 8587, &#34;amount&#34;: -394}, {&#34;transaction-id&#34;: 8616, &#34;amount&#34;: -334}, {&#34;transaction-id&#34;: 9440, &#34;amount&#34;: -97}, {&#34;transaction-id&#34;: 9898, &#34;amount&#34;: -126}]}\n&#39;,
- &#39;{&#34;id&#34;: 2, &#34;name&#34;: &#34;Frank&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 277, &#34;amount&#34;: -33}, {&#34;transaction-id&#34;: 1306, &#34;amount&#34;: -118}, {&#34;transaction-id&#34;: 2391, &#34;amount&#34;: -171}, {&#34;transaction-id&#34;: 3828, &#34;amount&#34;: -94}, {&#34;transaction-id&#34;: 3997, &#34;amount&#34;: -154}, {&#34;transaction-id&#34;: 4057, &#34;amount&#34;: -108}, {&#34;transaction-id&#34;: 5130, &#34;amount&#34;: -4}, {&#34;transaction-id&#34;: 6165, &#34;amount&#34;: -235}, {&#34;transaction-id&#34;: 7094, &#34;amount&#34;: -48}, {&#34;transaction-id&#34;: 7360, &#34;amount&#34;: -178}, {&#34;transaction-id&#34;: 7537, &#34;amount&#34;: -117}, {&#34;transaction-id&#34;: 7901, &#34;amount&#34;: -87}, {&#34;transaction-id&#34;: 8173, &#34;amount&#34;: -80}, {&#34;transaction-id&#34;: 8776, &#34;amount&#34;: -122}, {&#34;transaction-id&#34;: 9318, &#34;amount&#34;: -94}]}\n&#39;)
+(&#39;{&#34;id&#34;: 0, &#34;name&#34;: &#34;Alice&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 26, &#34;amount&#34;: -90}, {&#34;transaction-id&#34;: 29, &#34;amount&#34;: -103}, {&#34;transaction-id&#34;: 381, &#34;amount&#34;: -4}, {&#34;transaction-id&#34;: 471, &#34;amount&#34;: 9}, {&#34;transaction-id&#34;: 492, &#34;amount&#34;: -38}, {&#34;transaction-id&#34;: 1125, &#34;amount&#34;: -7}, {&#34;transaction-id&#34;: 1132, &#34;amount&#34;: -43}, {&#34;transaction-id&#34;: 1482, &#34;amount&#34;: -41}, {&#34;transaction-id&#34;: 1775, &#34;amount&#34;: -19}, {&#34;transaction-id&#34;: 1823, &#34;amount&#34;: -33}, {&#34;transaction-id&#34;: 1950, &#34;amount&#34;: 59}, {&#34;transaction-id&#34;: 2409, &#34;amount&#34;: -22}, {&#34;transaction-id&#34;: 2502, &#34;amount&#34;: -50}, {&#34;transaction-id&#34;: 2643, &#34;amount&#34;: 5}, {&#34;transaction-id&#34;: 2664, &#34;amount&#34;: -103}, {&#34;transaction-id&#34;: 2876, &#34;amount&#34;: 5}, {&#34;transaction-id&#34;: 3301, &#34;amount&#34;: -80}, {&#34;transaction-id&#34;: 3604, &#34;amount&#34;: 28}, {&#34;transaction-id&#34;: 4504, &#34;amount&#34;: -56}, {&#34;transaction-id&#34;: 4559, &#34;amount&#34;: 10}, {&#34;transaction-id&#34;: 4777, &#34;amount&#34;: -67}, {&#34;transaction-id&#34;: 5013, &#34;amount&#34;: -44}, {&#34;transaction-id&#34;: 5024, &#34;amount&#34;: -40}, {&#34;transaction-id&#34;: 5028, &#34;amount&#34;: 41}, {&#34;transaction-id&#34;: 5247, &#34;amount&#34;: -93}, {&#34;transaction-id&#34;: 5391, &#34;amount&#34;: -148}, {&#34;transaction-id&#34;: 5396, &#34;amount&#34;: -143}, {&#34;transaction-id&#34;: 5540, &#34;amount&#34;: -32}, {&#34;transaction-id&#34;: 5722, &#34;amount&#34;: 13}, {&#34;transaction-id&#34;: 6027, &#34;amount&#34;: -101}, {&#34;transaction-id&#34;: 6076, &#34;amount&#34;: -49}, {&#34;transaction-id&#34;: 6356, &#34;amount&#34;: -25}, {&#34;transaction-id&#34;: 6545, &#34;amount&#34;: -86}, {&#34;transaction-id&#34;: 6583, &#34;amount&#34;: -31}, {&#34;transaction-id&#34;: 6652, &#34;amount&#34;: -114}, {&#34;transaction-id&#34;: 6750, &#34;amount&#34;: -185}, {&#34;transaction-id&#34;: 6899, &#34;amount&#34;: -2}, {&#34;transaction-id&#34;: 6930, &#34;amount&#34;: 45}, {&#34;transaction-id&#34;: 7243, &#34;amount&#34;: 8}, {&#34;transaction-id&#34;: 7320, &#34;amount&#34;: -62}, {&#34;transaction-id&#34;: 7532, &#34;amount&#34;: -9}, {&#34;transaction-id&#34;: 7771, &#34;amount&#34;: 59}, {&#34;transaction-id&#34;: 7913, &#34;amount&#34;: -40}, {&#34;transaction-id&#34;: 7916, &#34;amount&#34;: -157}, {&#34;transaction-id&#34;: 7944, &#34;amount&#34;: -35}, {&#34;transaction-id&#34;: 8157, &#34;amount&#34;: 93}, {&#34;transaction-id&#34;: 8341, &#34;amount&#34;: -73}, {&#34;transaction-id&#34;: 8630, &#34;amount&#34;: -64}, {&#34;transaction-id&#34;: 8919, &#34;amount&#34;: -7}, {&#34;transaction-id&#34;: 8976, &#34;amount&#34;: -76}, {&#34;transaction-id&#34;: 9058, &#34;amount&#34;: -29}, {&#34;transaction-id&#34;: 9092, &#34;amount&#34;: -13}, {&#34;transaction-id&#34;: 9194, &#34;amount&#34;: -107}, {&#34;transaction-id&#34;: 9380, &#34;amount&#34;: 2}, {&#34;transaction-id&#34;: 9582, &#34;amount&#34;: -95}, {&#34;transaction-id&#34;: 9765, &#34;amount&#34;: -15}]}\n&#39;,
+ &#39;{&#34;id&#34;: 1, &#34;name&#34;: &#34;Yvonne&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 62, &#34;amount&#34;: 954}, {&#34;transaction-id&#34;: 830, &#34;amount&#34;: 986}, {&#34;transaction-id&#34;: 2442, &#34;amount&#34;: 916}, {&#34;transaction-id&#34;: 5451, &#34;amount&#34;: 982}, {&#34;transaction-id&#34;: 7778, &#34;amount&#34;: 911}, {&#34;transaction-id&#34;: 8697, &#34;amount&#34;: 964}]}\n&#39;,
+ &#39;{&#34;id&#34;: 2, &#34;name&#34;: &#34;Laura&#34;, &#34;transactions&#34;: [{&#34;transaction-id&#34;: 1574, &#34;amount&#34;: 197}, {&#34;transaction-id&#34;: 2824, &#34;amount&#34;: 236}, {&#34;transaction-id&#34;: 4268, &#34;amount&#34;: 281}, {&#34;transaction-id&#34;: 5004, &#34;amount&#34;: 252}, {&#34;transaction-id&#34;: 6955, &#34;amount&#34;: 203}, {&#34;transaction-id&#34;: 7664, &#34;amount&#34;: 274}, {&#34;transaction-id&#34;: 8302, &#34;amount&#34;: 169}, {&#34;transaction-id&#34;: 8696, &#34;amount&#34;: 258}, {&#34;transaction-id&#34;: 8966, &#34;amount&#34;: 225}, {&#34;transaction-id&#34;: 9227, &#34;amount&#34;: 197}]}\n&#39;)
 </pre></div></div>
 </div>
 <p>Our data comes out of the file as lines of text. Notice that file decompression happened automatically. We can make this data look more reasonable by mapping the <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> function onto our bag.</p>
@@ -746,59 +746,82 @@ dask.bag&lt;lambda, npartitions=10&gt;
 <div class="highlight"><pre>
 ({&#39;id&#39;: 0,
   &#39;name&#39;: &#39;Alice&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 11, &#39;amount&#39;: 6129},
-   {&#39;transaction-id&#39;: 59, &#39;amount&#39;: 5960},
-   {&#39;transaction-id&#39;: 502, &#39;amount&#39;: 5685},
-   {&#39;transaction-id&#39;: 621, &#39;amount&#39;: 6004},
-   {&#39;transaction-id&#39;: 921, &#39;amount&#39;: 6357},
-   {&#39;transaction-id&#39;: 1423, &#39;amount&#39;: 5755},
-   {&#39;transaction-id&#39;: 1971, &#39;amount&#39;: 5997},
-   {&#39;transaction-id&#39;: 2786, &#39;amount&#39;: 6063},
-   {&#39;transaction-id&#39;: 3677, &#39;amount&#39;: 5715},
-   {&#39;transaction-id&#39;: 4406, &#39;amount&#39;: 5720},
-   {&#39;transaction-id&#39;: 5310, &#39;amount&#39;: 6455},
-   {&#39;transaction-id&#39;: 5490, &#39;amount&#39;: 5775},
-   {&#39;transaction-id&#39;: 5762, &#39;amount&#39;: 5805},
-   {&#39;transaction-id&#39;: 5825, &#39;amount&#39;: 6412},
-   {&#39;transaction-id&#39;: 6257, &#39;amount&#39;: 5575},
-   {&#39;transaction-id&#39;: 7086, &#39;amount&#39;: 6723},
-   {&#39;transaction-id&#39;: 7371, &#39;amount&#39;: 5973},
-   {&#39;transaction-id&#39;: 7465, &#39;amount&#39;: 5767},
-   {&#39;transaction-id&#39;: 7488, &#39;amount&#39;: 6048},
-   {&#39;transaction-id&#39;: 9568, &#39;amount&#39;: 5802}]},
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 26, &#39;amount&#39;: -90},
+   {&#39;transaction-id&#39;: 29, &#39;amount&#39;: -103},
+   {&#39;transaction-id&#39;: 381, &#39;amount&#39;: -4},
+   {&#39;transaction-id&#39;: 471, &#39;amount&#39;: 9},
+   {&#39;transaction-id&#39;: 492, &#39;amount&#39;: -38},
+   {&#39;transaction-id&#39;: 1125, &#39;amount&#39;: -7},
+   {&#39;transaction-id&#39;: 1132, &#39;amount&#39;: -43},
+   {&#39;transaction-id&#39;: 1482, &#39;amount&#39;: -41},
+   {&#39;transaction-id&#39;: 1775, &#39;amount&#39;: -19},
+   {&#39;transaction-id&#39;: 1823, &#39;amount&#39;: -33},
+   {&#39;transaction-id&#39;: 1950, &#39;amount&#39;: 59},
+   {&#39;transaction-id&#39;: 2409, &#39;amount&#39;: -22},
+   {&#39;transaction-id&#39;: 2502, &#39;amount&#39;: -50},
+   {&#39;transaction-id&#39;: 2643, &#39;amount&#39;: 5},
+   {&#39;transaction-id&#39;: 2664, &#39;amount&#39;: -103},
+   {&#39;transaction-id&#39;: 2876, &#39;amount&#39;: 5},
+   {&#39;transaction-id&#39;: 3301, &#39;amount&#39;: -80},
+   {&#39;transaction-id&#39;: 3604, &#39;amount&#39;: 28},
+   {&#39;transaction-id&#39;: 4504, &#39;amount&#39;: -56},
+   {&#39;transaction-id&#39;: 4559, &#39;amount&#39;: 10},
+   {&#39;transaction-id&#39;: 4777, &#39;amount&#39;: -67},
+   {&#39;transaction-id&#39;: 5013, &#39;amount&#39;: -44},
+   {&#39;transaction-id&#39;: 5024, &#39;amount&#39;: -40},
+   {&#39;transaction-id&#39;: 5028, &#39;amount&#39;: 41},
+   {&#39;transaction-id&#39;: 5247, &#39;amount&#39;: -93},
+   {&#39;transaction-id&#39;: 5391, &#39;amount&#39;: -148},
+   {&#39;transaction-id&#39;: 5396, &#39;amount&#39;: -143},
+   {&#39;transaction-id&#39;: 5540, &#39;amount&#39;: -32},
+   {&#39;transaction-id&#39;: 5722, &#39;amount&#39;: 13},
+   {&#39;transaction-id&#39;: 6027, &#39;amount&#39;: -101},
+   {&#39;transaction-id&#39;: 6076, &#39;amount&#39;: -49},
+   {&#39;transaction-id&#39;: 6356, &#39;amount&#39;: -25},
+   {&#39;transaction-id&#39;: 6545, &#39;amount&#39;: -86},
+   {&#39;transaction-id&#39;: 6583, &#39;amount&#39;: -31},
+   {&#39;transaction-id&#39;: 6652, &#39;amount&#39;: -114},
+   {&#39;transaction-id&#39;: 6750, &#39;amount&#39;: -185},
+   {&#39;transaction-id&#39;: 6899, &#39;amount&#39;: -2},
+   {&#39;transaction-id&#39;: 6930, &#39;amount&#39;: 45},
+   {&#39;transaction-id&#39;: 7243, &#39;amount&#39;: 8},
+   {&#39;transaction-id&#39;: 7320, &#39;amount&#39;: -62},
+   {&#39;transaction-id&#39;: 7532, &#39;amount&#39;: -9},
+   {&#39;transaction-id&#39;: 7771, &#39;amount&#39;: 59},
+   {&#39;transaction-id&#39;: 7913, &#39;amount&#39;: -40},
+   {&#39;transaction-id&#39;: 7916, &#39;amount&#39;: -157},
+   {&#39;transaction-id&#39;: 7944, &#39;amount&#39;: -35},
+   {&#39;transaction-id&#39;: 8157, &#39;amount&#39;: 93},
+   {&#39;transaction-id&#39;: 8341, &#39;amount&#39;: -73},
+   {&#39;transaction-id&#39;: 8630, &#39;amount&#39;: -64},
+   {&#39;transaction-id&#39;: 8919, &#39;amount&#39;: -7},
+   {&#39;transaction-id&#39;: 8976, &#39;amount&#39;: -76},
+   {&#39;transaction-id&#39;: 9058, &#39;amount&#39;: -29},
+   {&#39;transaction-id&#39;: 9092, &#39;amount&#39;: -13},
+   {&#39;transaction-id&#39;: 9194, &#39;amount&#39;: -107},
+   {&#39;transaction-id&#39;: 9380, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 9582, &#39;amount&#39;: -95},
+   {&#39;transaction-id&#39;: 9765, &#39;amount&#39;: -15}]},
  {&#39;id&#39;: 1,
-  &#39;name&#39;: &#39;Frank&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 114, &#39;amount&#39;: -548},
-   {&#39;transaction-id&#39;: 1497, &#39;amount&#39;: -222},
-   {&#39;transaction-id&#39;: 1556, &#39;amount&#39;: 137},
-   {&#39;transaction-id&#39;: 2044, &#39;amount&#39;: -204},
-   {&#39;transaction-id&#39;: 2216, &#39;amount&#39;: -214},
-   {&#39;transaction-id&#39;: 3160, &#39;amount&#39;: -249},
-   {&#39;transaction-id&#39;: 3843, &#39;amount&#39;: -232},
-   {&#39;transaction-id&#39;: 4509, &#39;amount&#39;: -195},
-   {&#39;transaction-id&#39;: 5157, &#39;amount&#39;: -244},
-   {&#39;transaction-id&#39;: 6504, &#39;amount&#39;: -367},
-   {&#39;transaction-id&#39;: 8587, &#39;amount&#39;: -394},
-   {&#39;transaction-id&#39;: 8616, &#39;amount&#39;: -334},
-   {&#39;transaction-id&#39;: 9440, &#39;amount&#39;: -97},
-   {&#39;transaction-id&#39;: 9898, &#39;amount&#39;: -126}]},
+  &#39;name&#39;: &#39;Yvonne&#39;,
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 62, &#39;amount&#39;: 954},
+   {&#39;transaction-id&#39;: 830, &#39;amount&#39;: 986},
+   {&#39;transaction-id&#39;: 2442, &#39;amount&#39;: 916},
+   {&#39;transaction-id&#39;: 5451, &#39;amount&#39;: 982},
+   {&#39;transaction-id&#39;: 7778, &#39;amount&#39;: 911},
+   {&#39;transaction-id&#39;: 8697, &#39;amount&#39;: 964}]},
  {&#39;id&#39;: 2,
-  &#39;name&#39;: &#39;Frank&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 277, &#39;amount&#39;: -33},
-   {&#39;transaction-id&#39;: 1306, &#39;amount&#39;: -118},
-   {&#39;transaction-id&#39;: 2391, &#39;amount&#39;: -171},
-   {&#39;transaction-id&#39;: 3828, &#39;amount&#39;: -94},
-   {&#39;transaction-id&#39;: 3997, &#39;amount&#39;: -154},
-   {&#39;transaction-id&#39;: 4057, &#39;amount&#39;: -108},
-   {&#39;transaction-id&#39;: 5130, &#39;amount&#39;: -4},
-   {&#39;transaction-id&#39;: 6165, &#39;amount&#39;: -235},
-   {&#39;transaction-id&#39;: 7094, &#39;amount&#39;: -48},
-   {&#39;transaction-id&#39;: 7360, &#39;amount&#39;: -178},
-   {&#39;transaction-id&#39;: 7537, &#39;amount&#39;: -117},
-   {&#39;transaction-id&#39;: 7901, &#39;amount&#39;: -87},
-   {&#39;transaction-id&#39;: 8173, &#39;amount&#39;: -80},
-   {&#39;transaction-id&#39;: 8776, &#39;amount&#39;: -122},
-   {&#39;transaction-id&#39;: 9318, &#39;amount&#39;: -94}]})
+  &#39;name&#39;: &#39;Laura&#39;,
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 1574, &#39;amount&#39;: 197},
+   {&#39;transaction-id&#39;: 2824, &#39;amount&#39;: 236},
+   {&#39;transaction-id&#39;: 4268, &#39;amount&#39;: 281},
+   {&#39;transaction-id&#39;: 5004, &#39;amount&#39;: 252},
+   {&#39;transaction-id&#39;: 6955, &#39;amount&#39;: 203},
+   {&#39;transaction-id&#39;: 7664, &#39;amount&#39;: 274},
+   {&#39;transaction-id&#39;: 8302, &#39;amount&#39;: 169},
+   {&#39;transaction-id&#39;: 8696, &#39;amount&#39;: 258},
+   {&#39;transaction-id&#39;: 8966, &#39;amount&#39;: 225},
+   {&#39;transaction-id&#39;: 9227, &#39;amount&#39;: 197}]})
 </pre></div></div>
 </div>
 </div>
@@ -823,117 +846,233 @@ dask.bag&lt;lambda, npartitions=10&gt;
 <div class="highlight"><pre>
 ({&#39;id&#39;: 0,
   &#39;name&#39;: &#39;Alice&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 11, &#39;amount&#39;: 6129},
-   {&#39;transaction-id&#39;: 59, &#39;amount&#39;: 5960},
-   {&#39;transaction-id&#39;: 502, &#39;amount&#39;: 5685},
-   {&#39;transaction-id&#39;: 621, &#39;amount&#39;: 6004},
-   {&#39;transaction-id&#39;: 921, &#39;amount&#39;: 6357},
-   {&#39;transaction-id&#39;: 1423, &#39;amount&#39;: 5755},
-   {&#39;transaction-id&#39;: 1971, &#39;amount&#39;: 5997},
-   {&#39;transaction-id&#39;: 2786, &#39;amount&#39;: 6063},
-   {&#39;transaction-id&#39;: 3677, &#39;amount&#39;: 5715},
-   {&#39;transaction-id&#39;: 4406, &#39;amount&#39;: 5720},
-   {&#39;transaction-id&#39;: 5310, &#39;amount&#39;: 6455},
-   {&#39;transaction-id&#39;: 5490, &#39;amount&#39;: 5775},
-   {&#39;transaction-id&#39;: 5762, &#39;amount&#39;: 5805},
-   {&#39;transaction-id&#39;: 5825, &#39;amount&#39;: 6412},
-   {&#39;transaction-id&#39;: 6257, &#39;amount&#39;: 5575},
-   {&#39;transaction-id&#39;: 7086, &#39;amount&#39;: 6723},
-   {&#39;transaction-id&#39;: 7371, &#39;amount&#39;: 5973},
-   {&#39;transaction-id&#39;: 7465, &#39;amount&#39;: 5767},
-   {&#39;transaction-id&#39;: 7488, &#39;amount&#39;: 6048},
-   {&#39;transaction-id&#39;: 9568, &#39;amount&#39;: 5802}]},
- {&#39;id&#39;: 5,
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 26, &#39;amount&#39;: -90},
+   {&#39;transaction-id&#39;: 29, &#39;amount&#39;: -103},
+   {&#39;transaction-id&#39;: 381, &#39;amount&#39;: -4},
+   {&#39;transaction-id&#39;: 471, &#39;amount&#39;: 9},
+   {&#39;transaction-id&#39;: 492, &#39;amount&#39;: -38},
+   {&#39;transaction-id&#39;: 1125, &#39;amount&#39;: -7},
+   {&#39;transaction-id&#39;: 1132, &#39;amount&#39;: -43},
+   {&#39;transaction-id&#39;: 1482, &#39;amount&#39;: -41},
+   {&#39;transaction-id&#39;: 1775, &#39;amount&#39;: -19},
+   {&#39;transaction-id&#39;: 1823, &#39;amount&#39;: -33},
+   {&#39;transaction-id&#39;: 1950, &#39;amount&#39;: 59},
+   {&#39;transaction-id&#39;: 2409, &#39;amount&#39;: -22},
+   {&#39;transaction-id&#39;: 2502, &#39;amount&#39;: -50},
+   {&#39;transaction-id&#39;: 2643, &#39;amount&#39;: 5},
+   {&#39;transaction-id&#39;: 2664, &#39;amount&#39;: -103},
+   {&#39;transaction-id&#39;: 2876, &#39;amount&#39;: 5},
+   {&#39;transaction-id&#39;: 3301, &#39;amount&#39;: -80},
+   {&#39;transaction-id&#39;: 3604, &#39;amount&#39;: 28},
+   {&#39;transaction-id&#39;: 4504, &#39;amount&#39;: -56},
+   {&#39;transaction-id&#39;: 4559, &#39;amount&#39;: 10},
+   {&#39;transaction-id&#39;: 4777, &#39;amount&#39;: -67},
+   {&#39;transaction-id&#39;: 5013, &#39;amount&#39;: -44},
+   {&#39;transaction-id&#39;: 5024, &#39;amount&#39;: -40},
+   {&#39;transaction-id&#39;: 5028, &#39;amount&#39;: 41},
+   {&#39;transaction-id&#39;: 5247, &#39;amount&#39;: -93},
+   {&#39;transaction-id&#39;: 5391, &#39;amount&#39;: -148},
+   {&#39;transaction-id&#39;: 5396, &#39;amount&#39;: -143},
+   {&#39;transaction-id&#39;: 5540, &#39;amount&#39;: -32},
+   {&#39;transaction-id&#39;: 5722, &#39;amount&#39;: 13},
+   {&#39;transaction-id&#39;: 6027, &#39;amount&#39;: -101},
+   {&#39;transaction-id&#39;: 6076, &#39;amount&#39;: -49},
+   {&#39;transaction-id&#39;: 6356, &#39;amount&#39;: -25},
+   {&#39;transaction-id&#39;: 6545, &#39;amount&#39;: -86},
+   {&#39;transaction-id&#39;: 6583, &#39;amount&#39;: -31},
+   {&#39;transaction-id&#39;: 6652, &#39;amount&#39;: -114},
+   {&#39;transaction-id&#39;: 6750, &#39;amount&#39;: -185},
+   {&#39;transaction-id&#39;: 6899, &#39;amount&#39;: -2},
+   {&#39;transaction-id&#39;: 6930, &#39;amount&#39;: 45},
+   {&#39;transaction-id&#39;: 7243, &#39;amount&#39;: 8},
+   {&#39;transaction-id&#39;: 7320, &#39;amount&#39;: -62},
+   {&#39;transaction-id&#39;: 7532, &#39;amount&#39;: -9},
+   {&#39;transaction-id&#39;: 7771, &#39;amount&#39;: 59},
+   {&#39;transaction-id&#39;: 7913, &#39;amount&#39;: -40},
+   {&#39;transaction-id&#39;: 7916, &#39;amount&#39;: -157},
+   {&#39;transaction-id&#39;: 7944, &#39;amount&#39;: -35},
+   {&#39;transaction-id&#39;: 8157, &#39;amount&#39;: 93},
+   {&#39;transaction-id&#39;: 8341, &#39;amount&#39;: -73},
+   {&#39;transaction-id&#39;: 8630, &#39;amount&#39;: -64},
+   {&#39;transaction-id&#39;: 8919, &#39;amount&#39;: -7},
+   {&#39;transaction-id&#39;: 8976, &#39;amount&#39;: -76},
+   {&#39;transaction-id&#39;: 9058, &#39;amount&#39;: -29},
+   {&#39;transaction-id&#39;: 9092, &#39;amount&#39;: -13},
+   {&#39;transaction-id&#39;: 9194, &#39;amount&#39;: -107},
+   {&#39;transaction-id&#39;: 9380, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 9582, &#39;amount&#39;: -95},
+   {&#39;transaction-id&#39;: 9765, &#39;amount&#39;: -15}]},
+ {&#39;id&#39;: 31,
   &#39;name&#39;: &#39;Alice&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 188, &#39;amount&#39;: 331},
-   {&#39;transaction-id&#39;: 244, &#39;amount&#39;: 388},
-   {&#39;transaction-id&#39;: 343, &#39;amount&#39;: 386},
-   {&#39;transaction-id&#39;: 453, &#39;amount&#39;: 341},
-   {&#39;transaction-id&#39;: 924, &#39;amount&#39;: 419},
-   {&#39;transaction-id&#39;: 1015, &#39;amount&#39;: 353},
-   {&#39;transaction-id&#39;: 1156, &#39;amount&#39;: 421},
-   {&#39;transaction-id&#39;: 2255, &#39;amount&#39;: 428},
-   {&#39;transaction-id&#39;: 2824, &#39;amount&#39;: 445},
-   {&#39;transaction-id&#39;: 3045, &#39;amount&#39;: 406},
-   {&#39;transaction-id&#39;: 3088, &#39;amount&#39;: 436},
-   {&#39;transaction-id&#39;: 3095, &#39;amount&#39;: 369},
-   {&#39;transaction-id&#39;: 3112, &#39;amount&#39;: 401},
-   {&#39;transaction-id&#39;: 3565, &#39;amount&#39;: 408},
-   {&#39;transaction-id&#39;: 4626, &#39;amount&#39;: 389},
-   {&#39;transaction-id&#39;: 4777, &#39;amount&#39;: 401},
-   {&#39;transaction-id&#39;: 4955, &#39;amount&#39;: 352},
-   {&#39;transaction-id&#39;: 5140, &#39;amount&#39;: 384},
-   {&#39;transaction-id&#39;: 5965, &#39;amount&#39;: 382},
-   {&#39;transaction-id&#39;: 6182, &#39;amount&#39;: 344},
-   {&#39;transaction-id&#39;: 6354, &#39;amount&#39;: 422},
-   {&#39;transaction-id&#39;: 6605, &#39;amount&#39;: 296},
-   {&#39;transaction-id&#39;: 7021, &#39;amount&#39;: 356},
-   {&#39;transaction-id&#39;: 7384, &#39;amount&#39;: 397},
-   {&#39;transaction-id&#39;: 7428, &#39;amount&#39;: 323},
-   {&#39;transaction-id&#39;: 7498, &#39;amount&#39;: 323},
-   {&#39;transaction-id&#39;: 7854, &#39;amount&#39;: 356},
-   {&#39;transaction-id&#39;: 7952, &#39;amount&#39;: 436},
-   {&#39;transaction-id&#39;: 8112, &#39;amount&#39;: 390},
-   {&#39;transaction-id&#39;: 8200, &#39;amount&#39;: 305},
-   {&#39;transaction-id&#39;: 8279, &#39;amount&#39;: 394},
-   {&#39;transaction-id&#39;: 8538, &#39;amount&#39;: 471},
-   {&#39;transaction-id&#39;: 8999, &#39;amount&#39;: 406},
-   {&#39;transaction-id&#39;: 9109, &#39;amount&#39;: 440},
-   {&#39;transaction-id&#39;: 9272, &#39;amount&#39;: 457},
-   {&#39;transaction-id&#39;: 9301, &#39;amount&#39;: 458},
-   {&#39;transaction-id&#39;: 9359, &#39;amount&#39;: 390},
-   {&#39;transaction-id&#39;: 9433, &#39;amount&#39;: 313},
-   {&#39;transaction-id&#39;: 9471, &#39;amount&#39;: 443},
-   {&#39;transaction-id&#39;: 9606, &#39;amount&#39;: 379},
-   {&#39;transaction-id&#39;: 9811, &#39;amount&#39;: 416},
-   {&#39;transaction-id&#39;: 9933, &#39;amount&#39;: 477}]},
- {&#39;id&#39;: 45,
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 463, &#39;amount&#39;: 293},
+   {&#39;transaction-id&#39;: 612, &#39;amount&#39;: 309},
+   {&#39;transaction-id&#39;: 653, &#39;amount&#39;: 286},
+   {&#39;transaction-id&#39;: 699, &#39;amount&#39;: 312},
+   {&#39;transaction-id&#39;: 763, &#39;amount&#39;: 291},
+   {&#39;transaction-id&#39;: 797, &#39;amount&#39;: 317},
+   {&#39;transaction-id&#39;: 1049, &#39;amount&#39;: 298},
+   {&#39;transaction-id&#39;: 1204, &#39;amount&#39;: 287},
+   {&#39;transaction-id&#39;: 1214, &#39;amount&#39;: 293},
+   {&#39;transaction-id&#39;: 1260, &#39;amount&#39;: 287},
+   {&#39;transaction-id&#39;: 1308, &#39;amount&#39;: 294},
+   {&#39;transaction-id&#39;: 1455, &#39;amount&#39;: 313},
+   {&#39;transaction-id&#39;: 1590, &#39;amount&#39;: 278},
+   {&#39;transaction-id&#39;: 1648, &#39;amount&#39;: 286},
+   {&#39;transaction-id&#39;: 2032, &#39;amount&#39;: 291},
+   {&#39;transaction-id&#39;: 2101, &#39;amount&#39;: 287},
+   {&#39;transaction-id&#39;: 2407, &#39;amount&#39;: 301},
+   {&#39;transaction-id&#39;: 2475, &#39;amount&#39;: 329},
+   {&#39;transaction-id&#39;: 2731, &#39;amount&#39;: 312},
+   {&#39;transaction-id&#39;: 2747, &#39;amount&#39;: 318},
+   {&#39;transaction-id&#39;: 2832, &#39;amount&#39;: 299},
+   {&#39;transaction-id&#39;: 2906, &#39;amount&#39;: 268},
+   {&#39;transaction-id&#39;: 3053, &#39;amount&#39;: 299},
+   {&#39;transaction-id&#39;: 3121, &#39;amount&#39;: 327},
+   {&#39;transaction-id&#39;: 3279, &#39;amount&#39;: 311},
+   {&#39;transaction-id&#39;: 3388, &#39;amount&#39;: 316},
+   {&#39;transaction-id&#39;: 3437, &#39;amount&#39;: 311},
+   {&#39;transaction-id&#39;: 3487, &#39;amount&#39;: 255},
+   {&#39;transaction-id&#39;: 3576, &#39;amount&#39;: 317},
+   {&#39;transaction-id&#39;: 3590, &#39;amount&#39;: 285},
+   {&#39;transaction-id&#39;: 3599, &#39;amount&#39;: 298},
+   {&#39;transaction-id&#39;: 3725, &#39;amount&#39;: 286},
+   {&#39;transaction-id&#39;: 3785, &#39;amount&#39;: 309},
+   {&#39;transaction-id&#39;: 3860, &#39;amount&#39;: 307},
+   {&#39;transaction-id&#39;: 3882, &#39;amount&#39;: 296},
+   {&#39;transaction-id&#39;: 4073, &#39;amount&#39;: 293},
+   {&#39;transaction-id&#39;: 4192, &#39;amount&#39;: 291},
+   {&#39;transaction-id&#39;: 4342, &#39;amount&#39;: 315},
+   {&#39;transaction-id&#39;: 4343, &#39;amount&#39;: 283},
+   {&#39;transaction-id&#39;: 4540, &#39;amount&#39;: 296},
+   {&#39;transaction-id&#39;: 4567, &#39;amount&#39;: 298},
+   {&#39;transaction-id&#39;: 4837, &#39;amount&#39;: 293},
+   {&#39;transaction-id&#39;: 4877, &#39;amount&#39;: 264},
+   {&#39;transaction-id&#39;: 4949, &#39;amount&#39;: 290},
+   {&#39;transaction-id&#39;: 5038, &#39;amount&#39;: 304},
+   {&#39;transaction-id&#39;: 5333, &#39;amount&#39;: 264},
+   {&#39;transaction-id&#39;: 5636, &#39;amount&#39;: 318},
+   {&#39;transaction-id&#39;: 5662, &#39;amount&#39;: 287},
+   {&#39;transaction-id&#39;: 5925, &#39;amount&#39;: 271},
+   {&#39;transaction-id&#39;: 5929, &#39;amount&#39;: 296},
+   {&#39;transaction-id&#39;: 5931, &#39;amount&#39;: 308},
+   {&#39;transaction-id&#39;: 5961, &#39;amount&#39;: 318},
+   {&#39;transaction-id&#39;: 6365, &#39;amount&#39;: 324},
+   {&#39;transaction-id&#39;: 6714, &#39;amount&#39;: 297},
+   {&#39;transaction-id&#39;: 6721, &#39;amount&#39;: 282},
+   {&#39;transaction-id&#39;: 6837, &#39;amount&#39;: 284},
+   {&#39;transaction-id&#39;: 6902, &#39;amount&#39;: 322},
+   {&#39;transaction-id&#39;: 7059, &#39;amount&#39;: 264},
+   {&#39;transaction-id&#39;: 7087, &#39;amount&#39;: 254},
+   {&#39;transaction-id&#39;: 7115, &#39;amount&#39;: 300},
+   {&#39;transaction-id&#39;: 7141, &#39;amount&#39;: 297},
+   {&#39;transaction-id&#39;: 7461, &#39;amount&#39;: 284},
+   {&#39;transaction-id&#39;: 7844, &#39;amount&#39;: 293},
+   {&#39;transaction-id&#39;: 7884, &#39;amount&#39;: 304},
+   {&#39;transaction-id&#39;: 7901, &#39;amount&#39;: 316},
+   {&#39;transaction-id&#39;: 8369, &#39;amount&#39;: 302},
+   {&#39;transaction-id&#39;: 8389, &#39;amount&#39;: 311},
+   {&#39;transaction-id&#39;: 8517, &#39;amount&#39;: 291},
+   {&#39;transaction-id&#39;: 8530, &#39;amount&#39;: 279},
+   {&#39;transaction-id&#39;: 8556, &#39;amount&#39;: 264},
+   {&#39;transaction-id&#39;: 8654, &#39;amount&#39;: 300},
+   {&#39;transaction-id&#39;: 8663, &#39;amount&#39;: 285},
+   {&#39;transaction-id&#39;: 8683, &#39;amount&#39;: 265},
+   {&#39;transaction-id&#39;: 9217, &#39;amount&#39;: 316},
+   {&#39;transaction-id&#39;: 9276, &#39;amount&#39;: 289},
+   {&#39;transaction-id&#39;: 9417, &#39;amount&#39;: 287},
+   {&#39;transaction-id&#39;: 9452, &#39;amount&#39;: 318},
+   {&#39;transaction-id&#39;: 9545, &#39;amount&#39;: 277},
+   {&#39;transaction-id&#39;: 9547, &#39;amount&#39;: 255},
+   {&#39;transaction-id&#39;: 9668, &#39;amount&#39;: 307},
+   {&#39;transaction-id&#39;: 9881, &#39;amount&#39;: 276}]},
+ {&#39;id&#39;: 42,
   &#39;name&#39;: &#39;Alice&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 413, &#39;amount&#39;: 212},
-   {&#39;transaction-id&#39;: 434, &#39;amount&#39;: 220},
-   {&#39;transaction-id&#39;: 535, &#39;amount&#39;: 228},
-   {&#39;transaction-id&#39;: 739, &#39;amount&#39;: 223},
-   {&#39;transaction-id&#39;: 885, &#39;amount&#39;: 217},
-   {&#39;transaction-id&#39;: 1453, &#39;amount&#39;: 248},
-   {&#39;transaction-id&#39;: 1760, &#39;amount&#39;: 229},
-   {&#39;transaction-id&#39;: 2001, &#39;amount&#39;: 221},
-   {&#39;transaction-id&#39;: 2137, &#39;amount&#39;: 221},
-   {&#39;transaction-id&#39;: 2818, &#39;amount&#39;: 233},
-   {&#39;transaction-id&#39;: 3005, &#39;amount&#39;: 246},
-   {&#39;transaction-id&#39;: 3161, &#39;amount&#39;: 238},
-   {&#39;transaction-id&#39;: 3572, &#39;amount&#39;: 242},
-   {&#39;transaction-id&#39;: 3909, &#39;amount&#39;: 222},
-   {&#39;transaction-id&#39;: 4073, &#39;amount&#39;: 246},
-   {&#39;transaction-id&#39;: 4119, &#39;amount&#39;: 237},
-   {&#39;transaction-id&#39;: 4734, &#39;amount&#39;: 262},
-   {&#39;transaction-id&#39;: 6971, &#39;amount&#39;: 246},
-   {&#39;transaction-id&#39;: 7009, &#39;amount&#39;: 248},
-   {&#39;transaction-id&#39;: 7297, &#39;amount&#39;: 219},
-   {&#39;transaction-id&#39;: 7432, &#39;amount&#39;: 242},
-   {&#39;transaction-id&#39;: 7485, &#39;amount&#39;: 238},
-   {&#39;transaction-id&#39;: 7599, &#39;amount&#39;: 222},
-   {&#39;transaction-id&#39;: 8534, &#39;amount&#39;: 224},
-   {&#39;transaction-id&#39;: 8679, &#39;amount&#39;: 184},
-   {&#39;transaction-id&#39;: 8761, &#39;amount&#39;: 234},
-   {&#39;transaction-id&#39;: 8765, &#39;amount&#39;: 215},
-   {&#39;transaction-id&#39;: 9239, &#39;amount&#39;: 235},
-   {&#39;transaction-id&#39;: 9436, &#39;amount&#39;: 211}]},
- {&#39;id&#39;: 66,
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 150, &#39;amount&#39;: 1287},
+   {&#39;transaction-id&#39;: 785, &#39;amount&#39;: 1182},
+   {&#39;transaction-id&#39;: 1402, &#39;amount&#39;: 1285},
+   {&#39;transaction-id&#39;: 1613, &#39;amount&#39;: 1078},
+   {&#39;transaction-id&#39;: 1672, &#39;amount&#39;: 1323},
+   {&#39;transaction-id&#39;: 1959, &#39;amount&#39;: 1445},
+   {&#39;transaction-id&#39;: 2173, &#39;amount&#39;: 1176},
+   {&#39;transaction-id&#39;: 2295, &#39;amount&#39;: 1121},
+   {&#39;transaction-id&#39;: 2370, &#39;amount&#39;: 1347},
+   {&#39;transaction-id&#39;: 2627, &#39;amount&#39;: 1277},
+   {&#39;transaction-id&#39;: 2678, &#39;amount&#39;: 1298},
+   {&#39;transaction-id&#39;: 2692, &#39;amount&#39;: 1274},
+   {&#39;transaction-id&#39;: 2765, &#39;amount&#39;: 1332},
+   {&#39;transaction-id&#39;: 2807, &#39;amount&#39;: 1271},
+   {&#39;transaction-id&#39;: 2860, &#39;amount&#39;: 1115},
+   {&#39;transaction-id&#39;: 3172, &#39;amount&#39;: 1174},
+   {&#39;transaction-id&#39;: 4295, &#39;amount&#39;: 1313},
+   {&#39;transaction-id&#39;: 4344, &#39;amount&#39;: 1161},
+   {&#39;transaction-id&#39;: 4581, &#39;amount&#39;: 1214},
+   {&#39;transaction-id&#39;: 5008, &#39;amount&#39;: 1216},
+   {&#39;transaction-id&#39;: 5184, &#39;amount&#39;: 1298},
+   {&#39;transaction-id&#39;: 5488, &#39;amount&#39;: 1404},
+   {&#39;transaction-id&#39;: 5568, &#39;amount&#39;: 1127},
+   {&#39;transaction-id&#39;: 5841, &#39;amount&#39;: 1316},
+   {&#39;transaction-id&#39;: 6079, &#39;amount&#39;: 1217},
+   {&#39;transaction-id&#39;: 6396, &#39;amount&#39;: 1141},
+   {&#39;transaction-id&#39;: 7201, &#39;amount&#39;: 1243},
+   {&#39;transaction-id&#39;: 7250, &#39;amount&#39;: 1208},
+   {&#39;transaction-id&#39;: 7453, &#39;amount&#39;: 1177},
+   {&#39;transaction-id&#39;: 7930, &#39;amount&#39;: 1358},
+   {&#39;transaction-id&#39;: 8172, &#39;amount&#39;: 1110},
+   {&#39;transaction-id&#39;: 8638, &#39;amount&#39;: 1244},
+   {&#39;transaction-id&#39;: 9265, &#39;amount&#39;: 1213},
+   {&#39;transaction-id&#39;: 9303, &#39;amount&#39;: 1222},
+   {&#39;transaction-id&#39;: 9508, &#39;amount&#39;: 1277},
+   {&#39;transaction-id&#39;: 9842, &#39;amount&#39;: 1254}]},
+ {&#39;id&#39;: 79,
   &#39;name&#39;: &#39;Alice&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 890, &#39;amount&#39;: -188},
-   {&#39;transaction-id&#39;: 6045, &#39;amount&#39;: -160},
-   {&#39;transaction-id&#39;: 8264, &#39;amount&#39;: -92},
-   {&#39;transaction-id&#39;: 8602, &#39;amount&#39;: -88},
-   {&#39;transaction-id&#39;: 8879, &#39;amount&#39;: -172},
-   {&#39;transaction-id&#39;: 9773, &#39;amount&#39;: -197}]},
- {&#39;id&#39;: 104,
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 1205, &#39;amount&#39;: 3},
+   {&#39;transaction-id&#39;: 1523, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 3812, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 4247, &#39;amount&#39;: 3},
+   {&#39;transaction-id&#39;: 4783, &#39;amount&#39;: 0},
+   {&#39;transaction-id&#39;: 4923, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 5069, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 5148, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 5318, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 5834, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 6447, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 6593, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 6605, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 6610, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 6817, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 7012, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 7659, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 8114, &#39;amount&#39;: 2},
+   {&#39;transaction-id&#39;: 8514, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 8782, &#39;amount&#39;: 1},
+   {&#39;transaction-id&#39;: 8834, &#39;amount&#39;: 0},
+   {&#39;transaction-id&#39;: 9479, &#39;amount&#39;: 1}]},
+ {&#39;id&#39;: 110,
   &#39;name&#39;: &#39;Alice&#39;,
-  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 3685, &#39;amount&#39;: 8564},
-   {&#39;transaction-id&#39;: 4320, &#39;amount&#39;: 8756},
-   {&#39;transaction-id&#39;: 5853, &#39;amount&#39;: 8382},
-   {&#39;transaction-id&#39;: 5915, &#39;amount&#39;: 8485},
-   {&#39;transaction-id&#39;: 7500, &#39;amount&#39;: 8845},
-   {&#39;transaction-id&#39;: 7613, &#39;amount&#39;: 8315}]})
+  &#39;transactions&#39;: [{&#39;transaction-id&#39;: 696, &#39;amount&#39;: 5007},
+   {&#39;transaction-id&#39;: 794, &#39;amount&#39;: 5082},
+   {&#39;transaction-id&#39;: 1156, &#39;amount&#39;: 5234},
+   {&#39;transaction-id&#39;: 2779, &#39;amount&#39;: 5200},
+   {&#39;transaction-id&#39;: 3299, &#39;amount&#39;: 5354},
+   {&#39;transaction-id&#39;: 3803, &#39;amount&#39;: 5275},
+   {&#39;transaction-id&#39;: 4055, &#39;amount&#39;: 5098},
+   {&#39;transaction-id&#39;: 4709, &#39;amount&#39;: 5170},
+   {&#39;transaction-id&#39;: 4851, &#39;amount&#39;: 5438},
+   {&#39;transaction-id&#39;: 5006, &#39;amount&#39;: 5032},
+   {&#39;transaction-id&#39;: 5297, &#39;amount&#39;: 5065},
+   {&#39;transaction-id&#39;: 6115, &#39;amount&#39;: 5177},
+   {&#39;transaction-id&#39;: 6266, &#39;amount&#39;: 5185},
+   {&#39;transaction-id&#39;: 6278, &#39;amount&#39;: 5162},
+   {&#39;transaction-id&#39;: 6479, &#39;amount&#39;: 5322},
+   {&#39;transaction-id&#39;: 6522, &#39;amount&#39;: 4941},
+   {&#39;transaction-id&#39;: 6988, &#39;amount&#39;: 5465},
+   {&#39;transaction-id&#39;: 7263, &#39;amount&#39;: 5130},
+   {&#39;transaction-id&#39;: 8221, &#39;amount&#39;: 5270},
+   {&#39;transaction-id&#39;: 8344, &#39;amount&#39;: 5339},
+   {&#39;transaction-id&#39;: 8426, &#39;amount&#39;: 5168},
+   {&#39;transaction-id&#39;: 9088, &#39;amount&#39;: 5302},
+   {&#39;transaction-id&#39;: 9094, &#39;amount&#39;: 5138},
+   {&#39;transaction-id&#39;: 9843, &#39;amount&#39;: 5072}]})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -957,11 +1096,11 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 20},
- {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 42},
- {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 29},
- {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 6},
- {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 6})
+({&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 56},
+ {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 81},
+ {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 36},
+ {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 22},
+ {&#39;name&#39;: &#39;Alice&#39;, &#39;count&#39;: 24})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -983,7 +1122,7 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(20, 42, 29, 6, 6)
+(56, 81, 36, 22, 24)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1006,7 +1145,7 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-27.402
+35.37723577235772
 </pre></div></div>
 </div>
 </div>
@@ -1028,97 +1167,179 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-([{&#39;transaction-id&#39;: 11, &#39;amount&#39;: 6129},
-  {&#39;transaction-id&#39;: 59, &#39;amount&#39;: 5960},
-  {&#39;transaction-id&#39;: 502, &#39;amount&#39;: 5685},
-  {&#39;transaction-id&#39;: 621, &#39;amount&#39;: 6004},
-  {&#39;transaction-id&#39;: 921, &#39;amount&#39;: 6357},
-  {&#39;transaction-id&#39;: 1423, &#39;amount&#39;: 5755},
-  {&#39;transaction-id&#39;: 1971, &#39;amount&#39;: 5997},
-  {&#39;transaction-id&#39;: 2786, &#39;amount&#39;: 6063},
-  {&#39;transaction-id&#39;: 3677, &#39;amount&#39;: 5715},
-  {&#39;transaction-id&#39;: 4406, &#39;amount&#39;: 5720},
-  {&#39;transaction-id&#39;: 5310, &#39;amount&#39;: 6455},
-  {&#39;transaction-id&#39;: 5490, &#39;amount&#39;: 5775},
-  {&#39;transaction-id&#39;: 5762, &#39;amount&#39;: 5805},
-  {&#39;transaction-id&#39;: 5825, &#39;amount&#39;: 6412},
-  {&#39;transaction-id&#39;: 6257, &#39;amount&#39;: 5575},
-  {&#39;transaction-id&#39;: 7086, &#39;amount&#39;: 6723},
-  {&#39;transaction-id&#39;: 7371, &#39;amount&#39;: 5973},
-  {&#39;transaction-id&#39;: 7465, &#39;amount&#39;: 5767},
-  {&#39;transaction-id&#39;: 7488, &#39;amount&#39;: 6048},
-  {&#39;transaction-id&#39;: 9568, &#39;amount&#39;: 5802}],
- [{&#39;transaction-id&#39;: 188, &#39;amount&#39;: 331},
-  {&#39;transaction-id&#39;: 244, &#39;amount&#39;: 388},
-  {&#39;transaction-id&#39;: 343, &#39;amount&#39;: 386},
-  {&#39;transaction-id&#39;: 453, &#39;amount&#39;: 341},
-  {&#39;transaction-id&#39;: 924, &#39;amount&#39;: 419},
-  {&#39;transaction-id&#39;: 1015, &#39;amount&#39;: 353},
-  {&#39;transaction-id&#39;: 1156, &#39;amount&#39;: 421},
-  {&#39;transaction-id&#39;: 2255, &#39;amount&#39;: 428},
-  {&#39;transaction-id&#39;: 2824, &#39;amount&#39;: 445},
-  {&#39;transaction-id&#39;: 3045, &#39;amount&#39;: 406},
-  {&#39;transaction-id&#39;: 3088, &#39;amount&#39;: 436},
-  {&#39;transaction-id&#39;: 3095, &#39;amount&#39;: 369},
-  {&#39;transaction-id&#39;: 3112, &#39;amount&#39;: 401},
-  {&#39;transaction-id&#39;: 3565, &#39;amount&#39;: 408},
-  {&#39;transaction-id&#39;: 4626, &#39;amount&#39;: 389},
-  {&#39;transaction-id&#39;: 4777, &#39;amount&#39;: 401},
-  {&#39;transaction-id&#39;: 4955, &#39;amount&#39;: 352},
-  {&#39;transaction-id&#39;: 5140, &#39;amount&#39;: 384},
-  {&#39;transaction-id&#39;: 5965, &#39;amount&#39;: 382},
-  {&#39;transaction-id&#39;: 6182, &#39;amount&#39;: 344},
-  {&#39;transaction-id&#39;: 6354, &#39;amount&#39;: 422},
-  {&#39;transaction-id&#39;: 6605, &#39;amount&#39;: 296},
-  {&#39;transaction-id&#39;: 7021, &#39;amount&#39;: 356},
-  {&#39;transaction-id&#39;: 7384, &#39;amount&#39;: 397},
-  {&#39;transaction-id&#39;: 7428, &#39;amount&#39;: 323},
-  {&#39;transaction-id&#39;: 7498, &#39;amount&#39;: 323},
-  {&#39;transaction-id&#39;: 7854, &#39;amount&#39;: 356},
-  {&#39;transaction-id&#39;: 7952, &#39;amount&#39;: 436},
-  {&#39;transaction-id&#39;: 8112, &#39;amount&#39;: 390},
-  {&#39;transaction-id&#39;: 8200, &#39;amount&#39;: 305},
-  {&#39;transaction-id&#39;: 8279, &#39;amount&#39;: 394},
-  {&#39;transaction-id&#39;: 8538, &#39;amount&#39;: 471},
-  {&#39;transaction-id&#39;: 8999, &#39;amount&#39;: 406},
-  {&#39;transaction-id&#39;: 9109, &#39;amount&#39;: 440},
-  {&#39;transaction-id&#39;: 9272, &#39;amount&#39;: 457},
-  {&#39;transaction-id&#39;: 9301, &#39;amount&#39;: 458},
-  {&#39;transaction-id&#39;: 9359, &#39;amount&#39;: 390},
-  {&#39;transaction-id&#39;: 9433, &#39;amount&#39;: 313},
-  {&#39;transaction-id&#39;: 9471, &#39;amount&#39;: 443},
-  {&#39;transaction-id&#39;: 9606, &#39;amount&#39;: 379},
-  {&#39;transaction-id&#39;: 9811, &#39;amount&#39;: 416},
-  {&#39;transaction-id&#39;: 9933, &#39;amount&#39;: 477}],
- [{&#39;transaction-id&#39;: 413, &#39;amount&#39;: 212},
-  {&#39;transaction-id&#39;: 434, &#39;amount&#39;: 220},
-  {&#39;transaction-id&#39;: 535, &#39;amount&#39;: 228},
-  {&#39;transaction-id&#39;: 739, &#39;amount&#39;: 223},
-  {&#39;transaction-id&#39;: 885, &#39;amount&#39;: 217},
-  {&#39;transaction-id&#39;: 1453, &#39;amount&#39;: 248},
-  {&#39;transaction-id&#39;: 1760, &#39;amount&#39;: 229},
-  {&#39;transaction-id&#39;: 2001, &#39;amount&#39;: 221},
-  {&#39;transaction-id&#39;: 2137, &#39;amount&#39;: 221},
-  {&#39;transaction-id&#39;: 2818, &#39;amount&#39;: 233},
-  {&#39;transaction-id&#39;: 3005, &#39;amount&#39;: 246},
-  {&#39;transaction-id&#39;: 3161, &#39;amount&#39;: 238},
-  {&#39;transaction-id&#39;: 3572, &#39;amount&#39;: 242},
-  {&#39;transaction-id&#39;: 3909, &#39;amount&#39;: 222},
-  {&#39;transaction-id&#39;: 4073, &#39;amount&#39;: 246},
-  {&#39;transaction-id&#39;: 4119, &#39;amount&#39;: 237},
-  {&#39;transaction-id&#39;: 4734, &#39;amount&#39;: 262},
-  {&#39;transaction-id&#39;: 6971, &#39;amount&#39;: 246},
-  {&#39;transaction-id&#39;: 7009, &#39;amount&#39;: 248},
-  {&#39;transaction-id&#39;: 7297, &#39;amount&#39;: 219},
-  {&#39;transaction-id&#39;: 7432, &#39;amount&#39;: 242},
-  {&#39;transaction-id&#39;: 7485, &#39;amount&#39;: 238},
-  {&#39;transaction-id&#39;: 7599, &#39;amount&#39;: 222},
-  {&#39;transaction-id&#39;: 8534, &#39;amount&#39;: 224},
-  {&#39;transaction-id&#39;: 8679, &#39;amount&#39;: 184},
-  {&#39;transaction-id&#39;: 8761, &#39;amount&#39;: 234},
-  {&#39;transaction-id&#39;: 8765, &#39;amount&#39;: 215},
-  {&#39;transaction-id&#39;: 9239, &#39;amount&#39;: 235},
-  {&#39;transaction-id&#39;: 9436, &#39;amount&#39;: 211}])
+([{&#39;transaction-id&#39;: 26, &#39;amount&#39;: -90},
+  {&#39;transaction-id&#39;: 29, &#39;amount&#39;: -103},
+  {&#39;transaction-id&#39;: 381, &#39;amount&#39;: -4},
+  {&#39;transaction-id&#39;: 471, &#39;amount&#39;: 9},
+  {&#39;transaction-id&#39;: 492, &#39;amount&#39;: -38},
+  {&#39;transaction-id&#39;: 1125, &#39;amount&#39;: -7},
+  {&#39;transaction-id&#39;: 1132, &#39;amount&#39;: -43},
+  {&#39;transaction-id&#39;: 1482, &#39;amount&#39;: -41},
+  {&#39;transaction-id&#39;: 1775, &#39;amount&#39;: -19},
+  {&#39;transaction-id&#39;: 1823, &#39;amount&#39;: -33},
+  {&#39;transaction-id&#39;: 1950, &#39;amount&#39;: 59},
+  {&#39;transaction-id&#39;: 2409, &#39;amount&#39;: -22},
+  {&#39;transaction-id&#39;: 2502, &#39;amount&#39;: -50},
+  {&#39;transaction-id&#39;: 2643, &#39;amount&#39;: 5},
+  {&#39;transaction-id&#39;: 2664, &#39;amount&#39;: -103},
+  {&#39;transaction-id&#39;: 2876, &#39;amount&#39;: 5},
+  {&#39;transaction-id&#39;: 3301, &#39;amount&#39;: -80},
+  {&#39;transaction-id&#39;: 3604, &#39;amount&#39;: 28},
+  {&#39;transaction-id&#39;: 4504, &#39;amount&#39;: -56},
+  {&#39;transaction-id&#39;: 4559, &#39;amount&#39;: 10},
+  {&#39;transaction-id&#39;: 4777, &#39;amount&#39;: -67},
+  {&#39;transaction-id&#39;: 5013, &#39;amount&#39;: -44},
+  {&#39;transaction-id&#39;: 5024, &#39;amount&#39;: -40},
+  {&#39;transaction-id&#39;: 5028, &#39;amount&#39;: 41},
+  {&#39;transaction-id&#39;: 5247, &#39;amount&#39;: -93},
+  {&#39;transaction-id&#39;: 5391, &#39;amount&#39;: -148},
+  {&#39;transaction-id&#39;: 5396, &#39;amount&#39;: -143},
+  {&#39;transaction-id&#39;: 5540, &#39;amount&#39;: -32},
+  {&#39;transaction-id&#39;: 5722, &#39;amount&#39;: 13},
+  {&#39;transaction-id&#39;: 6027, &#39;amount&#39;: -101},
+  {&#39;transaction-id&#39;: 6076, &#39;amount&#39;: -49},
+  {&#39;transaction-id&#39;: 6356, &#39;amount&#39;: -25},
+  {&#39;transaction-id&#39;: 6545, &#39;amount&#39;: -86},
+  {&#39;transaction-id&#39;: 6583, &#39;amount&#39;: -31},
+  {&#39;transaction-id&#39;: 6652, &#39;amount&#39;: -114},
+  {&#39;transaction-id&#39;: 6750, &#39;amount&#39;: -185},
+  {&#39;transaction-id&#39;: 6899, &#39;amount&#39;: -2},
+  {&#39;transaction-id&#39;: 6930, &#39;amount&#39;: 45},
+  {&#39;transaction-id&#39;: 7243, &#39;amount&#39;: 8},
+  {&#39;transaction-id&#39;: 7320, &#39;amount&#39;: -62},
+  {&#39;transaction-id&#39;: 7532, &#39;amount&#39;: -9},
+  {&#39;transaction-id&#39;: 7771, &#39;amount&#39;: 59},
+  {&#39;transaction-id&#39;: 7913, &#39;amount&#39;: -40},
+  {&#39;transaction-id&#39;: 7916, &#39;amount&#39;: -157},
+  {&#39;transaction-id&#39;: 7944, &#39;amount&#39;: -35},
+  {&#39;transaction-id&#39;: 8157, &#39;amount&#39;: 93},
+  {&#39;transaction-id&#39;: 8341, &#39;amount&#39;: -73},
+  {&#39;transaction-id&#39;: 8630, &#39;amount&#39;: -64},
+  {&#39;transaction-id&#39;: 8919, &#39;amount&#39;: -7},
+  {&#39;transaction-id&#39;: 8976, &#39;amount&#39;: -76},
+  {&#39;transaction-id&#39;: 9058, &#39;amount&#39;: -29},
+  {&#39;transaction-id&#39;: 9092, &#39;amount&#39;: -13},
+  {&#39;transaction-id&#39;: 9194, &#39;amount&#39;: -107},
+  {&#39;transaction-id&#39;: 9380, &#39;amount&#39;: 2},
+  {&#39;transaction-id&#39;: 9582, &#39;amount&#39;: -95},
+  {&#39;transaction-id&#39;: 9765, &#39;amount&#39;: -15}],
+ [{&#39;transaction-id&#39;: 463, &#39;amount&#39;: 293},
+  {&#39;transaction-id&#39;: 612, &#39;amount&#39;: 309},
+  {&#39;transaction-id&#39;: 653, &#39;amount&#39;: 286},
+  {&#39;transaction-id&#39;: 699, &#39;amount&#39;: 312},
+  {&#39;transaction-id&#39;: 763, &#39;amount&#39;: 291},
+  {&#39;transaction-id&#39;: 797, &#39;amount&#39;: 317},
+  {&#39;transaction-id&#39;: 1049, &#39;amount&#39;: 298},
+  {&#39;transaction-id&#39;: 1204, &#39;amount&#39;: 287},
+  {&#39;transaction-id&#39;: 1214, &#39;amount&#39;: 293},
+  {&#39;transaction-id&#39;: 1260, &#39;amount&#39;: 287},
+  {&#39;transaction-id&#39;: 1308, &#39;amount&#39;: 294},
+  {&#39;transaction-id&#39;: 1455, &#39;amount&#39;: 313},
+  {&#39;transaction-id&#39;: 1590, &#39;amount&#39;: 278},
+  {&#39;transaction-id&#39;: 1648, &#39;amount&#39;: 286},
+  {&#39;transaction-id&#39;: 2032, &#39;amount&#39;: 291},
+  {&#39;transaction-id&#39;: 2101, &#39;amount&#39;: 287},
+  {&#39;transaction-id&#39;: 2407, &#39;amount&#39;: 301},
+  {&#39;transaction-id&#39;: 2475, &#39;amount&#39;: 329},
+  {&#39;transaction-id&#39;: 2731, &#39;amount&#39;: 312},
+  {&#39;transaction-id&#39;: 2747, &#39;amount&#39;: 318},
+  {&#39;transaction-id&#39;: 2832, &#39;amount&#39;: 299},
+  {&#39;transaction-id&#39;: 2906, &#39;amount&#39;: 268},
+  {&#39;transaction-id&#39;: 3053, &#39;amount&#39;: 299},
+  {&#39;transaction-id&#39;: 3121, &#39;amount&#39;: 327},
+  {&#39;transaction-id&#39;: 3279, &#39;amount&#39;: 311},
+  {&#39;transaction-id&#39;: 3388, &#39;amount&#39;: 316},
+  {&#39;transaction-id&#39;: 3437, &#39;amount&#39;: 311},
+  {&#39;transaction-id&#39;: 3487, &#39;amount&#39;: 255},
+  {&#39;transaction-id&#39;: 3576, &#39;amount&#39;: 317},
+  {&#39;transaction-id&#39;: 3590, &#39;amount&#39;: 285},
+  {&#39;transaction-id&#39;: 3599, &#39;amount&#39;: 298},
+  {&#39;transaction-id&#39;: 3725, &#39;amount&#39;: 286},
+  {&#39;transaction-id&#39;: 3785, &#39;amount&#39;: 309},
+  {&#39;transaction-id&#39;: 3860, &#39;amount&#39;: 307},
+  {&#39;transaction-id&#39;: 3882, &#39;amount&#39;: 296},
+  {&#39;transaction-id&#39;: 4073, &#39;amount&#39;: 293},
+  {&#39;transaction-id&#39;: 4192, &#39;amount&#39;: 291},
+  {&#39;transaction-id&#39;: 4342, &#39;amount&#39;: 315},
+  {&#39;transaction-id&#39;: 4343, &#39;amount&#39;: 283},
+  {&#39;transaction-id&#39;: 4540, &#39;amount&#39;: 296},
+  {&#39;transaction-id&#39;: 4567, &#39;amount&#39;: 298},
+  {&#39;transaction-id&#39;: 4837, &#39;amount&#39;: 293},
+  {&#39;transaction-id&#39;: 4877, &#39;amount&#39;: 264},
+  {&#39;transaction-id&#39;: 4949, &#39;amount&#39;: 290},
+  {&#39;transaction-id&#39;: 5038, &#39;amount&#39;: 304},
+  {&#39;transaction-id&#39;: 5333, &#39;amount&#39;: 264},
+  {&#39;transaction-id&#39;: 5636, &#39;amount&#39;: 318},
+  {&#39;transaction-id&#39;: 5662, &#39;amount&#39;: 287},
+  {&#39;transaction-id&#39;: 5925, &#39;amount&#39;: 271},
+  {&#39;transaction-id&#39;: 5929, &#39;amount&#39;: 296},
+  {&#39;transaction-id&#39;: 5931, &#39;amount&#39;: 308},
+  {&#39;transaction-id&#39;: 5961, &#39;amount&#39;: 318},
+  {&#39;transaction-id&#39;: 6365, &#39;amount&#39;: 324},
+  {&#39;transaction-id&#39;: 6714, &#39;amount&#39;: 297},
+  {&#39;transaction-id&#39;: 6721, &#39;amount&#39;: 282},
+  {&#39;transaction-id&#39;: 6837, &#39;amount&#39;: 284},
+  {&#39;transaction-id&#39;: 6902, &#39;amount&#39;: 322},
+  {&#39;transaction-id&#39;: 7059, &#39;amount&#39;: 264},
+  {&#39;transaction-id&#39;: 7087, &#39;amount&#39;: 254},
+  {&#39;transaction-id&#39;: 7115, &#39;amount&#39;: 300},
+  {&#39;transaction-id&#39;: 7141, &#39;amount&#39;: 297},
+  {&#39;transaction-id&#39;: 7461, &#39;amount&#39;: 284},
+  {&#39;transaction-id&#39;: 7844, &#39;amount&#39;: 293},
+  {&#39;transaction-id&#39;: 7884, &#39;amount&#39;: 304},
+  {&#39;transaction-id&#39;: 7901, &#39;amount&#39;: 316},
+  {&#39;transaction-id&#39;: 8369, &#39;amount&#39;: 302},
+  {&#39;transaction-id&#39;: 8389, &#39;amount&#39;: 311},
+  {&#39;transaction-id&#39;: 8517, &#39;amount&#39;: 291},
+  {&#39;transaction-id&#39;: 8530, &#39;amount&#39;: 279},
+  {&#39;transaction-id&#39;: 8556, &#39;amount&#39;: 264},
+  {&#39;transaction-id&#39;: 8654, &#39;amount&#39;: 300},
+  {&#39;transaction-id&#39;: 8663, &#39;amount&#39;: 285},
+  {&#39;transaction-id&#39;: 8683, &#39;amount&#39;: 265},
+  {&#39;transaction-id&#39;: 9217, &#39;amount&#39;: 316},
+  {&#39;transaction-id&#39;: 9276, &#39;amount&#39;: 289},
+  {&#39;transaction-id&#39;: 9417, &#39;amount&#39;: 287},
+  {&#39;transaction-id&#39;: 9452, &#39;amount&#39;: 318},
+  {&#39;transaction-id&#39;: 9545, &#39;amount&#39;: 277},
+  {&#39;transaction-id&#39;: 9547, &#39;amount&#39;: 255},
+  {&#39;transaction-id&#39;: 9668, &#39;amount&#39;: 307},
+  {&#39;transaction-id&#39;: 9881, &#39;amount&#39;: 276}],
+ [{&#39;transaction-id&#39;: 150, &#39;amount&#39;: 1287},
+  {&#39;transaction-id&#39;: 785, &#39;amount&#39;: 1182},
+  {&#39;transaction-id&#39;: 1402, &#39;amount&#39;: 1285},
+  {&#39;transaction-id&#39;: 1613, &#39;amount&#39;: 1078},
+  {&#39;transaction-id&#39;: 1672, &#39;amount&#39;: 1323},
+  {&#39;transaction-id&#39;: 1959, &#39;amount&#39;: 1445},
+  {&#39;transaction-id&#39;: 2173, &#39;amount&#39;: 1176},
+  {&#39;transaction-id&#39;: 2295, &#39;amount&#39;: 1121},
+  {&#39;transaction-id&#39;: 2370, &#39;amount&#39;: 1347},
+  {&#39;transaction-id&#39;: 2627, &#39;amount&#39;: 1277},
+  {&#39;transaction-id&#39;: 2678, &#39;amount&#39;: 1298},
+  {&#39;transaction-id&#39;: 2692, &#39;amount&#39;: 1274},
+  {&#39;transaction-id&#39;: 2765, &#39;amount&#39;: 1332},
+  {&#39;transaction-id&#39;: 2807, &#39;amount&#39;: 1271},
+  {&#39;transaction-id&#39;: 2860, &#39;amount&#39;: 1115},
+  {&#39;transaction-id&#39;: 3172, &#39;amount&#39;: 1174},
+  {&#39;transaction-id&#39;: 4295, &#39;amount&#39;: 1313},
+  {&#39;transaction-id&#39;: 4344, &#39;amount&#39;: 1161},
+  {&#39;transaction-id&#39;: 4581, &#39;amount&#39;: 1214},
+  {&#39;transaction-id&#39;: 5008, &#39;amount&#39;: 1216},
+  {&#39;transaction-id&#39;: 5184, &#39;amount&#39;: 1298},
+  {&#39;transaction-id&#39;: 5488, &#39;amount&#39;: 1404},
+  {&#39;transaction-id&#39;: 5568, &#39;amount&#39;: 1127},
+  {&#39;transaction-id&#39;: 5841, &#39;amount&#39;: 1316},
+  {&#39;transaction-id&#39;: 6079, &#39;amount&#39;: 1217},
+  {&#39;transaction-id&#39;: 6396, &#39;amount&#39;: 1141},
+  {&#39;transaction-id&#39;: 7201, &#39;amount&#39;: 1243},
+  {&#39;transaction-id&#39;: 7250, &#39;amount&#39;: 1208},
+  {&#39;transaction-id&#39;: 7453, &#39;amount&#39;: 1177},
+  {&#39;transaction-id&#39;: 7930, &#39;amount&#39;: 1358},
+  {&#39;transaction-id&#39;: 8172, &#39;amount&#39;: 1110},
+  {&#39;transaction-id&#39;: 8638, &#39;amount&#39;: 1244},
+  {&#39;transaction-id&#39;: 9265, &#39;amount&#39;: 1213},
+  {&#39;transaction-id&#39;: 9303, &#39;amount&#39;: 1222},
+  {&#39;transaction-id&#39;: 9508, &#39;amount&#39;: 1277},
+  {&#39;transaction-id&#39;: 9842, &#39;amount&#39;: 1254}])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1139,9 +1360,9 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;transaction-id&#39;: 11, &#39;amount&#39;: 6129},
- {&#39;transaction-id&#39;: 59, &#39;amount&#39;: 5960},
- {&#39;transaction-id&#39;: 502, &#39;amount&#39;: 5685})
+({&#39;transaction-id&#39;: 26, &#39;amount&#39;: -90},
+ {&#39;transaction-id&#39;: 29, &#39;amount&#39;: -103},
+ {&#39;transaction-id&#39;: 381, &#39;amount&#39;: -4})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1163,7 +1384,7 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-(6129, 5960, 5685)
+(-90, -103, -4)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1186,7 +1407,7 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1732.4980658346105
+884.0101576504113
 </pre></div></div>
 </div>
 </div>
@@ -1313,9 +1534,9 @@ dask.bag&lt;lambda, npartitions=10&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Alice&#39;, 120), (&#39;Alice&#39;, 120), (&#39;Alice&#39;, 130), (&#39;Alice&#39;, 130), (&#39;Bob&#39;, 72), (&#39;Bob&#39;, 72), (&#39;Bob&#39;, 78), (&#39;Bob&#39;, 78), (&#39;Charlie&#39;, 117), (&#39;Charlie&#39;, 120), (&#39;Charlie&#39;, 128), (&#39;Charlie&#39;, 130), (&#39;Dan&#39;, 139), (&#39;Dan&#39;, 140), (&#39;Dan&#39;, 151), (&#39;Dan&#39;, 153), (&#39;Edith&#39;, 143), (&#39;Edith&#39;, 143), (&#39;Edith&#39;, 156), (&#39;Edith&#39;, 156), (&#39;Frank&#39;, 72), (&#39;Frank&#39;, 72), (&#39;Frank&#39;, 78), (&#39;Frank&#39;, 78), (&#39;George&#39;, 107), (&#39;George&#39;, 108), (&#39;George&#39;, 116), (&#39;George&#39;, 117), (&#39;Hannah&#39;, 144), (&#39;Hannah&#39;, 144), (&#39;Hannah&#39;, 156), (&#39;Hannah&#39;, 156), (&#39;Ingrid&#39;, 145), (&#39;Ingrid&#39;, 145), (&#39;Ingrid&#39;, 157), (&#39;Ingrid&#39;, 159), (&#39;Jerry&#39;, 60), (&#39;Jerry&#39;, 60), (&#39;Jerry&#39;, 65), (&#39;Jerry&#39;, 65), (&#39;Kevin&#39;, 120), (&#39;Kevin&#39;, 120), (&#39;Kevin&#39;, 130), (&#39;Kevin&#39;, 130), (&#39;Laura&#39;, 129), (&#39;Laura&#39;, 133), (&#39;Laura&#39;, 138), (&#39;Laura&#39;, 140), (&#39;Michael&#39;, 108), (&#39;Michael&#39;, 108), (&#39;Michael&#39;, 115), (&#39;Michael&#39;, 117), (&#39;Norbert&#39;, 96), (&#39;Norbert&#39;, 96), (&#39;Norbert&#39;, 104), (&#39;Norbert&#39;, 104), (&#39;Oliver&#39;, 180), (&#39;Oliver&#39;, 180), (&#39;Oliver&#39;, 195), (&#39;Oliver&#39;, 195), (&#39;Patricia&#39;, 156), (&#39;Patricia&#39;, 156), (&#39;Patricia&#39;, 168), (&#39;Patricia&#39;, 169), (&#39;Quinn&#39;, 119), (&#39;Quinn&#39;, 120), (&#39;Quinn&#39;, 260), (&#39;Ray&#39;, 139), (&#39;Ray&#39;, 141), (&#39;Ray&#39;, 150), (&#39;Ray&#39;, 151), (&#39;Sarah&#39;, 46), (&#39;Sarah&#39;, 48), (&#39;Sarah&#39;, 50), (&#39;Sarah&#39;, 51), (&#39;Tim&#39;, 129), (&#39;Tim&#39;, 129), (&#39;Tim&#39;, 140), (&#39;Tim&#39;, 141), (&#39;Ursula&#39;, 90), (&#39;Ursula&#39;, 93), (&#39;Ursula&#39;, 101), (&#39;Ursula&#39;, 101), (&#39;Victor&#39;, 72), (&#39;Victor&#39;, 72), (&#39;Victor&#39;, 77), (&#39;Victor&#39;, 78), (&#39;Wendy&#39;, 62), (&#39;Wendy&#39;, 62), (&#39;Wendy&#39;, 67), (&#39;Wendy&#39;, 69), (&#39;Xavier&#39;, 144), (&#39;Xavier&#39;, 144), (&#39;Xavier&#39;, 156), (&#39;Xavier&#39;, 156), (&#39;Yvonne&#39;, 84), (&#39;Yvonne&#39;, 84), (&#39;Yvonne&#39;, 91), (&#39;Yvonne&#39;, 91), (&#39;Zelda&#39;, 131), (&#39;Zelda&#39;, 132), (&#39;Zelda&#39;, 140), (&#39;Zelda&#39;, 143)]
-CPU times: user 1.65 s, sys: 93.3 ms, total: 1.74 s
-Wall time: 8.89 s
+[(&#39;Alice&#39;, 133), (&#39;Alice&#39;, 147), (&#39;Alice&#39;, 161), (&#39;Alice&#39;, 174), (&#39;Bob&#39;, 97), (&#39;Bob&#39;, 104), (&#39;Bob&#39;, 115), (&#39;Bob&#39;, 123), (&#39;Charlie&#39;, 131), (&#39;Charlie&#39;, 144), (&#39;Charlie&#39;, 156), (&#39;Charlie&#39;, 167), (&#39;Dan&#39;, 118), (&#39;Dan&#39;, 130), (&#39;Dan&#39;, 142), (&#39;Dan&#39;, 151), (&#39;Edith&#39;, 137), (&#39;Edith&#39;, 155), (&#39;Edith&#39;, 165), (&#39;Edith&#39;, 171), (&#39;Frank&#39;, 66), (&#39;Frank&#39;, 72), (&#39;Frank&#39;, 78), (&#39;Frank&#39;, 84), (&#39;George&#39;, 92), (&#39;George&#39;, 98), (&#39;George&#39;, 108), (&#39;George&#39;, 117), (&#39;Hannah&#39;, 54), (&#39;Hannah&#39;, 59), (&#39;Hannah&#39;, 64), (&#39;Hannah&#39;, 70), (&#39;Ingrid&#39;, 150), (&#39;Ingrid&#39;, 162), (&#39;Ingrid&#39;, 178), (&#39;Ingrid&#39;, 190), (&#39;Jerry&#39;, 99), (&#39;Jerry&#39;, 108), (&#39;Jerry&#39;, 117), (&#39;Jerry&#39;, 126), (&#39;Kevin&#39;, 196), (&#39;Kevin&#39;, 214), (&#39;Kevin&#39;, 234), (&#39;Kevin&#39;, 250), (&#39;Laura&#39;, 99), (&#39;Laura&#39;, 108), (&#39;Laura&#39;, 117), (&#39;Laura&#39;, 126), (&#39;Michael&#39;, 144), (&#39;Michael&#39;, 168), (&#39;Michael&#39;, 287), (&#39;Norbert&#39;, 77), (&#39;Norbert&#39;, 84), (&#39;Norbert&#39;, 90), (&#39;Norbert&#39;, 96), (&#39;Oliver&#39;, 99), (&#39;Oliver&#39;, 108), (&#39;Oliver&#39;, 117), (&#39;Oliver&#39;, 126), (&#39;Patricia&#39;, 61), (&#39;Patricia&#39;, 65), (&#39;Patricia&#39;, 68), (&#39;Patricia&#39;, 75), (&#39;Quinn&#39;, 121), (&#39;Quinn&#39;, 132), (&#39;Quinn&#39;, 143), (&#39;Quinn&#39;, 154), (&#39;Ray&#39;, 110), (&#39;Ray&#39;, 120), (&#39;Ray&#39;, 130), (&#39;Ray&#39;, 140), (&#39;Sarah&#39;, 164), (&#39;Sarah&#39;, 177), (&#39;Sarah&#39;, 293), (&#39;Tim&#39;, 99), (&#39;Tim&#39;, 108), (&#39;Tim&#39;, 117), (&#39;Tim&#39;, 126), (&#39;Ursula&#39;, 107), (&#39;Ursula&#39;, 117), (&#39;Ursula&#39;, 126), (&#39;Ursula&#39;, 136), (&#39;Victor&#39;, 129), (&#39;Victor&#39;, 137), (&#39;Victor&#39;, 153), (&#39;Victor&#39;, 167), (&#39;Wendy&#39;, 33), (&#39;Wendy&#39;, 36), (&#39;Wendy&#39;, 39), (&#39;Wendy&#39;, 42), (&#39;Xavier&#39;, 62), (&#39;Xavier&#39;, 64), (&#39;Xavier&#39;, 73), (&#39;Xavier&#39;, 75), (&#39;Yvonne&#39;, 34), (&#39;Yvonne&#39;, 39), (&#39;Yvonne&#39;, 41), (&#39;Yvonne&#39;, 43), (&#39;Zelda&#39;, 109), (&#39;Zelda&#39;, 119), (&#39;Zelda&#39;, 129), (&#39;Zelda&#39;, 140)]
+CPU times: user 1.59 s, sys: 109 ms, total: 1.7 s
+Wall time: 8.15 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1343,9 +1564,9 @@ Wall time: 8.89 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[(&#39;Alice&#39;, 500), (&#39;Bob&#39;, 300), (&#39;Charlie&#39;, 495), (&#39;Dan&#39;, 583), (&#39;Edith&#39;, 598), (&#39;Frank&#39;, 300), (&#39;George&#39;, 448), (&#39;Hannah&#39;, 600), (&#39;Ingrid&#39;, 606), (&#39;Jerry&#39;, 250), (&#39;Kevin&#39;, 500), (&#39;Laura&#39;, 540), (&#39;Michael&#39;, 448), (&#39;Norbert&#39;, 400), (&#39;Oliver&#39;, 750), (&#39;Patricia&#39;, 649), (&#39;Quinn&#39;, 499), (&#39;Ray&#39;, 581), (&#39;Sarah&#39;, 195), (&#39;Tim&#39;, 539), (&#39;Ursula&#39;, 385), (&#39;Victor&#39;, 299), (&#39;Wendy&#39;, 260), (&#39;Xavier&#39;, 600), (&#39;Yvonne&#39;, 350), (&#39;Zelda&#39;, 546)]
-CPU times: user 134 ms, sys: 11.7 ms, total: 146 ms
-Wall time: 596 ms
+[(&#39;Alice&#39;, 615), (&#39;Bob&#39;, 439), (&#39;Charlie&#39;, 598), (&#39;Dan&#39;, 541), (&#39;Edith&#39;, 628), (&#39;Frank&#39;, 300), (&#39;George&#39;, 415), (&#39;Hannah&#39;, 247), (&#39;Ingrid&#39;, 680), (&#39;Jerry&#39;, 450), (&#39;Kevin&#39;, 894), (&#39;Laura&#39;, 450), (&#39;Michael&#39;, 599), (&#39;Norbert&#39;, 347), (&#39;Oliver&#39;, 450), (&#39;Patricia&#39;, 269), (&#39;Quinn&#39;, 550), (&#39;Ray&#39;, 500), (&#39;Sarah&#39;, 634), (&#39;Tim&#39;, 450), (&#39;Ursula&#39;, 486), (&#39;Victor&#39;, 586), (&#39;Wendy&#39;, 150), (&#39;Xavier&#39;, 274), (&#39;Yvonne&#39;, 157), (&#39;Zelda&#39;, 497)]
+CPU times: user 164 ms, sys: 4.72 ms, total: 169 ms
+Wall time: 615 ms
 </pre></div></div>
 </div>
 </div>
@@ -1420,31 +1641,31 @@ Wall time: 596 ms
       <th>0</th>
       <td>0</td>
       <td>Alice</td>
-      <td>[{'transaction-id': 11, 'amount': 6129}, {'tra...</td>
+      <td>[{'transaction-id': 26, 'amount': -90}, {'tran...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>Frank</td>
-      <td>[{'transaction-id': 114, 'amount': -548}, {'tr...</td>
+      <td>Yvonne</td>
+      <td>[{'transaction-id': 62, 'amount': 954}, {'tran...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>Frank</td>
-      <td>[{'transaction-id': 277, 'amount': -33}, {'tra...</td>
+      <td>Laura</td>
+      <td>[{'transaction-id': 1574, 'amount': 197}, {'tr...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
       <td>Sarah</td>
-      <td>[{'transaction-id': 4987, 'amount': 33}, {'tra...</td>
+      <td>[{'transaction-id': 201, 'amount': 123}, {'tra...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>Hannah</td>
-      <td>[{'transaction-id': 1325, 'amount': 240}, {'tr...</td>
+      <td>Kevin</td>
+      <td>[{'transaction-id': 2620, 'amount': -416}, {'t...</td>
     </tr>
   </tbody>
 </table>
@@ -1466,7 +1687,7 @@ Wall time: 596 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 212 ms, sys: 14.5 ms, total: 226 ms
+CPU times: user 223 ms, sys: 5.43 ms, total: 228 ms
 Wall time: 1.78 s
 </pre></div></div>
 </div>
@@ -1477,11 +1698,11 @@ Wall time: 1.78 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice      500
-Bob        300
-Charlie    495
-Dan        583
-Edith      598
+Alice      615
+Bob        439
+Charlie    598
+Dan        541
+Edith      628
 Name: id, dtype: int64
 </pre></div></div>
 </div>
@@ -1512,9 +1733,9 @@ Name: id, dtype: int64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-({&#39;id&#39;: 0, &#39;name&#39;: &#39;Alice&#39;, &#39;amount&#39;: 6129, &#39;transaction-id&#39;: 11},
- {&#39;id&#39;: 0, &#39;name&#39;: &#39;Alice&#39;, &#39;amount&#39;: 5960, &#39;transaction-id&#39;: 59},
- {&#39;id&#39;: 0, &#39;name&#39;: &#39;Alice&#39;, &#39;amount&#39;: 5685, &#39;transaction-id&#39;: 502})
+({&#39;id&#39;: 0, &#39;name&#39;: &#39;Alice&#39;, &#39;amount&#39;: -90, &#39;transaction-id&#39;: 26},
+ {&#39;id&#39;: 0, &#39;name&#39;: &#39;Alice&#39;, &#39;amount&#39;: -103, &#39;transaction-id&#39;: 29},
+ {&#39;id&#39;: 0, &#39;name&#39;: &#39;Alice&#39;, &#39;amount&#39;: -4, &#39;transaction-id&#39;: 381})
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1561,36 +1782,36 @@ Name: id, dtype: int64
       <th>0</th>
       <td>0</td>
       <td>Alice</td>
-      <td>6129</td>
-      <td>11</td>
+      <td>-90</td>
+      <td>26</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0</td>
       <td>Alice</td>
-      <td>5960</td>
-      <td>59</td>
+      <td>-103</td>
+      <td>29</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0</td>
       <td>Alice</td>
-      <td>5685</td>
-      <td>502</td>
+      <td>-4</td>
+      <td>381</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0</td>
       <td>Alice</td>
-      <td>6004</td>
-      <td>621</td>
+      <td>9</td>
+      <td>471</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0</td>
       <td>Alice</td>
-      <td>6357</td>
-      <td>921</td>
+      <td>-38</td>
+      <td>492</td>
     </tr>
   </tbody>
 </table>
@@ -1613,8 +1834,8 @@ Name: id, dtype: int64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 197 ms, sys: 8.05 ms, total: 205 ms
-Wall time: 1.47 s
+CPU times: user 197 ms, sys: 13.1 ms, total: 210 ms
+Wall time: 1.46 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1624,32 +1845,32 @@ Wall time: 1.47 s
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 name
-Alice       13701
-Bob          6237
-Charlie     10938
-Dan         15302
-Edith       17646
-Frank        6253
-George      13763
-Hannah      21480
-Ingrid      29899
-Jerry        8009
-Kevin       31820
-Laura       30084
-Michael     21167
-Norbert     16450
-Oliver      37332
-Patricia    37205
-Quinn       35307
-Ray         24118
-Sarah        6229
-Tim         17534
-Ursula      13201
-Victor      14857
-Wendy       19645
-Xavier      15880
-Yvonne      18137
-Zelda       17806
+Alice       21757
+Bob         19074
+Charlie     46564
+Dan         22877
+Edith       44586
+Frank       16108
+George      17281
+Hannah       8517
+Ingrid      16238
+Jerry       10250
+Kevin       33062
+Laura       16989
+Michael     23770
+Norbert     15805
+Oliver      13018
+Patricia    12951
+Quinn       23021
+Ray         35672
+Sarah       15817
+Tim         19833
+Ursula      11625
+Victor      13700
+Wendy        7060
+Xavier       7020
+Yvonne       6694
+Zelda       20711
 Name: transaction-id, dtype: int64
 </pre></div></div>
 </div>
