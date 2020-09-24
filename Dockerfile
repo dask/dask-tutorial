@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y graphviz
 USER jovyan
 
 RUN git clone https://github.com/dask/dask-tutorial.git ./dask-tutorial
-RUN cd dask-tutorial && conda env update -f binder/environment.yml && . binder/postBuild && cd ..
+RUN cd dask-tutorial && conda env update -f binder/environment.yml && cd ..
 RUN rm dask-tutorial/github_deploy_key_dask_dask_tutorial.enc
 
 # The notebooks are configured to use kernel python3
@@ -15,6 +15,7 @@ RUN rm dask-tutorial/github_deploy_key_dask_dask_tutorial.enc
 # So we switch kernels
 
 SHELL ["conda","run","-n","dask-tutorial","/bin/bash","-c"]
+RUN . dask-tutorial/binder/postBuild
 RUN jupyter kernelspec remove -f python3
 RUN python -m ipykernel install --user --name python3 --display-name "Python 3"
 
@@ -22,10 +23,4 @@ RUN python -m ipykernel install --user --name python3 --display-name "Python 3"
 
 RUN conda init
 RUN echo "conda activate dask-tutorial" >> ~/.bashrc
-
-# If we do not launch jupyter using the correct environment it
-# leads to a failure to list clusters suggesting to check if extensions
-# are installed/enabled
-
-ENV PATH /opt/conda/envs/dask-tutorial/bin:$PATH
 
