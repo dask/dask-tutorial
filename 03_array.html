@@ -1,14 +1,7 @@
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -18,15 +11,15 @@
   
 
   
-  
-  
-  
-
-  
   <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
+
+  
+  
+  
+  
 
   
   <!--[if lt IE 9]>
@@ -52,8 +45,27 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dask DataFrames" href="04_dataframe.html" />
     <link rel="prev" title="Bag: Parallel Lists for semi-structured data" href="02_bag.html" />
-    <link rel="shortcut icon" href="_static/images/favicon.ico"/>
+  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
   
+  <meta name="Description" content="Arrays">
+  <meta property="og:description" content="Arrays">
+  <meta name="twitter:description" content="Arrays" />
+  <meta property="og:title" content="Dask Tutorial  documentation - Arrays">
+  <meta property="og:image" content="https://github.com/dask.png">
+  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="380" />
+  <meta property="og:image:height" content="380" />
+  <meta property="og:url" content="03_array.html">
+  <meta property="og:site_name" content="Dask Tutorial  documentation">
+
+  <meta name="twitter:site" content="https://dask.org" />
+  <meta name="twitter:creator" content="@dask_dev" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://github.com/dask.png" />
+  <meta name="twitter:image:alt" content="Dask Tutorial  documentation">
+  
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -111,7 +123,7 @@
             <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://www.youtube.com/channel/UCj9eavqmvwaCyKhIlu2GaoA/"> YouTube Channel </a></li>
+            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
             </ul>
         </li>
         </ul>
@@ -266,21 +278,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -381,7 +407,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -447,6 +473,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -517,10 +544,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/03_array.ipynb">on Github</a>.</p>
-<p><img alt="5a58eaeeb5454b55a4af332a8e6b9b91" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="86a7d12025c44155bba6e87b454ecf31" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="ccee95fa5c54443fbec4c77df6fa1b6a" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="836eaef0ce1b48a89e6e5242a9726f0f" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -609,7 +636,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998959.0
+4994788.625
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
@@ -653,7 +680,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.9997918
+0.998957725
 </pre></div></div>
 </div>
 </div>
@@ -785,7 +812,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998959.0
+4994789.0
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
@@ -806,7 +833,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="2288daffa3b34bfd8758e483c27f5797" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="b829059c4ce9486aa32884ba8c99e811" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
@@ -867,8 +894,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.7 s, sys: 202 ms, total: 1.9 s
-Wall time: 13.7 s
+CPU times: user 1.77 s, sys: 171 ms, total: 1.94 s
+Wall time: 13.6 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -877,46 +904,46 @@ Wall time: 13.7 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 9.99908164, 10.00031708, 10.00047889, 10.00111768, 10.0003697 ,
-       10.00015308, 10.00012481,  9.99972983, 10.00120018, 10.00058587,
-        9.99943008, 10.00068131, 10.00074786, 10.00017915, 10.00076923,
-       10.00024022,  9.99942083, 10.00053588,  9.99994565, 10.00088283,
-        9.99886755,  9.99969761,  9.99961996, 10.00061077,  9.99938681,
-       10.0000157 ,  9.99943732,  9.99978141, 10.00019265, 10.0000445 ,
-       10.00014341, 10.00120007, 10.00028004,  9.99944792, 10.00059455,
-        9.99925235,  9.99926819,  9.99885072,  9.99936472, 10.00016638,
-        9.99981615,  9.99916838, 10.00083887,  9.99999398, 10.00013845,
-       10.0005899 , 10.00043563,  9.99941997, 10.00028518,  9.99959698,
-        9.99931036,  9.9994409 , 10.00026028, 10.00014848, 10.00063032,
-        9.99978698, 10.0000554 ,  9.9999834 ,  9.99994377, 10.00080791,
-       10.00044039,  9.99977523, 10.00061017,  9.99902295, 10.0000696 ,
-        9.9995203 , 10.00123961,  9.99936894,  9.99959887,  9.99873662,
-        9.99969932,  9.99981722, 10.00023923,  9.99946466,  9.99973439,
-       10.00033027,  9.99980428,  9.99983743, 10.00051375,  9.99955756,
-       10.00014815, 10.00017982, 10.00038145,  9.99952442, 10.00000856,
-       10.00090329, 10.00130292,  9.99932544,  9.99889366, 10.00005246,
-        9.9995025 ,  9.9996943 , 10.00060301, 10.00075117, 10.00028409,
-       10.00072433,  9.99890345, 10.00067124, 10.00051548, 10.00059769,
-        9.9996809 , 10.00025934,  9.99974121, 10.0004393 , 10.00017566,
-        9.99958768, 10.00014558,  9.99978905,  9.9989258 , 10.00134152,
-       10.0003397 ,  9.99896836, 10.00050663,  9.99998801, 10.00004217,
-       10.00001091, 10.00083955, 10.00109274,  9.99918951, 10.00059755,
-       10.00015087,  9.99976464,  9.99892782, 10.00037702,  9.9995264 ,
-        9.99995704,  9.99953866,  9.99960546, 10.00004308, 10.00158535,
-        9.99942354, 10.00055825,  9.99977166, 10.00037728, 10.00012547,
-        9.99939564, 10.00038549,  9.99991952,  9.99958629,  9.99818105,
-        9.9995171 , 10.00062686, 10.00003292, 10.00077901, 10.00076802,
-        9.99920124,  9.99962608, 10.00025746,  9.99941973,  9.99957983,
-       10.00054863,  9.9991547 ,  9.99962954,  9.99926234, 10.00071183,
-        9.99923533, 10.00168985,  9.99930076,  9.99977002, 10.00064419,
-       10.0006078 ,  9.99984864,  9.99925754,  9.99937176, 10.00163306,
-        9.99960736, 10.00019928, 10.00031346, 10.00191728,  9.99903591,
-       10.00118092,  9.99936294,  9.99880342, 10.00084072, 10.00046386,
-       10.00047313,  9.99952174,  9.9993917 ,  9.99928895, 10.00034219,
-       10.00058991,  9.99931741, 10.00074455, 10.00049385, 10.00004042,
-        9.99999743, 10.00045977,  9.9997735 , 10.00056472, 10.00012352,
-        9.99967863,  9.99993316, 10.00125444,  9.99918853, 10.00055705,
-        9.99991637,  9.99846545, 10.00052964, 10.00042257, 10.00131465])
+array([10.00048256,  9.9995081 ,  9.99971034, 10.00050513,  9.9999321 ,
+       10.00153091, 10.00070313,  9.99931881,  9.99889793,  9.99992925,
+       10.00028364,  9.99855716,  9.99995114, 10.00005738, 10.00012698,
+        9.998523  ,  9.99938626,  9.99949103, 10.00027183, 10.00060137,
+       10.00052583,  9.99932519,  9.99981147, 10.0005354 ,  9.99989167,
+        9.99956182, 10.0006578 , 10.00045064,  9.99966709,  9.9998623 ,
+       10.00018415,  9.99921843, 10.00043476,  9.99775565,  9.99955803,
+        9.99958185,  9.99910598,  9.99942925,  9.9994824 ,  9.9980363 ,
+        9.9993479 ,  9.99978337,  9.99984205, 10.00044983,  9.99905765,
+       10.00071778, 10.00087164,  9.99972131, 10.00045089, 10.00038379,
+       10.0006209 , 10.00005161,  9.99935169, 10.00081904,  9.99882014,
+       10.00053854, 10.00033456,  9.99999543,  9.99967632, 10.00167216,
+        9.99935366,  9.99911225, 10.00024448,  9.99970153, 10.0003235 ,
+       10.00014512,  9.99806874,  9.99964853,  9.99860757, 10.0005701 ,
+        9.99987166,  9.99887238, 10.00060847, 10.00065442, 10.0003619 ,
+        9.99974708, 10.00056738,  9.99910955,  9.99957535,  9.99989832,
+       10.00157508,  9.99978538, 10.0016064 ,  9.99965423,  9.99977954,
+       10.000569  , 10.00054631,  9.99984251,  9.99945348,  9.99952833,
+        9.99907321,  9.99950327, 10.00055731, 10.00071442, 10.00096525,
+        9.99965222, 10.00051568, 10.00000513,  9.99833538, 10.00019884,
+       10.00034147, 10.0004188 ,  9.99957198,  9.99932885, 10.00004656,
+        9.99989629, 10.0001908 , 10.00071   , 10.00079622, 10.00138109,
+       10.00076324,  9.99930008,  9.99999251,  9.9998143 ,  9.9998947 ,
+        9.99933962, 10.00099384,  9.99951879, 10.00073227, 10.00037727,
+       10.00007433, 10.00036424,  9.99969566, 10.00008179,  9.99954093,
+       10.00150812,  9.99983717,  9.99967915, 10.00081815, 10.00029306,
+        9.99988126,  9.99918694,  9.99999508,  9.99926066,  9.99910274,
+        9.99995682, 10.00018239,  9.99922166, 10.00032123, 10.00009362,
+        9.99884854, 10.00079503,  9.99934221, 10.00089751, 10.00076503,
+        9.99956498, 10.00030987, 10.00080709, 10.00076782,  9.99973585,
+       10.00039527, 10.00074764,  9.99960843, 10.00025534,  9.99959553,
+        9.99998275, 10.00019661, 10.00024696, 10.00009546,  9.99967342,
+        9.99980178, 10.00030556,  9.99943492, 10.00034141,  9.99989333,
+        9.99916915,  9.99945041,  9.99895978, 10.00007565, 10.00069977,
+       10.00005758, 10.00006491,  9.99949199,  9.99950652, 10.00022655,
+       10.00034943,  9.99955023, 10.00027728, 10.00022998,  9.9986322 ,
+        9.99918853, 10.00190004,  9.99967401, 10.00043999, 10.00042064,
+        9.99987217,  9.99811373,  9.99892094, 10.00090521, 10.00043931,
+       10.0005782 , 10.00029184,  9.99893736,  9.99979801, 10.0010903 ,
+        9.99914786,  9.99941634,  9.99992967,  9.9997769 , 10.00158376])
 </pre></div></div>
 </div>
 </div>
@@ -1053,11 +1080,20 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fd4df742fd0&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/03_array_56_0.png" src="_images/03_array_56_0.png" />
+<img alt="_images/03_array_56_1.png" src="_images/03_array_56_1.png" />
 </div>
 </div>
 <p><strong>Integrate with ``dask.array``</strong></p>
@@ -1285,17 +1321,17 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-19-d2371b8f5286&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">&lt;ipython-input-1-d2371b8f5286&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># complete the following:</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> fig <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">16</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;RdBu_r&#39;</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, data, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2706</span>         filternorm<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> filterrad<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4.0</span><span class="ansi-blue-fg">,</span> resample<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2707</span>         data=None, **kwargs):
-<span class="ansi-green-fg">-&gt; 2708</span><span class="ansi-red-fg">     __ret = gca().imshow(
-</span><span class="ansi-green-intense-fg ansi-bold">   2709</span>         X<span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span>cmap<span class="ansi-blue-fg">,</span> norm<span class="ansi-blue-fg">=</span>norm<span class="ansi-blue-fg">,</span> aspect<span class="ansi-blue-fg">=</span>aspect<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2710</span>         interpolation<span class="ansi-blue-fg">=</span>interpolation<span class="ansi-blue-fg">,</span> alpha<span class="ansi-blue-fg">=</span>alpha<span class="ansi-blue-fg">,</span> vmin<span class="ansi-blue-fg">=</span>vmin<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2722</span>         filternorm<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> filterrad<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4.0</span><span class="ansi-blue-fg">,</span> resample<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2723</span>         data=None, **kwargs):
+<span class="ansi-green-fg">-&gt; 2724</span><span class="ansi-red-fg">     __ret = gca().imshow(
+</span><span class="ansi-green-intense-fg ansi-bold">   2725</span>         X<span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span>cmap<span class="ansi-blue-fg">,</span> norm<span class="ansi-blue-fg">=</span>norm<span class="ansi-blue-fg">,</span> aspect<span class="ansi-blue-fg">=</span>aspect<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2726</span>         interpolation<span class="ansi-blue-fg">=</span>interpolation<span class="ansi-blue-fg">,</span> alpha<span class="ansi-blue-fg">=</span>alpha<span class="ansi-blue-fg">,</span> vmin<span class="ansi-blue-fg">=</span>vmin<span class="ansi-blue-fg">,</span>
 
 <span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">   1436</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
@@ -1312,11 +1348,11 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <span class="ansi-green-intense-fg ansi-bold">   5525</span>         <span class="ansi-green-fg">if</span> im<span class="ansi-blue-fg">.</span>get_clip_path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
 
 <span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">set_data</span><span class="ansi-blue-fg">(self, A)</span>
-<span class="ansi-green-intense-fg ansi-bold">    694</span>         if (self._A.dtype != np.uint8 and
-<span class="ansi-green-intense-fg ansi-bold">    695</span>                 not np.can_cast(self._A.dtype, float, &#34;same_kind&#34;)):
-<span class="ansi-green-fg">--&gt; 696</span><span class="ansi-red-fg">             raise TypeError(&#34;Image data of dtype {} cannot be converted to &#34;
-</span><span class="ansi-green-intense-fg ansi-bold">    697</span>                             &#34;float&#34;.format(self._A.dtype))
-<span class="ansi-green-intense-fg ansi-bold">    698</span>
+<span class="ansi-green-intense-fg ansi-bold">    698</span>         if (self._A.dtype != np.uint8 and
+<span class="ansi-green-intense-fg ansi-bold">    699</span>                 not np.can_cast(self._A.dtype, float, &#34;same_kind&#34;)):
+<span class="ansi-green-fg">--&gt; 700</span><span class="ansi-red-fg">             raise TypeError(&#34;Image data of dtype {} cannot be converted to &#34;
+</span><span class="ansi-green-intense-fg ansi-bold">    701</span>                             &#34;float&#34;.format(self._A.dtype))
+<span class="ansi-green-intense-fg ansi-bold">    702</span>
 
 <span class="ansi-red-fg">TypeError</span>: Image data of dtype object cannot be converted to float
 </pre></div></div>
@@ -1339,11 +1375,20 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fd4df40bac0&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/03_array_67_0.png" src="_images/03_array_67_0.png" />
+<img alt="_images/03_array_67_1.png" src="_images/03_array_67_1.png" />
 </div>
 </div>
 <p><strong>Plot the difference of the first day from the mean</strong></p>
@@ -1367,11 +1412,20 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.image.AxesImage at 0x7fd4df3e7e50&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="_images/03_array_70_0.png" src="_images/03_array_70_0.png" />
+<img alt="_images/03_array_70_1.png" src="_images/03_array_70_1.png" />
 </div>
 </div>
 </div>
@@ -1497,8 +1551,8 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.7 s, sys: 1.32 s, total: 5.02 s
-Wall time: 4.76 s
+CPU times: user 4.19 s, sys: 1.67 s, total: 5.85 s
+Wall time: 5.55 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1581,8 +1635,8 @@ Wall time: 4.76 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 263 ms, sys: 53.9 ms, total: 317 ms
-Wall time: 4.84 s
+CPU times: user 301 ms, sys: 17.1 ms, total: 318 ms
+Wall time: 4.9 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
