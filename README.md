@@ -1,7 +1,7 @@
 # Dask Tutorial
 
 This tutorial was last given at SciPy 2020 which was a virtual conference.
-[A video of the SciPy 2018 tutorial is available online](https://www.youtube.com/watch?v=mqdglv9GnM8).
+[A video of the SciPy 2020 tutorial is available online](https://www.youtube.com/watch?v=EybGGLbLipI).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab)
 
