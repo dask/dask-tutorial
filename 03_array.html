@@ -544,10 +544,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/03_array.ipynb">on Github</a>.</p>
-<p><img alt="eef17fc4eeb749de8bad472728f2c1be" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="6498e2cbfc0c410fa1d834b28d42d7a6" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="e3c2af0683914d0d82332762d6487e42" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="7a6e117c2a7b4fa1a76ad331e2c080df" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -636,7 +636,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998168.0625
+4996984.875
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
@@ -680,7 +680,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.9996336125
+0.999396975
 </pre></div></div>
 </div>
 </div>
@@ -812,7 +812,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998168.0
+4996985.0
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
@@ -833,7 +833,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="c0a767d606484562bb6529979e0f8c34" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="a88de84f16754d47b05d4284b44d5911" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
@@ -894,8 +894,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.71 s, sys: 124 ms, total: 1.83 s
-Wall time: 13.5 s
+CPU times: user 1.84 s, sys: 127 ms, total: 1.96 s
+Wall time: 13.9 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -904,46 +904,46 @@ Wall time: 13.5 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 9.99985927, 10.00049945,  9.9996867 , 10.00043529,  9.99989167,
-        9.99960143, 10.00015968,  9.99901599, 10.0004186 ,  9.99926093,
-        9.99922646, 10.00004561,  9.99875258, 10.00005181,  9.99949223,
-        9.99916759, 10.00014795,  9.99886269, 10.0002104 ,  9.99951447,
-        9.99980263, 10.00124996, 10.00234407,  9.99991435, 10.00037365,
-       10.00065927,  9.99902532,  9.99859347, 10.00016865, 10.00097001,
-       10.0005697 ,  9.99987967,  9.99991841, 10.00099002, 10.00100859,
-       10.00078419, 10.00037245,  9.9998363 ,  9.99966184,  9.99994066,
-       10.00054452,  9.99958064,  9.99911186, 10.00193954,  9.99906661,
-        9.99983398, 10.00008595,  9.99946846,  9.99939399, 10.00052533,
-       10.00001098,  9.99960727, 10.00029559,  9.99932456,  9.99977554,
-       10.00001338, 10.00063299, 10.00040578,  9.9986621 ,  9.99975829,
-        9.99913134, 10.00112835, 10.00083778, 10.00007435,  9.99954226,
-        9.99968672,  9.9983363 ,  9.99883935, 10.00051578, 10.00001678,
-       10.00056719, 10.00049071, 10.00075927, 10.00032981,  9.99940737,
-        9.99979087,  9.99945101,  9.99928405, 10.00065521, 10.00019532,
-       10.00156826,  9.99897538,  9.99936054, 10.00098847,  9.99937022,
-        9.99989085,  9.99967093, 10.00035467,  9.999966  , 10.0004534 ,
-        9.99978387, 10.00036674, 10.00064715, 10.00010527, 10.00075589,
-        9.99988543,  9.99954648,  9.99998915,  9.99954699, 10.00038875,
-       10.00071444, 10.00006044, 10.00034596, 10.00128069, 10.00098068,
-       10.00000413, 10.00077904, 10.0016613 , 10.00062151,  9.99958666,
-       10.00011491,  9.99990976, 10.00048319, 10.0002379 ,  9.9993698 ,
-        9.99914654,  9.99997598, 10.00077245,  9.99966917, 10.00066838,
-       10.00027084,  9.99979262,  9.99923247, 10.0004294 , 10.00091866,
-        9.99980529, 10.00046482, 10.000913  , 10.00099649, 10.00055845,
-       10.00023504, 10.00130779, 10.00080721,  9.99983894, 10.00024011,
-        9.99855195,  9.99962031, 10.00051681,  9.99975409,  9.99953903,
-        9.99996416,  9.99996429, 10.00130964, 10.00039689,  9.99954366,
-       10.00000945,  9.99929241,  9.99858963,  9.99968317,  9.99937338,
-       10.00007094, 10.00052913, 10.00009395,  9.99994213, 10.00092094,
-       10.00008884,  9.99969309, 10.00063055, 10.00064922, 10.00033251,
-        9.99951209, 10.00031617, 10.00088439, 10.00075767,  9.99956244,
-        9.99962798, 10.00017061, 10.00034403, 10.00001654,  9.99861472,
-        9.99962989,  9.99953041, 10.00004868, 10.00084696, 10.00015682,
-        9.99877206, 10.00113063, 10.00001522, 10.00094844, 10.00019084,
-       10.00014568, 10.00134259,  9.99966497, 10.00052214, 10.00188088,
-        9.99995232, 10.00030135, 10.00045281,  9.99892284, 10.00138236,
-        9.99969118,  9.99869718, 10.00055391,  9.99926943,  9.99990349,
-        9.99979981, 10.00074503,  9.99982705,  9.99976382, 10.00040281])
+array([10.00010508,  9.9999935 ,  9.99927407, 10.00101613, 10.00079183,
+        9.99781277,  9.99953209,  9.99936117,  9.99910696,  9.99991208,
+       10.00024966,  9.99868521,  9.99963501, 10.00100536, 10.00101181,
+        9.99983204,  9.99935538, 10.0017442 , 10.00099662, 10.00003739,
+        9.99905466,  9.99967082,  9.99984079, 10.00140103, 10.00018091,
+       10.00031886,  9.99969339, 10.00078863,  9.99940428, 10.00054518,
+       10.00021081, 10.00001549,  9.99931931,  9.9988935 , 10.00032627,
+       10.00085848,  9.99892639,  9.9996199 ,  9.99916926, 10.00018827,
+        9.99985091,  9.99961089,  9.99915724, 10.00028674,  9.99904505,
+       10.00015885,  9.99986078,  9.99942224,  9.99915069,  9.99937881,
+       10.00003346,  9.99939395,  9.9993292 ,  9.99976445, 10.0000127 ,
+        9.99986555,  9.99934751, 10.00034786, 10.00078244,  9.99999193,
+        9.99899987,  9.99988216, 10.00103475, 10.0008278 ,  9.99938521,
+        9.99967037,  9.99934973,  9.99977938, 10.00063752,  9.99890118,
+        9.99817922,  9.99910746, 10.00005158, 10.00014262, 10.00088205,
+        9.99948679, 10.00036492,  9.999076  ,  9.9998043 , 10.00004753,
+        9.99936969, 10.00033952,  9.99917815,  9.99969443,  9.99936693,
+       10.00069894, 10.00056312, 10.00040143,  9.9996749 ,  9.99980969,
+        9.99976107, 10.00022133, 10.00023766, 10.00042614, 10.00117024,
+       10.00043009, 10.00088337, 10.00005946,  9.99839244,  9.99963706,
+        9.99980142,  9.9999006 , 10.00029359,  9.99936087, 10.00027885,
+        9.99947782,  9.99980161, 10.00051846,  9.99948486,  9.99982326,
+        9.99979642,  9.99934427,  9.99918947, 10.0006361 , 10.0005204 ,
+        9.99965076,  9.99953998, 10.00061184,  9.99917401, 10.00018289,
+        9.99996775,  9.99966822, 10.00009783,  9.99988995,  9.99889257,
+       10.00119801, 10.00006897, 10.00005564,  9.99952118, 10.0000208 ,
+        9.99971825,  9.99894036,  9.99954342, 10.00073172,  9.99965438,
+       10.00155978, 10.00031949,  9.99973253,  9.99905059,  9.99941167,
+       10.00041645,  9.99946235,  9.99982651,  9.99988322, 10.00041594,
+        9.99948868,  9.99967135,  9.99948334, 10.00012358, 10.00057017,
+       10.00027358,  9.99970412,  9.99942073,  9.99946077,  9.99900016,
+       10.00054008, 10.00153063, 10.00086922, 10.00094789,  9.99901433,
+        9.99943411,  9.99953168,  9.9987608 , 10.00062056,  9.99848608,
+        9.99963588, 10.00051585,  9.99999439, 10.00028441, 10.00073733,
+       10.00062085,  9.99927013, 10.00022791, 10.00065471,  9.99896445,
+        9.99954917,  9.99869871,  9.99942709, 10.00071193,  9.99887106,
+       10.00067778, 10.00041168, 10.00109311, 10.0001103 ,  9.99802355,
+       10.00014086, 10.0006047 ,  9.99987109, 10.00003387,  9.99949099,
+        9.99983973,  9.99939663, 10.00052376, 10.00051949,  9.99887644,
+       10.00037451,  9.99919428, 10.00076251,  9.9993374 ,  9.99876665])
 </pre></div></div>
 </div>
 </div>
@@ -1086,7 +1086,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f75b9e75f10&gt;
+&lt;matplotlib.image.AxesImage at 0x7f5d40b24ca0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1381,7 +1381,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f75b9b3dc10&gt;
+&lt;matplotlib.image.AxesImage at 0x7f5d407eebe0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1418,7 +1418,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f75b9a8adc0&gt;
+&lt;matplotlib.image.AxesImage at 0x7f5d40774df0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1551,8 +1551,8 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.71 s, sys: 1.59 s, total: 5.3 s
-Wall time: 5.06 s
+CPU times: user 3.81 s, sys: 1.53 s, total: 5.34 s
+Wall time: 5.07 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1635,8 +1635,8 @@ Wall time: 5.06 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 287 ms, sys: 16.1 ms, total: 304 ms
-Wall time: 4.87 s
+CPU times: user 294 ms, sys: 31.2 ms, total: 325 ms
+Wall time: 4.88 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
