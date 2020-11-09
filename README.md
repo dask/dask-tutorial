@@ -4,6 +4,7 @@ This tutorial was last given at SciPy 2020 which was a virtual conference.
 [A video of the SciPy 2020 tutorial is available online](https://www.youtube.com/watch?v=EybGGLbLipI).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab)
+[![Build Status](https://github.com/dask/dask-tutorial/workflows/CI/badge.svg)](https://github.com/dask/dask-tutorial/actions?query=workflow%3ACI)
 
 Dask provides multi-core execution on larger-than-memory datasets.
 
@@ -35,13 +36,13 @@ schedulers (odd sections.)
 
 and then install necessary packages.
 There are three different ways to achieve this, pick the one that best suits you, and ***only pick one option***.
-They are, in order of preference: 
+They are, in order of preference:
 
 #### 2a) Create a conda environment (preferred)
 
 In the main repo directory
 
-    conda env create -f binder/environment.yml 
+    conda env create -f binder/environment.yml
     conda activate dask-tutorial
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install @bokeh/jupyter_bokeh
@@ -55,10 +56,10 @@ You will need the following core libraries
 You may find the following libraries helpful for some exercises
 
     conda install python-graphviz -c conda-forge
-    
-Note that this options will alter your existing environment, potentially changing the versions of packages you already 
-have installed. 
-    
+
+Note that this options will alter your existing environment, potentially changing the versions of packages you already
+have installed.
+
 #### 2c) Use Dockerfile
 
 You can build a docker image out of the provided Dockerfile.
@@ -69,7 +70,7 @@ Run a container, replacing the ID with the output of the previous command
 
     $ docker run -it -p 8888:8888 -p 8787:8787 <container_id_or_tag>
 
-The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which 
+The above command will give an URL (`Like http://(container_id or 127.0.0.1):8888/?token=<sometoken>`) which
 can be used to access the notebook from browser. You may need to replace the given hostname with "localhost" or
 "127.0.0.1".
 
@@ -79,7 +80,7 @@ can be used to access the notebook from browser. You may need to replace the giv
 
 From the repo directory
 
-    jupyter notebook 
+    jupyter notebook
 
 Or
 
@@ -110,8 +111,8 @@ This was already done for method c) and does not need repeating.
 
 2. [Bag](02_bag.ipynb) - the first high-level collection: a generalized iterator for use
 with a functional programming style and to clean messy data.
- 
-3. [Array](03_array.ipynb) - blocked numpy-like functionality with a collection of 
+
+3. [Array](03_array.ipynb) - blocked numpy-like functionality with a collection of
 numpy arrays spread across your cluster.
 
 7. [Dataframe](04_dataframe.ipynb) - parallelized operations on many pandas dataframes
@@ -120,7 +121,7 @@ spread across your cluster.
 5. [Distributed](05_distributed.ipynb) - Dask's scheduler for clusters, with details of
 how to view the UI.
 
-6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed 
+6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed
 computing, including how to debug.
 
 7. [Dataframe Storage](07_dataframe_storage.ipynb) - efficient ways to read and write
