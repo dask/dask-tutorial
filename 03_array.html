@@ -544,10 +544,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/master/03_array.ipynb">on Github</a>.</p>
-<p><img alt="6bafafe4f3cc452ebd001c5234e8a660" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="a3254a2e88b9482fa5273362dca78899" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="091d93d503474e0385ec9788f9c32e64" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="f1f0794e56cd46dbb074488d499a5cde" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -636,7 +636,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-5001161.9375
+5000322.9375
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
@@ -680,7 +680,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.0002323875
+1.0000645875
 </pre></div></div>
 </div>
 </div>
@@ -812,7 +812,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-5001162.0
+5000323.0
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
@@ -833,7 +833,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="ead7bbe9d4ec46e4b0c23e1b4b44af18" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="c7c495bbf4b8483e890799bb7a10a6fe" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
@@ -894,8 +894,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.66 s, sys: 143 ms, total: 1.81 s
-Wall time: 13.7 s
+CPU times: user 1.48 s, sys: 148 ms, total: 1.63 s
+Wall time: 11.9 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -904,46 +904,46 @@ Wall time: 13.7 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([10.00124645,  9.99934052,  9.99950496,  9.99924816, 10.00066259,
-        9.9990617 ,  9.99926339, 10.00071578,  9.99847478,  9.99894412,
-        9.99991942, 10.00046203,  9.99966392,  9.99897519, 10.00021929,
-       10.00106085, 10.00029242, 10.00075918, 10.00069818,  9.99904392,
-       10.00043027, 10.00060626,  9.99945982, 10.00025171, 10.00125567,
-       10.00011948,  9.99917095, 10.0009946 , 10.0000401 , 10.00009192,
-        9.99956182,  9.99936261, 10.00012017, 10.00085319, 10.0002514 ,
-        9.99963949, 10.00037707, 10.00060929,  9.99951825, 10.00001042,
-        9.99950182, 10.00015676, 10.00056954,  9.99926103, 10.00039811,
-        9.99956529,  9.99946464, 10.00028518,  9.99859878,  9.99964313,
-        9.99987674, 10.00001368,  9.9994527 , 10.00041204, 10.00098382,
-        9.99956913, 10.00002943,  9.9992403 ,  9.99939725, 10.00070152,
-       10.00056415, 10.00013478, 10.0009568 ,  9.99914318, 10.00048041,
-       10.00015196,  9.9999316 , 10.00011281, 10.00008921,  9.99945447,
-       10.0007343 ,  9.99839775,  9.99964964,  9.99882759, 10.00035372,
-        9.9999201 ,  9.99970725,  9.99901379, 10.00070623,  9.99998955,
-       10.00077246,  9.99943055, 10.00003234, 10.0000983 ,  9.99965915,
-       10.00006551,  9.99972599, 10.00014414, 10.0003733 , 10.00037183,
-       10.00032329, 10.00044676, 10.00029111,  9.9993756 ,  9.99960547,
-       10.00066575, 10.00077656, 10.00042767,  9.99970786,  9.99939776,
-       10.0001985 ,  9.99959098,  9.99803451,  9.99938252,  9.99974436,
-       10.00056719, 10.00005801, 10.00107815, 10.00047782, 10.00001199,
-       10.00166684,  9.99835642,  9.9997205 , 10.00072325,  9.99950242,
-       10.00008963, 10.00040052, 10.00069456,  9.99948711,  9.99933216,
-        9.99908974, 10.00001097, 10.00004445,  9.9999714 ,  9.99851299,
-       10.00065256,  9.99980182, 10.00126014,  9.99872685, 10.00093695,
-        9.99947343,  9.99944459, 10.00013991, 10.00079761,  9.99951307,
-       10.00123209,  9.9996415 ,  9.99902559, 10.00044766,  9.99916393,
-       10.00026917, 10.00001436, 10.00035354,  9.99899449, 10.00095291,
-        9.99998317, 10.00090063, 10.00139061, 10.00108286, 10.00123099,
-        9.9991097 , 10.00071487, 10.00063712, 10.00012718,  9.99938176,
-        9.99873502,  9.99920456,  9.9998352 , 10.00031539,  9.99991524,
-        9.99991115,  9.99971262,  9.99914726, 10.00040711,  9.99991891,
-       10.0016625 , 10.00075084,  9.99963318, 10.00049303,  9.99942789,
-       10.00053164,  9.99971252, 10.00066299, 10.00100429,  9.99922923,
-       10.00043867,  9.99976957,  9.9989685 , 10.00018764,  9.99941262,
-       10.00008916,  9.99967065,  9.99966868,  9.99987272,  9.99940342,
-        9.9989138 , 10.00055344, 10.00046407,  9.99935734, 10.00067133,
-       10.00023815,  9.99930248, 10.00043819,  9.99927057, 10.00051037,
-        9.99970962,  9.99935269,  9.9990047 , 10.00124492,  9.99984317])
+array([10.0001127 ,  9.99917837,  9.99903167, 10.00025647, 10.00008471,
+       10.00020594, 10.00049085,  9.99926763,  9.99915589,  9.99881771,
+        9.99886879, 10.00044492,  9.9991939 , 10.00038591, 10.00020327,
+       10.0007183 , 10.00115796,  9.99947462, 10.0005159 ,  9.99967733,
+       10.0000918 ,  9.99816733, 10.00057146, 10.0007717 ,  9.998938  ,
+       10.00029133,  9.99917052,  9.99926592,  9.99999406, 10.00006356,
+       10.00070533,  9.99976113,  9.99934055,  9.99970121,  9.99981916,
+       10.00125976,  9.99927949,  9.99891236, 10.00007327, 10.00082636,
+       10.00057741,  9.99948256, 10.00027498, 10.00144465,  9.9987088 ,
+        9.99957418, 10.00017851, 10.00027194, 10.00096545, 10.00029483,
+       10.00027454, 10.00036249,  9.99976642,  9.99932087, 10.00011595,
+       10.0002707 ,  9.99985129, 10.00052637, 10.00072252, 10.00021467,
+       10.001665  ,  9.99924769,  9.99984442,  9.99985513, 10.00031411,
+       10.00018746, 10.00007854,  9.99863265,  9.99970133, 10.00000727,
+        9.99981475, 10.00041961,  9.99857941, 10.0002854 , 10.00023304,
+       10.00233356,  9.99998976, 10.00099392, 10.00146403,  9.99983598,
+        9.99877154, 10.00058949, 10.00072051,  9.99935737, 10.00156101,
+        9.99938437,  9.99983777,  9.99975443, 10.00129016, 10.00032005,
+        9.9995156 , 10.00037536,  9.99983219, 10.00131964,  9.99985705,
+       10.0008966 ,  9.99944448,  9.99925227,  9.99960374, 10.00059226,
+        9.99913775, 10.00016481,  9.99919569, 10.00062456, 10.0002157 ,
+       10.00159349,  9.99950954,  9.9990543 ,  9.99865904, 10.00035783,
+       10.00014013, 10.0001674 , 10.00052793, 10.00005206,  9.99971187,
+        9.99929635, 10.0007615 , 10.00061045, 10.00034658,  9.99975433,
+        9.9995627 , 10.00070736, 10.00009364, 10.00049811,  9.99981675,
+        9.99940101, 10.00130054,  9.99996019,  9.99999059, 10.00045827,
+       10.00079245,  9.99879211,  9.999313  , 10.00005875,  9.99996793,
+       10.00070174,  9.99898784,  9.99943759, 10.0007278 , 10.00054502,
+        9.99934199,  9.99847804, 10.0004552 , 10.00009872, 10.00008128,
+       10.00044168, 10.00059989,  9.99849573, 10.00089951, 10.00091146,
+        9.99989216,  9.99986888,  9.99991021, 10.00006555, 10.00027721,
+       10.00018833, 10.00034936, 10.00058281,  9.99944952, 10.00012752,
+        9.99994608, 10.00036115, 10.00058168,  9.99952055,  9.99927245,
+       10.00110619, 10.00044134,  9.99976831, 10.00072656,  9.99958807,
+       10.00036966,  9.99915347,  9.99993167, 10.00057542,  9.99868668,
+       10.0000877 , 10.00026775,  9.9996977 ,  9.9996248 ,  9.99990873,
+        9.99927946,  9.99983036,  9.99971183, 10.00005861,  9.99988475,
+       10.00072554,  9.99979536,  9.9998704 , 10.00075992, 10.00004904,
+       10.00052556, 10.00084841, 10.00082866,  9.99934321,  9.99880189,
+       10.00086825, 10.00120786, 10.00100917,  9.99881443, 10.00106018])
 </pre></div></div>
 </div>
 </div>
@@ -1086,7 +1086,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f54bb05d280&gt;
+&lt;matplotlib.image.AxesImage at 0x7f069737eee0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1326,28 +1326,28 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <span class="ansi-green-intense-fg ansi-bold">      2</span> fig <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">16</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;RdBu_r&#39;</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, data, **kwargs)</span>
+<span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, data, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">   2722</span>         filternorm<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> filterrad<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4.0</span><span class="ansi-blue-fg">,</span> resample<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
 <span class="ansi-green-intense-fg ansi-bold">   2723</span>         data=None, **kwargs):
 <span class="ansi-green-fg">-&gt; 2724</span><span class="ansi-red-fg">     __ret = gca().imshow(
 </span><span class="ansi-green-intense-fg ansi-bold">   2725</span>         X<span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span>cmap<span class="ansi-blue-fg">,</span> norm<span class="ansi-blue-fg">=</span>norm<span class="ansi-blue-fg">,</span> aspect<span class="ansi-blue-fg">=</span>aspect<span class="ansi-blue-fg">,</span>
 <span class="ansi-green-intense-fg ansi-bold">   2726</span>         interpolation<span class="ansi-blue-fg">=</span>interpolation<span class="ansi-blue-fg">,</span> alpha<span class="ansi-blue-fg">=</span>alpha<span class="ansi-blue-fg">,</span> vmin<span class="ansi-blue-fg">=</span>vmin<span class="ansi-blue-fg">,</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
+<span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">   1436</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-intense-fg ansi-bold">   1437</span>         <span class="ansi-green-fg">if</span> data <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
 <span class="ansi-green-fg">-&gt; 1438</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>map<span class="ansi-blue-fg">(</span>sanitize_sequence<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">   1439</span>
 <span class="ansi-green-intense-fg ansi-bold">   1440</span>         bound <span class="ansi-blue-fg">=</span> new_sig<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/axes/_axes.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, **kwargs)</span>
+<span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/axes/_axes.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, **kwargs)</span>
 <span class="ansi-green-intense-fg ansi-bold">   5521</span>                               resample=resample, **kwargs)
 <span class="ansi-green-intense-fg ansi-bold">   5522</span>
 <span class="ansi-green-fg">-&gt; 5523</span><span class="ansi-red-fg">         </span>im<span class="ansi-blue-fg">.</span>set_data<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">   5524</span>         im<span class="ansi-blue-fg">.</span>set_alpha<span class="ansi-blue-fg">(</span>alpha<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">   5525</span>         <span class="ansi-green-fg">if</span> im<span class="ansi-blue-fg">.</span>get_clip_path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
 
-<span class="ansi-green-fg">~/miniconda/envs/test/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">set_data</span><span class="ansi-blue-fg">(self, A)</span>
+<span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">set_data</span><span class="ansi-blue-fg">(self, A)</span>
 <span class="ansi-green-intense-fg ansi-bold">    698</span>         if (self._A.dtype != np.uint8 and
 <span class="ansi-green-intense-fg ansi-bold">    699</span>                 not np.can_cast(self._A.dtype, float, &#34;same_kind&#34;)):
 <span class="ansi-green-fg">--&gt; 700</span><span class="ansi-red-fg">             raise TypeError(&#34;Image data of dtype {} cannot be converted to &#34;
@@ -1381,7 +1381,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f54bad1c280&gt;
+&lt;matplotlib.image.AxesImage at 0x7f0697051b50&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1418,7 +1418,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7f54baca71c0&gt;
+&lt;matplotlib.image.AxesImage at 0x7f0696fc2d00&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1551,8 +1551,8 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.89 s, sys: 1.53 s, total: 5.42 s
-Wall time: 5.18 s
+CPU times: user 4.14 s, sys: 1.69 s, total: 5.83 s
+Wall time: 5.63 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1635,8 +1635,8 @@ Wall time: 5.18 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 265 ms, sys: 3.96 ms, total: 269 ms
-Wall time: 4.73 s
+CPU times: user 177 ms, sys: 35 ms, total: 212 ms
+Wall time: 4.16 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
