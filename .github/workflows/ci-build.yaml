@@ -1,0 +1,38 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup Conda Environment
+        uses: goanpeca/setup-miniconda@v1
+        with:
+          miniconda-version: "latest"
+          python-version: "3.7"
+          environment-file: binder/environment.yml
+          activate-environment: dask-examples
+          auto-activate-base: false
+
+      - name: Install testing and docs dependencies
+        shell: bash -l {0}
+        run: |
+          conda install -c conda-forge nbconvert nbformat jupyter_client ipykernel
+          pip install nbsphinx dask-sphinx-theme sphinx
+      - name: Build
+        shell: bash -l {0}
+        run: |
+          python prep.py --small
+          sphinx-build -M html . _build -vsphinx-build -M html . _build -v
+
+      - name: Deploy
+        if: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request'}}
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: _build/html
+          CLEAN: true
