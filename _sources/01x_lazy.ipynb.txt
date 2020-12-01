@@ -58,7 +58,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Dask allows you to construct a prescription for the calculation you want to carry out. That may sound strange, but a simple example will demonstrate that you can achieve this while programming with perfectly ordinary Python functions and for-loops. We saw this in Chapter 02."
+    "Dask allows you to construct a prescription for the calculation you want to carry out. That may sound strange, but a simple example will demonstrate that you can achieve this while programming with perfectly ordinary Python functions and for-loops. We saw this in the previous notebook."
    ]
   },
   {
@@ -98,15 +98,15 @@
     "x = inc(15)\n",
     "y = inc(30)\n",
     "total = add(x, y)\n",
-    "# incx, incy and total are all delayed objects. \n",
-    "# They contain a prescription of how to execute"
+    "# x, y and total are all delayed objects. \n",
+    "# They contain a prescription of how to carry out the computation"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Calling a delayed function created a delayed object (`incx, incy, total`) - examine these interactively. Making these objects is somewhat equivalent to constructs like the `lambda` or function wrappers (see below). Each holds a simple dictionary describing the task graph, a full specification of how to carry out the computation.\n",
+    "Calling a delayed function created a delayed object (`x, y, total`) which can be examined interactively. Making these objects is somewhat equivalent to constructs like the `lambda` or function wrappers (see below). Each holds a simple dictionary describing the task graph, a full specification of how to carry out the computation.\n",
     "\n",
     "We can visualize the chain of calculations that the object `total` corresponds to as follows; the circles are functions, rectangles are data/results."
    ]
@@ -388,7 +388,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "There are many tasks that take a while to complete, but don't actually require much of the CPU, for example anything that requires communication over a network, or input from a user. In typical sequential programming, execution would need to halt while the process completes, and then continue execution. That would be dreadful for a user experience (imagine the slow progress bar that locks up the application and cannot be canceled), and wasteful of time (the CPU could have been doing useful work in the meantime.\n",
+    "There are many tasks that take a while to complete, but don't actually require much of the CPU, for example anything that requires communication over a network, or input from a user. In typical sequential programming, execution would need to halt while the process completes, and then continue execution. That would be dreadful for user experience (imagine the slow progress bar that locks up the application and cannot be canceled), and wasteful of time (the CPU could have been doing useful work in the meantime).\n",
     "\n",
     "For example, we can launch processes and get their output as follows:\n",
     "```python\n",
@@ -556,9 +556,9 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Any Dask object, such as `total`, above, has an attribute which describes the calculations necessary to produce that result. Indeed, this is exactly the graph that we have been talking about, which can be visualized. We see that it is a simple dictionary, the keys are unique task identifiers, and the values are the functions and inputs for calculation.\n",
+    "Any Dask object, such as `total`, above, has an attribute which describes the calculations necessary to produce that result. Indeed, this is exactly the graph that we have been talking about, which can be visualized. We see that it is a simple dictionary, in which the keys are unique task identifiers, and the values are the functions and inputs for calculation.\n",
     "\n",
-    "`delayed` is a handy mechanism for creating the Dask graph, but the adventerous may wish to play with the full fexibility afforded by building the graph dictionaries directly. Detailed information can be found [here](http://dask.pydata.org/en/latest/graphs.html)."
+    "`delayed` is a handy mechanism for creating the Dask graph, but the adventurous may wish to play with the full fexibility afforded by building the graph dictionaries directly. Detailed information can be found [here](http://dask.pydata.org/en/latest/graphs.html)."
    ]
   },
   {

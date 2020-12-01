@@ -557,8 +557,8 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><img alt="a46f798d9cf64d759ab00aa95ba53b19" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
+<p><img alt="77b06e1b4bb14c26ba8161983f5a560c" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> API. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">DataFrame documentation</a></p></li>
@@ -666,33 +666,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>74</td>
-      <td>Edith</td>
-      <td>586</td>
+      <td>12</td>
+      <td>Kevin</td>
+      <td>-53</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>67</td>
-      <td>Frank</td>
-      <td>2481</td>
+      <td>77</td>
+      <td>Sarah</td>
+      <td>2450</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>38</td>
-      <td>Charlie</td>
-      <td>2051</td>
+      <td>85</td>
+      <td>Dan</td>
+      <td>882</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>56</td>
-      <td>Laura</td>
-      <td>1850</td>
+      <td>74</td>
+      <td>Bob</td>
+      <td>-782</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>41</td>
-      <td>Quinn</td>
-      <td>2348</td>
+      <td>80</td>
+      <td>Patricia</td>
+      <td>3887</td>
     </tr>
   </tbody>
 </table>
@@ -1484,8 +1484,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 39.2 ms, sys: 2.94 ms, total: 42.2 ms
-Wall time: 435 ms
+CPU times: user 50.3 ms, sys: 4.4 ms, total: 54.7 ms
+Wall time: 506 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1748,11 +1748,11 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 78.4 ms, sys: 1.89 ms, total: 80.3 ms
-Wall time: 258 ms
+CPU times: user 92.2 ms, sys: 3.39 ms, total: 95.6 ms
+Wall time: 313 ms
 </pre></div></div>
 </div>
-<p>But lets try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
+<p>But let’s try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
@@ -1769,8 +1769,8 @@ Wall time: 258 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 49.9 ms, sys: 22 µs, total: 49.9 ms
-Wall time: 143 ms
+CPU times: user 57.9 ms, sys: 6.17 ms, total: 64.1 ms
+Wall time: 176 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1779,7 +1779,7 @@ Wall time: 143 ms
 <li><p>the filter (<code class="docutils literal notranslate"><span class="pre">df[~df.Cancelled]</span></code>)</p></li>
 <li><p>some of the necessary reductions (<code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">count</span></code>)</p></li>
 </ul>
-<p>To see what the merged task graphs between multiple results look like (and what’s shared), you can use the <code class="docutils literal notranslate"><span class="pre">dask.visualize</span></code> function (we might want to use <code class="docutils literal notranslate"><span class="pre">filename='graph.pdf'</span></code> to zoom in on the graph better):</p>
+<p>To see what the merged task graphs between multiple results look like (and what’s shared), you can use the <code class="docutils literal notranslate"><span class="pre">dask.visualize</span></code> function (we might want to use <code class="docutils literal notranslate"><span class="pre">filename='graph.pdf'</span></code> to save the graph to disk so that we can zoom in more easily):</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
@@ -1823,14 +1823,14 @@ Unable to revert mtime: /usr/share/fonts/cmap/adobe-korea1
 <p>Dask.dataframe operations use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> operations internally. Generally they run at about the same speed except in the following two cases:</p>
 <ol class="arabic simple">
 <li><p>Dask introduces a bit of overhead, around 1ms per task. This is usually negligible.</p></li>
-<li><p>When Pandas releases the GIL (coming to <code class="docutils literal notranslate"><span class="pre">groupby</span></code> in the next version) <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> can call several pandas operations in parallel within a process, increasing speed somewhat proportional to the number of cores. For operations which don’t release the GIL, multiple processes would be needed to get the same speedup.</p></li>
+<li><p>When Pandas releases the GIL <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> can call several pandas operations in parallel within a process, increasing speed somewhat proportional to the number of cores. For operations which don’t release the GIL, multiple processes would be needed to get the same speedup.</p></li>
 </ol>
 </div>
 <div class="section" id="Dask-DataFrame-Data-Model">
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><img alt="0981277a9c674040b3136cd40aa554a0" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
+<p><img alt="db471913f1ab4e7889b3468f67de31e7" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">
