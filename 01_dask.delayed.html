@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Parallelize code with dask.delayed &mdash; Dask Tutorial  documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,11 +34,10 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -138,7 +140,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Dask Tutorial
+            <a href="index.html" class="icon icon-home"> Dask Tutorial
           
 
           
@@ -248,6 +250,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -259,7 +263,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/01_dask.delayed.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -611,7 +615,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 95.8 ms, sys: 23.7 ms, total: 120 ms
+CPU times: user 159 ms, sys: 15.4 ms, total: 174 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -647,8 +651,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 767 µs, sys: 122 µs, total: 889 µs
-Wall time: 1.65 ms
+CPU times: user 638 µs, sys: 0 ns, total: 638 µs
+Wall time: 501 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -670,7 +674,7 @@ Wall time: 1.65 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 73.4 ms, sys: 23.1 ms, total: 96.5 ms
+CPU times: user 121 ms, sys: 555 µs, total: 121 ms
 Wall time: 2.02 s
 </pre></div></div>
 </div>
@@ -703,7 +707,7 @@ Wall time: 2.02 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-945c3ac7-1675-4c46-8850-3ec564ca9d2f&#39;)
+Delayed(&#39;add-422cdda5-0ba7-4956-b256-2ea97fdab669&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -791,7 +795,7 @@ Unable to revert mtime: /usr/share/fonts/type1/gsfonts
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 291 ms, sys: 20.6 ms, total: 312 ms
+CPU times: user 369 ms, sys: 59.9 ms, total: 429 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -828,8 +832,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 6.44 µs
+CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 5.01 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -855,7 +859,7 @@ Wall time: 6.44 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-4d9cf64a-343d-4440-87ff-8f69ea8bfbed&#39;)
+Before computing: Delayed(&#39;sum-8ac3fb5c-be27-45c2-8176-a03ef58bcf83&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -911,7 +915,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 361 ms, sys: 37 ms, total: 398 ms
+CPU times: user 491 ms, sys: 51.7 ms, total: 542 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -932,8 +936,8 @@ Wall time: 10 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 4.53 µs
+CPU times: user 1 µs, sys: 0 ns, total: 1 µs
+Wall time: 4.05 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -967,7 +971,7 @@ Wall time: 4.53 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 129 ms, sys: 8.38 ms, total: 137 ms
+CPU times: user 144 ms, sys: 33.6 ms, total: 177 ms
 Wall time: 3.03 s
 </pre></div></div>
 </div>
@@ -1389,8 +1393,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 58.9 ms, sys: 7.91 ms, total: 66.8 ms
-Wall time: 64.6 ms
+CPU times: user 49.5 ms, sys: 838 µs, total: 50.3 ms
+Wall time: 49.1 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1488,8 +1492,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 71.3 ms, sys: 0 ns, total: 71.3 ms
-Wall time: 69.4 ms
+CPU times: user 45.4 ms, sys: 753 µs, total: 46.2 ms
+Wall time: 45 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1529,8 +1533,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4 µs, sys: 0 ns, total: 4 µs
-Wall time: 5.72 µs
+CPU times: user 2 µs, sys: 0 ns, total: 2 µs
+Wall time: 4.05 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1578,8 +1582,8 @@ Wall time: 5.72 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 92.8 ms, sys: 0 ns, total: 92.8 ms
-Wall time: 577 ms
+CPU times: user 59.8 ms, sys: 1.59 ms, total: 61.4 ms
+Wall time: 429 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1640,37 +1644,29 @@ Name: DepDelay, dtype: float64
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="01x_lazy.html" class="btn btn-neutral float-right" title="Lazy execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="00_overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="01x_lazy.html" class="btn btn-neutral float-right" title="Lazy execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="00_overview.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2018, Dask Developers
+        &#169; Copyright 2018, Dask Developers.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
