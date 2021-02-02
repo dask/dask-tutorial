@@ -9,7 +9,7 @@ This tutorial was last given at SciPy 2020 in Austin Texas.
 
 ..
 .. |Binder| image:: https://mybinder.org/badge.svg
-   :target: https://mybinder.org/v2/gh/dask/dask-tutorial/master?urlpath=lab
+   :target: https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab
 
 
 .. toctree::
