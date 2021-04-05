@@ -57,12 +57,12 @@ You may find the following libraries helpful for some exercises
 
     conda install python-graphviz -c conda-forge
 
-Note that this options will alter your existing environment, potentially changing the versions of packages you already
+Note that these options will alter your existing environment, potentially changing the versions of packages you already
 have installed.
 
 #### 2c) Use Dockerfile
 
-You can build a docker image out of the provided Dockerfile.
+You can build a docker image from the provided Dockerfile.
 
     $ docker build . # This will build using the same env as in a)
 
