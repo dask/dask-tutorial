@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Arrays &mdash; Dask Tutorial  documentation</title>
@@ -35,9 +36,9 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -174,7 +175,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Arrays</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Create-data">Create data</a></li>
@@ -204,8 +204,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
@@ -548,10 +546,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/03_array.ipynb">on Github</a>.</p>
-<p><img alt="e11571f7883749fe86cbe7ee5dadb3c1" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Arrays">
+<p><img alt="58e7040dc4ab4e38a192be37a6da715b" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<section id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="ff4c41757dc34f919b617b9b55219075" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="6c457c14fd5a4b15bef42337129c3f24" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -565,7 +563,7 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="https://docs.dask.org/en/latest/array-api.html">Array API</a></p></li>
 <li><p><a class="reference external" href="https://examples.dask.org/array.html">Array examples</a></p></li>
 </ul>
-<div class="section" id="Create-data">
+<section id="Create-data">
 <h2>Create data<a class="headerlink" href="#Create-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -576,8 +574,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Setup">
+</section>
+<section id="Setup">
 <h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -590,8 +588,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Blocked-Algorithms">
+</section>
+<section id="Blocked-Algorithms">
 <h2>Blocked Algorithms<a class="headerlink" href="#Blocked-Algorithms" title="Permalink to this headline">¶</a></h2>
 <p>A <em>blocked algorithm</em> executes on a large dataset by breaking it up into many small blocks.</p>
 <p>For example, consider taking the sum of a billion numbers. We might instead break up the array into 1,000 chunks, each of size 1,000,000, take the sum of each chunk, and then take the sum of the intermediate sums.</p>
@@ -640,10 +638,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998731.5625
+4999294.75
 </pre></div></div>
 </div>
-<div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
+<section id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
 <h3>Exercise: Compute the mean using a blocked algorithm<a class="headerlink" href="#Exercise:-Compute-the-mean-using-a-blocked-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>Now that we’ve seen the simple example above, try doing a slightly more complicated problem. Compute the mean of the array, assuming for a moment that we don’t happen to already know how many elements are in the data. You can do this by changing the code above with the following alterations:</p>
 <ol class="arabic simple">
@@ -684,12 +682,12 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.9997463125
+0.99985895
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="dask.array-contains-these-algorithms">
+</section>
+</section>
+<section id="dask.array-contains-these-algorithms">
 <h2><code class="docutils literal notranslate"><span class="pre">dask.array</span></code> contains these algorithms<a class="headerlink" href="#dask.array-contains-these-algorithms" title="Permalink to this headline">¶</a></h2>
 <p>Dask.array is a NumPy-like library that does these kinds of tricks to operate on large datasets that don’t fit into memory. It extends beyond the linear problems discussed above to full N-Dimensional algorithms and a decent subset of the NumPy interface.</p>
 <p><strong>Create ``dask.array`` object</strong></p>
@@ -816,10 +814,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998732.0
+4999294.5
 </pre></div></div>
 </div>
-<div class="section" id="Exercise:-Compute-the-mean">
+<section id="Exercise:-Compute-the-mean">
 <h3>Exercise: Compute the mean<a class="headerlink" href="#Exercise:-Compute-the-mean" title="Permalink to this headline">¶</a></h3>
 <p>And the variance, std, etc.. This should be a small change to the example above.</p>
 <p>Look at what other operations you can do with the Jupyter notebook’s tab-completion.</p>
@@ -833,18 +831,18 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>Does this match your result from before?</p>
-</div>
-</div>
-<div class="section" id="Performance-and-Parallelism">
+</section>
+</section>
+<section id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="1705bad4f3954ee7b7b4c7e6a085df7a" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="f2974387f3784e03ba4ac57812602fc9" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
 <li><p>Chain operations on a single blocks before moving on to the next one</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">Dask.array</span></code> translates your array operations into a graph of inter-related tasks with data dependencies between them. Dask then executes this graph in parallel with multiple threads. We’ll discuss more about this in the next section.</p>
-<div class="section" id="Example">
+<section id="Example">
 <h3>Example<a class="headerlink" href="#Example" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Construct a 20000x20000 array of normally distributed random values broken up into 1000x1000 sized chunks</p></li>
@@ -898,8 +896,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.26 s, sys: 149 ms, total: 1.41 s
-Wall time: 11.5 s
+CPU times: user 1.19 s, sys: 135 ms, total: 1.32 s
+Wall time: 8.41 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -908,51 +906,51 @@ Wall time: 11.5 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 9.99882538,  9.99917409, 10.00074997, 10.00075815, 10.00134319,
-       10.00014065,  9.9990351 ,  9.9999608 , 10.00047738, 10.00097443,
-       10.00058406, 10.00128356, 10.00068134,  9.99972683, 10.00036763,
-        9.99947505,  9.9985962 , 10.00160104, 10.00039637,  9.99931113,
-       10.00024798, 10.0004684 ,  9.9998008 , 10.00077435,  9.99889312,
-        9.99890186,  9.99883492,  9.99965291, 10.00005032,  9.99985122,
-       10.00040805, 10.0000862 ,  9.99964459,  9.9987737 ,  9.99976471,
-       10.00088782,  9.99980126,  9.9997276 ,  9.99996503,  9.99932464,
-       10.00132725, 10.00036452,  9.99922441,  9.99908427, 10.00000618,
-        9.9995961 , 10.00054735,  9.99964073, 10.00049533, 10.00055827,
-        9.99934017, 10.0013908 ,  9.99974316, 10.00029818, 10.0001667 ,
-        9.99986438, 10.00020751,  9.99939452, 10.00053964,  9.99952262,
-       10.00025042, 10.0014878 , 10.00037831,  9.99938408,  9.99995743,
-       10.00035321,  9.99963326, 10.00074202, 10.00033222, 10.00114582,
-        9.9995152 , 10.00065027,  9.99894474,  9.99971588, 10.00005475,
-       10.00147202,  9.99995625,  9.99883602, 10.00027811, 10.00066685,
-       10.00004372,  9.99916252, 10.00088147,  9.99969361,  9.99985658,
-        9.99967032,  9.99969022, 10.00028264, 10.00017764,  9.99908786,
-        9.99999654, 10.00094727,  9.99982618, 10.00007063, 10.00031951,
-       10.00054195,  9.99976857, 10.00050667,  9.99918224,  9.99973729,
-       10.00114483,  9.99999415,  9.99937896, 10.00002989,  9.99978609,
-        9.99967022, 10.00082306, 10.00070468,  9.99982114,  9.99972236,
-       10.00076204,  9.99937105, 10.00087478,  9.99973553, 10.0009353 ,
-       10.00027906,  9.9998459 ,  9.99957214, 10.00062695, 10.00014647,
-       10.00035482, 10.00163468, 10.00089775,  9.99968632, 10.00005847,
-       10.00032582, 10.00072215, 10.00049706, 10.00049502,  9.99964852,
-       10.00136191, 10.00005835, 10.00112768, 10.00040193,  9.99955182,
-        9.99964192,  9.9997143 ,  9.99899073,  9.99975061,  9.99966359,
-       10.0012659 , 10.00021465, 10.00109775,  9.99995223, 10.0006378 ,
-        9.99894623,  9.99958027,  9.99997607,  9.99897935,  9.99774027,
-        9.99970328,  9.99893504, 10.00008289, 10.0003862 , 10.0004938 ,
-        9.99983559,  9.999174  ,  9.9994979 ,  9.99913503,  9.99972846,
-        9.99877898, 10.00048006,  9.99975669, 10.00007875,  9.99882475,
-        9.99961082, 10.00110707,  9.9993264 ,  9.99955919,  9.99982538,
-       10.00052825, 10.00013435,  9.9988185 , 10.00042086, 10.00077362,
-        9.9991813 , 10.00006377, 10.00035165, 10.0000329 , 10.00012871,
-       10.00061127, 10.00136289, 10.00012149, 10.00036246,  9.99979623,
-        9.99948223, 10.00031821,  9.99962022,  9.99934699, 10.00039892,
-        9.99909264,  9.99892648,  9.99902601, 10.00099333, 10.00005167,
-       10.0002284 ,  9.99961148, 10.00116886, 10.00000391, 10.00063135])
+array([10.00014242,  9.99979592, 10.00007478, 10.00097283, 10.00013757,
+        9.99950961,  9.99936599,  9.9996008 , 10.0004874 ,  9.99997385,
+       10.00071044,  9.99932405, 10.00036049,  9.99953002,  9.99866802,
+       10.00031123, 10.00005752,  9.99955727, 10.00090208, 10.00072817,
+        9.99980097,  9.99926135,  9.99959709, 10.00023928,  9.99991294,
+        9.99823208,  9.99968677,  9.99946392, 10.00081744, 10.00017648,
+        9.99933813,  9.99985743, 10.00122791,  9.99932986,  9.99958896,
+        9.99942483, 10.00059944,  9.99957955, 10.00033732,  9.9997099 ,
+        9.99892312,  9.99996931,  9.99996224, 10.00047128, 10.00025583,
+       10.00031415,  9.99983521,  9.99928321,  9.99912407, 10.00060349,
+        9.99967004,  9.99882099, 10.00038022,  9.99915905,  9.99880684,
+        9.99973165,  9.99924159, 10.00034363, 10.00003528,  9.99949139,
+        9.99976314, 10.00010148,  9.99972707,  9.99910839,  9.99933372,
+       10.00148057,  9.99926959, 10.00001713,  9.99975035, 10.00057011,
+        9.99974021, 10.00085086,  9.99825625,  9.99925528, 10.00150564,
+        9.99834589,  9.99983582, 10.00006165,  9.998742  , 10.00005988,
+       10.00018283,  9.99856558, 10.00126893, 10.00032244,  9.99985244,
+        9.99985473, 10.00057371,  9.99998636, 10.0008947 , 10.00049061,
+       10.00002918,  9.99927109,  9.99967626, 10.00092685, 10.00026413,
+        9.99902535, 10.00041102,  9.99938301, 10.00014275, 10.00024985,
+        9.9985698 , 10.00033483,  9.99999952, 10.00007788, 10.00104687,
+        9.99860409,  9.99994049, 10.00075364,  9.9994676 , 10.00012807,
+        9.99983558,  9.9997025 ,  9.99959281, 10.00101761, 10.00131492,
+        9.99903958, 10.00033705, 10.00053657,  9.99983487,  9.99991712,
+       10.00121761, 10.00048289,  9.99984805,  9.99995359, 10.00029238,
+       10.00140618,  9.99959486,  9.99940044,  9.99974492,  9.99912985,
+        9.99979082,  9.99984292,  9.99947848, 10.00022103, 10.00022522,
+       10.00090424,  9.9999864 , 10.00062013,  9.99892191, 10.00008341,
+       10.00070044, 10.00014073, 10.00119032,  9.99925679, 10.00096871,
+       10.00069013, 10.00013805,  9.9995295 ,  9.99967333,  9.99962267,
+       10.00005725, 10.00036947,  9.99935061,  9.99981685,  9.99974626,
+        9.99801519,  9.99944908,  9.99969248,  9.9998491 ,  9.99878058,
+       10.00013204, 10.00060478, 10.0013877 , 10.00032448,  9.99997614,
+        9.99969377, 10.0001044 , 10.00011776, 10.00047991, 10.00022528,
+        9.99963562,  9.99977464,  9.99975123,  9.99987697, 10.00094696,
+       10.00019596,  9.99919484,  9.9994793 , 10.00043303,  9.99932257,
+       10.00020744,  9.99981722, 10.00025772,  9.99959137,  9.99981804,
+        9.99907972,  9.99811461, 10.00068482, 10.00042876,  9.99927607,
+       10.00060271, 10.00079403,  9.9997804 , 10.00136891,  9.99857965,
+       10.00001712,  9.99944173, 10.00034631,  9.99936275, 10.00185533])
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Performance-comparison">
+</section>
+</section>
+<section id="Performance-comparison">
 <h2>Performance comparison<a class="headerlink" href="#Performance-comparison" title="Permalink to this headline">¶</a></h2>
 <p>The following experiment was performed on a heavy personal laptop. Your performance may vary. If you attempt the NumPy version then please ensure that you have more than 4GB of main memory.</p>
 <p><strong>NumPy: 19s, Needs gigabytes of memory</strong></p>
@@ -996,7 +994,7 @@ array([ 9.99882538,  9.99917409, 10.00074997, 10.00075815, 10.00134319,
 </ul>
 </li>
 </ul>
-<div class="section" id="Exercise:-Meteorological-data">
+<section id="Exercise:-Meteorological-data">
 <h3>Exercise: Meteorological data<a class="headerlink" href="#Exercise:-Meteorological-data" title="Permalink to this headline">¶</a></h3>
 <p>There is 2GB of somewhat artifical weather data in HDF5 files in <code class="docutils literal notranslate"><span class="pre">data/weather-big/*.hdf5</span></code>. We’ll use the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library to interact with this data and <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> to compute on it.</p>
 <p>Our goal is to visualize the average temperature on the surface of the Earth for this month. This will require a mean over all of this data. We’ll do this in the following steps</p>
@@ -1081,7 +1079,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fd5e9decbb0&gt;
+&lt;matplotlib.image.AxesImage at 0x7fdf5e6bc850&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1322,32 +1320,32 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;RdBu_r&#39;</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, data, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2722</span>         filternorm<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> filterrad<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4.0</span><span class="ansi-blue-fg">,</span> resample<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2723</span>         data=None, **kwargs):
-<span class="ansi-green-fg">-&gt; 2724</span><span class="ansi-red-fg">     __ret = gca().imshow(
-</span><span class="ansi-green-intense-fg ansi-bold">   2725</span>         X<span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span>cmap<span class="ansi-blue-fg">,</span> norm<span class="ansi-blue-fg">=</span>norm<span class="ansi-blue-fg">,</span> aspect<span class="ansi-blue-fg">=</span>aspect<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2726</span>         interpolation<span class="ansi-blue-fg">=</span>interpolation<span class="ansi-blue-fg">,</span> alpha<span class="ansi-blue-fg">=</span>alpha<span class="ansi-blue-fg">,</span> vmin<span class="ansi-blue-fg">=</span>vmin<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2870</span>         filternorm<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span> filterrad<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">4.0</span><span class="ansi-blue-fg">,</span> resample<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> url<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2871</span>         data=None, **kwargs):
+<span class="ansi-green-fg">-&gt; 2872</span><span class="ansi-red-fg">     __ret = gca().imshow(
+</span><span class="ansi-green-intense-fg ansi-bold">   2873</span>         X<span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span>cmap<span class="ansi-blue-fg">,</span> norm<span class="ansi-blue-fg">=</span>norm<span class="ansi-blue-fg">,</span> aspect<span class="ansi-blue-fg">=</span>aspect<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">   2874</span>         interpolation<span class="ansi-blue-fg">=</span>interpolation<span class="ansi-blue-fg">,</span> alpha<span class="ansi-blue-fg">=</span>alpha<span class="ansi-blue-fg">,</span> vmin<span class="ansi-blue-fg">=</span>vmin<span class="ansi-blue-fg">,</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/__init__.py</span> in <span class="ansi-cyan-fg">inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1445</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1446</span>         <span class="ansi-green-fg">if</span> data <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1447</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>map<span class="ansi-blue-fg">(</span>sanitize_sequence<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1448</span>
-<span class="ansi-green-intense-fg ansi-bold">   1449</span>         bound <span class="ansi-blue-fg">=</span> new_sig<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1350</span>     <span class="ansi-green-fg">def</span> inner<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   1351</span>         <span class="ansi-green-fg">if</span> data <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">-&gt; 1352</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>map<span class="ansi-blue-fg">(</span>sanitize_sequence<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   1353</span>
+<span class="ansi-green-intense-fg ansi-bold">   1354</span>         bound <span class="ansi-blue-fg">=</span> new_sig<span class="ansi-blue-fg">.</span>bind<span class="ansi-blue-fg">(</span>ax<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/axes/_axes.py</span> in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, filternorm, filterrad, resample, url, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5521</span>                               resample=resample, **kwargs)
-<span class="ansi-green-intense-fg ansi-bold">   5522</span>
-<span class="ansi-green-fg">-&gt; 5523</span><span class="ansi-red-fg">         </span>im<span class="ansi-blue-fg">.</span>set_data<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5524</span>         im<span class="ansi-blue-fg">.</span>set_alpha<span class="ansi-blue-fg">(</span>alpha<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5525</span>         <span class="ansi-green-fg">if</span> im<span class="ansi-blue-fg">.</span>get_clip_path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   5587</span>                               resample=resample, **kwargs)
+<span class="ansi-green-intense-fg ansi-bold">   5588</span>
+<span class="ansi-green-fg">-&gt; 5589</span><span class="ansi-red-fg">         </span>im<span class="ansi-blue-fg">.</span>set_data<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5590</span>         im<span class="ansi-blue-fg">.</span>set_alpha<span class="ansi-blue-fg">(</span>alpha<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5591</span>         <span class="ansi-green-fg">if</span> im<span class="ansi-blue-fg">.</span>get_clip_path<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/image.py</span> in <span class="ansi-cyan-fg">set_data</span><span class="ansi-blue-fg">(self, A)</span>
-<span class="ansi-green-intense-fg ansi-bold">    700</span>         if (self._A.dtype != np.uint8 and
-<span class="ansi-green-intense-fg ansi-bold">    701</span>                 not np.can_cast(self._A.dtype, float, &#34;same_kind&#34;)):
-<span class="ansi-green-fg">--&gt; 702</span><span class="ansi-red-fg">             raise TypeError(&#34;Image data of dtype {} cannot be converted to &#34;
-</span><span class="ansi-green-intense-fg ansi-bold">    703</span>                             &#34;float&#34;.format(self._A.dtype))
-<span class="ansi-green-intense-fg ansi-bold">    704</span>
+<span class="ansi-green-intense-fg ansi-bold">    698</span>         if (self._A.dtype != np.uint8 and
+<span class="ansi-green-intense-fg ansi-bold">    699</span>                 not np.can_cast(self._A.dtype, float, &#34;same_kind&#34;)):
+<span class="ansi-green-fg">--&gt; 700</span><span class="ansi-red-fg">             raise TypeError(&#34;Image data of dtype {} cannot be converted to &#34;
+</span><span class="ansi-green-intense-fg ansi-bold">    701</span>                             &#34;float&#34;.format(self._A.dtype))
+<span class="ansi-green-intense-fg ansi-bold">    702</span>
 
 <span class="ansi-red-fg">TypeError</span>: Image data of dtype object cannot be converted to float
 </pre></div></div>
@@ -1376,7 +1374,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fd5e97c0f70&gt;
+&lt;matplotlib.image.AxesImage at 0x7fdf5e045070&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1413,7 +1411,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fd5e97b40d0&gt;
+&lt;matplotlib.image.AxesImage at 0x7fdf5e019520&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1423,32 +1421,32 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <img alt="_images/03_array_69_1.png" src="_images/03_array_69_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="Exercise:-Subsample-and-store">
+</section>
+<section id="Exercise:-Subsample-and-store">
 <h3>Exercise: Subsample and store<a class="headerlink" href="#Exercise:-Subsample-and-store" title="Permalink to this headline">¶</a></h3>
 <p>In the above exercise the result of our computation is small, so we can call <code class="docutils literal notranslate"><span class="pre">compute</span></code> safely. Sometimes our result is still too large to fit into memory and we want to save it to disk. In these cases you can use one of the following two functions</p>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">da.store</span></code>: Store dask.array into any object that supports numpy setitem syntax, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s1">&#39;myfile.hdf5&#39;</span><span class="p">)</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">shape</span><span class="o">=...</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=...</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>f = h5py.File(&#39;myfile.hdf5&#39;)
+output = f.create_dataset(shape=..., dtype=...)
 
-<span class="n">da</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">my_dask_array</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+da.store(my_dask_array, output)
 </pre></div>
 </div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">da.to_hdf5</span></code>: A specialized function that creates and stores a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> object into an <code class="docutils literal notranslate"><span class="pre">HDF5</span></code> file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">da</span><span class="o">.</span><span class="n">to_hdf5</span><span class="p">(</span><span class="s1">&#39;data/myfile.hdf5&#39;</span><span class="p">,</span> <span class="s1">&#39;/output&#39;</span><span class="p">,</span> <span class="n">my_dask_array</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>da.to_hdf5(&#39;data/myfile.hdf5&#39;, &#39;/output&#39;, my_dask_array)
 </pre></div>
 </div>
 </li>
 </ol>
 <p>The task in this exercise is to <strong>use numpy step slicing to subsample the full dataset by a factor of two in both the latitude and longitude direction and then store this result to disk</strong> using one of the functions listed above.</p>
 <p>As a reminder, Python slicing takes three elements</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>start:stop:step
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">L</span><span class="p">[::</span><span class="mi">3</span><span class="p">]</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+&gt;&gt;&gt; L = [1, 2, 3, 4, 5, 6, 7]
+&gt;&gt;&gt; L[::3]
+[1, 4, 7]
 </pre></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1483,11 +1481,11 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="Example:-Lennard-Jones-potential">
+</section>
+</section>
+<section id="Example:-Lennard-Jones-potential">
 <h2>Example: Lennard-Jones potential<a class="headerlink" href="#Example:-Lennard-Jones-potential" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones potential</a> is used in partical simuluations in physics, chemistry and engineering. It is highly parallelizable.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones potential</a> is used in particle simulations in physics, chemistry and engineering. It is highly parallelizable.</p>
 <p>First, we’ll run and profile the Numpy version on 7,000 particles.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
@@ -1546,8 +1544,8 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4.35 s, sys: 1.69 s, total: 6.04 s
-Wall time: 5.84 s
+CPU times: user 3.02 s, sys: 1.81 s, total: 4.83 s
+Wall time: 4.69 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1582,7 +1580,7 @@ Wall time: 5.84 s
 
 </pre></div></div>
 </div>
-<div class="section" id="Dask-version">
+<section id="Dask-version">
 <h3>Dask version<a class="headerlink" href="#Dask-version" title="Permalink to this headline">¶</a></h3>
 <p>Here’s the Dask version. Only the <code class="docutils literal notranslate"><span class="pre">potential</span></code> function needs to be rewritten to best utilize Dask.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">da.nansum</span></code> has been used over the full <span class="math notranslate nohighlight">\(NxN\)</span> distance matrix to improve parallel efficiency.</p>
@@ -1630,8 +1628,8 @@ Wall time: 5.84 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 194 ms, sys: 31.8 ms, total: 226 ms
-Wall time: 4.29 s
+CPU times: user 171 ms, sys: 33.6 ms, total: 205 ms
+Wall time: 3.18 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1643,9 +1641,9 @@ Wall time: 4.29 s
 -0.21282893668845299
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Limitations">
+</section>
+</section>
+<section id="Limitations">
 <h2>Limitations<a class="headerlink" href="#Limitations" title="Permalink to this headline">¶</a></h2>
 <p>Dask Array does not implement the entire numpy interface. Users expecting this will be disappointed. Notably Dask Array has the following failings:</p>
 <ol class="arabic simple">
@@ -1669,8 +1667,8 @@ Wall time: 4.29 s
 </pre></div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

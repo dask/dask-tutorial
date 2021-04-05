@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Homework &mdash; Dask Tutorial  documentation</title>
@@ -35,8 +36,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
     
@@ -173,12 +172,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
@@ -282,10 +278,10 @@
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/Homework.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/Homework.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/Homework.ipynb">on Github</a>.</p>
-<div class="section" id="Homework">
+<section id="Homework">
 <h1>Homework<a class="headerlink" href="#Homework" title="Permalink to this headline">¶</a></h1>
 <p>The constraints of a tutorial environment hinder the use of real-world moderately large datasets. This keeps us from a fully satisfying experience. To remedy this situation we recommend playing with the following datasets. Please wait until you’re off of the conference WiFi before downloading them.</p>
-<div class="section" id="NYCTaxi">
+<section id="NYCTaxi">
 <h2>NYCTaxi<a class="headerlink" href="#NYCTaxi" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.andresmh.com/nyctaxitrips/">Download link</a></p>
 <p>Taxi trips taken in 2013 released by a FOIA request. Around 20GB CSV uncompressed.</p>
@@ -295,8 +291,8 @@
 <li><p>Store in HDF5 both with and without categoricals, measure the size of the file and query times</p></li>
 <li><p>Set the index by one of the date-time columns and store in castra (also using categoricals). Perform range queries and measure speed. What size and complexity of query can you perform while still having an “interactive” experience?</p></li>
 </ul>
-</div>
-<div class="section" id="Github-Archive">
+</section>
+<section id="Github-Archive">
 <h2>Github Archive<a class="headerlink" href="#Github-Archive" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.githubarchive.org/">Download link</a></p>
 <p>Every public github event for the last few years stored as gzip compressed line-delimited JSON data. Watch out, the schema switches at the 2014-2015 transition.</p>
@@ -306,8 +302,8 @@
 <li><p>Drill down using functions like <code class="docutils literal notranslate"><span class="pre">pluck</span></code> and <code class="docutils literal notranslate"><span class="pre">filter</span></code></p></li>
 <li><p>Find who the most popular committers were in 2015</p></li>
 </ul>
-</div>
-<div class="section" id="Reddit-Comments">
+</section>
+<section id="Reddit-Comments">
 <h2>Reddit Comments<a class="headerlink" href="#Reddit-Comments" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/">Download link</a></p>
 <p>Every publicly available reddit comment, available as a large torrent</p>
@@ -317,13 +313,13 @@
 <li><p>Combine <code class="docutils literal notranslate"><span class="pre">dask.bag</span></code> with <code class="docutils literal notranslate"><span class="pre">nltk</span></code> or <code class="docutils literal notranslate"><span class="pre">gensim</span></code> to perform textual analyis on the data</p></li>
 <li><p>Reproduce the work of <a class="reference external" href="https://extrapolations.dev/blog/2015/07/reproduceit-reddit-word-count-dask/">Daniel Rodriguez</a> and see if you can improve upon his speeds when analyzing this data.</p></li>
 </ul>
-</div>
-<div class="section" id="NYC-311">
+</section>
+<section id="NYC-311">
 <h2>NYC 311<a class="headerlink" href="#NYC-311" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">Download link</a></p>
 <p>All 311 service requests since 2010 in New York City</p>
-</div>
-<div class="section" id="European-Centre-for-Medium-Range-Weather-Forecasts">
+</section>
+<section id="European-Centre-for-Medium-Range-Weather-Forecasts">
 <h2>European Centre for Medium Range Weather Forecasts<a class="headerlink" href="#European-Centre-for-Medium-Range-Weather-Forecasts" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://gist.github.com/mrocklin/26d8323f9a8a6a75fce0">Download script</a></p>
 <p>Download historical global weather data from the ECMWF.</p>
@@ -333,8 +329,8 @@
 <li><p>What areas experienced the largest temperature swings in the last month relative to their previous history?</p></li>
 <li><p>Plot the temperature of the earth as a function of latitude and then as longitude</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

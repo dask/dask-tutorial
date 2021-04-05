@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Dask DataFrames &mdash; Dask Tutorial  documentation</title>
@@ -35,8 +36,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
     
@@ -45,7 +44,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Distributed" href="05_distributed.html" />
+    <link rel="next" title="&lt;no title&gt;" href="05_distributed.html" />
     <link rel="prev" title="Arrays" href="03_array.html" />
   <link rel="shortcut icon" href="_static/images/favicon.ico"/>
   
@@ -174,7 +173,6 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dask DataFrames</a><ul>
@@ -209,8 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#Learn-More">Learn More</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
@@ -554,14 +550,14 @@ div.rendered_html tbody tr:hover {
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/04_dataframe.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/04_dataframe.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/04_dataframe.ipynb">on Github</a>.</p>
 <p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Dask-DataFrames">
+<section id="Dask-DataFrames">
 <h1>Dask DataFrames<a class="headerlink" href="#Dask-DataFrames" title="Permalink to this headline">¶</a></h1>
 <p>We finished Chapter 1 by building a parallel dataframe computation over a directory of CSV files using <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>. In this section we use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> to automatically build similiar computations, for the common case of tabular computations. Dask dataframes look and feel like Pandas dataframes but they run on the same infrastructure that powers <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code>.</p>
 <p>In this notebook we use the same airline data as before, but now rather than write for-loops we let <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> construct our computations for us. The <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code> function can take a globstring like <code class="docutils literal notranslate"><span class="pre">&quot;data/nycflights/*.csv&quot;</span></code> and build parallel computations on all of our data at once.</p>
-<div class="section" id="When-to-use-dask.dataframe">
+<section id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><img alt="3ab70c97b00f43509198a43374e88896" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
+<p><img alt="4b99bf37ed5d4330801d752e8e5c2405" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> API. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
@@ -576,8 +572,8 @@ div.rendered_html tbody tr:hover {
 <li><p>Dask DataFrame should be familiar to Pandas users</p></li>
 <li><p>The partitioning of dataframes is important for efficient execution</p></li>
 </ol>
-</div>
-<div class="section" id="Create-data">
+</section>
+<section id="Create-data">
 <h2>Create data<a class="headerlink" href="#Create-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -588,8 +584,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Setup">
+</section>
+<section id="Setup">
 <h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -670,33 +666,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>82</td>
-      <td>Charlie</td>
-      <td>110</td>
+      <td>23</td>
+      <td>Victor</td>
+      <td>392</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>49</td>
-      <td>Wendy</td>
-      <td>1053</td>
+      <td>82</td>
+      <td>Laura</td>
+      <td>432</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>36</td>
-      <td>Jerry</td>
-      <td>-6</td>
+      <td>30</td>
+      <td>Laura</td>
+      <td>119</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>22</td>
-      <td>Dan</td>
-      <td>1303</td>
+      <td>12</td>
+      <td>Yvonne</td>
+      <td>640</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>38</td>
-      <td>Ray</td>
-      <td>-1665</td>
+      <td>66</td>
+      <td>Norbert</td>
+      <td>92</td>
     </tr>
   </tbody>
 </table>
@@ -722,7 +718,7 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <p>What happened here? - Dask investigated the input path and found that there are three matching files - a set of jobs was intelligently created for each chunk - one per original CSV file in this case - each file was loaded into a pandas dataframe, had <code class="docutils literal notranslate"><span class="pre">len()</span></code> applied to it - the subtotals were combined to give you the final grand total.</p>
-<div class="section" id="Real-Data">
+<section id="Real-Data">
 <h3>Real Data<a class="headerlink" href="#Real-Data" title="Permalink to this headline">¶</a></h3>
 <p>Lets try this with an extract of flights in the USA across several years. This data is specific to flights out of the three airports in the New York City area.</p>
 <div class="nbinput nblast docutils container">
@@ -1250,8 +1246,8 @@ dtype={&#39;CRSElapsedTime&#39;: &#39;float64&#39;,
 to the call to `read_csv`/`read_table`.
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="What-just-happened?">
+</section>
+<section id="What-just-happened?">
 <h3>What just happened?<a class="headerlink" href="#What-just-happened?" title="Permalink to this headline">¶</a></h3>
 <p>Unlike <code class="docutils literal notranslate"><span class="pre">pandas.read_csv</span></code> which reads in the entire file before inferring datatypes, <code class="docutils literal notranslate"><span class="pre">dask.dataframe.read_csv</span></code> only reads in a sample from the beginning of the file (or first file if using a glob). These inferred datatypes are then enforced when reading all partitions.</p>
 <p>In this case, the datatypes inferred in the sample are incorrect. The first <code class="docutils literal notranslate"><span class="pre">n</span></code> rows have no value for <code class="docutils literal notranslate"><span class="pre">CRSElapsedTime</span></code> (which pandas infers as a <code class="docutils literal notranslate"><span class="pre">float</span></code>), and later on turn out to be strings (<code class="docutils literal notranslate"><span class="pre">object</span></code> dtype). Note that Dask gives an informative error message about the mismatch. When this happens you have a few options:</p>
@@ -1455,9 +1451,9 @@ to the call to `read_csv`/`read_table`.
 <p>5 rows × 21 columns</p>
 </div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Computations-with-dask.dataframe">
+</section>
+</section>
+<section id="Computations-with-dask.dataframe">
 <h2>Computations with <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#Computations-with-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>We compute the maximum of the <code class="docutils literal notranslate"><span class="pre">DepDelay</span></code> column. With just pandas, we would loop over each file to find the individual maximums, then find the final maximum over all the individual maximums</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">maxes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1488,8 +1484,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 41 ms, sys: 1.57 ms, total: 42.6 ms
-Wall time: 454 ms
+CPU times: user 55.9 ms, sys: 2.4 ms, total: 58.3 ms
+Wall time: 584 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1531,11 +1527,11 @@ Wall time: 454 ms
 <img alt="_images/04_dataframe_25_0.png" src="_images/04_dataframe_25_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="Exercises">
+</section>
+<section id="Exercises">
 <h2>Exercises<a class="headerlink" href="#Exercises" title="Permalink to this headline">¶</a></h2>
 <p>In this section we do a few <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> computations. If you are comfortable with Pandas then these should be familiar. You will have to think about when to call <code class="docutils literal notranslate"><span class="pre">compute</span></code>.</p>
-<div class="section" id="1.)-How-many-rows-are-in-our-dataset?">
+<section id="1.)-How-many-rows-are-in-our-dataset?">
 <h3>1.) How many rows are in our dataset?<a class="headerlink" href="#1.)-How-many-rows-are-in-our-dataset?" title="Permalink to this headline">¶</a></h3>
 <p>If you aren’t familiar with pandas, how would you check how many records are in a list of tuples?</p>
 <div class="nbinput nblast docutils container">
@@ -1565,8 +1561,8 @@ Wall time: 454 ms
 9990
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="2.)-In-total,-how-many-non-canceled-flights-were-taken?">
+</section>
+<section id="2.)-In-total,-how-many-non-canceled-flights-were-taken?">
 <h3>2.) In total, how many non-canceled flights were taken?<a class="headerlink" href="#2.)-In-total,-how-many-non-canceled-flights-were-taken?" title="Permalink to this headline">¶</a></h3>
 <p>With pandas, you would use <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/indexing.html#boolean-indexing">boolean indexing</a>.</p>
 <div class="nbinput nblast docutils container">
@@ -1596,8 +1592,8 @@ Wall time: 454 ms
 9383
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="3.)-In-total,-how-many-non-cancelled-flights-were-taken-from-each-airport?">
+</section>
+<section id="3.)-In-total,-how-many-non-cancelled-flights-were-taken-from-each-airport?">
 <h3>3.) In total, how many non-cancelled flights were taken from each airport?<a class="headerlink" href="#3.)-In-total,-how-many-non-cancelled-flights-were-taken-from-each-airport?" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint</em>: use <code class="docutils literal notranslate"><span class="pre">`df.groupby</span></code> &lt;<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/groupby.html">https://pandas.pydata.org/pandas-docs/stable/groupby.html</a>&gt;`__.</p>
 <div class="nbinput nblast docutils container">
@@ -1631,8 +1627,8 @@ LGA    4166
 Name: Origin, dtype: int64
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="4.)-What-was-the-average-departure-delay-from-each-airport?">
+</section>
+<section id="4.)-What-was-the-average-departure-delay-from-each-airport?">
 <h3>4.) What was the average departure delay from each airport?<a class="headerlink" href="#4.)-What-was-the-average-departure-delay-from-each-airport?" title="Permalink to this headline">¶</a></h3>
 <p>Note, this is the same computation you did in the previous notebook (is this approach faster or slower?)</p>
 <div class="nbinput nblast docutils container">
@@ -1666,8 +1662,8 @@ LGA    10.169227
 Name: DepDelay, dtype: float64
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="5.)-What-day-of-the-week-has-the-worst-average-departure-delay?">
+</section>
+<section id="5.)-What-day-of-the-week-has-the-worst-average-departure-delay?">
 <h3>5.) What day of the week has the worst average departure delay?<a class="headerlink" href="#5.)-What-day-of-the-week-has-the-worst-average-departure-delay?" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
@@ -1704,9 +1700,9 @@ DayOfWeek
 Name: DepDelay, dtype: float64
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Sharing-Intermediate-Results">
+</section>
+</section>
+<section id="Sharing-Intermediate-Results">
 <h2>Sharing Intermediate Results<a class="headerlink" href="#Sharing-Intermediate-Results" title="Permalink to this headline">¶</a></h2>
 <p>When computing all of the above, we sometimes did the same operation more than once. For most operations, <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> hashes the arguments, allowing duplicate computations to be shared, and only computed once.</p>
 <p>For example, lets compute the mean and standard deviation for departure delay of all non-canceled flights. Since dask operations are lazy, those values aren’t the final results yet. They’re just the recipe required to get the result.</p>
@@ -1739,8 +1735,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 71.1 ms, sys: 8.04 ms, total: 79.1 ms
-Wall time: 283 ms
+CPU times: user 95.2 ms, sys: 279 µs, total: 95.5 ms
+Wall time: 319 ms
 </pre></div></div>
 </div>
 <p>But let’s try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1760,8 +1756,8 @@ Wall time: 283 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 48.5 ms, sys: 0 ns, total: 48.5 ms
-Wall time: 148 ms
+CPU times: user 56.6 ms, sys: 3.91 ms, total: 60.6 ms
+Wall time: 184 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1788,13 +1784,13 @@ Wall time: 148 ms
 <img alt="_images/04_dataframe_47_0.png" src="_images/04_dataframe_47_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="How-does-this-compare-to-Pandas?">
+</section>
+<section id="How-does-this-compare-to-Pandas?">
 <h2>How does this compare to Pandas?<a class="headerlink" href="#How-does-this-compare-to-Pandas?" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is more mature and fully featured than <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>. If your data fits in memory then you should use Pandas. The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module gives you a limited <code class="docutils literal notranslate"><span class="pre">pandas</span></code> experience when you operate on datasets that don’t fit comfortably in memory.</p>
 <p>During this tutorial we provide a small dataset consisting of a few CSV files. This dataset is 45MB on disk that expands to about 400MB in memory. This dataset is small enough that you would normally use Pandas.</p>
 <p>We’ve chosen this size so that exercises finish quickly. Dask.dataframe only really becomes meaningful for problems significantly larger than this, when Pandas breaks with the dreaded</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">MemoryError</span><span class="p">:</span>  <span class="o">...</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MemoryError:  ...
 </pre></div>
 </div>
 <p>Furthermore, the distributed scheduler allows the same dataframe expressions to be executed across a cluster. To enable massive “big data” processing, one could execute data ingestion functions such as <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>, where the data is held on storage accessible to every worker node (e.g., amazon’s S3), and because most operations begin by selecting only some columns, transforming and filtering the data, only relatively small amounts of data need to be communicated between the machines.</p>
@@ -1803,15 +1799,15 @@ Wall time: 148 ms
 <li><p>Dask introduces a bit of overhead, around 1ms per task. This is usually negligible.</p></li>
 <li><p>When Pandas releases the GIL <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> can call several pandas operations in parallel within a process, increasing speed somewhat proportional to the number of cores. For operations which don’t release the GIL, multiple processes would be needed to get the same speedup.</p></li>
 </ol>
-</div>
-<div class="section" id="Dask-DataFrame-Data-Model">
+</section>
+<section id="Dask-DataFrame-Data-Model">
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><img alt="93388b4fb1dd4992b43f1b132c1f9f46" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
+<p><img alt="44b2b7578aa14ad49c85f5c95902b866" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
-</div>
-<div class="section" id="Converting-CRSDepTime-to-a-timestamp">
+</section>
+<section id="Converting-CRSDepTime-to-a-timestamp">
 <h2>Converting <code class="docutils literal notranslate"><span class="pre">CRSDepTime</span></code> to a timestamp<a class="headerlink" href="#Converting-CRSDepTime-to-a-timestamp" title="Permalink to this headline">¶</a></h2>
 <p>This dataset stores timestamps as <code class="docutils literal notranslate"><span class="pre">HHMM</span></code>, which are read in as integers in <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>:</p>
 <div class="nbinput docutils container">
@@ -1888,7 +1884,7 @@ Name: CRSDepTime, dtype: int64
 dtype: datetime64[ns]
 </pre></div></div>
 </div>
-<div class="section" id="Custom-code-and-Dask-Dataframe">
+<section id="Custom-code-and-Dask-Dataframe">
 <h3>Custom code and Dask Dataframe<a class="headerlink" href="#Custom-code-and-Dask-Dataframe" title="Permalink to this headline">¶</a></h3>
 <p>We could swap out <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta</span></code> for <code class="docutils literal notranslate"><span class="pre">dd.to_timedelta</span></code> and do the same operations on the entire dask DataFrame. But let’s say that Dask hadn’t implemented a <code class="docutils literal notranslate"><span class="pre">dd.to_timedelta</span></code> that works on Dask DataFrames. What would you do then?</p>
 <p><code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> provides a few methods to make applying custom functions to Dask DataFrames easier:</p>
@@ -2074,8 +2070,8 @@ Dask Name: add, 90 tasks
 dtype: datetime64[ns]
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Exercise:-Rewrite-above-to-use-a-single-call-to-map_partitions">
+</section>
+<section id="Exercise:-Rewrite-above-to-use-a-single-call-to-map_partitions">
 <h3>Exercise: Rewrite above to use a single call to <code class="docutils literal notranslate"><span class="pre">map_partitions</span></code><a class="headerlink" href="#Exercise:-Rewrite-above-to-use-a-single-call-to-map_partitions" title="Permalink to this headline">¶</a></h3>
 <p>This will be slightly more efficient than two separate calls, as it reduces the number of tasks in the graph.</p>
 <div class="nbinput nblast docutils container">
@@ -2238,11 +2234,11 @@ dtype: datetime64[ns]
 dtype: datetime64[ns]
 </pre></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="Limitations">
+</section>
+</section>
+<section id="Limitations">
 <h2>Limitations<a class="headerlink" href="#Limitations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="What-doesn’t-work?">
+<section id="What-doesn’t-work?">
 <h3>What doesn’t work?<a class="headerlink" href="#What-doesn’t-work?" title="Permalink to this headline">¶</a></h3>
 <p>Dask.dataframe only covers a small but well-used portion of the Pandas API. This limitation is for two reasons:</p>
 <ol class="arabic simple">
@@ -2250,9 +2246,9 @@ dtype: datetime64[ns]
 <li><p>Some operations are genuinely hard to do in parallel (e.g. sort)</p></li>
 </ol>
 <p>Additionally, some important operations like <code class="docutils literal notranslate"><span class="pre">set_index</span></code> work, but are slower than in Pandas because they include substantial shuffling of data, and may write out to disk.</p>
-</div>
-</div>
-<div class="section" id="Learn-More">
+</section>
+</section>
+<section id="Learn-More">
 <h2>Learn More<a class="headerlink" href="#Learn-More" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.dask.org/en/latest/dataframe.html">DataFrame documentation</a></p></li>
@@ -2270,8 +2266,8 @@ dtype: datetime64[ns]
 </pre></div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -2279,7 +2275,7 @@ dtype: datetime64[ns]
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="05_distributed.html" class="btn btn-neutral float-right" title="Distributed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="05_distributed.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="03_array.html" class="btn btn-neutral float-left" title="Arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

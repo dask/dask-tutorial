@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Parallel and Distributed Machine Learning &mdash; Dask Tutorial  documentation</title>
@@ -35,8 +36,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
     
@@ -174,12 +173,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel and Distributed Machine Learning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Types-of-Scaling">Types of Scaling</a></li>
@@ -530,10 +526,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/08_machine_learning.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/08_machine_learning.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/08_machine_learning.ipynb">on Github</a>.</p>
-<div class="section" id="Parallel-and-Distributed-Machine-Learning">
+<section id="Parallel-and-Distributed-Machine-Learning">
 <h1>Parallel and Distributed Machine Learning<a class="headerlink" href="#Parallel-and-Distributed-Machine-Learning" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://dask-ml.readthedocs.io">Dask-ML</a> has resources for parallel and distributed machine learning.</p>
-<div class="section" id="Types-of-Scaling">
+<section id="Types-of-Scaling">
 <h2>Types of Scaling<a class="headerlink" href="#Types-of-Scaling" title="Permalink to this headline">¶</a></h2>
 <p>There are a couple of distinct scaling problems you might face. The scaling strategy depends on which problem you’re facing.</p>
 <ol class="arabic simple">
@@ -546,8 +542,8 @@ div.rendered_html tbody tr:hover {
 <li><p>For large models, use <code class="docutils literal notranslate"><span class="pre">dask_ml.joblib</span></code> and your favorite scikit-learn estimator</p></li>
 <li><p>For large datasets, use <code class="docutils literal notranslate"><span class="pre">dask_ml</span></code> estimators</p></li>
 </ul>
-</div>
-<div class="section" id="Scikit-Learn-in-5-Minutes">
+</section>
+<section id="Scikit-Learn-in-5-Minutes">
 <h2>Scikit-Learn in 5 Minutes<a class="headerlink" href="#Scikit-Learn-in-5-Minutes" title="Permalink to this headline">¶</a></h2>
 <p>Scikit-Learn has a nice, consistent API.</p>
 <ol class="arabic simple">
@@ -618,8 +614,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Hyperparameters">
+</section>
+<section id="Hyperparameters">
 <h2>Hyperparameters<a class="headerlink" href="#Hyperparameters" title="Permalink to this headline">¶</a></h2>
 <p>Most models have <em>hyperparameters</em>. They affect the fit, but are specified up front instead of learned during training.</p>
 <div class="nbinput nblast docutils container">
@@ -642,8 +638,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Hyperparameter-Optimization">
+</section>
+<section id="Hyperparameter-Optimization">
 <h2>Hyperparameter Optimization<a class="headerlink" href="#Hyperparameter-Optimization" title="Permalink to this headline">¶</a></h2>
 <p>There are a few ways to learn the best <em>hyper</em>parameters while training. One is <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>. As the name implies, this does a brute-force search over a grid of hyperparameter combinations.</p>
 <div class="nbinput nblast docutils container">
@@ -672,8 +668,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Single-machine-parallelism-with-scikit-learn">
+</section>
+<section id="Single-machine-parallelism-with-scikit-learn">
 <h2>Single-machine parallelism with scikit-learn<a class="headerlink" href="#Single-machine-parallelism-with-scikit-learn" title="Permalink to this headline">¶</a></h2>
 <img alt="_images/unmerged_grid_search_graph.svg" src="_images/unmerged_grid_search_graph.svg" /><p>Scikit-Learn has nice <em>single-machine</em> parallelism, via Joblib. Any scikit-learn estimator that can operate in parallel exposes an <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> keyword. This controls the number of CPU cores that will be used.</p>
 <div class="nbinput nblast docutils container">
@@ -687,12 +683,12 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Multi-machine-parallelism-with-Dask">
+</section>
+<section id="Multi-machine-parallelism-with-Dask">
 <h2>Multi-machine parallelism with Dask<a class="headerlink" href="#Multi-machine-parallelism-with-Dask" title="Permalink to this headline">¶</a></h2>
 <img alt="_images/merged_grid_search_graph.svg" src="_images/merged_grid_search_graph.svg" /><p>Dask can talk to scikit-learn (via joblib) so that your <em>cluster</em> is used to train a model.</p>
 <p>If you run this on a laptop, it will take quite some time, but the CPU usage will be satisfyingly near 100% for the duration. To run faster, you would need a disrtibuted cluster. That would mean putting something in the call to <code class="docutils literal notranslate"><span class="pre">Client</span></code> something like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;tcp://my.scheduler.address:8786&#39;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>c = Client(&#39;tcp://my.scheduler.address:8786&#39;)
 </pre></div>
 </div>
 <p>Details on the many ways to create a cluster can be found <a class="reference external" href="https://docs.dask.org/en/latest/setup/single-distributed.html">here</a>.</p>
@@ -745,9 +741,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="Training-on-Large-Datasets">
+</section>
+</section>
+<section id="Training-on-Large-Datasets">
 <h1>Training on Large Datasets<a class="headerlink" href="#Training-on-Large-Datasets" title="Permalink to this headline">¶</a></h1>
 <p>Sometimes you’ll want to train on a larger than memory dataset. <code class="docutils literal notranslate"><span class="pre">dask-ml</span></code> has implemented estimators that work well on dask arrays and dataframes that may be larger than your machine’s RAM.</p>
 <div class="nbinput nblast docutils container">
@@ -859,7 +855,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
+</section>
 
 
            </div>

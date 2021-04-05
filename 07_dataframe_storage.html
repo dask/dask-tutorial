@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Data Storage &mdash; Dask Tutorial  documentation</title>
@@ -35,8 +36,6 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script src="_static/js/custom.js"></script>
     
@@ -46,7 +45,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Parallel and Distributed Machine Learning" href="08_machine_learning.html" />
-    <link rel="prev" title="Distributed, Advanced" href="06_distributed_advanced.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="06_distributed_advanced.html" />
   <link rel="shortcut icon" href="_static/images/favicon.ico"/>
   
   <meta name="Description" content="Data Storage">
@@ -174,12 +173,9 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Storage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Create-data">Create data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Read-CSV">Read CSV</a><ul>
@@ -533,10 +529,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/07_dataframe_storage.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/07_dataframe_storage.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/07_dataframe_storage.ipynb">on Github</a>.</p>
-<p><img alt="e5216d037fba48be8fcbeec28b61c46c" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Data-Storage">
+<p><img alt="9e05422113494f0cb0ddabf805cc14fa" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<section id="Data-Storage">
 <h1>Data Storage<a class="headerlink" href="#Data-Storage" title="Permalink to this headline">¶</a></h1>
-<p><img alt="5bb30ac5438e469485c7d8d45bc8b501" class="no-scaled-link" src="_images/hdd.jpg" style="width: 20%;" /> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
+<p><img alt="67382956515b458eac60e984c3fe9e0e" class="no-scaled-link" src="_images/hdd.jpg" style="width: 20%;" /> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
 <p>Decompressing text and parsing CSV files is expensive. One of the most effective strategies with medium data is to use a binary storage format like HDF5. Often the performance gains from doing this is sufficient so that you can switch back to using Pandas again instead of using <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>.</p>
 <p>In this section we’ll learn how to efficiently arrange and store your datasets in on-disk binary formats. We’ll use the following:</p>
 <ol class="arabic simple">
@@ -549,7 +545,7 @@ div.rendered_html tbody tr:hover {
 <li><p>Text data will keep even a fast format like HDF5 slow</p></li>
 <li><p>A combination of binary formats, column storage, and partitioned data turns one second wait times into 80ms wait times.</p></li>
 </ol>
-<div class="section" id="Create-data">
+<section id="Create-data">
 <h2>Create data<a class="headerlink" href="#Create-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -560,8 +556,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Read-CSV">
+</section>
+<section id="Read-CSV">
 <h2>Read CSV<a class="headerlink" href="#Read-CSV" title="Permalink to this headline">¶</a></h2>
 <p>First we read our csv data as before.</p>
 <p>CSV and other text-based file formats are the most common storage for data from many sources, because they require minimal pre-processing, can be written line-by-line and are human-readable. Since Pandas’ <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> is well-optimized, CSVs are a reasonable input, but far from optimized, since reading required extensive text parsing.</p>
@@ -627,39 +623,39 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>82</td>
-      <td>Charlie</td>
-      <td>110</td>
+      <td>23</td>
+      <td>Victor</td>
+      <td>392</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>49</td>
-      <td>Wendy</td>
-      <td>1053</td>
+      <td>82</td>
+      <td>Laura</td>
+      <td>432</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>36</td>
-      <td>Jerry</td>
-      <td>-6</td>
+      <td>30</td>
+      <td>Laura</td>
+      <td>119</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>22</td>
-      <td>Dan</td>
-      <td>1303</td>
+      <td>12</td>
+      <td>Yvonne</td>
+      <td>640</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>38</td>
-      <td>Ray</td>
-      <td>-1665</td>
+      <td>66</td>
+      <td>Norbert</td>
+      <td>92</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-<div class="section" id="Write-to-HDF5">
+<section id="Write-to-HDF5">
 <h3>Write to HDF5<a class="headerlink" href="#Write-to-HDF5" title="Permalink to this headline">¶</a></h3>
 <p>HDF5 and netCDF are binary array formats very commonly used in the scientific realm.</p>
 <p>Pandas contains a specialized HDF5 format, <code class="docutils literal notranslate"><span class="pre">HDFStore</span></code>. The <code class="docutils literal notranslate"><span class="pre">dd.DataFrame.to_hdf</span></code> method works exactly like the <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.to_hdf</span></code> method.</p>
@@ -697,8 +693,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 228 ms, sys: 36.6 ms, total: 264 ms
-Wall time: 272 ms
+CPU times: user 231 ms, sys: 27.6 ms, total: 258 ms
+Wall time: 263 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -752,40 +748,40 @@ Wall time: 272 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>82</td>
-      <td>Charlie</td>
-      <td>110</td>
+      <td>23</td>
+      <td>Victor</td>
+      <td>392</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>49</td>
-      <td>Wendy</td>
-      <td>1053</td>
+      <td>82</td>
+      <td>Laura</td>
+      <td>432</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>36</td>
-      <td>Jerry</td>
-      <td>-6</td>
+      <td>30</td>
+      <td>Laura</td>
+      <td>119</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>22</td>
-      <td>Dan</td>
-      <td>1303</td>
+      <td>12</td>
+      <td>Yvonne</td>
+      <td>640</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>38</td>
-      <td>Ray</td>
-      <td>-1665</td>
+      <td>66</td>
+      <td>Norbert</td>
+      <td>92</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-</div>
-<div class="section" id="Compare-CSV-to-HDF5-speeds">
+</section>
+<section id="Compare-CSV-to-HDF5-speeds">
 <h3>Compare CSV to HDF5 speeds<a class="headerlink" href="#Compare-CSV-to-HDF5-speeds" title="Permalink to this headline">¶</a></h3>
 <p>We do a simple computation that requires reading a column of our dataset and compare performance between CSV files and our newly created HDF5 file. Which do you expect to be faster?</p>
 <div class="nbinput docutils container">
@@ -802,8 +798,8 @@ Wall time: 272 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 24.1 ms, sys: 4.65 ms, total: 28.7 ms
-Wall time: 28.8 ms
+CPU times: user 20.9 ms, sys: 7.57 ms, total: 28.5 ms
+Wall time: 22.6 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -812,7 +808,7 @@ Wall time: 28.8 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-27705949
+28037037
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -829,8 +825,8 @@ Wall time: 28.8 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 34.4 ms, sys: 4.36 ms, total: 38.7 ms
-Wall time: 38.4 ms
+CPU times: user 33.4 ms, sys: 11 ms, total: 44.4 ms
+Wall time: 45.1 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -839,7 +835,7 @@ Wall time: 38.4 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-27705949
+28037037
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -848,8 +844,8 @@ Wall time: 38.4 ms
 <li><p>How do we store text data like <code class="docutils literal notranslate"><span class="pre">names</span></code> efficiently on disk?</p></li>
 <li><p>Why did we have to read the <code class="docutils literal notranslate"><span class="pre">names</span></code> column when all we wanted was <code class="docutils literal notranslate"><span class="pre">amount</span></code></p></li>
 </ol>
-</div>
-<div class="section" id="1.-Store-text-efficiently-with-categoricals">
+</section>
+<section id="1.-Store-text-efficiently-with-categoricals">
 <h3>1. Store text efficiently with categoricals<a class="headerlink" href="#1.-Store-text-efficiently-with-categoricals" title="Permalink to this headline">¶</a></h3>
 <p>We can use Pandas categoricals to replace our object dtypes with a numerical representation. This takes a bit more time up front, but results in better performance.</p>
 <p>More on categoricals at the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/categorical.html">pandas docs</a> and <a class="reference external" href="http://matthewrocklin.com/blog/work/2015/06/18/Categoricals">this blogpost</a>.</p>
@@ -868,8 +864,8 @@ Wall time: 38.4 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 118 ms, sys: 11.6 ms, total: 130 ms
-Wall time: 128 ms
+CPU times: user 123 ms, sys: 7.67 ms, total: 131 ms
+Wall time: 130 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -923,33 +919,33 @@ Wall time: 128 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>82</td>
-      <td>Charlie</td>
-      <td>110</td>
+      <td>23</td>
+      <td>Victor</td>
+      <td>392</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>49</td>
-      <td>Wendy</td>
-      <td>1053</td>
+      <td>82</td>
+      <td>Laura</td>
+      <td>432</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>36</td>
-      <td>Jerry</td>
-      <td>-6</td>
+      <td>30</td>
+      <td>Laura</td>
+      <td>119</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>22</td>
-      <td>Dan</td>
-      <td>1303</td>
+      <td>12</td>
+      <td>Yvonne</td>
+      <td>640</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>38</td>
-      <td>Ray</td>
-      <td>-1665</td>
+      <td>66</td>
+      <td>Norbert</td>
+      <td>92</td>
     </tr>
   </tbody>
 </table>
@@ -970,8 +966,8 @@ Wall time: 128 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 26.1 ms, sys: 0 ns, total: 26.1 ms
-Wall time: 26.2 ms
+CPU times: user 31.3 ms, sys: 0 ns, total: 31.3 ms
+Wall time: 31.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -980,14 +976,14 @@ Wall time: 26.2 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-27705949
+28037037
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
 <p>How does the performance of reading depend on the scheduler we use? You can try this with threaded, processes and distributed.</p>
 <p>However this can still be better. We had to read all of the columns (<code class="docutils literal notranslate"><span class="pre">names</span></code> and <code class="docutils literal notranslate"><span class="pre">amount</span></code>) in order to compute the sum of one (<code class="docutils literal notranslate"><span class="pre">amount</span></code>). We’ll improve further on this with <code class="docutils literal notranslate"><span class="pre">parquet</span></code>, an on-disk column-store. First though we learn about how to set an index in a dask.dataframe.</p>
-</div>
-<div class="section" id="Exercise">
+</section>
+<section id="Exercise">
 <h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">fastparquet</span></code> is a library for interacting with parquet-format files, which are a very common format in the Big Data ecosystem, and used by tools such as Hadoop, Spark and Impala.</p>
 <div class="nbinput nblast docutils container">
@@ -1017,11 +1013,11 @@ Wall time: 26.2 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-r--r-- 1 runner docker    952 Feb  2 03:59 _common_metadata
--rw-r--r-- 1 runner docker   2203 Feb  2 03:59 _metadata
--rw-r--r-- 1 runner docker 252074 Feb  2 03:59 part.0.parquet
--rw-r--r-- 1 runner docker 252074 Feb  2 03:59 part.1.parquet
--rw-r--r-- 1 runner docker 252074 Feb  2 03:59 part.2.parquet
+-rw-r--r-- 1 runner docker    952 Apr  5 15:59 _common_metadata
+-rw-r--r-- 1 runner docker   2203 Apr  5 15:59 _metadata
+-rw-r--r-- 1 runner docker 252074 Apr  5 15:59 part.0.parquet
+-rw-r--r-- 1 runner docker 252074 Apr  5 15:59 part.1.parquet
+-rw-r--r-- 1 runner docker 252074 Apr  5 15:59 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1063,8 +1059,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 133 ms, sys: 12.1 ms, total: 145 ms
-Wall time: 143 ms
+CPU times: user 152 ms, sys: 7.87 ms, total: 160 ms
+Wall time: 158 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1073,7 +1069,7 @@ Wall time: 143 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-27705949
+28037037
 </pre></div></div>
 </div>
 <p>When archiving data, it is common to sort and partition by a column with unique identifiers, to facilitate fast look-ups later. For this data, that column is <code class="docutils literal notranslate"><span class="pre">id</span></code>. Time how long it takes to retrieve the rows corresponding to <code class="docutils literal notranslate"><span class="pre">id==100</span></code> from the raw CSV, from HDF5 and parquet versions, and finally from a new parquet version written after applying <code class="docutils literal notranslate"><span class="pre">set_index('id')</span></code>.</p>
@@ -1086,9 +1082,9 @@ Wall time: 143 ms
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="Remote-files">
+</section>
+</section>
+<section id="Remote-files">
 <h2>Remote files<a class="headerlink" href="#Remote-files" title="Permalink to this headline">¶</a></h2>
 <p>Dask can access various cloud- and cluster-oriented data storage services such as Amazon S3 or HDFS</p>
 <p>Advantages: * scalable, secure storage</p>
@@ -1099,8 +1095,8 @@ Wall time: 143 ms
 </pre></div>
 </div>
 <p><strong>Warning</strong>: operations over the Internet can take a long time to run. Such operations work really well in a cloud clustered set-up, e.g., amazon EC2 machines reading from S3 or Google compute machines reading from GCS.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -1109,7 +1105,7 @@ Wall time: 143 ms
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="08_machine_learning.html" class="btn btn-neutral float-right" title="Parallel and Distributed Machine Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="06_distributed_advanced.html" class="btn btn-neutral float-left" title="Distributed, Advanced" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="06_distributed_advanced.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
