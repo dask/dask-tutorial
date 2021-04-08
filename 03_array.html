@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Arrays &mdash; Dask Tutorial  documentation</title>
@@ -175,6 +174,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Arrays</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Create-data">Create data</a></li>
@@ -204,6 +204,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
@@ -545,11 +547,11 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/03_array.ipynb">on Github</a>.</p>
-<p><img alt="58e7040dc4ab4e38a192be37a6da715b" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
-<section id="Arrays">
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/03_array.ipynb">on Github</a>.</p>
+<p><img alt="80fab596360342a0b7deb43da41f135e" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="6c457c14fd5a4b15bef42337129c3f24" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="d8f83e5dfa9945e8afe5ab9c1c3e1e29" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -563,7 +565,7 @@ div.rendered_html tbody tr:hover {
 <li><p><a class="reference external" href="https://docs.dask.org/en/latest/array-api.html">Array API</a></p></li>
 <li><p><a class="reference external" href="https://examples.dask.org/array.html">Array examples</a></p></li>
 </ul>
-<section id="Create-data">
+<div class="section" id="Create-data">
 <h2>Create data<a class="headerlink" href="#Create-data" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -574,8 +576,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Setup">
+</div>
+<div class="section" id="Setup">
 <h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -588,8 +590,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Blocked-Algorithms">
+</div>
+<div class="section" id="Blocked-Algorithms">
 <h2>Blocked Algorithms<a class="headerlink" href="#Blocked-Algorithms" title="Permalink to this headline">¶</a></h2>
 <p>A <em>blocked algorithm</em> executes on a large dataset by breaking it up into many small blocks.</p>
 <p>For example, consider taking the sum of a billion numbers. We might instead break up the array into 1,000 chunks, each of size 1,000,000, take the sum of each chunk, and then take the sum of the intermediate sums.</p>
@@ -638,10 +640,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4999294.75
+4998433.6875
 </pre></div></div>
 </div>
-<section id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
+<div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
 <h3>Exercise: Compute the mean using a blocked algorithm<a class="headerlink" href="#Exercise:-Compute-the-mean-using-a-blocked-algorithm" title="Permalink to this headline">¶</a></h3>
 <p>Now that we’ve seen the simple example above, try doing a slightly more complicated problem. Compute the mean of the array, assuming for a moment that we don’t happen to already know how many elements are in the data. You can do this by changing the code above with the following alterations:</p>
 <ol class="arabic simple">
@@ -682,12 +684,12 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.99985895
+0.9996867375
 </pre></div></div>
 </div>
-</section>
-</section>
-<section id="dask.array-contains-these-algorithms">
+</div>
+</div>
+<div class="section" id="dask.array-contains-these-algorithms">
 <h2><code class="docutils literal notranslate"><span class="pre">dask.array</span></code> contains these algorithms<a class="headerlink" href="#dask.array-contains-these-algorithms" title="Permalink to this headline">¶</a></h2>
 <p>Dask.array is a NumPy-like library that does these kinds of tricks to operate on large datasets that don’t fit into memory. It extends beyond the linear problems discussed above to full N-Dimensional algorithms and a decent subset of the NumPy interface.</p>
 <p><strong>Create ``dask.array`` object</strong></p>
@@ -814,10 +816,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4999294.5
+4998433.5
 </pre></div></div>
 </div>
-<section id="Exercise:-Compute-the-mean">
+<div class="section" id="Exercise:-Compute-the-mean">
 <h3>Exercise: Compute the mean<a class="headerlink" href="#Exercise:-Compute-the-mean" title="Permalink to this headline">¶</a></h3>
 <p>And the variance, std, etc.. This should be a small change to the example above.</p>
 <p>Look at what other operations you can do with the Jupyter notebook’s tab-completion.</p>
@@ -831,18 +833,18 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>Does this match your result from before?</p>
-</section>
-</section>
-<section id="Performance-and-Parallelism">
+</div>
+</div>
+<div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="f2974387f3784e03ba4ac57812602fc9" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="c6b3c6450a6b460499c73e60024715dc" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
 <li><p>Chain operations on a single blocks before moving on to the next one</p></li>
 </ol>
 <p><code class="docutils literal notranslate"><span class="pre">Dask.array</span></code> translates your array operations into a graph of inter-related tasks with data dependencies between them. Dask then executes this graph in parallel with multiple threads. We’ll discuss more about this in the next section.</p>
-<section id="Example">
+<div class="section" id="Example">
 <h3>Example<a class="headerlink" href="#Example" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Construct a 20000x20000 array of normally distributed random values broken up into 1000x1000 sized chunks</p></li>
@@ -896,8 +898,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.19 s, sys: 135 ms, total: 1.32 s
-Wall time: 8.41 s
+CPU times: user 1.13 s, sys: 124 ms, total: 1.25 s
+Wall time: 8.85 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -906,51 +908,51 @@ Wall time: 8.41 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([10.00014242,  9.99979592, 10.00007478, 10.00097283, 10.00013757,
-        9.99950961,  9.99936599,  9.9996008 , 10.0004874 ,  9.99997385,
-       10.00071044,  9.99932405, 10.00036049,  9.99953002,  9.99866802,
-       10.00031123, 10.00005752,  9.99955727, 10.00090208, 10.00072817,
-        9.99980097,  9.99926135,  9.99959709, 10.00023928,  9.99991294,
-        9.99823208,  9.99968677,  9.99946392, 10.00081744, 10.00017648,
-        9.99933813,  9.99985743, 10.00122791,  9.99932986,  9.99958896,
-        9.99942483, 10.00059944,  9.99957955, 10.00033732,  9.9997099 ,
-        9.99892312,  9.99996931,  9.99996224, 10.00047128, 10.00025583,
-       10.00031415,  9.99983521,  9.99928321,  9.99912407, 10.00060349,
-        9.99967004,  9.99882099, 10.00038022,  9.99915905,  9.99880684,
-        9.99973165,  9.99924159, 10.00034363, 10.00003528,  9.99949139,
-        9.99976314, 10.00010148,  9.99972707,  9.99910839,  9.99933372,
-       10.00148057,  9.99926959, 10.00001713,  9.99975035, 10.00057011,
-        9.99974021, 10.00085086,  9.99825625,  9.99925528, 10.00150564,
-        9.99834589,  9.99983582, 10.00006165,  9.998742  , 10.00005988,
-       10.00018283,  9.99856558, 10.00126893, 10.00032244,  9.99985244,
-        9.99985473, 10.00057371,  9.99998636, 10.0008947 , 10.00049061,
-       10.00002918,  9.99927109,  9.99967626, 10.00092685, 10.00026413,
-        9.99902535, 10.00041102,  9.99938301, 10.00014275, 10.00024985,
-        9.9985698 , 10.00033483,  9.99999952, 10.00007788, 10.00104687,
-        9.99860409,  9.99994049, 10.00075364,  9.9994676 , 10.00012807,
-        9.99983558,  9.9997025 ,  9.99959281, 10.00101761, 10.00131492,
-        9.99903958, 10.00033705, 10.00053657,  9.99983487,  9.99991712,
-       10.00121761, 10.00048289,  9.99984805,  9.99995359, 10.00029238,
-       10.00140618,  9.99959486,  9.99940044,  9.99974492,  9.99912985,
-        9.99979082,  9.99984292,  9.99947848, 10.00022103, 10.00022522,
-       10.00090424,  9.9999864 , 10.00062013,  9.99892191, 10.00008341,
-       10.00070044, 10.00014073, 10.00119032,  9.99925679, 10.00096871,
-       10.00069013, 10.00013805,  9.9995295 ,  9.99967333,  9.99962267,
-       10.00005725, 10.00036947,  9.99935061,  9.99981685,  9.99974626,
-        9.99801519,  9.99944908,  9.99969248,  9.9998491 ,  9.99878058,
-       10.00013204, 10.00060478, 10.0013877 , 10.00032448,  9.99997614,
-        9.99969377, 10.0001044 , 10.00011776, 10.00047991, 10.00022528,
-        9.99963562,  9.99977464,  9.99975123,  9.99987697, 10.00094696,
-       10.00019596,  9.99919484,  9.9994793 , 10.00043303,  9.99932257,
-       10.00020744,  9.99981722, 10.00025772,  9.99959137,  9.99981804,
-        9.99907972,  9.99811461, 10.00068482, 10.00042876,  9.99927607,
-       10.00060271, 10.00079403,  9.9997804 , 10.00136891,  9.99857965,
-       10.00001712,  9.99944173, 10.00034631,  9.99936275, 10.00185533])
+array([10.00072114,  9.99990854,  9.9989841 , 10.0008383 , 10.00123872,
+        9.99944306,  9.99934574, 10.00007974,  9.99992158,  9.9996762 ,
+       10.00182002, 10.00073681,  9.99956546,  9.99899688, 10.00006578,
+       10.00040706,  9.99947264, 10.0007997 ,  9.99875886, 10.00090938,
+        9.99945525, 10.0010081 , 10.00012511, 10.00120747, 10.00087537,
+       10.00044107, 10.00039681, 10.00047482, 10.00041777, 10.00029256,
+       10.00110634, 10.00017178,  9.99989438,  9.99921728, 10.00003203,
+        9.99931825, 10.00038818,  9.99996516,  9.99923112, 10.00034264,
+        9.99912219, 10.00017906,  9.99995016,  9.99923648, 10.00054618,
+        9.99824128, 10.00002125, 10.00130929,  9.99940363, 10.00010804,
+        9.99918399,  9.99971545, 10.00060391, 10.00011413, 10.00020567,
+        9.99949449, 10.00044545,  9.99985192,  9.99812166, 10.00018062,
+        9.99986283,  9.99998151,  9.99866627,  9.99916095,  9.99938724,
+        9.99964528,  9.9989014 , 10.00078256, 10.00181835,  9.99976092,
+       10.00023865,  9.99885769,  9.99998432,  9.99993633,  9.9993722 ,
+        9.99928227, 10.0006713 , 10.0008027 , 10.00042002,  9.99978228,
+        9.99972035, 10.00153385,  9.99972004,  9.99989097,  9.99953039,
+       10.00010341, 10.00011462, 10.00048848, 10.00217086, 10.00185137,
+        9.9998612 ,  9.99950824, 10.0006166 ,  9.99993186,  9.99884696,
+       10.00088062,  9.9997878 ,  9.99899075,  9.99898868, 10.00033361,
+        9.99973442,  9.99960114, 10.00087533, 10.000247  ,  9.99988165,
+        9.99905479,  9.9994286 ,  9.99978337, 10.00014324, 10.00061047,
+        9.9996942 ,  9.99977114, 10.00032878, 10.00081525, 10.00064259,
+        9.99965706,  9.99911718,  9.99936203, 10.00103691, 10.00096122,
+        9.99952709, 10.00094991,  9.99982886, 10.0000485 ,  9.99981548,
+       10.00010377, 10.00070947,  9.99966943, 10.00004662, 10.00081654,
+       10.00019983, 10.00087235, 10.00054615,  9.99811585,  9.99943522,
+        9.99859081, 10.00029116, 10.00034215,  9.99906998,  9.99879881,
+        9.99855219,  9.99979393,  9.99923983, 10.0004682 , 10.00006118,
+       10.00043021, 10.00130656, 10.00026948,  9.99942611,  9.99969922,
+       10.00028189, 10.00044227,  9.99957011,  9.999709  ,  9.99979522,
+        9.99969042,  9.99984568,  9.99917901, 10.00136842,  9.99869128,
+       10.00074599, 10.0001469 , 10.0004492 ,  9.99871032, 10.00062373,
+        9.9998766 ,  9.99994231, 10.0001132 , 10.00002553,  9.99971401,
+        9.99958522,  9.99848208,  9.998131  ,  9.99893479, 10.00036402,
+        9.9990533 , 10.00042489, 10.00008442,  9.99959623,  9.99996545,
+       10.00004766,  9.99900673,  9.99941507,  9.99781854, 10.00023793,
+        9.99962124, 10.00046204,  9.99874709,  9.99964792,  9.99948384,
+        9.9993234 ,  9.99974808,  9.99964991, 10.00068065,  9.99885678,
+       10.00101081,  9.99913467,  9.99892047, 10.00078737,  9.99919238])
 </pre></div></div>
 </div>
-</section>
-</section>
-<section id="Performance-comparison">
+</div>
+</div>
+<div class="section" id="Performance-comparison">
 <h2>Performance comparison<a class="headerlink" href="#Performance-comparison" title="Permalink to this headline">¶</a></h2>
 <p>The following experiment was performed on a heavy personal laptop. Your performance may vary. If you attempt the NumPy version then please ensure that you have more than 4GB of main memory.</p>
 <p><strong>NumPy: 19s, Needs gigabytes of memory</strong></p>
@@ -994,7 +996,7 @@ array([10.00014242,  9.99979592, 10.00007478, 10.00097283, 10.00013757,
 </ul>
 </li>
 </ul>
-<section id="Exercise:-Meteorological-data">
+<div class="section" id="Exercise:-Meteorological-data">
 <h3>Exercise: Meteorological data<a class="headerlink" href="#Exercise:-Meteorological-data" title="Permalink to this headline">¶</a></h3>
 <p>There is 2GB of somewhat artifical weather data in HDF5 files in <code class="docutils literal notranslate"><span class="pre">data/weather-big/*.hdf5</span></code>. We’ll use the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library to interact with this data and <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> to compute on it.</p>
 <p>Our goal is to visualize the average temperature on the surface of the Earth for this month. This will require a mean over all of this data. We’ll do this in the following steps</p>
@@ -1079,7 +1081,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fdf5e6bc850&gt;
+&lt;matplotlib.image.AxesImage at 0x7ff2f8191b20&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1374,7 +1376,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fdf5e045070&gt;
+&lt;matplotlib.image.AxesImage at 0x7ff2f808c850&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1411,7 +1413,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.image.AxesImage at 0x7fdf5e019520&gt;
+&lt;matplotlib.image.AxesImage at 0x7ff2ebacdd60&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1421,8 +1423,8 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <img alt="_images/03_array_69_1.png" src="_images/03_array_69_1.png" />
 </div>
 </div>
-</section>
-<section id="Exercise:-Subsample-and-store">
+</div>
+<div class="section" id="Exercise:-Subsample-and-store">
 <h3>Exercise: Subsample and store<a class="headerlink" href="#Exercise:-Subsample-and-store" title="Permalink to this headline">¶</a></h3>
 <p>In the above exercise the result of our computation is small, so we can call <code class="docutils literal notranslate"><span class="pre">compute</span></code> safely. Sometimes our result is still too large to fit into memory and we want to save it to disk. In these cases you can use one of the following two functions</p>
 <ol class="arabic">
@@ -1481,9 +1483,9 @@ da.store(my_dask_array, output)
 </pre></div>
 </div>
 </div>
-</section>
-</section>
-<section id="Example:-Lennard-Jones-potential">
+</div>
+</div>
+<div class="section" id="Example:-Lennard-Jones-potential">
 <h2>Example: Lennard-Jones potential<a class="headerlink" href="#Example:-Lennard-Jones-potential" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones potential</a> is used in particle simulations in physics, chemistry and engineering. It is highly parallelizable.</p>
 <p>First, we’ll run and profile the Numpy version on 7,000 particles.</p>
@@ -1544,8 +1546,8 @@ da.store(my_dask_array, output)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.02 s, sys: 1.81 s, total: 4.83 s
-Wall time: 4.69 s
+CPU times: user 2.94 s, sys: 1.88 s, total: 4.82 s
+Wall time: 4.68 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1580,7 +1582,7 @@ Wall time: 4.69 s
 
 </pre></div></div>
 </div>
-<section id="Dask-version">
+<div class="section" id="Dask-version">
 <h3>Dask version<a class="headerlink" href="#Dask-version" title="Permalink to this headline">¶</a></h3>
 <p>Here’s the Dask version. Only the <code class="docutils literal notranslate"><span class="pre">potential</span></code> function needs to be rewritten to best utilize Dask.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">da.nansum</span></code> has been used over the full <span class="math notranslate nohighlight">\(NxN\)</span> distance matrix to improve parallel efficiency.</p>
@@ -1628,8 +1630,8 @@ Wall time: 4.69 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 171 ms, sys: 33.6 ms, total: 205 ms
-Wall time: 3.18 s
+CPU times: user 124 ms, sys: 30.8 ms, total: 155 ms
+Wall time: 2.86 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1641,9 +1643,9 @@ Wall time: 3.18 s
 -0.21282893668845299
 </pre></div></div>
 </div>
-</section>
-</section>
-<section id="Limitations">
+</div>
+</div>
+<div class="section" id="Limitations">
 <h2>Limitations<a class="headerlink" href="#Limitations" title="Permalink to this headline">¶</a></h2>
 <p>Dask Array does not implement the entire numpy interface. Users expecting this will be disappointed. Notably Dask Array has the following failings:</p>
 <ol class="arabic simple">
@@ -1667,8 +1669,8 @@ Wall time: 3.18 s
 </pre></div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

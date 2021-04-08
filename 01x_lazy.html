@@ -4,11 +4,10 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>&lt;no title&gt; &mdash; Dask Tutorial  documentation</title>
+  <title>Lazy execution &mdash; Dask Tutorial  documentation</title>
   
 
   
@@ -48,10 +47,10 @@
     <link rel="prev" title="Parallelize code with dask.delayed" href="01_dask.delayed.html" />
   <link rel="shortcut icon" href="_static/images/favicon.ico"/>
   
-  <meta name="Description" content="&lt;no title&gt;">
-  <meta property="og:description" content="&lt;no title&gt;">
-  <meta name="twitter:description" content="&lt;no title&gt;" />
-  <meta property="og:title" content="Dask Tutorial  documentation - &lt;no title&gt;">
+  <meta name="Description" content="Lazy execution">
+  <meta property="og:description" content="Lazy execution">
+  <meta name="twitter:description" content="Lazy execution" />
+  <meta property="og:title" content="Dask Tutorial  documentation - Lazy execution">
   <meta property="og:image" content="https://github.com/dask.png">
   <meta property="og:image:secure_url" content="https://github.com/dask.png" />
   <meta property="og:image:type" content="image/png" />
@@ -170,12 +169,29 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lazy execution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Prelude">Prelude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Dask-is-a-graph-execution-engine">Dask is a graph execution engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Appendix:-Further-detail-and-examples">Appendix: Further detail and examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Example-1:-simple-word-count">Example 1: simple word count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Example-2:-background-execution">Example 2: background execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Example-3:-delayed-execution">Example 3: delayed execution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Dask-graphs">Dask graphs</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
@@ -228,7 +244,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Lazy execution</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -249,6 +265,252 @@
             
   
 <style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
 /* CSS overrides for sphinx_rtd_theme */
 
 /* 24px margin */
@@ -271,7 +533,552 @@
     text-align: unset;
 }
 </style>
-<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb"><img alt="Binder" src="https://mybinder.org/badge.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/01x_lazy.ipynb">on Github</a>.</p>
+<p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/01x_lazy.ipynb">on Github</a>.</p>
+<p><img alt="9eb9b21d40824235886d02468bab9921" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<div class="section" id="Lazy-execution">
+<h1>Lazy execution<a class="headerlink" href="#Lazy-execution" title="Permalink to this headline">¶</a></h1>
+<p>Here we discuss some of the concepts behind dask, and lazy execution of code. You do not need to go through this material if you are eager to get on with the tutorial, but it may help understand the concepts underlying dask, how these things fit in with techniques you might already be using, and how to understand things that can go wrong.</p>
+<div class="section" id="Prelude">
+<h2>Prelude<a class="headerlink" href="#Prelude" title="Permalink to this headline">¶</a></h2>
+<p>As Python programmers, you probably already perform certain <em>tricks</em> to enable computation of larger-than-memory datasets, parallel execution or delayed/background execution. Perhaps with this phrasing, it is not clear what we mean, but a few examples should make things clearer. The point of Dask is to make simple things easy and complex things possible!</p>
+<p>Aside from the <a class="reference external" href="http://dask.pydata.org/en/latest/">detailed introduction</a>, we can summarize the basics of Dask as follows:</p>
+<ul class="simple">
+<li><p>process data that doesn’t fit into memory by breaking it into blocks and specifying task chains</p></li>
+<li><p>parallelize execution of tasks across cores and even nodes of a cluster</p></li>
+<li><p>move computation to the data rather than the other way around, to minimize communication overhead</p></li>
+</ul>
+<p>All of this allows you to get the most out of your computation resources, but program in a way that is very familiar: for-loops to build basic tasks, Python iterators, and the NumPy (array) and Pandas (dataframe) functions for multi-dimensional or tabular data, respectively.</p>
+<p>The remainder of this notebook will take you through the first of these programming paradigms. This is more detail than some users will want, who can skip ahead to the iterator, array and dataframe sections; but there will be some data processing tasks that don’t easily fit into those abstractions and need to fall back to the methods here.</p>
+<p>We include a few examples at the end of the notebooks showing that the ideas behind how Dask is built are not actually that novel, and experienced programmers will have met parts of the design in other situations before. Those examples are left for the interested.</p>
+</div>
+<div class="section" id="Dask-is-a-graph-execution-engine">
+<h2>Dask is a graph execution engine<a class="headerlink" href="#Dask-is-a-graph-execution-engine" title="Permalink to this headline">¶</a></h2>
+<p>Dask allows you to construct a prescription for the calculation you want to carry out. That may sound strange, but a simple example will demonstrate that you can achieve this while programming with perfectly ordinary Python functions and for-loops. We saw this in the previous notebook.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
+
+<span class="nd">@delayed</span>
+<span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nd">@delayed</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<p>Here we have used the delayed annotation to show that we want these functions to operate lazily — to save the set of inputs and execute only on demand. <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code> is also a function which can do this, without the annotation, leaving the original function unchanged, e.g.,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delayed_inc</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">inc</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># this looks like ordinary code</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># x, y and total are all delayed objects.</span>
+<span class="c1"># They contain a prescription of how to carry out the computation</span>
+</pre></div>
+</div>
+</div>
+<p>Calling a delayed function created a delayed object (<code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">total</span></code>) which can be examined interactively. Making these objects is somewhat equivalent to constructs like the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> or function wrappers (see below). Each holds a simple dictionary describing the task graph, a full specification of how to carry out the computation.</p>
+<p>We can visualize the chain of calculations that the object <code class="docutils literal notranslate"><span class="pre">total</span></code> corresponds to as follows; the circles are functions, rectangles are data/results.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">total</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="_images/01x_lazy_11_0.png" src="_images/01x_lazy_11_0.png" />
+</div>
+</div>
+<p>But so far, no functions have actually been executed. This demonstrated the division between the graph-creation part of Dask (<code class="docutils literal notranslate"><span class="pre">delayed()</span></code>, in this example) and the graph execution part of Dask.</p>
+<p>To run the “graph” in the visualization, and actually get a result, do:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># execute all tasks</span>
+<span class="n">total</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+47
+</pre></div></div>
+</div>
+<p><strong>Why should you care about this?</strong></p>
+<p>By building a specification of the calculation we want to carry out before executing anything, we can pass the specification to an <em>execution engine</em> for evaluation. In the case of Dask, this execution engine could be running on many nodes of a cluster, so you have access to the full number of CPU cores and memory across all the machines. Dask will intelligently execute your calculation with care for minimizing the amount of data held in memory, while parallelizing over the tasks that make up a
+graph. Notice that in the animated diagram below, where four workers are processing the (simple) graph, execution progresses vertically up the branches first, so that intermediate results can be expunged before moving onto a new branch.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">delayed</span></code> and normal pythonic looped code, very complex graphs can be built up and passed on to Dask for execution. See a nice example of <a class="reference external" href="https://blog.dask.org/2017/01/24/dask-custom">simulated complex ETL</a> work flow.</p>
+<img alt="this" src="_images/grid_search_schedule.gif" />
+<div class="section" id="Exercise">
+<h3>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h3>
+<p>We will apply <code class="docutils literal notranslate"><span class="pre">delayed</span></code> to a real data processing task, albeit a simple one.</p>
+<p>Consider reading three CSV files with <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> and then measuring their total length. We will consider how you would do this with ordinary Python code, then build a graph for this process using delayed, and finally execute this graph using Dask, for a handy speed-up factor of more than two (there are only three inputs to parallelize over).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">run</span> prep.py -d accounts
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;accounts.</span><span class="si">%d</span><span class="s1">.csv&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">filenames</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;data/accounts.0.csv&#39;, &#39;data/accounts.1.csv&#39;, &#39;data/accounts.2.csv&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="c1"># normal, sequential code</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">na</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">na</span><span class="p">,</span> <span class="n">nb</span><span class="p">,</span> <span class="n">nc</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+30000
+CPU times: user 14.3 ms, sys: 3.75 ms, total: 18 ms
+Wall time: 17.7 ms
+</pre></div></div>
+</div>
+<p>Your task is to recreate this graph again using the delayed function on the original Python code. The three functions you want to delay are <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>..</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">delayed_read_csv</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">delayed_read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="o">...</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># execute</span>
+<span class="o">%</span><span class="n">time</span> <span class="n">total</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># your verbose code here</span>
+</pre></div>
+</div>
+</div>
+<p>Next, repeat this using loops, rather than writing out all the variables.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># your concise code here</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">## verbose version</span>
+<span class="n">delayed_read_csv</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">delayed_read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">delayed_read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">delayed_read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">delayed_len</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="n">na</span> <span class="o">=</span> <span class="n">delayed_len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="n">delayed_len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="n">delayed_len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">delayed_sum</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="n">delayed_sum</span><span class="p">([</span><span class="n">na</span><span class="p">,</span> <span class="n">nb</span><span class="p">,</span> <span class="n">nc</span><span class="p">])</span>
+<span class="o">%</span><span class="k">time</span> print(total.compute())
+
+
+<span class="c1">## concise version</span>
+<span class="n">csvs</span> <span class="o">=</span> <span class="p">[</span><span class="n">delayed</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)(</span><span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+<span class="n">lens</span> <span class="o">=</span> <span class="p">[</span><span class="n">delayed</span><span class="p">(</span><span class="nb">len</span><span class="p">)(</span><span class="n">csv</span><span class="p">)</span> <span class="k">for</span> <span class="n">csv</span> <span class="ow">in</span> <span class="n">csvs</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="nb">sum</span><span class="p">)(</span><span class="n">lens</span><span class="p">)</span>
+<span class="o">%</span><span class="k">time</span> print(total.compute())
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+30000
+CPU times: user 12.9 ms, sys: 8.29 ms, total: 21.2 ms
+Wall time: 15.8 ms
+30000
+CPU times: user 16.3 ms, sys: 4.08 ms, total: 20.4 ms
+Wall time: 15.5 ms
+</pre></div></div>
+</div>
+<p><strong>Notes</strong></p>
+<p>Delayed objects support various operations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>if <code class="docutils literal notranslate"><span class="pre">x</span></code> was a delayed result (like <code class="docutils literal notranslate"><span class="pre">total</span></code>, above), then so is <code class="docutils literal notranslate"><span class="pre">x2</span></code>. Supported operations include arithmetic operators, item or slice selection, attribute access and method calls - essentially anything that could be phrased as a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> expression.</p>
+<p>Operations which are <em>not</em> supported include mutation, setter methods, iteration (for) and bool (predicate).</p>
+</div>
+</div>
+<div class="section" id="Appendix:-Further-detail-and-examples">
+<h2>Appendix: Further detail and examples<a class="headerlink" href="#Appendix:-Further-detail-and-examples" title="Permalink to this headline">¶</a></h2>
+<p>The following examples show that the kinds of things Dask does are not so far removed from normal Python programming when dealing with big data. These examples are <strong>only meant for experts</strong>, typical users can continue with the next notebook in the tutorial.</p>
+<div class="section" id="Example-1:-simple-word-count">
+<h3>Example 1: simple word count<a class="headerlink" href="#Example-1:-simple-word-count" title="Permalink to this headline">¶</a></h3>
+<p>This directory contains a file called <code class="docutils literal notranslate"><span class="pre">README.md</span></code>. How would you count the number of words in that file?</p>
+<p>The simplest approach would be to load all the data into memory, split on whitespace and count the number of results. Here we use a regular expression to split words.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">splitter</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitter</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+747
+</pre></div></div>
+</div>
+<p>The trouble with this approach is that it does not scale - if the file is very large, it, and the generated list of words, might fill up memory. We can easily avoid that, because we only need a simple sum, and each line is totally independent of the others. Now we evaluate each piece of data and immediately free up the space again, so we could perform this on arbitrarily-large files. Note that there is often a trade-off between time-efficiency and memory footprint: the following uses very little
+memory, but may be slower for files that do not fill a large faction of memory. In general, one would like chunks small enough not to stress memory, but big enough for efficient use of the CPU.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitter</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+747
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Example-2:-background-execution">
+<h3>Example 2: background execution<a class="headerlink" href="#Example-2:-background-execution" title="Permalink to this headline">¶</a></h3>
+<p>There are many tasks that take a while to complete, but don’t actually require much of the CPU, for example anything that requires communication over a network, or input from a user. In typical sequential programming, execution would need to halt while the process completes, and then continue execution. That would be dreadful for user experience (imagine the slow progress bar that locks up the application and cannot be canceled), and wasteful of time (the CPU could have been doing useful work in
+the meantime).</p>
+<p>For example, we can launch processes and get their output as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">returncode</span>
+</pre></div>
+</div>
+<p>The task is run in a separate process, and the return-code will remain <code class="docutils literal notranslate"><span class="pre">None</span></code> until it completes, when it will change to <code class="docutils literal notranslate"><span class="pre">0</span></code>. To get the result back, we need <code class="docutils literal notranslate"><span class="pre">out</span> <span class="pre">=</span> <span class="pre">p.communicate()[0]</span></code> (which would block if the process was not complete).</p>
+<p>Similarly, we can launch Python processes and threads in the background. Some methods allow mapping over multiple inputs and gathering the results, more on that later. The thread starts and the cell completes immediately, but the data associated with the download only appears in the queue object some time later.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Edit sources.py to configure source locations</span>
+<span class="kn">import</span> <span class="nn">sources</span>
+<span class="n">sources</span><span class="o">.</span><span class="n">lazy_url</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;http://www.google.com&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">queue</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="k">def</span> <span class="nf">get_webdata</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="c1"># raise ValueError</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">get_webdata</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sources</span><span class="o">.</span><span class="n">lazy_url</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
+<span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># fetch result back into this thread. If the worker thread is not done, this would wait.</span>
+<span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/images/branding/googleg/1x/googleg_standard_color_128dp.png&#34; itemprop=&#34;image&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;uK9Sab70u7o1QTQqm5XXaw==&#34;&gt;(function(){window.google={kEI:\&#39;iBhvYMv4NMra-gSrvrLYDQ\&#39;,kEXPI:\&#39;0,1302536,56873,954,5104,207,2415,2389,926,1390,383,246,5,1354,4936,314,1122516,1232,1196528,492,31,328984,51223,16115,28684,9188,8384,4859,1361,9291,3022,4745,12841,4020,978,13228,2054,920,873,10622,1142,6290,7095,4517,2778,919,2277,8,2796,889,704,1279,1042,1170,530,149,1103,841,516,1466,56,158,4100,3514,606,2023,1777,520,4269,328,1284,1994,6795,3229,1726,261,856,7,12354,5096,7877,4928,108,1483,1926,906,2,940,2615,2398,10312,428,3,350,1244,1,820,1,2550,2073,149,5990,5335,1040,1610,4,499,754,275,2304,1236,1145,4082,576,74,1717,266,2627,459,1555,4067,7434,2110,1714,1297,1753,2658,3903,1,260,79,518,912,564,1118,32,8129,3286,2213,2087,218,638,37,1457,2090,3496,9765,770,665,2145,3637,2575,479,512,871,186,905,1141,67,99,2090,882,6,908,3,163,3378,1,1042,2,4305,5096,1497,1229,1539,1,1813,38,245,38,874,60,3374,1940,618,1260,1188,2,2407,1897,401,31,2859,710,77,1694,2,1394,114,624,18,659,110,8,1,28,1244,711,1004,2,516,1894,647,1477,1035,2749,350,244,300,627,4,32,4,62,381,90,143,834,727,2,564,1230,108,649,396,825,2,61,442,176,166,88,167,493,350,2,597,240,264,78,5,30,892,12,30,8,161,1845,287,110,487,507,170,1164,1831,1176,407,45,1197,491,3,105,254,1399,203,171,119,274,231,2,2,2,479,2,203,2,591,2,4,248,1374,1186,150,753,5663629,3870,35,100,126,11,51,8797723,882,444,1,2,80,1,1796,1,9,2,2551,1,748,141,795,563,1,4265,1,1,2,1331,3299,843,1,2608,155,17,13,72,334,14,19,46,5,37,99,41,6,6,9,11,4,85,4,4,111,3,2,2,2,2,2,2,2,2,2,2,2,2,6,2,2,2,2,2,2,2,22,2,68,15,22,18,19,2,22,22,4,9,23956288,150,2781200,1228924,268,245,26533,22,582,2,189,253,1660\&#39;,kBL:\&#39;X2w0\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;})();(function(){\nvar f,h=[];function k(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||f}function l(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b}\nfunction m(a,b,c,d,g){var e=&#34;&#34;;c||-1!=b.search(&#34;&amp;ei=&#34;)||(e=&#34;&amp;ei=&#34;+k(d),-1==b.search(&#34;&amp;lei=&#34;)&amp;&amp;(d=l(d))&amp;&amp;(e+=&#34;&amp;lei=&#34;+d));d=&#34;&#34;;!c&amp;&amp;window._cshid&amp;&amp;-1==b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!=a&amp;&amp;(d=&#34;&amp;cshid=&#34;+window._cshid);c=c||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+e+&#34;&amp;zx=&#34;+Date.now()+d;/^http:/i.test(c)&amp;&amp;&#34;https:&#34;==window.location.protocol&amp;&amp;(google.ml&amp;&amp;google.ml(Error(&#34;a&#34;),!1,{src:c,glmm:1}),c=&#34;&#34;);return c};f=google.kEI;google.getEI=k;google.getLEI=l;google.ml=function(){return null};google.log=function(a,b,c,d,g){if(c=m(a,b,c,d,g)){a=new Image;var e=h.length;h[e]=a;a.onerror=a.onload=a.onabort=function(){delete h[e]};a.src=c}};google.logUrl=m;}).call(this);(function(){google.y={};google.sy=[];google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.sx=function(a){google.sy.push(a)};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};google.bx=!1;google.lx=function(){};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;==c||&#34;q&#34;==c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);document.documentElement.addEventListener(&#34;click&#34;,function(b){var a;a:{for(a=b.target;a&amp;&amp;a!=document.documentElement;a=a.parentElement)if(&#34;A&#34;==a.tagName){a=&#34;1&#34;==a.getAttribute(&#34;data-nohref&#34;);break a}a=!1}a&amp;&amp;b.preventDefault()},!0);}).call(this);&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#1558d6}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}body{background:#fff;color:#000}a{color:#4b11a8;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#1558d6}a:visited{color:#4b11a8}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#f8f9fa;border:solid 1px;border-color:#dadce0 #70757a #70757a #dadce0;height:30px}.lsbb{display:block}#WqQANb a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#dadce0}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;uK9Sab70u7o1QTQqm5XXaw==&#34;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;uK9Sab70u7o1QTQqm5XXaw==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt;&lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;https://news.google.com/?tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&amp;ec=GAZAAQ&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt;&lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;img alt=&#34;Google&#34; height=&#34;92&#34; src=&#34;/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png&#34; style=&#34;padding:28px 0 14px&#34; width=&#34;272&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;margin:0;padding:5px 8px 0 6px;vertical-align:top;color:#000&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;uK9Sab70u7o1QTQqm5XXaw==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;AINFCbYAAAAAYG8mmAY6q58McPxyEoAYgivzSTjUJuX4&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;uK9Sab70u7o1QTQqm5XXaw==&#34;&gt;(function(){var a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;WqQANb&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;font-size:8pt;color:#70757a&#34;&gt;&amp;copy; 2021 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;uK9Sab70u7o1QTQqm5XXaw==&#34;&gt;(function(){window.google.cdo={height:0,width:0};(function(){var a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.UG9lm2RrZsM.O/m\\x3dsb_he,d/am\\x3dAHgCHA/d\\x3d1/rs\\x3dACT90oGB0D1gEojicRetfoncIwK2wlSlqQ\&#39;;\nvar d=this||self,e=/^[\\w+/_-]+[=]{0,2}$/,f=null,g=function(a){return(a=a.querySelector&amp;&amp;a.querySelector(&#34;script[nonce]&#34;))&amp;&amp;(a=a.nonce||a.getAttribute(&#34;nonce&#34;))&amp;&amp;e.test(a)?a:&#34;&#34;},h=function(a){return a};var l;var n=function(a,b){this.g=b===m?a:&#34;&#34;};n.prototype.toString=function(){return this.g+&#34;&#34;};var m={};function p(){var a=u;google.lx=function(){q(a);google.lx=function(){}};google.bx||google.lx()}\nfunction q(a){var b=document;var c=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(c=c.toLowerCase());c=b.createElement(c);if(void 0===l){b=null;var k=d.trustedTypes;if(k&amp;&amp;k.createPolicy){try{b=k.createPolicy(&#34;goog#html&#34;,{createHTML:h,createScript:h,createScriptURL:h})}catch(r){d.console&amp;&amp;d.console.error(r.message)}l=b}else l=b}a=(b=l)?b.createScriptURL(a):a;a=new n(a,m);c.src=a instanceof n&amp;&amp;a.constructor===n?a.g:&#34;type_error:TrustedResourceUrl&#34;;(a=c.ownerDocument&amp;&amp;c.ownerDocument.defaultView)&amp;&amp;\na!=d?a=g(a.document):(null===f&amp;&amp;(f=g(d.document)),a=f);a&amp;&amp;c.setAttribute(&#34;nonce&#34;,a);google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);document.body.appendChild(c);google.psa=!0};setTimeout(function(){p()},0);})();(function(){window.google.xjsu=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.UG9lm2RrZsM.O/m\\x3dsb_he,d/am\\x3dAHgCHA/d\\x3d1/rs\\x3dACT90oGB0D1gEojicRetfoncIwK2wlSlqQ\&#39;;})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.jl={blt:\&#39;none\&#39;,dw:false,em:[],emtn:0,ine:false,lls:\&#39;default\&#39;,pdt:0,snet:true,uwp:true};})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22nrft\\x22:false,\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbas\\x22:\\x220 3px 8px 0 rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08)\\x22,\\x22sbpl\\x22:16,\\x22sbpr\\x22:16,\\x22scd\\x22:10,\\x22stok\\x22:\\x22TqMaS5fu_pac0pNQLLEYsGMvIwY\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
+</pre></div></div>
+</div>
+<p>Consider: what would you see if there had been an exception within the <code class="docutils literal notranslate"><span class="pre">get_webdata</span></code> function? You could uncomment the <code class="docutils literal notranslate"><span class="pre">raise</span></code> line, above, and re-execute the two cells. What happens? Is there any way to debug the execution to find the root cause of the error?</p>
+</div>
+<div class="section" id="Example-3:-delayed-execution">
+<h3>Example 3: delayed execution<a class="headerlink" href="#Example-3:-delayed-execution" title="Permalink to this headline">¶</a></h3>
+<p>There are many ways in Python to specify the computation you want to execute, but only run it <em>later</em>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="c1"># Sometimes we defer computations with strings</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">z</span> <span class="o">=</span> <span class="s2">&quot;add(x, y)&quot;</span>
+<span class="nb">eval</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+45
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># we can use lambda or other &quot;closure&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">z</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">z</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+45
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># A very similar thing happens in functools.partial</span>
+
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">z</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+45
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Python generators are delayed execution by default</span>
+<span class="c1"># Many Python functions expect such iterable objects</span>
+
+<span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">yield</span> <span class="n">res</span>
+    <span class="n">res</span> <span class="o">+=</span> <span class="n">y</span>
+    <span class="k">yield</span> <span class="n">res</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">gen</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># run once: we get one value and execution halts within the generator</span>
+<span class="c1"># run again and the execution completes</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+15
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Dask-graphs">
+<h3>Dask graphs<a class="headerlink" href="#Dask-graphs" title="Permalink to this headline">¶</a></h3>
+<p>Any Dask object, such as <code class="docutils literal notranslate"><span class="pre">total</span></code>, above, has an attribute which describes the calculations necessary to produce that result. Indeed, this is exactly the graph that we have been talking about, which can be visualized. We see that it is a simple dictionary, in which the keys are unique task identifiers, and the values are the functions and inputs for calculation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">delayed</span></code> is a handy mechanism for creating the Dask graph, but the adventurous may wish to play with the full fexibility afforded by building the graph dictionaries directly. Detailed information can be found <a class="reference external" href="http://dask.pydata.org/en/latest/graphs.html">here</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">total</span><span class="o">.</span><span class="n">dask</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;dask.highlevelgraph.HighLevelGraph at 0x7f35041a54f0&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">dict</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">dask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;sum-b21d085c-4fd2-47d1-83f8-e72b7f414b3c&#39;: (&lt;function sum(iterable, /, start=0)&gt;,
+  [&#39;len-caee5742-eea8-4cd2-9353-4be54b08c624&#39;,
+   &#39;len-5d9a076e-a3f5-428c-94d6-fff2a977fe60&#39;,
+   &#39;len-c874a45f-6df8-42a7-b389-e9861425c9a2&#39;]),
+ &#39;read_csv-021d8d55-24d7-44b3-a84c-25eee5c8e90c&#39;: (&lt;function pandas.io.parsers.read_csv(filepath_or_buffer: Union[ForwardRef(&#39;PathLike[str]&#39;), str, IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap], sep=&lt;object object at 0x7f34e0154e50&gt;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: str = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: Union[Dict[str, Any], NoneType] = None)&gt;,
+  &#39;data/accounts.0.csv&#39;),
+ &#39;len-caee5742-eea8-4cd2-9353-4be54b08c624&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-021d8d55-24d7-44b3-a84c-25eee5c8e90c&#39;),
+ &#39;read_csv-ecd287b9-727b-4ffa-aaef-0502ed9c6599&#39;: (&lt;function pandas.io.parsers.read_csv(filepath_or_buffer: Union[ForwardRef(&#39;PathLike[str]&#39;), str, IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap], sep=&lt;object object at 0x7f34e0154e50&gt;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: str = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: Union[Dict[str, Any], NoneType] = None)&gt;,
+  &#39;data/accounts.1.csv&#39;),
+ &#39;len-5d9a076e-a3f5-428c-94d6-fff2a977fe60&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-ecd287b9-727b-4ffa-aaef-0502ed9c6599&#39;),
+ &#39;read_csv-ce05d520-879b-47f4-9894-f314947624f8&#39;: (&lt;function pandas.io.parsers.read_csv(filepath_or_buffer: Union[ForwardRef(&#39;PathLike[str]&#39;), str, IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap], sep=&lt;object object at 0x7f34e0154e50&gt;, delimiter=None, header=&#39;infer&#39;, names=None, index_col=None, usecols=None, squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: str = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: Union[Dict[str, Any], NoneType] = None)&gt;,
+  &#39;data/accounts.2.csv&#39;),
+ &#39;len-c874a45f-6df8-42a7-b389-e9861425c9a2&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-ce05d520-879b-47f4-9894-f314947624f8&#39;)}
+</pre></div></div>
+</div>
+</div>
+</div>
+</div>
 
 
            </div>
