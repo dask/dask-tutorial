@@ -138,7 +138,7 @@ def accounts_csvs(small=None):
                   index=False)
 
     t1 = time.time()
-    print("Created CSV acccouts in {:0.2f}s".format(t1 - t0))
+    print("Created CSV accounts in {:0.2f}s".format(t1 - t0))
 
 
 def accounts_json(small=None):
@@ -163,7 +163,7 @@ def accounts_json(small=None):
             f.write(os.linesep.join(map(json.dumps, seq)).encode())
 
     t1 = time.time()
-    print("Created JSON acccouts in {:0.2f}s".format(t1 - t0))
+    print("Created JSON accounts in {:0.2f}s".format(t1 - t0))
 
 
 def create_weather(small=None):
