@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
 
@@ -31,11 +33,14 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
         <script src="_static/js/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -64,7 +69,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="https://github.com/dask.png" />
   <meta name="twitter:image:alt" content="Dask Tutorial  documentation">
-  
+
 
 </head>
 
@@ -86,7 +91,7 @@
             <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
             <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
             <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
             <li><a href="https://dask.org/slides"> Slides </a></li>
             </ul>
         </li>
@@ -124,6 +129,7 @@
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
             <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
+            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
             </ul>
         </li>
         </ul>
@@ -559,7 +565,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><img alt="433b5df8d4ef40c1945ec2a93d43080d" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
+<p><img alt="47d89243bd42462cab93937942560338" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> API. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
@@ -668,33 +674,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>24</td>
-      <td>Victor</td>
-      <td>1736</td>
+      <td>44</td>
+      <td>Zelda</td>
+      <td>421</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>12</td>
-      <td>Edith</td>
-      <td>893</td>
+      <td>15</td>
+      <td>Tim</td>
+      <td>-314</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>47</td>
-      <td>Ursula</td>
-      <td>1932</td>
+      <td>97</td>
+      <td>Ingrid</td>
+      <td>156</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>56</td>
-      <td>Charlie</td>
-      <td>599</td>
+      <td>67</td>
+      <td>Quinn</td>
+      <td>-35</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>9</td>
-      <td>Frank</td>
-      <td>20</td>
+      <td>8</td>
+      <td>Ray</td>
+      <td>52</td>
     </tr>
   </tbody>
 </table>
@@ -1131,6 +1137,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+distributed.worker - WARNING -  Compute Failed
+Function:  execute_task
+args:      ((&lt;methodcaller: tail&gt;, (&lt;function pandas_read_text at 0x7ffb3458bd30&gt;, &lt;function read_csv at 0x7ffb35913280&gt;, (&lt;function read_block_from_file at 0x7ffb34483a60&gt;, &lt;OpenFile &#39;/home/runner/work/dask-tutorial/dask-tutorial/data/nycflights/1999.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), b&#39;Year,Month,DayofMonth,DayOfWeek,DepTime,CRSDepTime,ArrTime,CRSArrTime,UniqueCarrier,FlightNum,TailNum,ActualElapsedTime,CRSElapsedTime,AirTime,ArrDelay,DepDelay,Origin,Dest,Distance,TaxiIn,TaxiOut,Cancelled,Diverted\n&#39;, {&#39;parse_dates&#39;: {&#39;Date&#39;: [0, 1, 2]}}, {&#39;Date&#39;: dtype(&#39;&lt;M8[ns]&#39;), &#39;DayOfWeek&#39;: dtype(&#39;int64&#39;), &#39;DepTime&#39;: dtype(&#39;float64&#39;), &#39;CRSDepTime&#39;: dtype(&#39;int64&#39;), &#39;ArrTime&#39;: dtype(&#39;float64&#39;), &#39;CRSArrTime&#39;: dtype(&#39;int64&#39;), &#39;UniqueCarrier&#39;: dtype(&#39;O&#39;), &#39;FlightNum&#39;: dtype(&#39;int64&#39;), &#39;TailNum&#39;: dtype(&#39;float64&#39;), &#39;ActualElapsedTime&#39;: dtype(&#39;float64&#39;), &#39;CRSElapsedTime&#39;: dtype(&#39;int64&#39;), &#39;AirTime&#39;: dtype(&#39;float64&#39;), &#39;ArrDelay&#39;: dtype(&#39;float64&#39;), &#39;DepDelay&#39;: dtype(&#39;float64&#39;), &#39;Origin&#39;: dtype(&#39;O&#39;), &#39;Dest&#39;: dtype(&#39;O&#39;), &#39;Dista
+kwargs:    {}
+Exception: ValueError(&#39;Mismatched dtypes found in `pd.read_csv`/`pd.read_table`.\n\n+----------------+---------+----------+\n| Column         | Found   | Expected |\n+----------------+---------+----------+\n| CRSElapsedTime | float64 | int64    |\n| TailNum        | object  | float64  |\n+----------------+---------+----------+\n\nThe following columns also raised exceptions on conversion:\n\n- TailNum\n  ValueError(&#34;could not convert string to float: \&#39;N54711\&#39;&#34;)\n\nUsually this is due to dask\&#39;s dtype inference failing, and\n*may* be fixed by specifying dtypes manually by adding:\n\ndtype={\&#39;CRSElapsedTime\&#39;: \&#39;float64\&#39;,\n       \&#39;TailNum\&#39;: \&#39;object\&#39;}\n\nto the call to `read_csv`/`read_table`.&#39;)
+
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -1138,7 +1157,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-430ef93b601c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_6987/668323394.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>df<span class="ansi-blue-fg">.</span>tail<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>  <span class="ansi-red-fg"># this fails</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">tail</span><span class="ansi-blue-fg">(self, n, compute)</span>
@@ -1486,8 +1505,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 41.9 ms, sys: 5.86 ms, total: 47.8 ms
-Wall time: 512 ms
+CPU times: user 58.7 ms, sys: 2.67 ms, total: 61.4 ms
+Wall time: 627 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1737,8 +1756,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 67.4 ms, sys: 8.71 ms, total: 76.1 ms
-Wall time: 260 ms
+CPU times: user 91.1 ms, sys: 3.51 ms, total: 94.6 ms
+Wall time: 321 ms
 </pre></div></div>
 </div>
 <p>But let’s try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1758,8 +1777,8 @@ Wall time: 260 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 41.3 ms, sys: 9.76 ms, total: 51 ms
-Wall time: 158 ms
+CPU times: user 58.8 ms, sys: 4.7 ms, total: 63.5 ms
+Wall time: 210 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1806,7 +1825,7 @@ Wall time: 158 ms
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><img alt="04fc2c2a4027420ab296b7dc3da8f43f" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
+<p><img alt="c3e1ad6d04ce441a95215f927a96f48b" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">
@@ -2097,6 +2116,19 @@ dtype: datetime64[ns]
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+distributed.worker - WARNING -  Compute Failed
+Function:  execute_task
+args:      ((&lt;function safe_head at 0x7ffb346235e0&gt;, (subgraph_callable, (&lt;function pandas_read_text at 0x7ffb3458bd30&gt;, &lt;function read_csv at 0x7ffb35913280&gt;, (&lt;function read_block_from_file at 0x7ffb34483a60&gt;, &lt;OpenFile &#39;/home/runner/work/dask-tutorial/dask-tutorial/data/nycflights/1990.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), b&#39;Year,Month,DayofMonth,DayOfWeek,DepTime,CRSDepTime,ArrTime,CRSArrTime,UniqueCarrier,FlightNum,TailNum,ActualElapsedTime,CRSElapsedTime,AirTime,ArrDelay,DepDelay,Origin,Dest,Distance,TaxiIn,TaxiOut,Cancelled,Diverted\n&#39;, {&#39;parse_dates&#39;: {&#39;Date&#39;: [0, 1, 2]}, &#39;dtype&#39;: {&#39;TailNum&#39;: &lt;class &#39;str&#39;&gt;, &#39;CRSElapsedTime&#39;: &lt;class &#39;float&#39;&gt;, &#39;Cancelled&#39;: &lt;class &#39;bool&#39;&gt;}}, {&#39;Date&#39;: dtype(&#39;&lt;M8[ns]&#39;), &#39;DayOfWeek&#39;: dtype(&#39;int64&#39;), &#39;DepTime&#39;: dtype(&#39;float64&#39;), &#39;CRSDepTime&#39;: dtype(&#39;int64&#39;), &#39;ArrTime&#39;: dtype(&#39;float64&#39;), &#39;CRSArrTime&#39;: dtype(&#39;int64&#39;), &#39;UniqueCarrier&#39;: dtype(&#39;O&#39;), &#39;FlightNum&#39;: dtype(&#39;int64&#39;), &#39;TailNum&#39;: dtype(&#39;O&#39;), &#39;ActualElapsedTime&#39;: dtype(&#39;float64&#39;), &#39;CRSElapsedTime&#39;: dtype(&#39;float64&#39;), &#39;A
+kwargs:    {}
+Exception: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;head&#39;&#34;)
+
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -2104,7 +2136,7 @@ dtype: datetime64[ns]
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-1-b8c8b4861a84&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_6987/1135339802.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> departure_timestamp <span class="ansi-blue-fg">=</span> df<span class="ansi-blue-fg">.</span>map_partitions<span class="ansi-blue-fg">(</span>compute_departure_timestamp<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>departure_timestamp<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>

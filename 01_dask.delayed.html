@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
 
@@ -31,11 +33,14 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
         <script src="_static/js/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -64,7 +69,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="https://github.com/dask.png" />
   <meta name="twitter:image:alt" content="Dask Tutorial  documentation">
-  
+
 
 </head>
 
@@ -86,7 +91,7 @@
             <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
             <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
             <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/master?urlpath=lab"> Try Online </a></li>
+            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
             <li><a href="https://dask.org/slides"> Slides </a></li>
             </ul>
         </li>
@@ -124,6 +129,7 @@
             <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
             <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
             <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
+            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
             </ul>
         </li>
         </ul>
@@ -613,7 +619,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 104 ms, sys: 20.4 ms, total: 124 ms
+CPU times: user 111 ms, sys: 8.78 ms, total: 120 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -649,8 +655,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 894 µs, sys: 150 µs, total: 1.04 ms
-Wall time: 1.68 ms
+CPU times: user 1.03 ms, sys: 0 ns, total: 1.03 ms
+Wall time: 941 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -672,7 +678,7 @@ Wall time: 1.68 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 67.6 ms, sys: 30.9 ms, total: 98.5 ms
+CPU times: user 91.2 ms, sys: 8.27 ms, total: 99.5 ms
 Wall time: 2.02 s
 </pre></div></div>
 </div>
@@ -705,7 +711,7 @@ Wall time: 2.02 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-2558d0e1-9ae8-4968-90ce-47ee75adc6ff&#39;)
+Delayed(&#39;add-9a5b3db4-f330-407d-a6ac-042270aff546&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -770,7 +776,7 @@ Delayed(&#39;add-2558d0e1-9ae8-4968-90ce-47ee75adc6ff&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 281 ms, sys: 64.3 ms, total: 345 ms
+CPU times: user 285 ms, sys: 62 ms, total: 347 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -807,8 +813,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 5.96 µs
+CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 6.91 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -834,7 +840,7 @@ Wall time: 5.96 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-784d3b75-9916-41e9-becf-ef25c2c76fc6&#39;)
+Before computing: Delayed(&#39;sum-1dcc6965-adc7-41be-8d59-c9e42612b6be&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -890,7 +896,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 354 ms, sys: 79.3 ms, total: 433 ms
+CPU times: user 386 ms, sys: 51.6 ms, total: 437 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -911,8 +917,8 @@ Wall time: 10 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 5.72 µs
+CPU times: user 19 µs, sys: 0 ns, total: 19 µs
+Wall time: 21.2 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -946,7 +952,7 @@ Wall time: 5.72 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 134 ms, sys: 12.1 ms, total: 146 ms
+CPU times: user 135 ms, sys: 9.58 ms, total: 145 ms
 Wall time: 3.03 s
 </pre></div></div>
 </div>
@@ -1355,8 +1361,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 60.4 ms, sys: 2.08 ms, total: 62.4 ms
-Wall time: 61 ms
+CPU times: user 79.8 ms, sys: 0 ns, total: 79.8 ms
+Wall time: 77.1 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1454,8 +1460,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 52.8 ms, sys: 8.53 ms, total: 61.3 ms
-Wall time: 59.7 ms
+CPU times: user 54.5 ms, sys: 12.2 ms, total: 66.7 ms
+Wall time: 63 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1496,7 +1502,7 @@ Name: DepDelay, dtype: float64
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 5.72 µs
+Wall time: 6.68 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1544,8 +1550,8 @@ Wall time: 5.72 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 75.6 ms, sys: 9.81 ms, total: 85.4 ms
-Wall time: 575 ms
+CPU times: user 84 ms, sys: 10.1 ms, total: 94.1 ms
+Wall time: 635 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
