@@ -1,98 +1,179 @@
-@import url("theme.css");
+@import "../sphinx-book-theme.css";
 
-html {
-  /* Offset href links for header.
-   * See: https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/ */
-  scroll-padding-top: 50px
+:root {
+  --dask-dark: #d67548;
+  --dask-light: #ecb172;
 }
 
-.rst-content h1,h2,h3,h4,h5{
-  font-family: 'Garamond', 'Georgia', serif;
-  font-weight: normal;
+code {
+  color: var(--dask-dark);
 }
 
-.rst-content h1 {
-  font-size: 240%;
+body {
+  background-image: url("../images/background.png");
+  background-repeat: repeat;
 }
 
-.rst-content h2 {
-  font-size: 180%;
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+  max-width: 1600px;
+  margin-left: inherit;
+  background-color: white;
 }
 
-.rst-content h3 {
-  font-size: 160%;
+@media (min-width: 1600px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 85%;
+  }
 }
 
-.wy-menu-vertical li ul li a,
-.wy-menu-vertical li.current a,
-.wy-menu-vertical a {
-  color: #ECB172;
+.bd-sidebar {
+  /* max-width: 350px; */
 }
 
-.wy-menu-vertical li.toctree-l2.current>a:hover,
-.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a:hover,
-.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a:hover,
-.wy-menu-vertical li.current a:hover {
-  background: #404040;
-  color: #ECB172;
-}
-
-.wy-menu-vertical a:hover {
-  background: #303030;
-}
-
-.wy-side-nav-search>a img.logo,
-.wy-side-nav-search .wy-dropdown>a img.logo {
-  width: 10rem
-}
-
-.wy-side-nav-search {
-  background-color: #1a1a1a;
-}
-
-.wy-side-nav-search>div.version {
+.prev-next-bottom {
   display: none;
 }
 
-.wy-menu-vertical header,
-.wy-menu-vertical p.caption {
-  color: #D67548;
+#site-navigation nav ul.nav li a,
+#site-navigation nav ul.nav ul li a {
+  color: #fff;
 }
 
-.wy-menu-vertical li.on a,
-.wy-menu-vertical li.current>a {
+#site-navigation h1,
+#site-navigation h2,
+#site-navigation h3,
+#site-navigation h4,
+#site-navigation h5,
+#site-navigation h6 {
+  color: white;
+}
+
+#site-navigation {
+  background: #1a1a1a;
+  margin-top: 4em;
+}
+
+nav.bd-links p.caption {
+  color: var(--dask-dark);
+}
+
+#site-navigation nav ul.nav a:hover,
+#site-navigation nav ul.nav li.active > a,
+#site-navigation nav ul.nav li.active > a:hover {
+  color: #ecb172;
   background: #303030;
-  border-top: none;
-  border-bottom: none;
 }
 
+#site-navigation nav ul.nav li a {
+  padding-left: 2%;
+}
 
-.wy-menu-vertical ul,
-.wy-side-scroll {
+#site-navigation nav ul.nav li a,
+#site-navigation nav ul.nav ul li a {
+  color: var(--dask-light);
+}
+
+#site-navigation div.navbar_extra_footer {
+  color: #fff;
+}
+
+#site-navigation h1.site-logo {
+  color: white;
+}
+
+.topbar,
+.topbar-contents,
+.topbar-main {
+  height: 3em;
+}
+
+.fixed-top {
+  top: 4em;
+}
+
+div.navbar-brand-box {
+  padding-top: 0;
+}
+
+main.bd-content {
+  padding-top: 6em !important;
+}
+
+.dask-nav {
   background-color: #1a1a1a;
+  height: 4em;
+  display: block;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 2100;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 0;
 }
 
-.wy-menu-vertical li.toctree-l2.current>a,
-.wy-menu-vertical li.toctree-l2.current li.toctree-l3>a,
-.wy-menu-vertical li.toctree-l3.current li.toctree-l4>a,
-.wy-menu-vertical li ul {
+.dask-nav ul {
+  padding: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.dask-nav ul > li {
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+  text-align: left;
+  padding: 0.5em 2rem 0.5em 2rem;
+}
+
+.dask-nav .logo {
+  width: 275px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .dask-nav .logo {
+    width: 100%;
+  }
+
+  #site-navigation.collapse.show {
+    margin-top: 7em;
+  }
+}
+
+.dask-nav img {
+  height: 3em;
+}
+
+a {
+  color: var(--dask-light);
+}
+
+#site-navigation div.navbar_extra_footer {
+  padding-bottom: 3em;
+  margin-bottom: 0;
+}
+
+.has-children label:hover {
   background-color: #303030;
 }
 
-/* Mobile */
-
-.wy-nav-top {
-  background: #1a1a1a;
+.has-children label:hover i {
+  color: var(--dask-light);
 }
 
-.wy-nav-top a {
-  color: #ECB172;
+.has-children label i {
+  color: var(--dask-light);
 }
 
-.wy-nav-top i {
-  color: #ECB172;
-}
-
-.wy-breadcrumbs {
-  display: none;
+.sphinx-tabs {
+  max-width: 100%;
 }

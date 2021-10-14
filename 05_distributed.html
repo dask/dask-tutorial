@@ -1,271 +1,284 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Distributed &mdash; Dask Tutorial  documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distributed &#8212; Dask Tutorial  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
-        <script src="_static/js/custom.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Distributed, Advanced" href="06_distributed_advanced.html" />
     <link rel="prev" title="Dask DataFrames" href="04_dataframe.html" />
-  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
-  
-  <meta name="Description" content="Distributed">
-  <meta property="og:description" content="Distributed">
-  <meta name="twitter:description" content="Distributed" />
-  <meta property="og:title" content="Dask Tutorial  documentation - Distributed">
-  <meta property="og:image" content="https://github.com/dask.png">
-  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="380" />
-  <meta property="og:image:height" content="380" />
-  <meta property="og:url" content="05_distributed.html">
-  <meta property="og:site_name" content="Dask Tutorial  documentation">
-
-  <meta name="twitter:site" content="https://dask.org" />
-  <meta name="twitter:creator" content="@dask_dev" />
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://github.com/dask.png" />
-  <meta name="twitter:image:alt" content="Dask Tutorial  documentation">
-
-
-</head>
-
-<body class="wy-body-for-nav">
-
-  
-    <nav id="explore-links">
-        <a href="https://docs.dask.org/">
-        <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
-        </a>
-
-        <ul>
-        <li>
-            <a>Get Started</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-            <li><a href="https://examples.dask.org"> Examples </a></li>
-            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
-            <li><a href="https://dask.org/slides"> Slides </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="">Algorithms</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-            <li><a href="http://ml.dask.org">Machine Learning</a></li>
-            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a>Community</a>
-            <ul>
-            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-            <li><a href="https://github.com/dask">Github</a></li>
-            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
-            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
-            </ul>
-        </li>
-        </ul>
-
-    </nav>
-  
-  <div class="wy-grid-for-nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
 
-          
-            <a href="index.html" class="icon icon-home"> Dask Tutorial
-          
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
 
-          
-          </a>
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
 
-          
-            
-            
-          
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
 
-          
-        </div>
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Distributed</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Some-Questions-to-Consider:">Some Questions to Consider:</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Making-a-cluster">Making a cluster</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Simple-method">Simple method</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Executing-with-the-distributed-client">Executing with the distributed client</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Exercise">Exercise</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
-</ul>
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Dask Tutorial</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Distributed</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/05_distributed.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
   </ul>
+</nav>
 
-  
-  <hr/>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Tutorial  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_overview.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_dask.delayed.html">
+   Parallelize code with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.delayed
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01x_lazy.html">
+   Lazy execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_bag.html">
+   Bag: Parallel Lists for semi-structured data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_array.html">
+   Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Distributed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_distributed_advanced.html">
+   Distributed, Advanced
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframe_storage.html">
+   Data Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_machine_learning.html">
+   Parallel and Distributed Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Homework.html">
+   Homework
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/05_distributed.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Some-Questions-to-Consider:">
+   Some Questions to Consider:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Making-a-cluster">
+     Making a cluster
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Simple-method">
+   Simple method
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Executing-with-the-distributed-client">
+     Executing with the distributed client
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -537,7 +550,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/05_distributed.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/05_distributed.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/05_distributed.ipynb">on Github</a>.</p>
-<p><img alt="8d296f470e6d4178b43549d3e721fcfa" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="e7359877861145fa998b75931e07babe" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Distributed">
 <h1>Distributed<a class="headerlink" href="#Distributed" title="Permalink to this headline">¶</a></h1>
 <p>As we have seen so far, Dask allows you to simply construct graphs of tasks with dependencies, as well as have graphs created automatically for you using functional, Numpy or Pandas syntax on data collections. None of this would be very useful, if there weren’t also a way to execute these graphs, in a parallel and memory-aware way. So far we have been calling <code class="docutils literal notranslate"><span class="pre">thing.compute()</span></code> or <code class="docutils literal notranslate"><span class="pre">dask.compute(thing)</span></code> without worrying what this entails. Now we will discuss the options available for that
@@ -619,9 +632,9 @@ dd.Scalar&lt;series-..., dtype=float64&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
- threading, 0.1404 s; result, 17.05 hours
- processes, 0.9771 s; result, 17.05 hours
-      sync, 0.1225 s; result, 17.05 hours
+ threading, 0.1102 s; result, 17.05 hours
+ processes, 0.8658 s; result, 17.05 hours
+      sync, 0.1033 s; result, 17.05 hours
 </pre></div></div>
 </div>
 <div class="section" id="Some-Questions-to-Consider:">
@@ -662,7 +675,7 @@ dd.Scalar&lt;series-..., dtype=float64&gt;
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1b321f99194340e584b20f3f1cf7ddf5"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b72fd84312b543248ea2e954f1007857"}</script></div>
 </div>
 <p>If you aren’t in jupyterlab and using the <code class="docutils literal notranslate"><span class="pre">dask-labextension</span></code>, be sure to click the <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code> link to open up the diagnostics dashboard.</p>
 <div class="section" id="Executing-with-the-distributed-client">
@@ -729,8 +742,8 @@ dd.Scalar&lt;series-..., dtype=float64&gt;
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 56.7 ms, sys: 5.54 ms, total: 62.2 ms
-Wall time: 624 ms
+CPU times: user 50.6 ms, sys: 6.48 ms, total: 57.1 ms
+Wall time: 425 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -810,56 +823,61 @@ compared to the threaded scheduler, so there will be rare cases where it perform
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"7b52e9c00315456eacf4d7cf9c65528f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "13fb865f75e04ea8ba19987d58163e46": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "630a0a75aa5449828c148a6d7370ce39": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "9822a556f6cf4d158b356c93f9935374": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_13fb865f75e04ea8ba19987d58163e46", "placeholder": "\u200b", "style": "IPY_MODEL_630a0a75aa5449828c148a6d7370ce39", "value": "<h2>LocalCluster</h2>"}}, "585dedb32a07481298c23a8dc6adaef7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "29be73d090c947b29eccad4aa94f026e": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b36641ecb5794420a0b614c9c27d1473": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_585dedb32a07481298c23a8dc6adaef7", "placeholder": "\u200b", "style": "IPY_MODEL_29be73d090c947b29eccad4aa94f026e", "value": "<p><b>Dashboard: </b><a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a></p>\n"}}, "eae8e5ec917a46ef9b10bee202eae361": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "150px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c5206aa0d19443f4bce5f2ecaf5db58b": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "dcef78f9054a439da4e5f1f83303ffc6": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_eae8e5ec917a46ef9b10bee202eae361", "placeholder": "\u200b", "style": "IPY_MODEL_c5206aa0d19443f4bce5f2ecaf5db58b", "value": "\n<div>\n  <style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n  </style>\n  <table style=\"text-align: right;\">\n    <tr> <th>Workers</th> <td>2</td></tr>\n    <tr> <th>Cores</th> <td>2</td></tr>\n    <tr> <th>Memory</th> <td>7.29 GB</td></tr>\n  </table>\n</div>\n"}}, "611edae611554edbb9a87c6f7546866d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "969b26df8a7f45e2a457c5f623b502e5": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_7b52e9c00315456eacf4d7cf9c65528f", "step": 1, "style": "IPY_MODEL_611edae611554edbb9a87c6f7546866d", "value": 0}}, "bfc6cbe485e3423eb0cde61b31c6b83e": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "da375bac5f064d8389713ba6c9a3eae4": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_7b52e9c00315456eacf4d7cf9c65528f", "style": "IPY_MODEL_bfc6cbe485e3423eb0cde61b31c6b83e", "tooltip": ""}}, "e97eb75670dd4ffba1c6b093e2c4a347": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "bfcf096d317745ec9241942e2cb142dc": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_7b52e9c00315456eacf4d7cf9c65528f", "step": 1, "style": "IPY_MODEL_e97eb75670dd4ffba1c6b093e2c4a347", "value": 0}}, "ed2f809d17004554adcbdd7dd3908498": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "dfde7b330fea4eefb4ff10649366a6c1": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_7b52e9c00315456eacf4d7cf9c65528f", "step": 1, "style": "IPY_MODEL_ed2f809d17004554adcbdd7dd3908498", "value": 0}}, "51120e67b594453ba82aad85c1fb32dc": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "681a3c0c2512420c86e2fef4af98b98e": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_7b52e9c00315456eacf4d7cf9c65528f", "style": "IPY_MODEL_51120e67b594453ba82aad85c1fb32dc", "tooltip": ""}}, "3d5723077db1417a804afb533ca4385b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e8351c7954424943955c2aff51326a39": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_969b26df8a7f45e2a457c5f623b502e5", "IPY_MODEL_da375bac5f064d8389713ba6c9a3eae4"], "layout": "IPY_MODEL_3d5723077db1417a804afb533ca4385b"}}, "9698b29e7f2f4acea66af75c85952245": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4d3e7f341fc943cab814b07488f9b034": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_bfcf096d317745ec9241942e2cb142dc", "IPY_MODEL_dfde7b330fea4eefb4ff10649366a6c1", "IPY_MODEL_681a3c0c2512420c86e2fef4af98b98e"], "layout": "IPY_MODEL_9698b29e7f2f4acea66af75c85952245"}}, "172cdad5370748f0bf23b02a225830ba": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e895a699819440dab02424a5afa2400c": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Manual Scaling", "1": "Adaptive Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_e8351c7954424943955c2aff51326a39", "IPY_MODEL_4d3e7f341fc943cab814b07488f9b034"], "layout": "IPY_MODEL_172cdad5370748f0bf23b02a225830ba", "selected_index": null}}, "9042aa31f40446ae9e9b38c47d50128b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1f76248eea41479488383ac3f1b7daae": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_dcef78f9054a439da4e5f1f83303ffc6", "IPY_MODEL_e895a699819440dab02424a5afa2400c"], "layout": "IPY_MODEL_9042aa31f40446ae9e9b38c47d50128b"}}, "1370853850c24a7e82a16604b5a3b15b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1b321f99194340e584b20f3f1cf7ddf5": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_9822a556f6cf4d158b356c93f9935374", "IPY_MODEL_1f76248eea41479488383ac3f1b7daae", "IPY_MODEL_b36641ecb5794420a0b614c9c27d1473"], "layout": "IPY_MODEL_1370853850c24a7e82a16604b5a3b15b"}}}, "version_major": 2, "version_minor": 0}
+{"state": {"901a38d4f00b4331bde6b6256f4a564b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "3d50ed929d954e08afe94e0d72ffd72b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6166c6f74bf84f7a841ad3426549a489": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "22fbd8b547654ec7a1b20dac6d01543e": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_3d50ed929d954e08afe94e0d72ffd72b", "placeholder": "\u200b", "style": "IPY_MODEL_6166c6f74bf84f7a841ad3426549a489", "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">9fe4b178</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 2\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 2\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 6.79 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-dc55eff4-e7ce-490b-93de-226a0f60ad44</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:42525\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 6.79 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:36503\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:34837/status\">http://127.0.0.1:34837/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.40 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:37713\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-sxje3h_7\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:37351\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:37455/status\">http://127.0.0.1:37455/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.40 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:37545\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-1f0p2yvl\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "2b311d286f8d437185c41e7422bc7355": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "28d32eb220b9496ea4210397893e4177": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_901a38d4f00b4331bde6b6256f4a564b", "step": 1, "style": "IPY_MODEL_2b311d286f8d437185c41e7422bc7355", "value": 0}}, "035908d98fd54e2ebf99fdbba15eff45": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "d6c5d4bd7c8c4f9388a6a88542572f40": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_901a38d4f00b4331bde6b6256f4a564b", "style": "IPY_MODEL_035908d98fd54e2ebf99fdbba15eff45", "tooltip": ""}}, "83ef14208773466380a697aad0ae93e0": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "dbe9cb92c1eb426582a69ee23e7d9553": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_901a38d4f00b4331bde6b6256f4a564b", "step": 1, "style": "IPY_MODEL_83ef14208773466380a697aad0ae93e0", "value": 0}}, "693effe5b2b24859a924d43b694b8998": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "eeb28e79cee34380a64a061b399722e1": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_901a38d4f00b4331bde6b6256f4a564b", "step": 1, "style": "IPY_MODEL_693effe5b2b24859a924d43b694b8998", "value": 0}}, "39e7acc843a440e9a3a2fd59bf06e76f": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "dee2b47ad323463082c8132de76d86a0": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_901a38d4f00b4331bde6b6256f4a564b", "style": "IPY_MODEL_39e7acc843a440e9a3a2fd59bf06e76f", "tooltip": ""}}, "16c7f236f6ee4eb1b473132b95c0981b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a736ab78e3e640d1996c623366dd7342": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_28d32eb220b9496ea4210397893e4177", "IPY_MODEL_d6c5d4bd7c8c4f9388a6a88542572f40"], "layout": "IPY_MODEL_16c7f236f6ee4eb1b473132b95c0981b"}}, "9fe97358f02440a7b987337ab14ed11b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c6f2ca0db7a1464e93072b4bf1d1b10c": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_dbe9cb92c1eb426582a69ee23e7d9553", "IPY_MODEL_eeb28e79cee34380a64a061b399722e1", "IPY_MODEL_dee2b47ad323463082c8132de76d86a0"], "layout": "IPY_MODEL_9fe97358f02440a7b987337ab14ed11b"}}, "ea385fd7d93943f587041e225743ac11": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e986230e0b7d4bd7bcdf5f73cb6d24b5": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Manual Scaling", "1": "Adaptive Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_a736ab78e3e640d1996c623366dd7342", "IPY_MODEL_c6f2ca0db7a1464e93072b4bf1d1b10c"], "layout": "IPY_MODEL_ea385fd7d93943f587041e225743ac11", "selected_index": null}}, "63200d2377e84ffab431011e1606bda2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0d3b853e16664d628eb9b23a73db490f": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e4463168c4594392ad5e463e17b2da36": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_63200d2377e84ffab431011e1606bda2", "placeholder": "\u200b", "style": "IPY_MODEL_0d3b853e16664d628eb9b23a73db490f", "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 2</td></tr>\n        </table>\n        "}}, "940d9ea9db514bc8bf0a58605f619dae": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b72fd84312b543248ea2e954f1007857": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "TabModel", "_titles": {"0": "Status", "1": "Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_22fbd8b547654ec7a1b20dac6d01543e", "IPY_MODEL_9892188994ef44e1bddda0a75e09b662"], "layout": "IPY_MODEL_940d9ea9db514bc8bf0a58605f619dae", "selected_index": 0}}, "a4fdde6136594de28ff5923bbe24e674": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9892188994ef44e1bddda0a75e09b662": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_e4463168c4594392ad5e463e17b2da36", "IPY_MODEL_e986230e0b7d4bd7bcdf5f73cb6d24b5"], "layout": "IPY_MODEL_a4fdde6136594de28ff5923bbe24e674"}}}, "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="06_distributed_advanced.html" class="btn btn-neutral float-right" title="Distributed, Advanced" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="04_dataframe.html" class="btn btn-neutral float-left" title="Dask DataFrames" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="04_dataframe.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Dask DataFrames</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="06_distributed_advanced.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Distributed, Advanced</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018, Dask Developers.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
+</div>
+        
         </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
-  
-    
-   
-
-</body>
+  </body>
 </html>

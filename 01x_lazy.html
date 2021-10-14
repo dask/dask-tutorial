@@ -1,274 +1,299 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Lazy execution &mdash; Dask Tutorial  documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy execution &#8212; Dask Tutorial  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
-        <script src="_static/js/custom.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bag: Parallel Lists for semi-structured data" href="02_bag.html" />
     <link rel="prev" title="Parallelize code with dask.delayed" href="01_dask.delayed.html" />
-  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
-  
-  <meta name="Description" content="Lazy execution">
-  <meta property="og:description" content="Lazy execution">
-  <meta name="twitter:description" content="Lazy execution" />
-  <meta property="og:title" content="Dask Tutorial  documentation - Lazy execution">
-  <meta property="og:image" content="https://github.com/dask.png">
-  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="380" />
-  <meta property="og:image:height" content="380" />
-  <meta property="og:url" content="01x_lazy.html">
-  <meta property="og:site_name" content="Dask Tutorial  documentation">
-
-  <meta name="twitter:site" content="https://dask.org" />
-  <meta name="twitter:creator" content="@dask_dev" />
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://github.com/dask.png" />
-  <meta name="twitter:image:alt" content="Dask Tutorial  documentation">
-
-
-</head>
-
-<body class="wy-body-for-nav">
-
-  
-    <nav id="explore-links">
-        <a href="https://docs.dask.org/">
-        <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
-        </a>
-
-        <ul>
-        <li>
-            <a>Get Started</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-            <li><a href="https://examples.dask.org"> Examples </a></li>
-            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
-            <li><a href="https://dask.org/slides"> Slides </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="">Algorithms</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-            <li><a href="http://ml.dask.org">Machine Learning</a></li>
-            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a>Community</a>
-            <ul>
-            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-            <li><a href="https://github.com/dask">Github</a></li>
-            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
-            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
-            </ul>
-        </li>
-        </ul>
-
-    </nav>
-  
-  <div class="wy-grid-for-nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
 
-          
-            <a href="index.html" class="icon icon-home"> Dask Tutorial
-          
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
 
-          
-          </a>
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
 
-          
-            
-            
-          
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
 
-          
-        </div>
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Lazy execution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Prelude">Prelude</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Dask-is-a-graph-execution-engine">Dask is a graph execution engine</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Exercise">Exercise</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Appendix:-Further-detail-and-examples">Appendix: Further detail and examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Example-1:-simple-word-count">Example 1: simple word count</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Example-2:-background-execution">Example 2: background execution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Example-3:-delayed-execution">Example 3: delayed execution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Dask-graphs">Dask graphs</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_array.html">Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
-</ul>
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Dask Tutorial</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Lazy execution</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/01x_lazy.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
   </ul>
+</nav>
 
-  
-  <hr/>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Tutorial  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_overview.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_dask.delayed.html">
+   Parallelize code with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.delayed
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lazy execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_bag.html">
+   Bag: Parallel Lists for semi-structured data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_array.html">
+   Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_distributed.html">
+   Distributed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_distributed_advanced.html">
+   Distributed, Advanced
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframe_storage.html">
+   Data Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_machine_learning.html">
+   Parallel and Distributed Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Homework.html">
+   Homework
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01x_lazy.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Prelude">
+   Prelude
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dask-is-a-graph-execution-engine">
+   Dask is a graph execution engine
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Appendix:-Further-detail-and-examples">
+   Appendix: Further detail and examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example-1:-simple-word-count">
+     Example 1: simple word count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example-2:-background-execution">
+     Example 2: background execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example-3:-delayed-execution">
+     Example 3: delayed execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-graphs">
+     Dask graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -540,7 +565,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/01x_lazy.ipynb">on Github</a>.</p>
-<p><img alt="d69cbffce8ed43b68055f1d0bf6f43a0" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="0a1d0f88c4ec45faa811910f0bedf99f" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Lazy-execution">
 <h1>Lazy execution<a class="headerlink" href="#Lazy-execution" title="Permalink to this headline">¶</a></h1>
 <p>Here we discuss some of the concepts behind dask, and lazy execution of code. You do not need to go through this material if you are eager to get on with the tutorial, but it may help understand the concepts underlying dask, how these things fit in with techniques you might already be using, and how to understand things that can go wrong.</p>
@@ -701,8 +726,8 @@ graph. Notice that in the animated diagram below, where four workers are process
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 30000
-CPU times: user 11.3 ms, sys: 7.9 ms, total: 19.2 ms
-Wall time: 18.9 ms
+CPU times: user 9.07 ms, sys: 7.49 ms, total: 16.6 ms
+Wall time: 16.1 ms
 </pre></div></div>
 </div>
 <p>Your task is to recreate this graph again using the delayed function on the original Python code. The three functions you want to delay are <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>..</p>
@@ -772,11 +797,11 @@ Wall time: 18.9 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 30000
-CPU times: user 14.3 ms, sys: 8.43 ms, total: 22.7 ms
-Wall time: 15.4 ms
+CPU times: user 13.5 ms, sys: 5.17 ms, total: 18.7 ms
+Wall time: 12.9 ms
 30000
-CPU times: user 20.3 ms, sys: 680 µs, total: 21 ms
-Wall time: 15.6 ms
+CPU times: user 12.4 ms, sys: 4.43 ms, total: 16.9 ms
+Wall time: 13.1 ms
 </pre></div></div>
 </div>
 <p><strong>Notes</strong></p>
@@ -911,7 +936,7 @@ the meantime).</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/images/branding/googleg/1x/googleg_standard_color_128dp.png&#34; itemprop=&#34;image&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){window.google={kEI:\&#39;_u72YKDuH_Ol1QHMmo7wBQ\&#39;,kEXPI:\&#39;0,772215,1,530320,56873,954,5105,206,4804,2316,383,246,5,1354,4936,315,1122515,1197720,563,328984,51224,16114,28684,17572,4858,1362,9290,3021,17588,4020,978,13228,3847,10622,1142,13386,4517,2777,919,5081,1593,1279,2212,530,149,1103,840,1983,213,4101,109,3405,606,2023,1777,520,14670,3227,1990,855,7,4774,7580,5096,7876,5037,1483,1372,553,907,2,941,6397,8927,432,3,1590,1,5444,149,11323,2652,4,1528,2304,1236,5226,577,74,1983,2627,2014,4,11497,2110,1714,1011,2039,2658,4242,3114,31,13628,2305,638,37,1457,5587,3771,5993,770,665,2522,3275,2332,228,992,3102,20,3118,6,908,3,3541,1,5349,6594,2767,1,1813,283,38,874,5998,12520,2,1394,756,769,8,1,1272,1715,2,3057,2538,1,2,2,3612,12,615,4,32,4,2237,2,3148,4,683,442,342,255,55,4,434,2377,93,30,520,1780,1275,4578,1576,3,472,577,3,1066,172,5005,446,100,3,363,677,1160,1102,167,3425,3,1711,291,1474,59,848,1575,1142,3710,2,333,2,500,3,125,747,3105,1496,13,1448,2432,1,12,3,1,1478,72,223,1899,228,402,45,1,8,46,1,8,23,2186,118,394,967,1,2,1026,6,123,899,1513,106,316,470,85,57,268,562,333,158,190,153,416,1064,3,468,342,1386,520,3,1258,2546,467,1318,852,61,892,2023,2,1647,1,5610037,99,2,93,32,220,59,1,5996808,2799373,1324,882,444,1,2,80,1,1796,1,9,2,2551,1,748,141,795,563,1,4265,1,1,2,1331,3299,843,2609,155,17,13,72,139,4,2,20,2,169,13,19,46,5,39,96,548,29,2,2,1,2,1,2,2,7,4,1,2,2,2,2,2,2,312,41,513,186,1,1,158,3,2,2,2,2,2,4,2,3,3,233,36,21,38,1874713,21780085,299866,2738464,1273912,28975,338,3,2339,75,541,365,7,95,1571,210,259,772077\&#39;,kBL:\&#39;rUkx\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;})();(function(){\nvar f=this||self;var h,k=[];function l(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||h}function m(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b}\nfunction n(a,b,c,d,g){var e=&#34;&#34;;c||-1!==b.search(&#34;&amp;ei=&#34;)||(e=&#34;&amp;ei=&#34;+l(d),-1===b.search(&#34;&amp;lei=&#34;)&amp;&amp;(d=m(d))&amp;&amp;(e+=&#34;&amp;lei=&#34;+d));d=&#34;&#34;;!c&amp;&amp;f._cshid&amp;&amp;-1===b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!==a&amp;&amp;(d=&#34;&amp;cshid=&#34;+f._cshid);c=c||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+e+&#34;&amp;zx=&#34;+Date.now()+d;/^http:/i.test(c)&amp;&amp;&#34;https:&#34;===window.location.protocol&amp;&amp;(google.ml&amp;&amp;google.ml(Error(&#34;a&#34;),!1,{src:c,glmm:1}),c=&#34;&#34;);return c};h=google.kEI;google.getEI=l;google.getLEI=m;google.ml=function(){return null};google.log=function(a,b,c,d,g){if(c=n(a,b,c,d,g)){a=new Image;var e=k.length;k[e]=a;a.onerror=a.onload=a.onabort=function(){delete k[e]};a.src=c}};google.logUrl=n;}).call(this);(function(){\ngoogle.y={};google.sy=[];google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.sx=function(a){google.sy.push(a)};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};google.bx=!1;google.lx=function(){};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;==c||&#34;q&#34;==c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);document.documentElement.addEventListener(&#34;click&#34;,function(b){var a;a:{for(a=b.target;a&amp;&amp;a!=document.documentElement;a=a.parentElement)if(&#34;A&#34;==a.tagName){a=&#34;1&#34;==a.getAttribute(&#34;data-nohref&#34;);break a}a=!1}a&amp;&amp;b.preventDefault()},!0);}).call(this);&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#1558d6}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}body{background:#fff;color:#000}a{color:#4b11a8;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#1558d6}a:visited{color:#4b11a8}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#f8f9fa;border:solid 1px;border-color:#dadce0 #70757a #70757a #dadce0;height:30px}.lsbb{display:block}#WqQANb a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#dadce0}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt;&lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;https://news.google.com/?tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&amp;ec=GAZAAQ&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt;&lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;img alt=&#34;Google&#34; height=&#34;92&#34; src=&#34;/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png&#34; style=&#34;padding:28px 0 14px&#34; width=&#34;272&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;margin:0;padding:5px 8px 0 6px;vertical-align:top;color:#000&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;AINFCbYAAAAAYPb9Dukmj9C36K76wfN4NgDQiNDQovra&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){\nvar a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;WqQANb&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;font-size:8pt;color:#70757a&#34;&gt;&amp;copy; 2021 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){window.google.cdo={height:757,width:1440};(function(){\nvar a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();&lt;/script&gt; &lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){google.xjs={ck:\&#39;\&#39;,cs:\&#39;\&#39;,excm:[],pml:false};})();&lt;/script&gt;  &lt;script nonce=&#34;BX7rVj4lqNTuUHmH2mU/8w==&#34;&gt;(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.uG5gNub4OSM.O/m\\x3dsb_he,d/am\\x3dAHgCLA/d\\x3d1/ed\\x3d1/rs\\x3dACT90oE5mpOHNMzK1ifCe0jZfTofWVvTxQ\&#39;;\nvar e=this||self,f=function(a){return a};var g;var l=function(a,b){this.g=b===h?a:&#34;&#34;};l.prototype.toString=function(){return this.g+&#34;&#34;};var h={};function m(){var a=u;google.lx=function(){n(a);google.lx=function(){}};google.bx||google.lx()}\nfunction n(a){google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);var b=document;var c=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(c=c.toLowerCase());c=b.createElement(c);if(void 0===g){b=null;var k=e.trustedTypes;if(k&amp;&amp;k.createPolicy){try{b=k.createPolicy(&#34;goog#html&#34;,{createHTML:f,createScript:f,createScriptURL:f})}catch(p){e.console&amp;&amp;e.console.error(p.message)}g=b}else g=b}a=(b=g)?b.createScriptURL(a):a;a=new l(a,h);c.src=a instanceof l&amp;&amp;a.constructor===l?a.g:&#34;type_error:TrustedResourceUrl&#34;;var d;a=(c.ownerDocument&amp;&amp;c.ownerDocument.defaultView||window).document;(d=(a=null===(d=a.querySelector)||void 0===d?void 0:d.call(a,&#34;script[nonce]&#34;))?a.nonce||a.getAttribute(&#34;nonce&#34;)||&#34;&#34;:&#34;&#34;)&amp;&amp;c.setAttribute(&#34;nonce&#34;,d);document.body.appendChild(c);google.psa=!0};setTimeout(function(){m()},0);})();(function(){window.google.xjsu=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.uG5gNub4OSM.O/m\\x3dsb_he,d/am\\x3dAHgCLA/d\\x3d1/ed\\x3d1/rs\\x3dACT90oE5mpOHNMzK1ifCe0jZfTofWVvTxQ\&#39;;})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.jl={attn:false,blt:\&#39;none\&#39;,chnk:0,dw:false,emtn:0,end:0,ine:false,lls:\&#39;default\&#39;,pdt:0,rep:0,snet:true,strt:0,ubm:false,uwp:true};})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbas\\x22:\\x220 3px 8px 0 rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08)\\x22,\\x22sbpl\\x22:16,\\x22sbpr\\x22:16,\\x22scd\\x22:10,\\x22stok\\x22:\\x22Y9DwG6g-m2DFXkEcUUnEerCaeq4\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
+b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/images/branding/googleg/1x/googleg_standard_color_128dp.png&#34; itemprop=&#34;image&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){window.google={kEI:\&#39;a1NoYbWvEb6yqtsPlNig4AY\&#39;,kEXPI:\&#39;0,1302536,56873,6058,207,4804,2316,383,246,5,1354,4936,315,1122515,1197720,171,518,328858,51223,16115,17444,11240,17572,4858,1362,9290,3023,17586,4020,978,13228,1838,2009,4192,6434,1138,6290,7330,4283,2777,920,5080,885,708,1279,2212,239,291,149,1103,840,1983,4314,109,3405,606,2023,2297,14670,3227,2845,7,5599,6755,5096,14396,1924,908,2,941,15324,432,3,1590,1,5444,149,11323,991,1661,4,1253,275,2304,1236,5803,74,1983,2626,2015,11501,2110,1714,3050,2658,7357,30,5616,5796,2216,2305,638,37,16808,1435,652,5178,2527,4094,3138,6,908,3,3541,1,5349,9361,1,1813,283,912,5992,12347,2331,769,8,1,1272,1715,2,8496,716,627,4,32,4,4143,1244,4,683,442,342,255,55,4,2811,123,286,1271,743,5853,10463,1160,6700,2380,2719,3708,2,4885,1426,4148,487,3577,63,1,8,1642,3904,2172,4568,2587,3122,278,271,4380,2,2250,91,1,3109,664,3,7068,515,173,141,231,647,3154,4191,3,221,1570,844,1,8,777,1214,409,510,878,1810,97,730,896,995,757,1576,1343,3,831,308,616,2,1025,273,47,498,2,532,60,16,57,4,5,1,2,3,214,1269,393,465,265,173,30,2,1299,3,2,14,6,3,2,185,687,637,360,4,39,38,321,54,699,352,35,71,568,172,165,27,100,1,606,365,724,61,450,819,510,2,2,1,331,144,38,615,5557888,446,161,153,6,1802570,94,4193364,521,211,2800485,882,444,1,2,80,1,1796,1,9,2553,1,748,141,795,563,1,4265,1,1,2,1331,4142,2609,155,17,13,72,139,4,2,20,2,169,13,19,46,5,39,96,548,29,2,2,1,2,1,2,2,7,4,1,2,2,2,2,2,2,353,513,186,1,1,158,3,2,2,2,2,2,4,2,3,3,269,465,86,14,3,3,1,5,2,100,7,125,6,29,5,8,6,4,29,5,3,1,12,7,10,40,23953747,4038574,3,2774,338,3,2414,1008,483,9,1434,1516,289,842,1583,507,342,1726\&#39;,kBL:\&#39;axRp\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;})();(function(){\nvar f=this||self;var h,k=[];function l(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||h}function m(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b}\nfunction n(a,b,c,d,g){var e=&#34;&#34;;c||-1!==b.search(&#34;&amp;ei=&#34;)||(e=&#34;&amp;ei=&#34;+l(d),-1===b.search(&#34;&amp;lei=&#34;)&amp;&amp;(d=m(d))&amp;&amp;(e+=&#34;&amp;lei=&#34;+d));d=&#34;&#34;;!c&amp;&amp;f._cshid&amp;&amp;-1===b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!==a&amp;&amp;(d=&#34;&amp;cshid=&#34;+f._cshid);c=c||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+e+&#34;&amp;zx=&#34;+Date.now()+d;/^http:/i.test(c)&amp;&amp;&#34;https:&#34;===window.location.protocol&amp;&amp;(google.ml&amp;&amp;google.ml(Error(&#34;a&#34;),!1,{src:c,glmm:1}),c=&#34;&#34;);return c};h=google.kEI;google.getEI=l;google.getLEI=m;google.ml=function(){return null};google.log=function(a,b,c,d,g){if(c=n(a,b,c,d,g)){a=new Image;var e=k.length;k[e]=a;a.onerror=a.onload=a.onabort=function(){delete k[e]};a.src=c}};google.logUrl=n;}).call(this);(function(){\ngoogle.y={};google.sy=[];google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.sx=function(a){google.sy.push(a)};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};google.bx=!1;google.lx=function(){};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;===c||&#34;q&#34;===c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);document.documentElement.addEventListener(&#34;click&#34;,function(b){var a;a:{for(a=b.target;a&amp;&amp;a!==document.documentElement;a=a.parentElement)if(&#34;A&#34;===a.tagName){a=&#34;1&#34;===a.getAttribute(&#34;data-nohref&#34;);break a}a=!1}a&amp;&amp;b.preventDefault()},!0);}).call(this);&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#1558d6}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}body{background:#fff;color:#000}a{color:#4b11a8;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#1558d6}a:visited{color:#4b11a8}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#f8f9fa;border:solid 1px;border-color:#dadce0 #70757a #70757a #dadce0;height:30px}.lsbb{display:block}#WqQANb a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#dadce0}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){window.google.erd={sp:\&#39;hp\&#39;,jsr:0,bv:1457};\nvar f=this||self;var g,h,k=null!==(g=f.mei)&amp;&amp;void 0!==g?g:1,l=null!==(h=f.sdo)&amp;&amp;void 0!==h?h:!0,n=0,p,q=google.erd,t=q.jsr;google.ml=function(a,b,e,m,d){d=void 0===d?2:d;b&amp;&amp;(p=a&amp;&amp;a.message);if(google.dl)return google.dl(a,d,e),null;if(0&gt;t){window.console&amp;&amp;console.error(a,e);if(-2===t)throw a;b=!1}else b=!a||!a.message||&#34;Error loading script&#34;===a.message||n&gt;=k&amp;&amp;!m?!1:!0;if(!b)return null;n++;e=e||{};b=encodeURIComponent;var c=&#34;/gen_204?atyp=i&amp;ei=&#34;+b(google.kEI);google.kEXPI&amp;&amp;(c+=&#34;&amp;jexpid=&#34;+b(google.kEXPI));c+=&#34;&amp;srcpg=&#34;+b(q.sp)+&#34;&amp;jsr=&#34;+b(q.jsr)+&#34;&amp;bver=&#34;+b(q.bv)+(&#34;&amp;jsel=&#34;+d);c+=&#34;&amp;sn=&#34;+b(google.sn);for(var r in e)c+=&#34;&amp;&#34;,c+=b(r),c+=&#34;=&#34;,c+=b(e[r]);c=c+&#34;&amp;emsg=&#34;+b(a.name+&#34;: &#34;+a.message);c=c+&#34;&amp;jsst=&#34;+b(a.stack||&#34;N/A&#34;);12288&lt;=c.length&amp;&amp;(c=c.substr(0,12288));a=c;m||google.log(0,&#34;&#34;,a);return a};window.onerror=function(a,b,e,m,d){p!==a&amp;&amp;google.ml(d instanceof Error?d:Error(a),!1,void 0,!1,!d||d instanceof SyntaxError?2:0);p=null;l&amp;&amp;n&gt;=k&amp;&amp;(window.onerror=null)};})();&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt;&lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;https://news.google.com/?tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&amp;ec=GAZAAQ&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt;&lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;img alt=&#34;Google&#34; height=&#34;92&#34; src=&#34;/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png&#34; style=&#34;padding:28px 0 14px&#34; width=&#34;272&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;margin:0;padding:5px 8px 0 6px;vertical-align:top;color:#000&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;ALs-wAMAAAAAYWhhe2sAwH3JBNlYGeipTwbKbUCiBLsg&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){\nvar a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;WqQANb&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;font-size:8pt;color:#70757a&#34;&gt;&amp;copy; 2021 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){window.google.cdo={height:757,width:1440};(function(){\nvar a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();&lt;/script&gt; &lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){google.xjs={ck:\&#39;\&#39;,cs:\&#39;\&#39;,excm:[]};})();&lt;/script&gt;  &lt;script nonce=&#34;f/8AXwtJCleZtx8xdnoi7Q==&#34;&gt;(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.9df-306HNuM.O/am\\x3dAPgEWA/d\\x3d1/ed\\x3d1/rs\\x3dACT90oE2FpJyniZIF07pMiTS2XJCUBcBgw/m\\x3dsb_he,d\&#39;;\nvar e=this||self,f=function(a){return a};\nvar g;var l=function(a,b){this.g=b===h?a:&#34;&#34;};l.prototype.toString=function(){return this.g+&#34;&#34;};var h={};function m(){var a=u;google.lx=function(){n(a);google.lx=function(){}};google.bx||google.lx()}\nfunction n(a){google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);var b=document;var c=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(c=c.toLowerCase());c=b.createElement(c);if(void 0===g){b=null;var k=e.trustedTypes;if(k&amp;&amp;k.createPolicy){try{b=k.createPolicy(&#34;goog#html&#34;,{createHTML:f,createScript:f,createScriptURL:f})}catch(p){e.console&amp;&amp;e.console.error(p.message)}g=b}else g=b}a=(b=g)?b.createScriptURL(a):a;a=new l(a,h);c.src=a instanceof l&amp;&amp;a.constructor===l?a.g:&#34;type_error:TrustedResourceUrl&#34;;var d;a=(c.ownerDocument&amp;&amp;c.ownerDocument.defaultView||window).document;(d=(b=null===(d=a.querySelector)||void 0===d?void 0:d.call(a,&#34;script[nonce]&#34;))?b.nonce||b.getAttribute(&#34;nonce&#34;)||&#34;&#34;:&#34;&#34;)&amp;&amp;c.setAttribute(&#34;nonce&#34;,d);document.body.appendChild(c);google.psa=!0};setTimeout(function(){m()},0);})();(function(){window.google.xjsu=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.9df-306HNuM.O/am\\x3dAPgEWA/d\\x3d1/ed\\x3d1/rs\\x3dACT90oE2FpJyniZIF07pMiTS2XJCUBcBgw/m\\x3dsb_he,d\&#39;;})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.jl={attn:false,blt:\&#39;none\&#39;,chnk:0,dw:false,dwu:true,emtn:0,end:0,ine:false,lls:\&#39;default\&#39;,pdt:0,rep:0,snet:true,strt:0,ubm:false,uwp:true};})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbas\\x22:\\x220 3px 8px 0 rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08)\\x22,\\x22sbpl\\x22:16,\\x22sbpr\\x22:16,\\x22scd\\x22:10,\\x22stok\\x22:\\x227d5rPUt46yxwC_NHkZSW0QCI4us\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
 </pre></div></div>
 </div>
 <p>Consider: what would you see if there had been an exception within the <code class="docutils literal notranslate"><span class="pre">get_webdata</span></code> function? You could uncomment the <code class="docutils literal notranslate"><span class="pre">raise</span></code> line, above, and re-execute the two cells. What happens? Is there any way to debug the execution to find the root cause of the error?</p>
@@ -1044,10 +1069,260 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;dask.highlevelgraph.HighLevelGraph at 0x7f07a3aaf850&gt;
-</pre></div></div>
+<div class="output_area rendered_html docutils container">
+    <div>
+        <div>
+            <div style="width: 52px; height: 52px; position: absolute;">
+
+    <svg width="76" height="71" viewBox="0 0 76 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="61.5" cy="36.5" r="13.5"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D); fill: var(--jp-layout-color1, #F2F2F2);"
+            stroke-width="2"/>
+        <circle cx="14.5" cy="14.5" r="13.5"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D); fill: var(--jp-layout-color1, #F2F2F2);"
+            stroke-width="2"/>
+        <circle cx="14.5" cy="56.5" r="13.5"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D); fill: var(--jp-layout-color1, #F2F2F2);"
+            stroke-width="2"/>
+        <path d="M28 16L30.5 16C33.2614 16 35.5 18.2386 35.5 21L35.5 32.0001C35.5 34.7615 37.7386
+            37.0001 40.5 37.0001L43 37.0001" style="stroke: var(--jp-ui-font-color2, #1D1D1D);"
+            stroke-width="1.5"/>
+        <path d="M40.5 37L40.5 37.75L40.5 37.75L40.5 37ZM35.5 42L36.25 42L35.5 42ZM35.5 52L34.75
+            52L35.5 52ZM30.5 57L30.5 57.75L30.5 57ZM41.5001 36.25L40.5 36.25L40.5 37.75L41.5001
+            37.75L41.5001 36.25ZM34.75 42L34.75 52L36.25 52L36.25 42L34.75 42ZM30.5 56.25L28.0001
+            56.25L28.0001 57.75L30.5 57.75L30.5 56.25ZM34.75 52C34.75 54.3472 32.8472 56.25 30.5
+            56.25L30.5 57.75C33.6756 57.75 36.25 55.1756 36.25 52L34.75 52ZM40.5 36.25C37.3244 36.25
+            34.75 38.8243 34.75 42L36.25 42C36.25 39.6528 38.1528 37.75 40.5 37.75L40.5 36.25Z"
+            style="fill: var(--jp-ui-font-color2, #1D1D1D);"/>
+        <circle cx="28" cy="16" r="2.25" fill="#E5E5E5"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="1.5"/>
+        <circle cx="28" cy="57" r="2.25" fill="#E5E5E5"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="1.5"/>
+        <path d="M45.25 36.567C45.5833 36.7594 45.5833 37.2406 45.25 37.433L42.25 39.1651C41.9167
+            39.3575 41.5 39.117 41.5 38.7321V35.2679C41.5 34.883 41.9167 34.6425 42.25 34.8349L45.25
+            36.567Z" style="fill: var(--jp-ui-font-color2, #1D1D1D);"/>
+    </svg>
+
+            </div>
+            <div style="margin-left: 64px;">
+                <h3 style="margin-bottom: 0px;">HighLevelGraph</h3>
+                <p style="color: var(--jp-ui-font-color2, #5D5851); margin-bottom:0px;">
+                    HighLevelGraph with 7 layers.
+                </p>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 0: read_csv</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                read_csv-114de01f-b351-49a3-ab19-10a32eba0ec9
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 1: len</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                len-d4884bf2-9107-470e-b7b0-4409bd4da6b8
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 2: read_csv</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                read_csv-efa1b8f4-a536-42ab-b3f5-aeb2c1a496ad
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 3: len</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                len-39ec6fdd-170a-4759-899a-347b3e0736a0
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 4: read_csv</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                read_csv-b49b05cf-719b-4ba1-9caa-9260a794dfb1
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 5: len</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                len-2e81bbc2-144b-4376-aa26-cadd90d767f5
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+    <div style="">
+
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+        xmlns="http://www.w3.org/2000/svg" style="position: absolute;">
+        <circle cx="16" cy="16" r="14" fill="#8F8F8F"
+            style="stroke: var(--jp-ui-font-color2, #1D1D1D);" stroke-width="2"/>
+    </svg>
+
+        <details style="margin-left: 32px;">
+            <summary style="margin-bottom: 10px; margin-top: 10px;">
+                <h4 style="display: inline;">Layer 6: sum</h4>
+            </summary>
+            <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
+                sum-0747d820-f67a-44a8-80e4-f4c26361c7ae
+            </p>
+
+            <table style="width: 100%;">
+  <tr>
+    <th style="text-align: left; width: 150px;">layer_type</th>
+    <td style="text-align: left;">MaterializedLayer</td>
+  </tr>
+
+  <tr>
+    <th style="text-align: left; width: 150px;">is_materialized</th>
+    <td style="text-align: left;">True</td>
+  </tr>
+</table>
+        </details>
+    </div>
+
+            </div>
+        </div>
+    </div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
@@ -1064,22 +1339,22 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;sum-dbbfcbc4-8bbb-4271-9171-544c78ea5f26&#39;: (&lt;function sum(iterable, /, start=0)&gt;,
-  [&#39;len-d3795c25-bd8d-4e80-90c0-53978b80f9c4&#39;,
-   &#39;len-704409d6-27bd-4fb9-9580-0c273fea1e51&#39;,
-   &#39;len-9c97d4ab-3f62-40cf-8b6e-0f4ed1f41924&#39;]),
- &#39;read_csv-14ad1cdc-7e7b-44b0-8a9d-1fcdabac12e6&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
+{&#39;sum-0747d820-f67a-44a8-80e4-f4c26361c7ae&#39;: (&lt;function sum(iterable, /, start=0)&gt;,
+  [&#39;len-2e81bbc2-144b-4376-aa26-cadd90d767f5&#39;,
+   &#39;len-39ec6fdd-170a-4759-899a-347b3e0736a0&#39;,
+   &#39;len-d4884bf2-9107-470e-b7b0-4409bd4da6b8&#39;]),
+ &#39;read_csv-b49b05cf-719b-4ba1-9caa-9260a794dfb1&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
   &#39;data/accounts.0.csv&#39;),
- &#39;len-d3795c25-bd8d-4e80-90c0-53978b80f9c4&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-14ad1cdc-7e7b-44b0-8a9d-1fcdabac12e6&#39;),
- &#39;read_csv-3b1dc681-c4b5-4a42-bc5d-0a2544bc6b2f&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
+ &#39;len-2e81bbc2-144b-4376-aa26-cadd90d767f5&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-b49b05cf-719b-4ba1-9caa-9260a794dfb1&#39;),
+ &#39;read_csv-efa1b8f4-a536-42ab-b3f5-aeb2c1a496ad&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
   &#39;data/accounts.1.csv&#39;),
- &#39;len-704409d6-27bd-4fb9-9580-0c273fea1e51&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-3b1dc681-c4b5-4a42-bc5d-0a2544bc6b2f&#39;),
- &#39;read_csv-7f562652-57b1-413b-881d-0a526dffddd5&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
+ &#39;len-39ec6fdd-170a-4759-899a-347b3e0736a0&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-efa1b8f4-a536-42ab-b3f5-aeb2c1a496ad&#39;),
+ &#39;read_csv-114de01f-b351-49a3-ab19-10a32eba0ec9&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
   &#39;data/accounts.2.csv&#39;),
- &#39;len-9c97d4ab-3f62-40cf-8b6e-0f4ed1f41924&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-7f562652-57b1-413b-881d-0a526dffddd5&#39;)}
+ &#39;len-d4884bf2-9107-470e-b7b0-4409bd4da6b8&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-114de01f-b351-49a3-ab19-10a32eba0ec9&#39;)}
 </pre></div></div>
 </div>
 </div>
@@ -1087,51 +1362,56 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="02_bag.html" class="btn btn-neutral float-right" title="Bag: Parallel Lists for semi-structured data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="01_dask.delayed.html" class="btn btn-neutral float-left" title="Parallelize code with dask.delayed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="01_dask.delayed.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="02_bag.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Bag: Parallel Lists for semi-structured data</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018, Dask Developers.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
+</div>
+        
         </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
-  
-    
-   
-
-</body>
+  </body>
 </html>

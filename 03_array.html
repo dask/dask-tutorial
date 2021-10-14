@@ -1,286 +1,340 @@
 
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Arrays &mdash; Dask Tutorial  documentation</title>
-  
 
-  
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/explore.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/nbsphinx.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays &#8212; Dask Tutorial  documentation</title>
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
-        <script src="_static/js/custom.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dask DataFrames" href="04_dataframe.html" />
     <link rel="prev" title="Bag: Parallel Lists for semi-structured data" href="02_bag.html" />
-  <link rel="shortcut icon" href="_static/images/favicon.ico"/>
-  
-  <meta name="Description" content="Arrays">
-  <meta property="og:description" content="Arrays">
-  <meta name="twitter:description" content="Arrays" />
-  <meta property="og:title" content="Dask Tutorial  documentation - Arrays">
-  <meta property="og:image" content="https://github.com/dask.png">
-  <meta property="og:image:secure_url" content="https://github.com/dask.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="380" />
-  <meta property="og:image:height" content="380" />
-  <meta property="og:url" content="03_array.html">
-  <meta property="og:site_name" content="Dask Tutorial  documentation">
-
-  <meta name="twitter:site" content="https://dask.org" />
-  <meta name="twitter:creator" content="@dask_dev" />
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="https://github.com/dask.png" />
-  <meta name="twitter:image:alt" content="Dask Tutorial  documentation">
-
-
-</head>
-
-<body class="wy-body-for-nav">
-
-  
-    <nav id="explore-links">
-        <a href="https://docs.dask.org/">
-        <img class="caption" src="_static/images/dask-horizontal-white.svg"/>
-        </a>
-
-        <ul>
-        <li>
-            <a>Get Started</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/install.html"> Install </a></li>
-            <li><a href="https://examples.dask.org"> Examples </a></li>
-            <li><a href="https://github.com/dask/dask-tutorial"> Tutorial </a></li>
-            <li><a href="https://docs.dask.org/en/latest/why.html"> Why Dask? </a></li>
-            <li><a href="https://stories.dask.org/en/latest"> Use Cases </a></li>
-            <li><a href="https://www.youtube.com/watch?v=RA_2qdipVng&list=PLRtz5iA93T4PQvWuoMnIyEIz1fXiJ5Pri"> Talks </a></li>
-            <li><a href="https://mybinder.org/v2/gh/dask/dask-examples/main?urlpath=lab"> Try Online </a></li>
-            <li><a href="https://dask.org/slides"> Slides </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="">Algorithms</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/array.html">Arrays</a></li>
-            <li><a href="https://docs.dask.org/en/latest/dataframe.html">Dataframes</a></li>
-            <li><a href="https://docs.dask.org/en/latest/bag.html">Bags</a></li>
-            <li><a href="https://docs.dask.org/en/latest/delayed.html">Delayed (custom)</a></li>
-            <li><a href="https://docs.dask.org/en/latest/futures.html">Futures (real-time)</a></li>
-            <li><a href="http://ml.dask.org">Machine Learning</a></li>
-            <li><a href="https://xarray.pydata.org/en/latest/">XArray</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="https://docs.dask.org/en/latest/setup.html">Setup</a>
-            <ul>
-            <li><a href="https://docs.dask.org/en/latest/setup/single-machine.html"> Local </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/cloud.html"> Cloud </a></li>
-            <li><a href="https://docs.dask.org/en/latest/setup/hpc.html"> HPC </a></li>
-            <li><a href="https://kubernetes.dask.org/en/latest/"> Kubernetes </a></li>
-            <li><a href="https://yarn.dask.org/en/latest/"> Hadoop / Yarn </a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a>Community</a>
-            <ul>
-            <li><a href="http://docs.dask.org/en/latest/support.html">Ask for Help</a></li>
-            <li><a href="https://github.com/dask">Github</a></li>
-            <li><a href="https://stackoverflow.com/questions/tagged/dask">Stack Overflow</a></li>
-            <li><a href="https://twitter.com/dask_dev">Twitter</a></li>
-            <li><a href="https://blog.dask.org/"> Developer Blog </a></li>
-            <li><a href="https://youtube.com/c/dask-dev"> YouTube Channel </a></li>
-            <li><a href="https://join.slack.com/t/dask/shared_invite/zt-mfmh7quc-nIrXL6ocgiUH2haLYA914g"> Slack </a></li>
-            </ul>
-        </li>
-        </ul>
-
-    </nav>
-  
-  <div class="wy-grid-for-nav">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
 
-          
-            <a href="index.html" class="icon icon-home"> Dask Tutorial
-          
+<nav class="dask-nav container-fluid">
+  <ul>
+    <li class="logo">
+      <a href="https://docs.dask.org/">
+        <img
+          class="caption"
+          src="_static/images/dask-horizontal-white.svg"
+        />
+      </a>
+    </li>
 
-          
-          </a>
+    <li>
+      <a href="https://docs.dask.org/">Dask</a>
+    </li>
 
-          
-            
-            
-          
+    <li>
+      <a href="https://distributed.dask.org/">Distributed</a>
+    </li>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
+    <li>
+      <a href="https://ml.dask.org/">Dask ML</a>
+    </li>
 
-          
-        </div>
+    <li>
+      <a href="https://examples.dask.org/">Examples</a>
+    </li>
 
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="00_overview.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_dask.delayed.html">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="01x_lazy.html">Lazy execution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_bag.html">Bag: Parallel Lists for semi-structured data</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Arrays</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Create-data">Create data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Blocked-Algorithms">Blocked Algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Exercise:-Compute-the-mean-using-a-blocked-algorithm">Exercise: Compute the mean using a blocked algorithm</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#dask.array-contains-these-algorithms"><code class="docutils literal notranslate"><span class="pre">dask.array</span></code> contains these algorithms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Exercise:-Compute-the-mean">Exercise: Compute the mean</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Performance-and-Parallelism">Performance and Parallelism</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Example">Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Performance-comparison">Performance comparison</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Exercise:-Meteorological-data">Exercise: Meteorological data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Exercise:-Subsample-and-store">Exercise: Subsample and store</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Example:-Lennard-Jones-potential">Example: Lennard-Jones potential</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Dask-version">Dask version</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#Limitations">Limitations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="04_dataframe.html">Dask DataFrames</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_distributed.html">Distributed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_distributed_advanced.html">Distributed, Advanced</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_dataframe_storage.html">Data Storage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html">Parallel and Distributed Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_machine_learning.html#Training-on-Large-Datasets">Training on Large Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Homework.html">Homework</a></li>
-</ul>
+    <li>
+      <a href="https://docs.dask.org/en/latest/ecosystem.html">Ecosystem</a>
+    </li>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Dask Tutorial</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Arrays</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/03_array.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
+    <li>
+      <a href="https://docs.dask.org/en/latest/support.html">Community</a>
+    </li>
   </ul>
+</nav>
 
-  
-  <hr/>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Dask Tutorial  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="00_overview.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_dask.delayed.html">
+   Parallelize code with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.delayed
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01x_lazy.html">
+   Lazy execution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_bag.html">
+   Bag: Parallel Lists for semi-structured data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_dataframe.html">
+   Dask DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_distributed.html">
+   Distributed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_distributed_advanced.html">
+   Distributed, Advanced
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframe_storage.html">
+   Data Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_machine_learning.html">
+   Parallel and Distributed Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Homework.html">
+   Homework
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/03_array.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Create-data">
+   Create data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Setup">
+   Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Blocked-Algorithms">
+   Blocked Algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Compute-the-mean-using-a-blocked-algorithm">
+     Exercise: Compute the mean using a blocked algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dask.array-contains-these-algorithms">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.array
+    </span>
+   </code>
+   contains these algorithms
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Compute-the-mean">
+     Exercise: Compute the mean
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Performance-and-Parallelism">
+   Performance and Parallelism
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Performance-comparison">
+   Performance comparison
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Meteorological-data">
+     Exercise: Meteorological data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Subsample-and-store">
+     Exercise: Subsample and store
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Example:-Lennard-Jones-potential">
+   Example: Lennard-Jones potential
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-version">
+     Dask version
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Limitations">
+   Limitations
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -552,10 +606,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/03_array.ipynb">on Github</a>.</p>
-<p><img alt="504cf8c294a340558fa836ea27e380ab" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="90374c024d59400d8bec5368e8d005a5" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="b64581deb8234de6acb6406a85885091" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="a472bfd4985c4ef9af20ebf605d3ac75" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -644,7 +698,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998647.1875
+4999445.6875
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
@@ -688,7 +742,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.9997294375
+0.9998891375
 </pre></div></div>
 </div>
 </div>
@@ -726,7 +780,7 @@ div.rendered_html tbody tr:hover {
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 20.00 MB </td> <td> 4.00 MB </td></tr>
+    <tr><th> Bytes </th><td> 19.07 MiB </td> <td> 3.81 MiB </td></tr>
     <tr><th> Shape </th><td> (5000000,) </td> <td> (1000000,) </td></tr>
     <tr><th> Count </th><td> 6 Tasks </td><td> 5 Chunks </td></tr>
     <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
@@ -749,7 +803,7 @@ div.rendered_html tbody tr:hover {
   <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >5000000</text>
@@ -789,7 +843,7 @@ div.rendered_html tbody tr:hover {
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 4 B </td> <td> 4 B </td></tr>
+    <tr><th> Bytes </th><td> 4 B </td> <td> 4.0 B </td></tr>
     <tr><th> Shape </th><td> () </td> <td> () </td></tr>
     <tr><th> Count </th><td> 14 Tasks </td><td> 1 Chunks </td></tr>
     <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
@@ -820,7 +874,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4998647.0
+4999445.5
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
@@ -841,7 +895,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="3d8ab931dba3445cb942bc2c7236e22b" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="38039232d9b14800ae196a330883ad41" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
@@ -902,8 +956,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.19 s, sys: 141 ms, total: 1.33 s
-Wall time: 9.27 s
+CPU times: user 1.19 s, sys: 85.6 ms, total: 1.28 s
+Wall time: 7.57 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -912,46 +966,46 @@ Wall time: 9.27 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([10.00030751, 10.00041708, 10.00020051, 10.00171669,  9.9996453 ,
-        9.99830508,  9.99968336, 10.00055165, 10.00050938,  9.99876168,
-        9.99810579, 10.00003619,  9.99888514, 10.00037948,  9.99962207,
-       10.00062025, 10.0012891 ,  9.9997851 ,  9.99929887, 10.00175708,
-        9.99983648, 10.00062881, 10.00032599,  9.99977859,  9.99893384,
-       10.00163044,  9.99999715,  9.99971449,  9.99965503,  9.99948079,
-       10.00103967,  9.99962991,  9.99918795, 10.00002678,  9.99868005,
-       10.00056448, 10.00076364,  9.99905179, 10.00086447,  9.99786514,
-        9.99995744,  9.99874809, 10.00054148,  9.99993182,  9.99971723,
-        9.9998197 , 10.00003666, 10.00143384,  9.99873128, 10.00090572,
-        9.99847296, 10.00043263, 10.00010751,  9.99947904, 10.00028215,
-        9.99867192, 10.00007303,  9.99993347,  9.99878092, 10.00054691,
-       10.00015833, 10.00002829,  9.99966759, 10.00103818,  9.99960119,
-       10.00186143,  9.99935572, 10.00115331, 10.00053908, 10.00054941,
-       10.00005952, 10.00000184, 10.00010179, 10.00029738,  9.99996607,
-       10.00033841,  9.99910528, 10.00080859, 10.00014243, 10.00127966,
-       10.00014453, 10.0008754 , 10.00124113, 10.00103486, 10.00101311,
-       10.00116341,  9.99976018, 10.00033149, 10.00082231, 10.0006079 ,
-       10.00045165,  9.99959904, 10.00123824, 10.00087856, 10.00004474,
-       10.00095487,  9.99856686,  9.9987793 , 10.00072046,  9.99926647,
-        9.99887894,  9.99985394, 10.00044884, 10.00108072, 10.00002789,
-        9.99985899,  9.99917058, 10.00035247,  9.99968139,  9.99960866,
-       10.00028277, 10.00048498,  9.99982898, 10.00020671, 10.00005325,
-        9.99867604,  9.99918991, 10.0008356 ,  9.99995068,  9.9992177 ,
-       10.00015803,  9.99944226,  9.99934217,  9.99993502, 10.00015318,
-        9.99988971,  9.99958539, 10.00017478, 10.00064567, 10.00056271,
-        9.99959152, 10.0002428 ,  9.99973996, 10.00024175,  9.99990407,
-       10.00015409,  9.99934594,  9.99962616, 10.00083975,  9.99844778,
-       10.00036424,  9.9998949 ,  9.99894749,  9.99983095,  9.9998601 ,
-       10.00075763, 10.00058016, 10.00006777, 10.00029521,  9.99900286,
-        9.99984026,  9.99951807,  9.99910916,  9.99984353,  9.99925524,
-       10.00030319,  9.9999524 , 10.00003029,  9.99966043,  9.99934845,
-       10.00097589,  9.99899577, 10.00022271, 10.00023746,  9.99904575,
-        9.99890144, 10.00018761, 10.00022505, 10.00202334,  9.99899252,
-        9.99944092, 10.00019972, 10.00029188, 10.00055459, 10.00110469,
-        9.99884828,  9.99972358, 10.00114428,  9.99990075,  9.99985818,
-       10.00028717, 10.00040178,  9.99992616, 10.00001304,  9.99970026,
-        9.99994545, 10.00108382,  9.9986092 , 10.00071275, 10.00116464,
-        9.99985585,  9.99955355,  9.99879024,  9.99943167, 10.00017972,
-       10.00010235, 10.00135652, 10.00187099, 10.00122627,  9.99947308])
+array([10.00047562,  9.99927532, 10.00062498, 10.00070469, 10.00009343,
+        9.99962451,  9.99973657,  9.99999663, 10.00071786,  9.99882338,
+       10.00103339, 10.00000136, 10.0006015 ,  9.99994783,  9.99941786,
+        9.99960283, 10.00093706,  9.99965758, 10.00010062, 10.00052977,
+       10.00054137, 10.00047726, 10.00055629, 10.00027234,  9.99982655,
+        9.99918464,  9.99962304,  9.99938751, 10.00071337,  9.99995655,
+       10.00099204,  9.99898779,  9.99909651,  9.99957709, 10.00037355,
+       10.00017248, 10.00058019,  9.99985822, 10.00074834,  9.99988113,
+       10.00010556,  9.99972312,  9.99930909,  9.99987492,  9.99907003,
+        9.99939096,  9.99891513, 10.00034201, 10.00006241, 10.0000098 ,
+        9.99879705, 10.00037745,  9.9999283 , 10.00043749, 10.00028413,
+        9.99929508, 10.00022789, 10.00010097,  9.99995053, 10.00013416,
+        9.99994034,  9.99920854,  9.99984894,  9.99968952, 10.00052099,
+        9.99965938,  9.99940371, 10.00030726, 10.00042326, 10.00011723,
+       10.00019541,  9.99945447, 10.00127087,  9.99963142,  9.99923308,
+       10.00014121, 10.0002829 , 10.00000085, 10.00016853,  9.99974328,
+        9.999774  , 10.00021929,  9.99977004, 10.00048989,  9.99987633,
+        9.99963447, 10.00044569,  9.999237  ,  9.99953087, 10.00022383,
+       10.00136484, 10.00033819,  9.99987271, 10.00068848,  9.99819288,
+        9.99933194, 10.00010824, 10.00009078, 10.00010524, 10.00013312,
+        9.99963184, 10.00022486,  9.99816281,  9.99968212,  9.99900158,
+       10.00153798,  9.99917146,  9.99975705, 10.00138443,  9.99893114,
+       10.0012856 , 10.00039487,  9.99912294, 10.00051128,  9.99981837,
+       10.00106523,  9.99868317, 10.00054109, 10.00031495, 10.00056756,
+        9.99925486, 10.00004887, 10.00063405, 10.00037303, 10.0001295 ,
+       10.00056048,  9.99967389,  9.99913471, 10.0010031 ,  9.99919824,
+        9.9986753 , 10.00130409, 10.00002951, 10.00124629, 10.00025107,
+       10.00029241, 10.00051005,  9.99866533,  9.99991123, 10.00116244,
+        9.99846236,  9.99983511, 10.00069502,  9.9993915 , 10.00083572,
+       10.00000104, 10.00018443, 10.00005591, 10.00052728,  9.99986481,
+       10.00083124,  9.99981186, 10.00010194,  9.99920054, 10.00001524,
+        9.99927004,  9.99941225,  9.99930929,  9.99997282, 10.00156681,
+       10.00056801, 10.00001627,  9.9998388 ,  9.99991821, 10.0008755 ,
+       10.00049925, 10.00079901, 10.0000714 , 10.00007933, 10.00037065,
+       10.00041396, 10.00146137,  9.99803218, 10.00047517,  9.9997194 ,
+       10.00022349,  9.99979849, 10.00078302, 10.00033035, 10.00066467,
+       10.00077971, 10.00030868,  9.99912791,  9.99878042,  9.99984589,
+        9.99933103,  9.99952555,  9.99986664, 10.00004994, 10.00049356,
+        9.99971788,  9.99955081,  9.99917285,  9.99986162, 10.0009844 ,
+        9.99940443, 10.00067207,  9.99977177,  9.99944767,  9.99884735])
 </pre></div></div>
 </div>
 </div>
@@ -1180,7 +1234,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
     <tr><td> </td><th> Array </th><th> Chunk </th></tr>
   </thead>
   <tbody>
-    <tr><th> Bytes </th><td> 16.07 MB </td> <td> 518.40 kB </td></tr>
+    <tr><th> Bytes </th><td> 15.33 MiB </td> <td> 506.25 kiB </td></tr>
     <tr><th> Shape </th><td> (31, 180, 360) </td> <td> (1, 180, 360) </td></tr>
     <tr><th> Count </th><td> 93 Tasks </td><td> 31 Chunks </td></tr>
     <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
@@ -1197,72 +1251,48 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
   <line x1="10" y1="0" x2="10" y2="60" />
-  <line x1="11" y1="1" x2="11" y2="61" />
   <line x1="12" y1="2" x2="12" y2="62" />
   <line x1="12" y1="2" x2="12" y2="62" />
-  <line x1="13" y1="3" x2="13" y2="63" />
   <line x1="14" y1="4" x2="14" y2="64" />
-  <line x1="15" y1="5" x2="15" y2="65" />
   <line x1="15" y1="5" x2="15" y2="65" />
   <line x1="16" y1="6" x2="16" y2="66" />
   <line x1="17" y1="7" x2="17" y2="67" />
-  <line x1="17" y1="7" x2="17" y2="67" />
-  <line x1="18" y1="8" x2="18" y2="68" />
   <line x1="19" y1="9" x2="19" y2="69" />
-  <line x1="20" y1="10" x2="20" y2="70" />
   <line x1="20" y1="10" x2="20" y2="70" />
   <line x1="21" y1="11" x2="21" y2="71" />
   <line x1="22" y1="12" x2="22" y2="72" />
-  <line x1="22" y1="12" x2="22" y2="72" />
   <line x1="23" y1="13" x2="23" y2="73" />
-  <line x1="24" y1="14" x2="24" y2="74" />
   <line x1="25" y1="15" x2="25" y2="75" />
   <line x1="25" y1="15" x2="25" y2="75" />
-  <line x1="26" y1="16" x2="26" y2="76" />
-  <line x1="27" y1="17" x2="27" y2="77" />
   <line x1="27" y1="17" x2="27" y2="77" />
   <line x1="28" y1="18" x2="28" y2="78" />
   <line x1="29" y1="19" x2="29" y2="79" />
   <line x1="30" y1="20" x2="30" y2="80" />
-  <line x1="30" y1="20" x2="30" y2="80" />
-  <line x1="31" y1="21" x2="31" y2="81" />
   <line x1="32" y1="22" x2="32" y2="82" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.000000,0.000000 32.207396,22.207396 32.207396,82.207396 10.000000,60.000000" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 32.20739572391271,22.207395723912715 32.20739572391271,82.20739572391271 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
   <line x1="10" y1="0" x2="130" y2="0" />
-  <line x1="11" y1="1" x2="131" y2="1" />
   <line x1="12" y1="2" x2="132" y2="2" />
   <line x1="12" y1="2" x2="132" y2="2" />
-  <line x1="13" y1="3" x2="133" y2="3" />
   <line x1="14" y1="4" x2="134" y2="4" />
-  <line x1="15" y1="5" x2="135" y2="5" />
   <line x1="15" y1="5" x2="135" y2="5" />
   <line x1="16" y1="6" x2="136" y2="6" />
   <line x1="17" y1="7" x2="137" y2="7" />
-  <line x1="17" y1="7" x2="137" y2="7" />
-  <line x1="18" y1="8" x2="138" y2="8" />
   <line x1="19" y1="9" x2="139" y2="9" />
-  <line x1="20" y1="10" x2="140" y2="10" />
   <line x1="20" y1="10" x2="140" y2="10" />
   <line x1="21" y1="11" x2="141" y2="11" />
   <line x1="22" y1="12" x2="142" y2="12" />
-  <line x1="22" y1="12" x2="142" y2="12" />
   <line x1="23" y1="13" x2="143" y2="13" />
-  <line x1="24" y1="14" x2="144" y2="14" />
   <line x1="25" y1="15" x2="145" y2="15" />
   <line x1="25" y1="15" x2="145" y2="15" />
-  <line x1="26" y1="16" x2="146" y2="16" />
-  <line x1="27" y1="17" x2="147" y2="17" />
   <line x1="27" y1="17" x2="147" y2="17" />
   <line x1="28" y1="18" x2="148" y2="18" />
   <line x1="29" y1="19" x2="149" y2="19" />
   <line x1="30" y1="20" x2="150" y2="20" />
-  <line x1="30" y1="20" x2="150" y2="20" />
-  <line x1="31" y1="21" x2="151" y2="21" />
   <line x1="32" y1="22" x2="152" y2="22" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -1270,7 +1300,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
   <line x1="130" y1="0" x2="152" y2="22" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.000000,0.000000 130.000000,0.000000 152.207396,22.207396 32.207396,22.207396" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 130.0,0.0 152.20739572391273,22.207395723912715 32.20739572391271,22.207395723912715" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="32" y1="22" x2="152" y2="22" style="stroke-width:2" />
@@ -1281,7 +1311,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
   <line x1="152" y1="22" x2="152" y2="82" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="32.207396,22.207396 152.207396,22.207396 152.207396,82.207396 32.207396,82.207396" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="32.20739572391271,22.207395723912715 152.20739572391273,22.207395723912715 152.20739572391273,82.20739572391271 32.20739572391271,82.20739572391271" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
   <text x="92.207396" y="102.207396" font-size="1.0rem" font-weight="100" text-anchor="middle" >360</text>
@@ -1311,7 +1341,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipykernel_6423/156823133.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_6496/156823133.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># complete the following:</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> fig <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">16</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;RdBu_r&#39;</span><span class="ansi-blue-fg">)</span>
@@ -1523,8 +1553,8 @@ da.store(my_dask_array, output)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.17 s, sys: 2.1 s, total: 5.27 s
-Wall time: 5.13 s
+CPU times: user 2.63 s, sys: 1.85 s, total: 4.48 s
+Wall time: 4.3 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1607,8 +1637,8 @@ Wall time: 5.13 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 174 ms, sys: 28.3 ms, total: 202 ms
-Wall time: 3.64 s
+CPU times: user 163 ms, sys: 30 ms, total: 193 ms
+Wall time: 2.67 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1665,51 +1695,56 @@ Wall time: 3.64 s
 </div>
 
 
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="04_dataframe.html" class="btn btn-neutral float-right" title="Dask DataFrames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="02_bag.html" class="btn btn-neutral float-left" title="Bag: Parallel Lists for semi-structured data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="02_bag.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Bag: Parallel Lists for semi-structured data</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="04_dataframe.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Dask DataFrames</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018, Dask Developers.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
+</div>
+        
         </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Dask Developers<br/>
+        
+            &copy; Copyright 2018, Dask Developers.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
       </div>
-
-    </section>
-
-  </div>
+    </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
   
-  
-    
-   
-
-</body>
+  </body>
 </html>
