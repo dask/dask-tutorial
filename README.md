@@ -98,7 +98,7 @@ This was already done for method c) and does not need repeating.
 *  Ask for help
     *   [`dask`](http://stackoverflow.com/questions/tagged/dask) tag on Stack Overflow, for usage questions
     *   [github issues](https://github.com/dask/dask/issues/new) for bug reports and feature requests
-    *   [gitter chat](https://gitter.im/dask/dask) for general, non-bug, discussion
+    *   [discourse forum](https://dask.discourse.group/) for general, non-bug, questions and discussion
     *   Attend a live tutorial
 
 ## Outline
