@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dask DataFrames &#8212; Dask Tutorial  documentation</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -34,14 +34,17 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Distributed" href="05_distributed.html" />
     <link rel="prev" title="Arrays" href="03_array.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -663,7 +666,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><img alt="4ff4d85d9ed54b6f907b6ef60382fad6" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
+<p><img alt="aabdc2265a5d43728ee6cce832882966" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> API. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
@@ -772,33 +775,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>8</td>
-      <td>Dan</td>
-      <td>3</td>
+      <td>47</td>
+      <td>Hannah</td>
+      <td>-13</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50</td>
-      <td>Laura</td>
-      <td>493</td>
+      <td>64</td>
+      <td>Jerry</td>
+      <td>-949</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>45</td>
-      <td>Charlie</td>
-      <td>2594</td>
+      <td>34</td>
+      <td>Frank</td>
+      <td>4774</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>76</td>
-      <td>Ursula</td>
-      <td>1445</td>
+      <td>54</td>
+      <td>Kevin</td>
+      <td>489</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3</td>
-      <td>Patricia</td>
-      <td>-51</td>
+      <td>19</td>
+      <td>Frank</td>
+      <td>5510</td>
     </tr>
   </tbody>
 </table>
@@ -1242,7 +1245,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 distributed.worker - WARNING - Compute Failed
 Function:  execute_task
-args:      ((subgraph_callable-409aec9d-ee3e-41d5-a6fd-592590bee720, [(&lt;function read_block_from_file at 0x7fc9a80833a0&gt;, &lt;OpenFile &#39;/home/runner/work/dask-tutorial/dask-tutorial/data/nycflights/1999.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), None, True, True]))
+args:      ((subgraph_callable-a4988fd4-a059-4364-8dcd-96738a57f8a3, [(&lt;function read_block_from_file at 0x7f12c8bd3ca0&gt;, &lt;OpenFile &#39;/home/runner/work/dask-tutorial/dask-tutorial/data/nycflights/1999.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), None, True, True]))
 kwargs:    {}
 Exception: ValueError(&#39;Mismatched dtypes found in `pd.read_csv`/`pd.read_table`.\n\n+----------------+---------+----------+\n| Column         | Found   | Expected |\n+----------------+---------+----------+\n| CRSElapsedTime | float64 | int64    |\n| TailNum        | object  | float64  |\n+----------------+---------+----------+\n\nThe following columns also raised exceptions on conversion:\n\n- TailNum\n  ValueError(&#34;could not convert string to float: \&#39;N54711\&#39;&#34;)\n\nUsually this is due to dask\&#39;s dtype inference failing, and\n*may* be fixed by specifying dtypes manually by adding:\n\ndtype={\&#39;CRSElapsedTime\&#39;: \&#39;float64\&#39;,\n       \&#39;TailNum\&#39;: \&#39;object\&#39;}\n\nto the call to `read_csv`/`read_table`.&#39;)
 
@@ -1255,7 +1258,7 @@ Exception: ValueError(&#39;Mismatched dtypes found in `pd.read_csv`/`pd.read_tab
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipykernel_7151/668323394.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_7269/668323394.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>df<span class="ansi-blue-fg">.</span>tail<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>  <span class="ansi-red-fg"># this fails</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">tail</span><span class="ansi-blue-fg">(self, n, compute)</span>
@@ -1631,8 +1634,8 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 28 ms, sys: 650 µs, total: 28.6 ms
-Wall time: 101 ms
+CPU times: user 47.5 ms, sys: 476 µs, total: 48 ms
+Wall time: 138 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1882,8 +1885,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 71.4 ms, sys: 4.95 ms, total: 76.3 ms
-Wall time: 247 ms
+CPU times: user 72.3 ms, sys: 10.2 ms, total: 82.4 ms
+Wall time: 279 ms
 </pre></div></div>
 </div>
 <p>But let’s try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
@@ -1903,8 +1906,8 @@ Wall time: 247 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 47.1 ms, sys: 2.88 ms, total: 50 ms
-Wall time: 146 ms
+CPU times: user 57.2 ms, sys: 3.37 ms, total: 60.6 ms
+Wall time: 168 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1951,7 +1954,7 @@ Wall time: 146 ms
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><img alt="6d0febe494a3477aab55a7f37ea0da67" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
+<p><img alt="227e1f695b9049c5a514f61ab6003c86" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">
@@ -2281,7 +2284,7 @@ Exception: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;h
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipykernel_7151/1135339802.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_7269/1135339802.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> departure_timestamp <span class="ansi-blue-fg">=</span> df<span class="ansi-blue-fg">.</span>map_partitions<span class="ansi-blue-fg">(</span>compute_departure_timestamp<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>departure_timestamp<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
@@ -2452,31 +2455,22 @@ dtype: datetime64[ns]
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="03_array.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Arrays</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="03_array.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Arrays</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="05_distributed.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Distributed</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="05_distributed.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Distributed</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -2497,8 +2491,7 @@ dtype: datetime64[ns]
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
