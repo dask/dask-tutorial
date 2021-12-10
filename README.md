@@ -44,6 +44,7 @@ In the main repo directory
 
     conda env create -f binder/environment.yml
     conda activate dask-tutorial
+    jupyter labextension install dask-labextension
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install @bokeh/jupyter_bokeh
 
