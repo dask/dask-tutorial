@@ -509,7 +509,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "There is 2GB of somewhat artifical weather data in HDF5 files in `data/weather-big/*.hdf5`.  We'll use the `h5py` library to interact with this data and `dask.array` to compute on it.\n",
+    "There is 2GB of somewhat artificial weather data in HDF5 files in `data/weather-big/*.hdf5`.  We'll use the `h5py` library to interact with this data and `dask.array` to compute on it.\n",
     "\n",
     "Our goal is to visualize the average temperature on the surface of the Earth for this month.  This will require a mean over all of this data.  We'll do this in the following steps\n",
     "\n",
@@ -814,7 +814,7 @@
     "    mat = (diff*diff).sum(-1)\n",
     "    return mat\n",
     "\n",
-    "# the lj function is evaluated over the upper traingle\n",
+    "# the lj function is evaluated over the upper triangle\n",
     "# after removing distances near zero\n",
     "def potential(cluster):\n",
     "    d2 = distances(cluster)\n",

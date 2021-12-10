@@ -609,10 +609,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/03_array.ipynb">on Github</a>.</p>
-<p><img alt="7f1364e8aeb949279311e190883d7cf2" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="98fb35ac79684fcdbc026912381bde6c" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="0a48c861c947487fbe736735785423c8" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="e18b8cb8ccbd4711a0bf2af107494f32" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -701,7 +701,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4996069.75
+5000871.375
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
@@ -745,7 +745,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.99921395
+1.000174275
 </pre></div></div>
 </div>
 </div>
@@ -877,7 +877,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-4996070.0
+5000871.5
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
@@ -898,7 +898,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="60e048ac8db746f3ac06e7a3f712ff29" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="575a9b63c33645a9b59e3caabdf8be7e" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
@@ -959,8 +959,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.4 s, sys: 87.9 ms, total: 1.49 s
-Wall time: 9.36 s
+CPU times: user 1.15 s, sys: 118 ms, total: 1.27 s
+Wall time: 7.96 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -969,46 +969,46 @@ Wall time: 9.36 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 9.99869149, 10.00050979, 10.00102517, 10.00046051,  9.99925227,
-       10.00090619,  9.99900714, 10.00025003, 10.00048238,  9.99962515,
-        9.99924862, 10.00226568, 10.00010409, 10.00092253, 10.0002902 ,
-        9.99988067, 10.00001132,  9.9994602 ,  9.99927899,  9.99995831,
-        9.99971378, 10.0002495 , 10.00054731,  9.9998    , 10.00116147,
-        9.99984635, 10.00055466, 10.00016536,  9.99953944, 10.00032432,
-        9.99900331, 10.00066468,  9.99958798, 10.00016805, 10.00001067,
-       10.00039421, 10.0005589 ,  9.999743  ,  9.99976829, 10.00100358,
-        9.99910126,  9.99958922, 10.00012813,  9.99984081,  9.99937618,
-       10.00027126,  9.99924598, 10.00037825,  9.99983138, 10.00097602,
-       10.00079967,  9.99942505, 10.00084778, 10.00019919,  9.99826968,
-        9.99976076,  9.99989362, 10.00001002, 10.00017897,  9.99962584,
-       10.00108792, 10.00131005,  9.99906907, 10.00059061, 10.00032758,
-       10.00083103,  9.99899847,  9.9993719 , 10.00024976,  9.99948512,
-        9.99947347, 10.00005513, 10.00024395, 10.00007518, 10.0003847 ,
-        9.99978478,  9.99970231, 10.00036167, 10.00034669,  9.99933096,
-        9.99950921, 10.00039568, 10.0004546 , 10.00043135, 10.0001987 ,
-        9.99993898, 10.00005654,  9.99973235,  9.99917802, 10.00089334,
-        9.99997076,  9.99867847,  9.99943699,  9.99985316, 10.00114694,
-        9.99968074,  9.99958935, 10.00007214, 10.00121586,  9.99978914,
-       10.0003024 , 10.00017221,  9.99925926, 10.00062579, 10.00000768,
-       10.00037018, 10.00004352, 10.0012259 ,  9.99960754, 10.00082946,
-       10.00096827,  9.99931061, 10.00092368,  9.99984231,  9.99877489,
-        9.99944755,  9.99875328, 10.0011893 ,  9.99987527, 10.00075106,
-       10.00034291, 10.00051742, 10.00038315, 10.00027967, 10.00019826,
-        9.99953713,  9.9987322 ,  9.99962938, 10.00128313,  9.99973304,
-        9.99965943, 10.00087419, 10.00110008,  9.99983834,  9.99957912,
-        9.99975665, 10.00076399,  9.99912424,  9.99908183, 10.00024986,
-        9.99855549, 10.00108168, 10.00012897,  9.99997629,  9.99912736,
-        9.99880644,  9.99916565,  9.99886179,  9.99897565, 10.00007792,
-        9.99964623,  9.99959576, 10.00060359,  9.99979903,  9.99798411,
-        9.99899071,  9.99990996,  9.99993641,  9.99975586, 10.0003819 ,
-        9.99997667,  9.99923296,  9.99968699,  9.99983791,  9.9996514 ,
-        9.99964951, 10.00032817,  9.99982192,  9.99979735, 10.00004484,
-       10.00026945, 10.00014788, 10.00082552,  9.99951326,  9.99917434,
-        9.99918734, 10.00032421,  9.99953685, 10.000466  , 10.00013518,
-       10.0003559 ,  9.99860436, 10.00072515,  9.99968234,  9.99970543,
-        9.99915382, 10.00030966, 10.00058656, 10.00020213, 10.00051402,
-       10.00103727,  9.99920275,  9.99958546,  9.9993931 , 10.00033605,
-       10.00009979, 10.00000996,  9.99935949, 10.00016369,  9.99937324])
+array([10.00016956,  9.99991444,  9.999446  , 10.0004111 ,  9.99926914,
+        9.99880679, 10.00063708,  9.99927164, 10.00121413,  9.99975606,
+        9.99962244,  9.99917012,  9.9993907 ,  9.99938265,  9.99964664,
+       10.00006283, 10.00108774, 10.0003094 ,  9.99956258, 10.00017581,
+        9.99918734,  9.9996264 ,  9.99922769, 10.00010576, 10.00078542,
+        9.99946254,  9.99983277, 10.00036812,  9.99992077,  9.99933538,
+       10.00003467, 10.00058997,  9.99942043,  9.99974271, 10.00155213,
+        9.9992102 , 10.00026849, 10.00015657,  9.99956947, 10.00029506,
+       10.00131859, 10.00067225,  9.99949956,  9.99932335, 10.00049655,
+        9.99885085,  9.99961495, 10.00001682, 10.00044452, 10.00020741,
+       10.00108183,  9.99837465,  9.999205  , 10.00058317,  9.99896141,
+        9.99980227,  9.99877205,  9.99927806, 10.00078081,  9.99938985,
+        9.99826391, 10.00043935,  9.99865729,  9.99821212,  9.99949882,
+        9.99874024, 10.00009315, 10.00022649, 10.00027777, 10.00084762,
+       10.00072096, 10.00010537,  9.9998298 , 10.00050561, 10.00004919,
+        9.99991779, 10.00035257,  9.99930775,  9.99945527,  9.99861498,
+       10.0001862 , 10.00076202,  9.99996213,  9.99974751,  9.99982741,
+       10.00064223, 10.00080512, 10.00034553, 10.00010534,  9.99949958,
+       10.00042961, 10.0005317 , 10.00035776, 10.00066865,  9.99940947,
+        9.99998229,  9.99939827, 10.00057641, 10.00040553, 10.00022841,
+        9.99944596,  9.99982833, 10.0003096 ,  9.99914678,  9.99919671,
+       10.00087008, 10.00047359,  9.99929702,  9.99988594,  9.99955298,
+        9.99990188, 10.00097492,  9.99939976,  9.9997984 , 10.00084807,
+        9.99901992,  9.99956784, 10.00118622, 10.00021997,  9.99907442,
+       10.00141263,  9.99918623, 10.00016185, 10.00041557, 10.00039844,
+        9.99874377,  9.99933176,  9.99992986, 10.00003551,  9.99979236,
+        9.99964803, 10.00022599,  9.99791809, 10.00014752,  9.99807183,
+       10.00037897,  9.99848025, 10.00137344, 10.00028853, 10.00100147,
+        9.99955684, 10.00110441,  9.99974774, 10.00005746, 10.00119796,
+        9.99945316, 10.00160838,  9.99916731,  9.99962057, 10.00020277,
+       10.00020987, 10.00045678,  9.99946639,  9.99967421, 10.00136526,
+       10.00037464, 10.00086739, 10.00026102, 10.00029236,  9.99967406,
+        9.99895658, 10.00061029,  9.99967919, 10.00051443, 10.00055962,
+        9.99858312,  9.99934965, 10.00030273, 10.00005011,  9.99976038,
+       10.00027482,  9.99913921,  9.99990038,  9.99877533, 10.00045044,
+       10.00022927,  9.999622  , 10.00000652, 10.00015733, 10.00038382,
+        9.99894201,  9.99985251, 10.0005901 ,  9.99961068, 10.00074813,
+        9.9990758 ,  9.99794914, 10.00003115, 10.00036596,  9.99967464,
+        9.99906699, 10.00073512, 10.00055102,  9.9999025 , 10.00075836,
+       10.00054494,  9.99970244, 10.00084129, 10.00007944, 10.00161441])
 </pre></div></div>
 </div>
 </div>
@@ -1059,7 +1059,7 @@ array([ 9.99869149, 10.00050979, 10.00102517, 10.00046051,  9.99925227,
 </ul>
 <div class="section" id="Exercise:-Meteorological-data">
 <h3>Exercise: Meteorological data<a class="headerlink" href="#Exercise:-Meteorological-data" title="Permalink to this headline">¶</a></h3>
-<p>There is 2GB of somewhat artifical weather data in HDF5 files in <code class="docutils literal notranslate"><span class="pre">data/weather-big/*.hdf5</span></code>. We’ll use the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library to interact with this data and <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> to compute on it.</p>
+<p>There is 2GB of somewhat artificial weather data in HDF5 files in <code class="docutils literal notranslate"><span class="pre">data/weather-big/*.hdf5</span></code>. We’ll use the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library to interact with this data and <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> to compute on it.</p>
 <p>Our goal is to visualize the average temperature on the surface of the Earth for this month. This will require a mean over all of this data. We’ll do this in the following steps</p>
 <ol class="arabic simple">
 <li><p>Create <code class="docutils literal notranslate"><span class="pre">h5py.Dataset</span></code> objects for each of the days of data on disk (<code class="docutils literal notranslate"><span class="pre">dsets</span></code>)</p></li>
@@ -1344,7 +1344,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipykernel_6613/156823133.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_6927/156823133.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># complete the following:</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> fig <span class="ansi-blue-fg">=</span> plt<span class="ansi-blue-fg">.</span>figure<span class="ansi-blue-fg">(</span>figsize<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">16</span><span class="ansi-blue-fg">,</span> <span class="ansi-cyan-fg">8</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>plt<span class="ansi-blue-fg">.</span>imshow<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">...</span><span class="ansi-blue-fg">,</span> cmap<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;RdBu_r&#39;</span><span class="ansi-blue-fg">)</span>
@@ -1537,7 +1537,7 @@ da.store(my_dask_array, output)
     <span class="n">mat</span> <span class="o">=</span> <span class="p">(</span><span class="n">diff</span><span class="o">*</span><span class="n">diff</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mat</span>
 
-<span class="c1"># the lj function is evaluated over the upper traingle</span>
+<span class="c1"># the lj function is evaluated over the upper triangle</span>
 <span class="c1"># after removing distances near zero</span>
 <span class="k">def</span> <span class="nf">potential</span><span class="p">(</span><span class="n">cluster</span><span class="p">):</span>
     <span class="n">d2</span> <span class="o">=</span> <span class="n">distances</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
@@ -1570,8 +1570,8 @@ da.store(my_dask_array, output)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.5 s, sys: 2.21 s, total: 5.72 s
-Wall time: 5.51 s
+CPU times: user 2.93 s, sys: 2.03 s, total: 4.96 s
+Wall time: 4.78 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1654,7 +1654,7 @@ Wall time: 5.51 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 180 ms, sys: 45.7 ms, total: 225 ms
+CPU times: user 180 ms, sys: 41.5 ms, total: 221 ms
 Wall time: 3.28 s
 </pre></div></div>
 </div>
