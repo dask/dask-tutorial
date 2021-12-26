@@ -11,6 +11,7 @@ import urllib.request
 import h5py
 import numpy as np
 import pandas as pd
+import holidays
 from skimage.transform import resize
 
 from accounts import account_entries, account_params, json_entries
@@ -38,6 +39,28 @@ if not os.path.exists(data_dir):
     raise OSError('data/ directory not found, aborting data preparation. ' \
                   'Restore it with "git checkout data" from the base ' \
                   'directory.')
+
+
+def holiday():
+    holidays_dir = os.path.join(data_dir, "holidays")
+    if os.path.exists(holidays_dir):
+        return
+
+    years = [
+        1990, 1991, 1992, 1993, 1994,
+        1995, 1996, 1997, 1998, 1999
+    ]
+    holidays_dict = holidays.US(years=years)
+    us_holidays = pd.DataFrame(
+        data={
+            "Date": holidays_dict.keys(),
+            "holiday": holidays_dict.values()
+        },
+    )
+    us_holidays = us_holidays.assign(
+        Date=us_holidays.Date.astype("datetime64[ns]"))
+    us_holidays.to_parquet(holidays_dir)
+    print("Created holidays data.")
 
 
 def flights(small=None):
@@ -224,6 +247,7 @@ def main(args=None):
         accounts_json(args.small)
     if args.dataset == "flights" or args.dataset == "all":
         flights(args.small)
+        holiday()
 
 
 if __name__ == '__main__':
