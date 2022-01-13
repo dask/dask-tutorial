@@ -32,7 +32,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -217,7 +217,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -235,7 +235,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -294,7 +294,69 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lazy execution</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Prelude">
+   Prelude
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dask-is-a-graph-execution-engine">
+   Dask is a graph execution engine
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise">
+     Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Appendix:-Further-detail-and-examples">
+   Appendix: Further detail and examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example-1:-simple-word-count">
+     Example 1: simple word count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example-2:-background-execution">
+     Example 2: background execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Example-3:-delayed-execution">
+     Example 3: delayed execution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-graphs">
+     Dask graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   
@@ -507,7 +569,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -568,7 +630,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/01x_lazy.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/01x_lazy.ipynb">on Github</a>.</p>
-<p><img alt="ffd1ede52dc74d0f8e35ca82b538ec89" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="a1bd3c4bbd55445c9d630860a8080046" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Lazy-execution">
 <h1>Lazy execution<a class="headerlink" href="#Lazy-execution" title="Permalink to this headline">¶</a></h1>
 <p>Here we discuss some of the concepts behind dask, and lazy execution of code. You do not need to go through this material if you are eager to get on with the tutorial, but it may help understand the concepts underlying dask, how these things fit in with techniques you might already be using, and how to understand things that can go wrong.</p>
@@ -592,8 +654,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
 
 <span class="nd">@delayed</span>
 <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -613,8 +674,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># this looks like ordinary code</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this looks like ordinary code</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">total</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -629,8 +689,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">total</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -648,8 +707,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># execute all tasks</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># execute all tasks</span>
 <span class="n">total</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -676,8 +734,7 @@ graph. Notice that in the animated diagram below, where four workers are process
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">run</span> prep.py -d accounts
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> prep.py -d accounts
 </pre></div>
 </div>
 </div>
@@ -685,8 +742,7 @@ graph. Notice that in the animated diagram below, where four workers are process
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="n">filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;accounts.</span><span class="si">%d</span><span class="s1">.csv&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
 <span class="n">filenames</span>
@@ -706,8 +762,7 @@ graph. Notice that in the animated diagram below, where four workers are process
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># normal, sequential code</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -729,8 +784,8 @@ graph. Notice that in the animated diagram below, where four workers are process
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 30000
-CPU times: user 10.8 ms, sys: 3.89 ms, total: 14.7 ms
-Wall time: 14.3 ms
+CPU times: user 5.81 ms, sys: 8.38 ms, total: 14.2 ms
+Wall time: 13.8 ms
 </pre></div></div>
 </div>
 <p>Your task is to recreate this graph again using the delayed function on the original Python code. The three functions you want to delay are <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code> and <code class="docutils literal notranslate"><span class="pre">sum</span></code>..</p>
@@ -748,8 +803,7 @@ Wall time: 14.3 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># your verbose code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your verbose code here</span>
 </pre></div>
 </div>
 </div>
@@ -758,8 +812,7 @@ Wall time: 14.3 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># your concise code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your concise code here</span>
 </pre></div>
 </div>
 </div>
@@ -767,8 +820,7 @@ Wall time: 14.3 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">## verbose version</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## verbose version</span>
 <span class="n">delayed_read_csv</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">delayed_read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">delayed_read_csv</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -790,8 +842,7 @@ Wall time: 14.3 ms
 <span class="n">lens</span> <span class="o">=</span> <span class="p">[</span><span class="n">delayed</span><span class="p">(</span><span class="nb">len</span><span class="p">)(</span><span class="n">csv</span><span class="p">)</span> <span class="k">for</span> <span class="n">csv</span> <span class="ow">in</span> <span class="n">csvs</span><span class="p">]</span>
 <span class="n">total</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="nb">sum</span><span class="p">)(</span><span class="n">lens</span><span class="p">)</span>
 <span class="o">%</span><span class="k">time</span> print(total.compute())
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -800,11 +851,11 @@ Wall time: 14.3 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 30000
-CPU times: user 11.7 ms, sys: 4.52 ms, total: 16.2 ms
-Wall time: 12.3 ms
+CPU times: user 12.7 ms, sys: 4.15 ms, total: 16.9 ms
+Wall time: 13.1 ms
 30000
-CPU times: user 10.9 ms, sys: 3.57 ms, total: 14.5 ms
-Wall time: 12.1 ms
+CPU times: user 11.7 ms, sys: 3.21 ms, total: 14.9 ms
+Wall time: 11.4 ms
 </pre></div></div>
 </div>
 <p><strong>Notes</strong></p>
@@ -827,8 +878,7 @@ Wall time: 12.1 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="n">splitter</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -852,8 +902,7 @@ memory, but may be slower for files that do not fill a large faction of memory. 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitter</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
@@ -887,8 +936,7 @@ the meantime).</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Edit sources.py to configure source locations</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Edit sources.py to configure source locations</span>
 <span class="kn">import</span> <span class="nn">sources</span>
 <span class="n">sources</span><span class="o">.</span><span class="n">lazy_url</span>
 </pre></div>
@@ -907,8 +955,7 @@ the meantime).</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">threading</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">queue</span>
 <span class="kn">import</span> <span class="nn">urllib</span>
 
@@ -927,8 +974,7 @@ the meantime).</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># fetch result back into this thread. If the worker thread is not done, this would wait.</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fetch result back into this thread. If the worker thread is not done, this would wait.</span>
 <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -939,7 +985,7 @@ the meantime).</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/logos/doodles/2021/seasonal-holidays-2021-6753651837109324-6752733080595605-cst.gif&#34; itemprop=&#34;image&#34;&gt;&lt;meta content=&#34;Seasonal Holidays 2021&#34; property=&#34;twitter:title&#34;&gt;&lt;meta content=&#34;Seasonal Holidays 2021 #GoogleDoodle&#34; property=&#34;twitter:description&#34;&gt;&lt;meta content=&#34;Seasonal Holidays 2021 #GoogleDoodle&#34; property=&#34;og:description&#34;&gt;&lt;meta content=&#34;summary_large_image&#34; property=&#34;twitter:card&#34;&gt;&lt;meta content=&#34;@GoogleDoodles&#34; property=&#34;twitter:site&#34;&gt;&lt;meta content=&#34;https://www.google.com/logos/doodles/2021/seasonal-holidays-2021-6753651837109324-2xa.gif&#34; property=&#34;twitter:image&#34;&gt;&lt;meta content=&#34;https://www.google.com/logos/doodles/2021/seasonal-holidays-2021-6753651837109324-2xa.gif&#34; property=&#34;og:image&#34;&gt;&lt;meta content=&#34;1000&#34; property=&#34;og:image:width&#34;&gt;&lt;meta content=&#34;400&#34; property=&#34;og:image:height&#34;&gt;&lt;meta content=&#34;https://www.google.com/logos/doodles/2021/seasonal-holidays-2021-6753651837109324-2xa.gif&#34; property=&#34;og:url&#34;&gt;&lt;meta content=&#34;video.other&#34; property=&#34;og:type&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){window.google={kEI:\&#39;dcqzYfmBKvilqtsP0v-UKA\&#39;,kEXPI:\&#39;0,1302530,56879,6058,207,4804,2316,383,246,5,1354,4013,923,315,1122515,1197745,146,510,380090,16114,28684,17572,4859,1361,9290,3021,17588,4020,978,13228,3847,10626,1138,20680,919,5081,1593,1279,2212,530,149,1103,840,1030,953,214,4100,109,3405,606,2025,1775,521,14669,3227,1990,857,5,5599,6755,5096,14396,1924,908,2,941,15324,432,3,1590,1,5445,148,11327,2648,4,1252,276,2304,7039,74,1983,2626,15626,1714,3050,2658,7357,30,894,1,10114,2619,2305,675,16808,1435,5815,2542,4097,3135,6,908,3,3541,1,14711,1813,283,38,874,5996,12342,2332,3765,2,14022,1931,442,342,255,2870,123,1557,743,5853,8874,447,547,595,1160,1311,5388,2381,2719,3708,2,10460,4072,1,8,7771,4569,2577,10,3110,561,4399,2,2231,85,1,3698,81,3,8128,4790,438,814,11924,1745,3427,3706,4333,2204,566,257,1260,98,292,204,1108,101,52,1276,32,479,2,2,1,1407,356,2929,1471,797,182,35,3779,806,737,2278,902,269,1,370,216,2,59,47,2592,1144,66,2,176,775,205,649,67,318,732,6,2,370,2,202,187,386,102,626,1142,238,282,38,726,2152,747,2463,14,458,795,11,121,200,40,70,38,110,1,2,454,3,5,12,27,21,103,5,426,539,873,761,1637,77,2,305,202,3,2,63,658,9,101,989,453,2,5514353,2031,99,347,315,105,64,1802405,4193979,258,2800439,882,444,1,2,80,1,1796,1,9,2553,1,748,141,795,563,1,4265,1,1,2,1331,4142,2609,155,17,13,72,139,4,2,20,2,169,13,19,46,5,39,96,548,29,2,2,1,2,1,2,2,7,4,1,2,2,2,2,2,2,353,513,186,1,1,158,3,2,2,2,2,2,4,2,3,3,269,551,1050,88,15,11,5,79,1,14,23952908,4038571,3,2778,338,3,2414,1491,9,1435,159,1358,1128,2,3590,3,931,1538,1631,2,300,723,773286,57317\&#39;,kBL:\&#39;oXES\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;})();(function(){\nvar f=this||self;var h,k=[];function l(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||h}function m(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b}\nfunction n(a,b,c,d,g){var e=&#34;&#34;;c||-1!==b.search(&#34;&amp;ei=&#34;)||(e=&#34;&amp;ei=&#34;+l(d),-1===b.search(&#34;&amp;lei=&#34;)&amp;&amp;(d=m(d))&amp;&amp;(e+=&#34;&amp;lei=&#34;+d));d=&#34;&#34;;!c&amp;&amp;f._cshid&amp;&amp;-1===b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!==a&amp;&amp;(d=&#34;&amp;cshid=&#34;+f._cshid);c=c||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+e+&#34;&amp;zx=&#34;+Date.now()+d;/^http:/i.test(c)&amp;&amp;&#34;https:&#34;===window.location.protocol&amp;&amp;(google.ml&amp;&amp;google.ml(Error(&#34;a&#34;),!1,{src:c,glmm:1}),c=&#34;&#34;);return c};h=google.kEI;google.getEI=l;google.getLEI=m;google.ml=function(){return null};google.log=function(a,b,c,d,g){if(c=n(a,b,c,d,g)){a=new Image;var e=k.length;k[e]=a;a.onerror=a.onload=a.onabort=function(){delete k[e]};a.src=c}};google.logUrl=n;}).call(this);(function(){\ngoogle.y={};google.sy=[];google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.sx=function(a){google.sy.push(a)};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};google.bx=!1;google.lx=function(){};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;===c||&#34;q&#34;===c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);document.documentElement.addEventListener(&#34;click&#34;,function(b){var a;a:{for(a=b.target;a&amp;&amp;a!==document.documentElement;a=a.parentElement)if(&#34;A&#34;===a.tagName){a=&#34;1&#34;===a.getAttribute(&#34;data-nohref&#34;);break a}a=!1}a&amp;&amp;b.preventDefault()},!0);}).call(this);&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#1558d6}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}body{background:#fff;color:#000}a{color:#4b11a8;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#1558d6}a:visited{color:#4b11a8}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#f8f9fa;border:solid 1px;border-color:#dadce0 #70757a #70757a #dadce0;height:30px}.lsbb{display:block}#WqQANb a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#dadce0}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){window.google.erd={jsr:0,bv:1492,de:true};\nvar f=this||self;var g,h,k=null!==(g=f.mei)&amp;&amp;void 0!==g?g:1,l=null!==(h=f.sdo)&amp;&amp;void 0!==h?h:!0,p=0,q,r=google.erd,u=r.jsr;google.ml=function(a,b,d,m,c){c=void 0===c?2:c;b&amp;&amp;(q=a&amp;&amp;a.message);if(google.dl)return google.dl(a,c,d),null;if(0&gt;u){window.console&amp;&amp;console.error(a,d);if(-2===u)throw a;b=!1}else b=!a||!a.message||&#34;Error loading script&#34;===a.message||p&gt;=k&amp;&amp;!m?!1:!0;if(!b)return null;p++;d=d||{};var e=c;c=encodeURIComponent;b=&#34;/gen_204?atyp=i&amp;ei=&#34;+c(google.kEI);google.kEXPI&amp;&amp;(b+=&#34;&amp;jexpid=&#34;+c(google.kEXPI));b+=&#34;&amp;srcpg=&#34;+c(google.sn)+&#34;&amp;jsr=&#34;+c(r.jsr)+&#34;&amp;bver=&#34;+c(r.bv)+(&#34;&amp;jsel=&#34;+e);e=a.lineNumber;void 0!==e&amp;&amp;(b+=&#34;&amp;line=&#34;+\ne);var n=a.fileName;n&amp;&amp;(b+=&#34;&amp;script=&#34;+c(n),e&amp;&amp;n===window.location.href&amp;&amp;(e=document.documentElement.outerHTML.split(&#34;\\n&#34;)[e],b+=&#34;&amp;cad=&#34;+c(e?e.substring(0,300):&#34;No script found.&#34;)));for(var t in d)b+=&#34;&amp;&#34;,b+=c(t),b+=&#34;=&#34;,b+=c(d[t]);b=b+&#34;&amp;emsg=&#34;+c(a.name+&#34;: &#34;+a.message);b=b+&#34;&amp;jsst=&#34;+c(a.stack||&#34;N/A&#34;);12288&lt;=b.length&amp;&amp;(b=b.substr(0,12288));a=b;m||google.log(0,&#34;&#34;,a);return a};window.onerror=function(a,b,d,m,c){q!==a&amp;&amp;(a=c instanceof Error?c:Error(a),void 0===d||&#34;lineNumber&#34;in a||(a.lineNumber=d),void 0===b||&#34;fileName&#34;in a||(a.fileName=b),google.ml(a,!1,void 0,!1,&#34;SyntaxError&#34;===a.name||&#34;SyntaxError&#34;===a.message.substring(0,11)?2:0));q=null;l&amp;&amp;p&gt;=k&amp;&amp;(window.onerror=null)};})();&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt;&lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;https://news.google.com/?tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&amp;ec=GAZAAQ&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt;&lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;img alt=&#34;Seasonal Holidays 2021&#34; border=&#34;0&#34; height=&#34;200&#34; src=&#34;/logos/doodles/2021/seasonal-holidays-2021-6753651837109324-6752733080595605-cst.gif&#34; title=&#34;Seasonal Holidays 2021&#34; width=&#34;500&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;margin:0;padding:5px 8px 0 6px;vertical-align:top;color:#000&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;ALs-wAMAAAAAYbPYhfiLj_2h6tSIaZmFKW48PkxH7gLe&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){\nvar a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;WqQANb&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;font-size:8pt;color:#70757a&#34;&gt;&amp;copy; 2021 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){window.google.cdo={height:757,width:1440};(function(){\nvar a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();&lt;/script&gt; &lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){google.xjs={ck:\&#39;\&#39;,cs:\&#39;\&#39;,excm:[]};})();&lt;/script&gt;  &lt;script nonce=&#34;6Y3NygjwR28yptcdBCC+yg==&#34;&gt;(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.0dG7ldvVpIc.O/am\\x3dAPAEAEACkA/d\\x3d1/ed\\x3d1/esmo\\x3d1/rs\\x3dACT90oHCLqJLwio9iHQyM_w-D9pJS7XPyg/m\\x3dsb_he,d\&#39;;\nvar e=this||self,f=function(a){return a};var g;var l=function(a,b){this.g=b===h?a:&#34;&#34;};l.prototype.toString=function(){return this.g+&#34;&#34;};var h={};\nfunction m(){var a=u;google.lx=function(){n(a);google.lx=function(){}};google.bx||google.lx()}\nfunction n(a){google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);var b=document;var c=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(c=c.toLowerCase());c=b.createElement(c);if(void 0===g){b=null;var k=e.trustedTypes;if(k&amp;&amp;k.createPolicy){try{b=k.createPolicy(&#34;goog#html&#34;,{createHTML:f,createScript:f,createScriptURL:f})}catch(p){e.console&amp;&amp;e.console.error(p.message)}g=b}else g=b}a=(b=g)?b.createScriptURL(a):a;a=new l(a,h);c.src=a instanceof l&amp;&amp;a.constructor===l?a.g:&#34;type_error:TrustedResourceUrl&#34;;var d;a=(c.ownerDocument&amp;&amp;c.ownerDocument.defaultView||window).document;(d=(b=null===(d=a.querySelector)||void 0===d?void 0:d.call(a,&#34;script[nonce]&#34;))?b.nonce||b.getAttribute(&#34;nonce&#34;)||&#34;&#34;:&#34;&#34;)&amp;&amp;c.setAttribute(&#34;nonce&#34;,d);document.body.appendChild(c);google.psa=!0};google.xjsu=u;setTimeout(function(){m()},0);})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.jl={attn:false,blt:\&#39;none\&#39;,chnk:0,dw:false,dwu:true,emtn:0,end:0,ine:false,lls:\&#39;default\&#39;,pdt:0,rep:0,snet:true,strt:0,ubm:false,uwp:true};})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbas\\x22:\\x220 3px 8px 0 rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08)\\x22,\\x22sbpl\\x22:16,\\x22sbpr\\x22:16,\\x22scd\\x22:10,\\x22stok\\x22:\\x22NEEuYs0hJR5hw4xAI5Uw_DRgnH4\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
+b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://schema.org/WebPage&#34; lang=&#34;en&#34;&gt;&lt;head&gt;&lt;meta content=&#34;Search the world\&#39;s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\&#39;re looking for.&#34; name=&#34;description&#34;&gt;&lt;meta content=&#34;noodp&#34; name=&#34;robots&#34;&gt;&lt;meta content=&#34;text/html; charset=UTF-8&#34; http-equiv=&#34;Content-Type&#34;&gt;&lt;meta content=&#34;/images/branding/googleg/1x/googleg_standard_color_128dp.png&#34; itemprop=&#34;image&#34;&gt;&lt;title&gt;Google&lt;/title&gt;&lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){window.google={kEI:\&#39;IkXgYfLGMaavqtsP_MSumAQ\&#39;,kEXPI:\&#39;0,1302536,56873,1709,4350,206,4804,2316,383,246,5,1354,4013,923,314,1122516,1197714,687,380090,16114,19398,9286,17572,4859,1361,9291,3022,2822,14764,4020,978,13228,3847,4192,6430,7432,15309,5081,885,708,1279,2742,149,1103,840,1983,4314,3514,606,2023,1777,520,14670,3227,2845,7,17450,14396,1371,553,908,2,941,6398,8926,432,3,346,1244,1,3370,2075,148,11325,2650,4,1528,656,1648,6463,576,74,4609,17340,3050,2658,7356,31,13628,2305,675,1457,15351,1435,5821,2536,4097,3135,6,908,3,3541,1,11943,2768,1813,283,38,874,5992,14678,3765,2,14022,1931,442,342,255,2870,123,39,1518,743,5853,8703,617,1143,1160,5679,1020,2381,2718,18243,1,8,7772,4568,2577,2788,890,3017,3709,1,5293,2,6609,4790,1252,5788,46,9213,2049,2568,760,379,1579,1270,1023,460,2083,121,566,1517,99,495,82,1067,59,118,1276,438,8,2,2,1,1196,1,210,356,400,13004,302,850,4,212,2,682,102,307,1,2,2748,696,3,320,1034,952,2,752,490,619,271,679,10,1,186,238,320,375,2,350,997,1358,682,2171,1072,480,36,164,110,38,111,2,291,861,2,95,424,509,2665,2,204,5,394,68,572,376,101,468,48,11,181,178,2,1927,2,316,14,1118,1496,1504,658,800,1442,735,285,212,2684,5499574,1861,2031,5997315,257,2800439,882,444,1,2,80,1,1796,1,9,2553,1,748,141,795,563,1,4265,1,1,2,1331,4142,2609,155,17,13,72,139,4,2,20,2,169,13,19,46,5,39,96,548,29,2,2,1,2,1,2,2,7,4,1,2,2,2,2,2,2,353,513,186,1,1,158,3,2,2,2,2,2,4,2,3,3,269,1601,141,66,138,74,6,20732676,3220020,2773820,1267870,3,2414,1491,9,1435,159,1358,404,725,1,3596,3,927,247,7,1483,1731,70,455,597\&#39;,kBL:\&#39;idNN\&#39;};google.sn=\&#39;webhp\&#39;;google.kHL=\&#39;en\&#39;;})();(function(){\nvar f=this||self;var h,k=[];function l(a){for(var b;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;eid&#34;)));)a=a.parentNode;return b||h}function m(a){for(var b=null;a&amp;&amp;(!a.getAttribute||!(b=a.getAttribute(&#34;leid&#34;)));)a=a.parentNode;return b}\nfunction n(a,b,c,d,g){var e=&#34;&#34;;c||-1!==b.search(&#34;&amp;ei=&#34;)||(e=&#34;&amp;ei=&#34;+l(d),-1===b.search(&#34;&amp;lei=&#34;)&amp;&amp;(d=m(d))&amp;&amp;(e+=&#34;&amp;lei=&#34;+d));d=&#34;&#34;;!c&amp;&amp;f._cshid&amp;&amp;-1===b.search(&#34;&amp;cshid=&#34;)&amp;&amp;&#34;slh&#34;!==a&amp;&amp;(d=&#34;&amp;cshid=&#34;+f._cshid);c=c||&#34;/&#34;+(g||&#34;gen_204&#34;)+&#34;?atyp=i&amp;ct=&#34;+a+&#34;&amp;cad=&#34;+b+e+&#34;&amp;zx=&#34;+Date.now()+d;/^http:/i.test(c)&amp;&amp;&#34;https:&#34;===window.location.protocol&amp;&amp;(google.ml&amp;&amp;google.ml(Error(&#34;a&#34;),!1,{src:c,glmm:1}),c=&#34;&#34;);return c};h=google.kEI;google.getEI=l;google.getLEI=m;google.ml=function(){return null};google.log=function(a,b,c,d,g){if(c=n(a,b,c,d,g)){a=new Image;var e=k.length;k[e]=a;a.onerror=a.onload=a.onabort=function(){delete k[e]};a.src=c}};google.logUrl=n;}).call(this);(function(){\ngoogle.y={};google.sy=[];google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.sx=function(a){google.sy.push(a)};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};google.bx=!1;google.lx=function(){};}).call(this);google.f={};(function(){\ndocument.documentElement.addEventListener(&#34;submit&#34;,function(b){var a;if(a=b.target){var c=a.getAttribute(&#34;data-submitfalse&#34;);a=&#34;1&#34;===c||&#34;q&#34;===c&amp;&amp;!a.elements.q.value?!0:!1}else a=!1;a&amp;&amp;(b.preventDefault(),b.stopPropagation())},!0);document.documentElement.addEventListener(&#34;click&#34;,function(b){var a;a:{for(a=b.target;a&amp;&amp;a!==document.documentElement;a=a.parentElement)if(&#34;A&#34;===a.tagName){a=&#34;1&#34;===a.getAttribute(&#34;data-nohref&#34;);break a}a=!1}a&amp;&amp;b.preventDefault()},!0);}).call(this);&lt;/script&gt;&lt;style&gt;#gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}\n&lt;/style&gt;&lt;style&gt;body,td,a,p,.h{font-family:arial,sans-serif}body{margin:0;overflow-y:scroll}#gog{padding:3px 8px 0}td{line-height:.8em}.gac_m td{line-height:17px}form{margin-bottom:20px}.h{color:#1558d6}em{font-weight:bold;font-style:normal}.lst{height:25px;width:496px}.gsfi,.lst{font:18px arial,sans-serif}.gsfs{font:17px arial,sans-serif}.ds{display:inline-box;display:inline-block;margin:3px 0 4px;margin-left:4px}input{font-family:inherit}body{background:#fff;color:#000}a{color:#4b11a8;text-decoration:none}a:hover,a:active{text-decoration:underline}.fl a{color:#1558d6}a:visited{color:#4b11a8}.sblc{padding-top:5px}.sblc a{display:block;margin:2px 0;margin-left:13px;font-size:11px}.lsbb{background:#f8f9fa;border:solid 1px;border-color:#dadce0 #70757a #70757a #dadce0;height:30px}.lsbb{display:block}#WqQANb a{display:inline-block;margin:0 12px}.lsb{background:url(/images/nav_logo229.png) 0 -261px repeat-x;border:none;color:#000;cursor:pointer;height:30px;margin:0;outline:0;font:15px arial,sans-serif;vertical-align:top}.lsb:active{background:#dadce0}.lst:focus{outline:none}&lt;/style&gt;&lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){window.google.erd={jsr:1,bv:1510,de:true};\nvar f=this||self;var g,h,k=null!==(g=f.mei)&amp;&amp;void 0!==g?g:1,l=null!==(h=f.sdo)&amp;&amp;void 0!==h?h:!0,p=0,q,r=google.erd,u=r.jsr;google.ml=function(a,b,d,m,c){c=void 0===c?2:c;b&amp;&amp;(q=a&amp;&amp;a.message);if(google.dl)return google.dl(a,c,d),null;if(0&gt;u){window.console&amp;&amp;console.error(a,d);if(-2===u)throw a;b=!1}else b=!a||!a.message||&#34;Error loading script&#34;===a.message||p&gt;=k&amp;&amp;!m?!1:!0;if(!b)return null;p++;d=d||{};var e=c;c=encodeURIComponent;b=&#34;/gen_204?atyp=i&amp;ei=&#34;+c(google.kEI);google.kEXPI&amp;&amp;(b+=&#34;&amp;jexpid=&#34;+c(google.kEXPI));b+=&#34;&amp;srcpg=&#34;+c(google.sn)+&#34;&amp;jsr=&#34;+c(r.jsr)+&#34;&amp;bver=&#34;+c(r.bv)+(&#34;&amp;jsel=&#34;+e);e=a.lineNumber;void 0!==e&amp;&amp;(b+=&#34;&amp;line=&#34;+\ne);var n=a.fileName;n&amp;&amp;(b+=&#34;&amp;script=&#34;+c(n),e&amp;&amp;n===window.location.href&amp;&amp;(e=document.documentElement.outerHTML.split(&#34;\\n&#34;)[e],b+=&#34;&amp;cad=&#34;+c(e?e.substring(0,300):&#34;No script found.&#34;)));for(var t in d)b+=&#34;&amp;&#34;,b+=c(t),b+=&#34;=&#34;,b+=c(d[t]);b=b+&#34;&amp;emsg=&#34;+c(a.name+&#34;: &#34;+a.message);b=b+&#34;&amp;jsst=&#34;+c(a.stack||&#34;N/A&#34;);12288&lt;=b.length&amp;&amp;(b=b.substr(0,12288));a=b;m||google.log(0,&#34;&#34;,a);return a};window.onerror=function(a,b,d,m,c){q!==a&amp;&amp;(a=c instanceof Error?c:Error(a),void 0===d||&#34;lineNumber&#34;in a||(a.lineNumber=d),void 0===b||&#34;fileName&#34;in a||(a.fileName=b),google.ml(a,!1,void 0,!1,&#34;SyntaxError&#34;===a.name||&#34;SyntaxError&#34;===a.message.substring(0,11)?2:0));q=null;l&amp;&amp;p&gt;=k&amp;&amp;(window.onerror=null)};})();&lt;/script&gt;&lt;/head&gt;&lt;body bgcolor=&#34;#fff&#34;&gt;&lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){var src=\&#39;/images/nav_logo229.png\&#39;;var iesg=false;document.body.onload = function(){window.n &amp;&amp; window.n();if (document.images){new Image().src=src;}\nif (!iesg){document.f&amp;&amp;document.f.q.focus();document.gbqf&amp;&amp;document.gbqf.q.focus();}\n}\n})();&lt;/script&gt;&lt;div id=&#34;mngb&#34;&gt;&lt;div id=gbar&gt;&lt;nobr&gt;&lt;b class=gb1&gt;Search&lt;/b&gt; &lt;a class=gb1 href=&#34;http://www.google.com/imghp?hl=en&amp;tab=wi&#34;&gt;Images&lt;/a&gt; &lt;a class=gb1 href=&#34;http://maps.google.com/maps?hl=en&amp;tab=wl&#34;&gt;Maps&lt;/a&gt; &lt;a class=gb1 href=&#34;https://play.google.com/?hl=en&amp;tab=w8&#34;&gt;Play&lt;/a&gt; &lt;a class=gb1 href=&#34;http://www.youtube.com/?gl=US&amp;tab=w1&#34;&gt;YouTube&lt;/a&gt; &lt;a class=gb1 href=&#34;https://news.google.com/?tab=wn&#34;&gt;News&lt;/a&gt; &lt;a class=gb1 href=&#34;https://mail.google.com/mail/?tab=wm&#34;&gt;Gmail&lt;/a&gt; &lt;a class=gb1 href=&#34;https://drive.google.com/?tab=wo&#34;&gt;Drive&lt;/a&gt; &lt;a class=gb1 style=&#34;text-decoration:none&#34; href=&#34;https://www.google.com/intl/en/about/products?tab=wh&#34;&gt;&lt;u&gt;More&lt;/u&gt; &amp;raquo;&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div id=guser width=100%&gt;&lt;nobr&gt;&lt;span id=gbn class=gbi&gt;&lt;/span&gt;&lt;span id=gbf class=gbf&gt;&lt;/span&gt;&lt;span id=gbe&gt;&lt;/span&gt;&lt;a href=&#34;http://www.google.com/history/optout?hl=en&#34; class=gb4&gt;Web History&lt;/a&gt; | &lt;a  href=&#34;/preferences?hl=en&#34; class=gb4&gt;Settings&lt;/a&gt; | &lt;a target=_top id=gb_70 href=&#34;https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=http://www.google.com/&amp;ec=GAZAAQ&#34; class=gb4&gt;Sign in&lt;/a&gt;&lt;/nobr&gt;&lt;/div&gt;&lt;div class=gbh style=left:0&gt;&lt;/div&gt;&lt;div class=gbh style=right:0&gt;&lt;/div&gt;&lt;/div&gt;&lt;center&gt;&lt;br clear=&#34;all&#34; id=&#34;lgpd&#34;&gt;&lt;div id=&#34;lga&#34;&gt;&lt;img alt=&#34;Google&#34; height=&#34;92&#34; src=&#34;/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png&#34; style=&#34;padding:28px 0 14px&#34; width=&#34;272&#34; id=&#34;hplogo&#34;&gt;&lt;br&gt;&lt;br&gt;&lt;/div&gt;&lt;form action=&#34;/search&#34; name=&#34;f&#34;&gt;&lt;table cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&gt;&lt;tr valign=&#34;top&#34;&gt;&lt;td width=&#34;25%&#34;&gt;&amp;nbsp;&lt;/td&gt;&lt;td align=&#34;center&#34; nowrap=&#34;&#34;&gt;&lt;input name=&#34;ie&#34; value=&#34;ISO-8859-1&#34; type=&#34;hidden&#34;&gt;&lt;input value=&#34;en&#34; name=&#34;hl&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;source&#34; type=&#34;hidden&#34; value=&#34;hp&#34;&gt;&lt;input name=&#34;biw&#34; type=&#34;hidden&#34;&gt;&lt;input name=&#34;bih&#34; type=&#34;hidden&#34;&gt;&lt;div class=&#34;ds&#34; style=&#34;height:32px;margin:4px 0&#34;&gt;&lt;input class=&#34;lst&#34; style=&#34;margin:0;padding:5px 8px 0 6px;vertical-align:top;color:#000&#34; autocomplete=&#34;off&#34; value=&#34;&#34; title=&#34;Google Search&#34; maxlength=&#34;2048&#34; name=&#34;q&#34; size=&#34;57&#34;&gt;&lt;/div&gt;&lt;br style=&#34;line-height:0&#34;&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; value=&#34;Google Search&#34; name=&#34;btnG&#34; type=&#34;submit&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;ds&#34;&gt;&lt;span class=&#34;lsbb&#34;&gt;&lt;input class=&#34;lsb&#34; id=&#34;tsuid1&#34; value=&#34;I\&#39;m Feeling Lucky&#34; name=&#34;btnI&#34; type=&#34;submit&#34;&gt;&lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){var id=\&#39;tsuid1\&#39;;document.getElementById(id).onclick = function(){if (this.form.q.value){this.checked = 1;if (this.form.iflsig)this.form.iflsig.disabled = false;}\nelse top.location=\&#39;/doodles/\&#39;;};})();&lt;/script&gt;&lt;input value=&#34;ALs-wAMAAAAAYeBTMox1Adif3FMTLRcW_P1Jw0hGqzJ7&#34; name=&#34;iflsig&#34; type=&#34;hidden&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/td&gt;&lt;td class=&#34;fl sblc&#34; align=&#34;left&#34; nowrap=&#34;&#34; width=&#34;25%&#34;&gt;&lt;a href=&#34;/advanced_search?hl=en&amp;amp;authuser=0&#34;&gt;Advanced search&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;input id=&#34;gbv&#34; name=&#34;gbv&#34; type=&#34;hidden&#34; value=&#34;1&#34;&gt;&lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){\nvar a,b=&#34;1&#34;;if(document&amp;&amp;document.getElementById)if(&#34;undefined&#34;!=typeof XMLHttpRequest)b=&#34;2&#34;;else if(&#34;undefined&#34;!=typeof ActiveXObject){var c,d,e=[&#34;MSXML2.XMLHTTP.6.0&#34;,&#34;MSXML2.XMLHTTP.3.0&#34;,&#34;MSXML2.XMLHTTP&#34;,&#34;Microsoft.XMLHTTP&#34;];for(c=0;d=e[c++];)try{new ActiveXObject(d),b=&#34;2&#34;}catch(h){}}a=b;if(&#34;2&#34;==a&amp;&amp;-1==location.search.indexOf(&#34;&amp;gbv=2&#34;)){var f=google.gbvu,g=document.getElementById(&#34;gbv&#34;);g&amp;&amp;(g.value=a);f&amp;&amp;window.setTimeout(function(){location.href=f},0)};}).call(this);&lt;/script&gt;&lt;/form&gt;&lt;div id=&#34;gac_scont&#34;&gt;&lt;/div&gt;&lt;div style=&#34;font-size:83%;min-height:3.5em&#34;&gt;&lt;br&gt;&lt;/div&gt;&lt;span id=&#34;footer&#34;&gt;&lt;div style=&#34;font-size:10pt&#34;&gt;&lt;div style=&#34;margin:19px auto;text-align:center&#34; id=&#34;WqQANb&#34;&gt;&lt;a href=&#34;/intl/en/ads/&#34;&gt;Advertising\xa0Programs&lt;/a&gt;&lt;a href=&#34;/services/&#34;&gt;Business Solutions&lt;/a&gt;&lt;a href=&#34;/intl/en/about.html&#34;&gt;About Google&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;p style=&#34;font-size:8pt;color:#70757a&#34;&gt;&amp;copy; 2022 - &lt;a href=&#34;/intl/en/policies/privacy/&#34;&gt;Privacy&lt;/a&gt; - &lt;a href=&#34;/intl/en/policies/terms/&#34;&gt;Terms&lt;/a&gt;&lt;/p&gt;&lt;/span&gt;&lt;/center&gt;&lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){window.google.cdo={height:757,width:1440};(function(){\nvar a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d=&#34;CSS1Compat&#34;==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&amp;&amp;b&amp;&amp;(a!=google.cdo.width||b!=google.cdo.height)&amp;&amp;google.log(&#34;&#34;,&#34;&#34;,&#34;/client_204?&amp;atyp=i&amp;biw=&#34;+a+&#34;&amp;bih=&#34;+b+&#34;&amp;ei=&#34;+google.kEI);}).call(this);})();&lt;/script&gt; &lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){google.xjs={ck:\&#39;\&#39;,cs:\&#39;\&#39;,excm:[]};})();&lt;/script&gt;  &lt;script nonce=&#34;lSPl9hT+CxyBMjYI4WB3kg==&#34;&gt;(function(){var u=\&#39;/xjs/_/js/k\\x3dxjs.hp.en_US.btjpNmiT9Tk.O/am\\x3dAPAEAEACkA/d\\x3d1/ed\\x3d1/esmo\\x3d1/rs\\x3dACT90oHG-sk9nWoPZZhnK0L7YLM-7ymwYg/m\\x3dsb_he,d\&#39;;\nvar e=this||self,f=function(a){return a};var g;var l=function(a,b){this.g=b===h?a:&#34;&#34;};l.prototype.toString=function(){return this.g+&#34;&#34;};var h={};\nfunction m(){var a=u;google.lx=function(){n(a);google.lx=function(){}};google.bx||google.lx()}\nfunction n(a){google.timers&amp;&amp;google.timers.load&amp;&amp;google.tick&amp;&amp;google.tick(&#34;load&#34;,&#34;xjsls&#34;);var b=document;var c=&#34;SCRIPT&#34;;&#34;application/xhtml+xml&#34;===b.contentType&amp;&amp;(c=c.toLowerCase());c=b.createElement(c);if(void 0===g){b=null;var k=e.trustedTypes;if(k&amp;&amp;k.createPolicy){try{b=k.createPolicy(&#34;goog#html&#34;,{createHTML:f,createScript:f,createScriptURL:f})}catch(p){e.console&amp;&amp;e.console.error(p.message)}g=b}else g=b}a=(b=g)?b.createScriptURL(a):a;a=new l(a,h);c.src=a instanceof l&amp;&amp;a.constructor===l?a.g:&#34;type_error:TrustedResourceUrl&#34;;var d;a=(c.ownerDocument&amp;&amp;c.ownerDocument.defaultView||window).document;(d=(b=null===(d=a.querySelector)||void 0===d?void 0:d.call(a,&#34;script[nonce]&#34;))?b.nonce||b.getAttribute(&#34;nonce&#34;)||&#34;&#34;:&#34;&#34;)&amp;&amp;c.setAttribute(&#34;nonce&#34;,d);document.body.appendChild(c);google.psa=!0};google.xjsu=u;setTimeout(function(){m()},0);})();function _DumpException(e){throw e;}\nfunction _F_installCss(c){}\n(function(){google.jl={attn:false,blt:\&#39;none\&#39;,chnk:0,dw:false,dwu:true,emtn:0,end:0,ine:false,lls:\&#39;default\&#39;,pdt:0,rep:0,snet:true,strt:0,ubm:false,uwp:true};})();(function(){var pmc=\&#39;{\\x22d\\x22:{},\\x22sb_he\\x22:{\\x22agen\\x22:true,\\x22cgen\\x22:true,\\x22client\\x22:\\x22heirloom-hp\\x22,\\x22dh\\x22:true,\\x22dhqt\\x22:true,\\x22ds\\x22:\\x22\\x22,\\x22ffql\\x22:\\x22en\\x22,\\x22fl\\x22:true,\\x22host\\x22:\\x22google.com\\x22,\\x22isbh\\x22:28,\\x22jsonp\\x22:true,\\x22msgs\\x22:{\\x22cibl\\x22:\\x22Clear Search\\x22,\\x22dym\\x22:\\x22Did you mean:\\x22,\\x22lcky\\x22:\\x22I\\\\u0026#39;m Feeling Lucky\\x22,\\x22lml\\x22:\\x22Learn more\\x22,\\x22oskt\\x22:\\x22Input tools\\x22,\\x22psrc\\x22:\\x22This search was removed from your \\\\u003Ca href\\x3d\\\\\\x22/history\\\\\\x22\\\\u003EWeb History\\\\u003C/a\\\\u003E\\x22,\\x22psrl\\x22:\\x22Remove\\x22,\\x22sbit\\x22:\\x22Search by image\\x22,\\x22srch\\x22:\\x22Google Search\\x22},\\x22ovr\\x22:{},\\x22pq\\x22:\\x22\\x22,\\x22refpd\\x22:true,\\x22rfs\\x22:[],\\x22sbas\\x22:\\x220 3px 8px 0 rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.08)\\x22,\\x22sbpl\\x22:16,\\x22sbpr\\x22:16,\\x22scd\\x22:10,\\x22stok\\x22:\\x22LxevIsLHVIUIWwIcb8r8VW0bHOY\\x22,\\x22uhde\\x22:false}}\&#39;;google.pmc=JSON.parse(pmc);})();&lt;/script&gt;        &lt;/body&gt;&lt;/html&gt;&#39;
 </pre></div></div>
 </div>
 <p>Consider: what would you see if there had been an exception within the <code class="docutils literal notranslate"><span class="pre">get_webdata</span></code> function? You could uncomment the <code class="docutils literal notranslate"><span class="pre">raise</span></code> line, above, and re-execute the two cells. What happens? Is there any way to debug the execution to find the root cause of the error?</p>
@@ -951,8 +997,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
 <span class="c1"># Sometimes we defer computations with strings</span>
@@ -976,8 +1021,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># we can use lambda or other &quot;closure&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can use lambda or other &quot;closure&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">z</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -998,8 +1042,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># A very similar thing happens in functools.partial</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A very similar thing happens in functools.partial</span>
 
 <span class="kn">import</span> <span class="nn">functools</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1020,8 +1063,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Python generators are delayed execution by default</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python generators are delayed execution by default</span>
 <span class="c1"># Many Python functions expect such iterable objects</span>
 
 <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
@@ -1038,8 +1080,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># run once: we get one value and execution halts within the generator</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run once: we get one value and execution halts within the generator</span>
 <span class="c1"># run again and the execution completes</span>
 <span class="nb">next</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 </pre></div>
@@ -1063,8 +1104,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">total</span><span class="o">.</span><span class="n">dask</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span><span class="o">.</span><span class="n">dask</span>
 </pre></div>
 </div>
 </div>
@@ -1126,7 +1166,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 0: read_csv</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                read_csv-025627f5-6229-4c7e-847b-4e56624e1220
+                read_csv-05aab838-6b2c-49b7-b6ec-9936c74c2cc7
             </p>
 
             <table style="width: 100%;">
@@ -1156,7 +1196,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 1: len</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                len-4c3f0abd-20ce-4e67-9211-9f53fada4336
+                len-cd86f6db-0d75-44ad-97a5-5566a3d87778
             </p>
 
             <table style="width: 100%;">
@@ -1186,7 +1226,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 2: read_csv</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                read_csv-a6b4a376-5ff1-4534-838c-8ebbfe0a978c
+                read_csv-b09dd411-9d1f-4492-bd9d-0c2d7c954ed6
             </p>
 
             <table style="width: 100%;">
@@ -1216,7 +1256,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 3: len</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                len-80b2b9e6-da6a-4da7-a7e3-22136fc40853
+                len-5c680944-46a6-4734-9a94-53b414964ece
             </p>
 
             <table style="width: 100%;">
@@ -1246,7 +1286,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 4: read_csv</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                read_csv-57de8e41-0501-418e-b4f4-69ff6b8fe140
+                read_csv-2119c4f2-4f87-480d-939f-990b4b4ee433
             </p>
 
             <table style="width: 100%;">
@@ -1276,7 +1316,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 5: len</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                len-957bc328-8460-4a65-8013-6dbbac3c0b5c
+                len-d214e069-3c29-4faf-b707-f6944d6ec42a
             </p>
 
             <table style="width: 100%;">
@@ -1306,7 +1346,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
                 <h4 style="display: inline;">Layer 6: sum</h4>
             </summary>
             <p style="color: var(--jp-ui-font-color2, #5D5851); margin: -0.25em 0px 0px 0px;">
-                sum-1c88c2ec-dcf5-4e94-8383-6bcc73070898
+                sum-fa70671c-8751-454d-abb0-b4100bad9d39
             </p>
 
             <table style="width: 100%;">
@@ -1331,8 +1371,7 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">dict</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">dask</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">total</span><span class="o">.</span><span class="n">dask</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1342,22 +1381,22 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;sum-1c88c2ec-dcf5-4e94-8383-6bcc73070898&#39;: (&lt;function sum(iterable, /, start=0)&gt;,
-  [&#39;len-957bc328-8460-4a65-8013-6dbbac3c0b5c&#39;,
-   &#39;len-80b2b9e6-da6a-4da7-a7e3-22136fc40853&#39;,
-   &#39;len-4c3f0abd-20ce-4e67-9211-9f53fada4336&#39;]),
- &#39;read_csv-57de8e41-0501-418e-b4f4-69ff6b8fe140&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
+{&#39;sum-fa70671c-8751-454d-abb0-b4100bad9d39&#39;: (&lt;function sum(iterable, /, start=0)&gt;,
+  [&#39;len-d214e069-3c29-4faf-b707-f6944d6ec42a&#39;,
+   &#39;len-5c680944-46a6-4734-9a94-53b414964ece&#39;,
+   &#39;len-cd86f6db-0d75-44ad-97a5-5566a3d87778&#39;]),
+ &#39;read_csv-2119c4f2-4f87-480d-939f-990b4b4ee433&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
   &#39;data/accounts.0.csv&#39;),
- &#39;len-957bc328-8460-4a65-8013-6dbbac3c0b5c&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-57de8e41-0501-418e-b4f4-69ff6b8fe140&#39;),
- &#39;read_csv-a6b4a376-5ff1-4534-838c-8ebbfe0a978c&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
+ &#39;len-d214e069-3c29-4faf-b707-f6944d6ec42a&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-2119c4f2-4f87-480d-939f-990b4b4ee433&#39;),
+ &#39;read_csv-b09dd411-9d1f-4492-bd9d-0c2d7c954ed6&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
   &#39;data/accounts.1.csv&#39;),
- &#39;len-80b2b9e6-da6a-4da7-a7e3-22136fc40853&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-a6b4a376-5ff1-4534-838c-8ebbfe0a978c&#39;),
- &#39;read_csv-025627f5-6229-4c7e-847b-4e56624e1220&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
+ &#39;len-5c680944-46a6-4734-9a94-53b414964ece&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-b09dd411-9d1f-4492-bd9d-0c2d7c954ed6&#39;),
+ &#39;read_csv-05aab838-6b2c-49b7-b6ec-9936c74c2cc7&#39;: (&lt;function pandas.io.parsers.readers.read_csv(filepath_or_buffer: &#39;FilePathOrBuffer&#39;, sep=&lt;no_default&gt;, delimiter=None, header=&#39;infer&#39;, names=&lt;no_default&gt;, index_col=None, usecols=None, squeeze=False, prefix=&lt;no_default&gt;, mangle_dupe_cols=True, dtype: &#39;DtypeArg | None&#39; = None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=False, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression=&#39;infer&#39;, thousands=None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator=None, quotechar=&#39;&#34;&#39;, quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options: &#39;StorageOptions&#39; = None)&gt;,
   &#39;data/accounts.2.csv&#39;),
- &#39;len-4c3f0abd-20ce-4e67-9211-9f53fada4336&#39;: (&lt;function len(obj, /)&gt;,
-  &#39;read_csv-025627f5-6229-4c7e-847b-4e56624e1220&#39;)}
+ &#39;len-cd86f6db-0d75-44ad-97a5-5566a3d87778&#39;: (&lt;function len(obj, /)&gt;,
+  &#39;read_csv-05aab838-6b2c-49b7-b6ec-9936c74c2cc7&#39;)}
 </pre></div></div>
 </div>
 </div>
@@ -1367,8 +1406,8 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="01_dask.delayed.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1385,19 +1424,17 @@ b&#39;&lt;!doctype html&gt;&lt;html itemscope=&#34;&#34; itemtype=&#34;http://sc
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Dask Developers<br/>
-        
-            &copy; Copyright 2018, Dask Developers.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Dask Developers<br/>
+    
+        &copy; Copyright 2018, Dask Developers.<br/>
+  </p>
+</footer>
 </main>
 
 

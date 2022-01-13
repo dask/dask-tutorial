@@ -32,7 +32,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -217,7 +217,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -235,7 +235,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -314,6 +314,11 @@
      5.) What day of the week has the worst average departure delay?
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#6.)-What-holiday-has-the-worst-average-departure-delay?">
+     6.) What holiday has the worst average departure delay?
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -384,7 +389,164 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dask DataFrames</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#When-to-use-dask.dataframe">
+   When to use
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.dataframe
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Create-data">
+   Create data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Setup">
+   Setup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Real-Data">
+     Real Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#What-just-happened?">
+     What just happened?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Computations-with-dask.dataframe">
+   Computations with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.dataframe
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#1.)-How-many-rows-are-in-our-dataset?">
+     1.) How many rows are in our dataset?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#2.)-In-total,-how-many-non-canceled-flights-were-taken?">
+     2.) In total, how many non-canceled flights were taken?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#3.)-In-total,-how-many-non-cancelled-flights-were-taken-from-each-airport?">
+     3.) In total, how many non-cancelled flights were taken from each airport?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#4.)-What-was-the-average-departure-delay-from-each-airport?">
+     4.) What was the average departure delay from each airport?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#5.)-What-day-of-the-week-has-the-worst-average-departure-delay?">
+     5.) What day of the week has the worst average departure delay?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#6.)-What-holiday-has-the-worst-average-departure-delay?">
+     6.) What holiday has the worst average departure delay?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Sharing-Intermediate-Results">
+   Sharing Intermediate Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#How-does-this-compare-to-Pandas?">
+   How does this compare to Pandas?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dask-DataFrame-Data-Model">
+   Dask DataFrame Data Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Converting-CRSDepTime-to-a-timestamp">
+   Converting
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CRSDepTime
+    </span>
+   </code>
+   to a timestamp
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Custom-code-and-Dask-Dataframe">
+     Custom code and Dask Dataframe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Rewrite-above-to-use-a-single-call-to-map_partitions">
+     Exercise: Rewrite above to use a single call to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       map_partitions
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Limitations">
+   Limitations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#What-doesn’t-work?">
+     What doesn’t work?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Learn-More">
+   Learn More
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   
@@ -597,7 +759,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -666,7 +828,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="When-to-use-dask.dataframe">
 <h2>When to use <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code><a class="headerlink" href="#When-to-use-dask.dataframe" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is great for tabular datasets that fit in memory. Dask becomes useful when the dataset you want to analyze is larger than your machine’s RAM. The demo dataset we’re working with is only about 200MB, so that you can download it in a reasonable time, but <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> will scale to datasets much larger than memory.</p>
-<p><img alt="6bdc1083f22a477694cdffbf83f33911" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
+<p><img alt="4cbb115bbbd242e7baebc13fc9140e86" class="no-scaled-link" src="_images/pandas_logo.png" style="width: 28%;" /></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> module implements a blocked parallel <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object that mimics a large subset of the Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> API. One Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is comprised of many in-memory pandas <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> separated along the index. One operation on a Dask <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> triggers many pandas operations on the constituent pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s in a way that is mindful of potential parallelism and memory constraints.</p>
 <p><strong>Related Documentation</strong></p>
 <ul class="simple">
@@ -688,8 +850,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">run</span> prep.py -d flights
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> prep.py -d flights
 </pre></div>
 </div>
 </div>
@@ -700,8 +861,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -712,8 +872,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">prep</span> <span class="kn">import</span> <span class="n">accounts_csvs</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prep</span> <span class="kn">import</span> <span class="n">accounts_csvs</span>
 <span class="n">accounts_csvs</span><span class="p">()</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
@@ -737,8 +896,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -775,33 +933,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>87</td>
-      <td>Xavier</td>
-      <td>45</td>
+      <td>43</td>
+      <td>Yvonne</td>
+      <td>2114</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>33</td>
-      <td>Sarah</td>
-      <td>36</td>
+      <td>37</td>
+      <td>Wendy</td>
+      <td>-356</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>87</td>
-      <td>Xavier</td>
-      <td>58</td>
+      <td>35</td>
+      <td>Oliver</td>
+      <td>668</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>54</td>
-      <td>Tim</td>
-      <td>2161</td>
+      <td>7</td>
+      <td>Yvonne</td>
+      <td>7283</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>7</td>
-      <td>Zelda</td>
-      <td>220</td>
+      <td>72</td>
+      <td>Charlie</td>
+      <td>26</td>
     </tr>
   </tbody>
 </table>
@@ -811,8 +969,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># load and count number of rows</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load and count number of rows</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -834,8 +991,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">),</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">),</span>
                  <span class="n">parse_dates</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
 </pre></div>
 </div>
@@ -845,8 +1001,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1052,8 +1207,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1233,8 +1387,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>  <span class="c1"># this fails</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>  <span class="c1"># this fails</span>
 </pre></div>
 </div>
 </div>
@@ -1245,7 +1398,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 distributed.worker - WARNING - Compute Failed
 Function:  execute_task
-args:      ((subgraph_callable-7cde8198-e9a4-4e62-9832-dbf8bb4f8d48, [(&lt;function read_block_from_file at 0x7f44dde92280&gt;, &lt;OpenFile &#39;/home/runner/work/dask-tutorial/dask-tutorial/data/nycflights/1999.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), None, True, True]))
+args:      ((subgraph_callable-9f7a9441-9505-4db4-8591-9b3fc52594b4, [(&lt;function read_block_from_file at 0x7f4028078040&gt;, &lt;OpenFile &#39;/home/runner/work/dask-tutorial/dask-tutorial/data/nycflights/1999.csv&#39;&gt;, 0, 64000000, b&#39;\n&#39;), None, True, True]))
 kwargs:    {}
 Exception: ValueError(&#39;Mismatched dtypes found in `pd.read_csv`/`pd.read_table`.\n\n+----------------+---------+----------+\n| Column         | Found   | Expected |\n+----------------+---------+----------+\n| CRSElapsedTime | float64 | int64    |\n| TailNum        | object  | float64  |\n+----------------+---------+----------+\n\nThe following columns also raised exceptions on conversion:\n\n- TailNum\n  ValueError(&#34;could not convert string to float: \&#39;N54711\&#39;&#34;)\n\nUsually this is due to dask\&#39;s dtype inference failing, and\n*may* be fixed by specifying dtypes manually by adding:\n\ndtype={\&#39;CRSElapsedTime\&#39;: \&#39;float64\&#39;,\n       \&#39;TailNum\&#39;: \&#39;object\&#39;}\n\nto the call to `read_csv`/`read_table`.&#39;)
 
@@ -1258,7 +1411,7 @@ Exception: ValueError(&#39;Mismatched dtypes found in `pd.read_csv`/`pd.read_tab
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipykernel_7387/668323394.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_7234/668323394.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>df<span class="ansi-blue-fg">.</span>tail<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>  <span class="ansi-red-fg"># this fails</span>
 
 <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ansi-cyan-fg">tail</span><span class="ansi-blue-fg">(self, n, compute)</span>
@@ -1411,8 +1564,7 @@ to the call to `read_csv`/`read_table`.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">),</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">),</span>
                  <span class="n">parse_dates</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]},</span>
                  <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;TailNum&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                         <span class="s1">&#39;CRSElapsedTime&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -1424,8 +1576,7 @@ to the call to `read_csv`/`read_table`.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>  <span class="c1"># now works</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>  <span class="c1"># now works</span>
 </pre></div>
 </div>
 </div>
@@ -1601,6 +1752,80 @@ to the call to `read_csv`/`read_table`.
 <p>5 rows × 21 columns</p>
 </div></div>
 </div>
+<p>Let’s also read the holidays data which will use in the exercises</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">holidays</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s2">&quot;holidays&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">holidays</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>holiday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990-01-01</td>
+      <td>New Year's Day</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1990-01-15</td>
+      <td>Martin Luther King Jr. Day</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990-02-19</td>
+      <td>Washington's Birthday</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990-05-28</td>
+      <td>Memorial Day</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990-07-04</td>
+      <td>Independence Day</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
 </div>
 </div>
 <div class="section" id="Computations-with-dask.dataframe">
@@ -1621,11 +1846,10 @@ to the call to `read_csv`/`read_table`.
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> lets us write pandas-like code, that operates on larger than memory datasets in parallel.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">time</span> df.DepDelay.max().compute()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> df.DepDelay.max().compute()
 </pre></div>
 </div>
 </div>
@@ -1634,12 +1858,12 @@ to the call to `read_csv`/`read_table`.
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 29.4 ms, sys: 0 ns, total: 29.4 ms
-Wall time: 103 ms
+CPU times: user 30.1 ms, sys: 313 µs, total: 30.4 ms
+Wall time: 96.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1660,21 +1884,20 @@ Wall time: 103 ms
 </ol>
 <p>As with <code class="docutils literal notranslate"><span class="pre">Delayed</span></code> objects, you can view the underlying task graph using the <code class="docutils literal notranslate"><span class="pre">.visualize</span></code> method:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># notice the parallelism</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># notice the parallelism</span>
 <span class="n">df</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="_images/04_dataframe_25_0.png" src="_images/04_dataframe_25_0.png" />
+<img alt="_images/04_dataframe_28_0.png" src="_images/04_dataframe_28_0.png" />
 </div>
 </div>
 </div>
@@ -1685,25 +1908,23 @@ Wall time: 103 ms
 <h3>1.) How many rows are in our dataset?<a class="headerlink" href="#1.)-How-many-rows-are-in-our-dataset?" title="Permalink to this headline">¶</a></h3>
 <p>If you aren’t familiar with pandas, how would you check how many records are in a list of tuples?</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Your code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1716,25 +1937,23 @@ Wall time: 103 ms
 <h3>2.) In total, how many non-canceled flights were taken?<a class="headerlink" href="#2.)-In-total,-how-many-non-canceled-flights-were-taken?" title="Permalink to this headline">¶</a></h3>
 <p>With pandas, you would use <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/indexing.html#boolean-indexing">boolean indexing</a>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Your code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">Cancelled</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">Cancelled</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1747,25 +1966,23 @@ Wall time: 103 ms
 <h3>3.) In total, how many non-cancelled flights were taken from each airport?<a class="headerlink" href="#3.)-In-total,-how-many-non-cancelled-flights-were-taken-from-each-airport?" title="Permalink to this headline">¶</a></h3>
 <p><em>Hint</em>: use <code class="docutils literal notranslate"><span class="pre">`df.groupby</span></code> &lt;<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/groupby.html">https://pandas.pydata.org/pandas-docs/stable/groupby.html</a>&gt;`__.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Your code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">Cancelled</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Origin</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">Cancelled</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Origin</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1782,25 +1999,23 @@ Name: Origin, dtype: int64
 <h3>4.) What was the average departure delay from each airport?<a class="headerlink" href="#4.)-What-was-the-average-departure-delay-from-each-airport?" title="Permalink to this headline">¶</a></h3>
 <p>Note, this is the same computation you did in the previous notebook (is this approach faster or slower?)</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Your code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1816,25 +2031,23 @@ Name: DepDelay, dtype: float64
 <div class="section" id="5.)-What-day-of-the-week-has-the-worst-average-departure-delay?">
 <h3>5.) What day of the week has the worst average departure delay?<a class="headerlink" href="#5.)-What-day-of-the-week-has-the-worst-average-departure-delay?" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Your code here</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;DayOfWeek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;DayOfWeek&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1851,6 +2064,40 @@ Name: DepDelay, dtype: float64
 </pre></div></div>
 </div>
 </div>
+<div class="section" id="6.)-What-holiday-has-the-worst-average-departure-delay?">
+<h3>6.) What holiday has the worst average departure delay?<a class="headerlink" href="#6.)-What-holiday-has-the-worst-average-departure-delay?" title="Permalink to this headline">¶</a></h3>
+<p><em>Hint</em>: use <code class="docutils literal notranslate"><span class="pre">`df.merge</span></code> &lt;<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html</a>&gt;`__ to bring holiday information.</p>
+<p><em>Note</em>: If you have prepared the dataset with <code class="docutils literal notranslate"><span class="pre">--small</span></code> argument or set the <code class="docutils literal notranslate"><span class="pre">DASK_TUTORIAL_SMALL</span></code> environment variable to <code class="docutils literal notranslate"><span class="pre">True</span></code>, you might see only a couple of holidays. This is because the small dataset contains a limited number of rows.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">holidays</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;holiday&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+holiday
+Martin Luther King Jr. Day    12.198718
+New Year&#39;s Day                11.993151
+New Year&#39;s Day (Observed)     13.714286
+Name: DepDelay, dtype: float64
+</pre></div></div>
+</div>
+</div>
 </div>
 <div class="section" id="Sharing-Intermediate-Results">
 <h2>Sharing Intermediate Results<a class="headerlink" href="#Sharing-Intermediate-Results" title="Permalink to this headline">¶</a></h2>
@@ -1858,22 +2105,20 @@ Name: DepDelay, dtype: float64
 <p>For example, lets compute the mean and standard deviation for departure delay of all non-canceled flights. Since dask operations are lazy, those values aren’t the final results yet. They’re just the recipe required to get the result.</p>
 <p>If we compute them with two calls to compute, there is no sharing of intermediate computations.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">non_cancelled</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">Cancelled</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">non_cancelled</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">Cancelled</span><span class="p">]</span>
 <span class="n">mean_delay</span> <span class="o">=</span> <span class="n">non_cancelled</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">std_delay</span> <span class="o">=</span> <span class="n">non_cancelled</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">mean_delay_res</span> <span class="o">=</span> <span class="n">mean_delay</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
 <span class="n">std_delay_res</span> <span class="o">=</span> <span class="n">std_delay</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
@@ -1885,17 +2130,16 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 56.6 ms, sys: 8.78 ms, total: 65.4 ms
-Wall time: 210 ms
+CPU times: user 55.8 ms, sys: 10.8 ms, total: 66.7 ms
+Wall time: 215 ms
 </pre></div></div>
 </div>
 <p>But let’s try by passing both to a single <code class="docutils literal notranslate"><span class="pre">compute</span></code> call.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">mean_delay_res</span><span class="p">,</span> <span class="n">std_delay_res</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mean_delay</span><span class="p">,</span> <span class="n">std_delay</span><span class="p">)</span>
 </pre></div>
@@ -1906,8 +2150,8 @@ Wall time: 210 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 36.5 ms, sys: 8.82 ms, total: 45.4 ms
-Wall time: 133 ms
+CPU times: user 143 ms, sys: 7.26 ms, total: 150 ms
+Wall time: 238 ms
 </pre></div></div>
 </div>
 <p>Using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> takes roughly 1/2 the time. This is because the task graphs for both results are merged when calling <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code>, allowing shared operations to only be done once instead of twice. In particular, using <code class="docutils literal notranslate"><span class="pre">dask.compute</span></code> only does the following once:</p>
@@ -1918,20 +2162,19 @@ Wall time: 133 ms
 </ul>
 <p>To see what the merged task graphs between multiple results look like (and what’s shared), you can use the <code class="docutils literal notranslate"><span class="pre">dask.visualize</span></code> function (we might want to use <code class="docutils literal notranslate"><span class="pre">filename='graph.pdf'</span></code> to save the graph to disk so that we can zoom in more easily):</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">dask</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">mean_delay</span><span class="p">,</span> <span class="n">std_delay</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dask</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">mean_delay</span><span class="p">,</span> <span class="n">std_delay</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="_images/04_dataframe_47_0.png" src="_images/04_dataframe_47_0.png" />
+<img alt="_images/04_dataframe_53_0.png" src="_images/04_dataframe_53_0.png" />
 </div>
 </div>
 </div>
@@ -1954,24 +2197,23 @@ Wall time: 133 ms
 <h2>Dask DataFrame Data Model<a class="headerlink" href="#Dask-DataFrame-Data-Model" title="Permalink to this headline">¶</a></h2>
 <p>For the most part, a Dask DataFrame feels like a pandas DataFrame. So far, the biggest difference we’ve seen is that Dask operations are lazy; they build up a task graph instead of executing immediately (more details coming in <a class="reference internal" href="05_distributed.html"><span class="doc">Schedulers</span></a>). This lets Dask do operations in parallel and out of core.</p>
 <p>In <a class="reference internal" href="03_array.html"><span class="doc">Dask Arrays</span></a>, we saw that a <code class="docutils literal notranslate"><span class="pre">dask.array</span></code> was composed of many NumPy arrays, chunked along one or more dimensions. It’s similar for <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>: a Dask DataFrame is composed of many pandas DataFrames. For <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code> the chunking happens only along the index.</p>
-<p><img alt="daabfefd466842afbdfc0ee4999b5ed8" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
+<p><img alt="aa380be73168427d8ed458f2c45c1e3d" class="no-scaled-link" src="http://dask.pydata.org/en/latest/_images/dask-dataframe.svg" width="30%" /></p>
 <p>We call each chunk a <em>partition</em>, and the upper / lower bounds are <em>divisions</em>. Dask <em>can</em> store information about the divisions. For now, partitions come up when you write custom functions to apply to Dask DataFrames</p>
 </div>
 <div class="section" id="Converting-CRSDepTime-to-a-timestamp">
 <h2>Converting <code class="docutils literal notranslate"><span class="pre">CRSDepTime</span></code> to a timestamp<a class="headerlink" href="#Converting-CRSDepTime-to-a-timestamp" title="Permalink to this headline">¶</a></h2>
 <p>This dataset stores timestamps as <code class="docutils literal notranslate"><span class="pre">HHMM</span></code>, which are read in as integers in <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">crs_dep_time</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CRSDepTime</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs_dep_time</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CRSDepTime</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">crs_dep_time</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1992,11 +2234,10 @@ Name: CRSDepTime, dtype: int64
 <p>To convert these to timestamps of scheduled departure time, we need to convert these integers into <code class="docutils literal notranslate"><span class="pre">pd.Timedelta</span></code> objects, and then combine them with the <code class="docutils literal notranslate"><span class="pre">Date</span></code> column.</p>
 <p>In pandas we’d do this using the <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta</span></code> function, and a bit of arithmetic:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># Get the first 10 dates to complement our `crs_dep_time`</span>
 <span class="n">date</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -2016,7 +2257,7 @@ Name: CRSDepTime, dtype: int64
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2045,11 +2286,10 @@ dtype: datetime64[ns]
 </ul>
 <p>Here we’ll just be discussing <code class="docutils literal notranslate"><span class="pre">map_partitions</span></code>, which we can use to implement <code class="docutils literal notranslate"><span class="pre">to_timedelta</span></code> on our own:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Look at the docs for `map_partitions`</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at the docs for `map_partitions`</span>
 
 <span class="n">help</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">CRSDepTime</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">)</span>
 </pre></div>
@@ -2174,11 +2414,10 @@ map_partitions(func, *args, **kwargs) method of dask.dataframe.core.Series insta
 </div>
 <p>The basic idea is to apply a function that operates on a DataFrame to each partition. In this case, we’ll apply <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">hours</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CRSDepTime</span> <span class="o">//</span> <span class="mi">100</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hours</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CRSDepTime</span> <span class="o">//</span> <span class="mi">100</span>
 <span class="c1"># hours_timedelta = pd.to_timedelta(hours, unit=&#39;h&#39;)</span>
 <span class="n">hours_timedelta</span> <span class="o">=</span> <span class="n">hours</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
 
@@ -2191,16 +2430,15 @@ map_partitions(func, *args, **kwargs) method of dask.dataframe.core.Series insta
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">departure_timestamp</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">departure_timestamp</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2217,16 +2455,15 @@ Dask Name: add, 90 tasks
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">departure_timestamp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">departure_timestamp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2244,21 +2481,19 @@ dtype: datetime64[ns]
 <h3>Exercise: Rewrite above to use a single call to <code class="docutils literal notranslate"><span class="pre">map_partitions</span></code><a class="headerlink" href="#Exercise:-Rewrite-above-to-use-a-single-call-to-map_partitions" title="Permalink to this headline">¶</a></h3>
 <p>This will be slightly more efficient than two separate calls, as it reduces the number of tasks in the graph.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">compute_departure_timestamp</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_departure_timestamp</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="k">pass</span>  <span class="c1"># TODO: implement this</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">departure_timestamp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="n">compute_departure_timestamp</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">departure_timestamp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="n">compute_departure_timestamp</span><span class="p">)</span>
 
 <span class="n">departure_timestamp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2284,7 +2519,7 @@ Exception: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;h
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipykernel_7387/1135339802.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">/tmp/ipykernel_7234/1135339802.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> departure_timestamp <span class="ansi-blue-fg">=</span> df<span class="ansi-blue-fg">.</span>map_partitions<span class="ansi-blue-fg">(</span>compute_departure_timestamp<span class="ansi-blue-fg">)</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span>
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg"> </span>departure_timestamp<span class="ansi-blue-fg">.</span>head<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
@@ -2384,11 +2619,10 @@ Exception: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;h
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">compute_departure_timestamp</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_departure_timestamp</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">hours</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">CRSDepTime</span> <span class="o">//</span> <span class="mi">100</span>
     <span class="n">hours_timedelta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
 
@@ -2403,7 +2637,7 @@ Exception: AttributeError(&#34;&#39;NoneType&#39; object has no attribute &#39;h
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -2440,11 +2674,10 @@ dtype: datetime64[ns]
 <li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/">Pandas documentation</a></p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">client</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2454,8 +2687,8 @@ dtype: datetime64[ns]
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="03_array.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -2472,19 +2705,17 @@ dtype: datetime64[ns]
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Dask Developers<br/>
-        
-            &copy; Copyright 2018, Dask Developers.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Dask Developers<br/>
+    
+        &copy; Copyright 2018, Dask Developers.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -32,7 +32,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -217,7 +217,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -235,7 +235,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -350,7 +350,125 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Parallelize code with dask.delayed</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Basics">
+   Basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Parallelize-with-the-dask.delayed-decorator">
+     Parallelize with the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       dask.delayed
+      </span>
+     </code>
+     decorator
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#What-just-happened?">
+   What just happened?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Some-questions-to-consider:">
+     Some questions to consider:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Exercise:-Parallelize-a-for-loop">
+   Exercise: Parallelize a for loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Exercise:-Parallelizing-a-for-loop-code-with-control-flow">
+   Exercise: Parallelizing a for-loop code with control flow
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Some questions to consider:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Exercise:-Parallelizing-a-Pandas-Groupby-Reduction">
+   Exercise: Parallelizing a Pandas Groupby Reduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Create-data">
+   Create data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Inspect-data">
+     Inspect data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Read-one-file-with-pandas.read_csv-and-compute-mean-departure-delay">
+     Read one file with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pandas.read_csv
+      </span>
+     </code>
+     and compute mean departure delay
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Sequential-code:-Mean-Departure-Delay-Per-Airport">
+     Sequential code: Mean Departure Delay Per Airport
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Parallelize-the-code-above">
+     Parallelize the code above
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Some questions to consider:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Learn-More">
+     Learn More
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Close-the-Client">
+   Close the Client
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   
@@ -563,7 +681,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -642,8 +760,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -657,8 +774,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -675,8 +791,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># This takes three seconds to run because we call each</span>
 <span class="c1"># function sequentially, one after the other</span>
 
@@ -691,7 +806,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 106 ms, sys: 7.42 ms, total: 114 ms
+CPU times: user 84.5 ms, sys: 23.1 ms, total: 108 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -703,8 +818,7 @@ Wall time: 3 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
 </pre></div>
 </div>
 </div>
@@ -712,8 +826,7 @@ Wall time: 3 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># This runs immediately, all it does is build a graph</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">inc</span><span class="p">)(</span><span class="mi">1</span><span class="p">)</span>
@@ -727,8 +840,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.5 ms, sys: 0 ns, total: 1.5 ms
-Wall time: 1.31 ms
+CPU times: user 995 µs, sys: 126 µs, total: 1.12 ms
+Wall time: 1.02 ms
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -737,8 +850,7 @@ Wall time: 1.31 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># This actually runs our computation using a local thread pool</span>
 
 <span class="n">z</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
@@ -750,7 +862,7 @@ Wall time: 1.31 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 153 ms, sys: 55.1 ms, total: 208 ms
+CPU times: user 137 ms, sys: 58.9 ms, total: 196 ms
 Wall time: 2.13 s
 </pre></div></div>
 </div>
@@ -772,8 +884,7 @@ Wall time: 2.13 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">z</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span>
 </pre></div>
 </div>
 </div>
@@ -783,15 +894,14 @@ Wall time: 2.13 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-7b0bf885-4acd-4a46-8055-9f1b7a479b8c&#39;)
+Delayed(&#39;add-081c53b1-5707-4b2a-b1f0-4a59ef61b91a&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Look at the task graph for `z`</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at the task graph for `z`</span>
 <span class="n">z</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -821,8 +931,7 @@ Delayed(&#39;add-7b0bf885-4acd-4a46-8055-9f1b7a479b8c&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -830,8 +939,7 @@ Delayed(&#39;add-7b0bf885-4acd-4a46-8055-9f1b7a479b8c&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># Sequential code</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -848,7 +956,7 @@ Delayed(&#39;add-7b0bf885-4acd-4a46-8055-9f1b7a479b8c&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 260 ms, sys: 27.5 ms, total: 287 ms
+CPU times: user 267 ms, sys: 57.1 ms, total: 324 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -856,8 +964,7 @@ Wall time: 8.01 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">total</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span>
 </pre></div>
 </div>
 </div>
@@ -874,8 +981,7 @@ Wall time: 8.01 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># Your parallel code here...</span>
 </pre></div>
 </div>
@@ -885,16 +991,15 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 1e+03 ns, total: 4 µs
-Wall time: 5.01 µs
+CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 5.72 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">inc</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -912,7 +1017,7 @@ Wall time: 5.01 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-653300f4-54f7-4046-80f6-22f9094cbfb4&#39;)
+Before computing: Delayed(&#39;sum-5c447ade-3e3c-42b5-9147-e778838a1963&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -929,8 +1034,7 @@ After computing : 44
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
 
@@ -945,8 +1049,7 @@ After computing : 44
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># Sequential code</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
@@ -968,7 +1071,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 340 ms, sys: 37.9 ms, total: 378 ms
+CPU times: user 313 ms, sys: 51.9 ms, total: 365 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -976,8 +1079,7 @@ Wall time: 10 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># Your parallel code here...</span>
 <span class="c1"># TODO: parallelize the sequential code above using dask.delayed</span>
 <span class="c1"># You will need to delay some functions, but not all</span>
@@ -989,16 +1091,15 @@ Wall time: 10 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 0 ns, sys: 2 µs, total: 2 µs
-Wall time: 5.01 µs
+CPU times: user 2 µs, sys: 0 ns, total: 2 µs
+Wall time: 5.72 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># even</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">delayed</span><span class="p">(</span><span class="n">double</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
@@ -1014,8 +1115,7 @@ Wall time: 5.01 µs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">time</span> total.compute()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> total.compute()
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1124,7 @@ Wall time: 5.01 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 109 ms, sys: 20.2 ms, total: 129 ms
+CPU times: user 144 ms, sys: 13.9 ms, total: 158 ms
 Wall time: 3.03 s
 </pre></div></div>
 </div>
@@ -1041,8 +1141,7 @@ Wall time: 3.03 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">total</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1076,8 +1175,7 @@ Wall time: 3.03 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%</span><span class="k">run</span> prep.py -d flights
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> prep.py -d flights
 </pre></div>
 </div>
 </div>
@@ -1087,8 +1185,7 @@ Wall time: 3.03 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -1118,8 +1215,7 @@ Wall time: 3.03 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;1990.csv&#39;</span><span class="p">))</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1301,8 +1397,7 @@ Wall time: 3.03 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># What is the schema?</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What is the schema?</span>
 <span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
@@ -1343,8 +1438,7 @@ dtype: object
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># What originating airports are in the data?</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What originating airports are in the data?</span>
 <span class="n">df</span><span class="o">.</span><span class="n">Origin</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1362,8 +1456,7 @@ array([&#39;EWR&#39;, &#39;LGA&#39;, &#39;JFK&#39;], dtype=object)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Mean departure delay per-airport for one year</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean departure delay per-airport for one year</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1389,8 +1482,7 @@ Name: DepDelay, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
 <span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -1399,8 +1491,7 @@ Name: DepDelay, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">sums</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1433,16 +1524,15 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 45.6 ms, sys: 184 µs, total: 45.8 ms
-Wall time: 45 ms
+CPU times: user 44.8 ms, sys: 4.69 ms, total: 49.5 ms
+Wall time: 46.9 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mean</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span>
 </pre></div>
 </div>
 </div>
@@ -1487,8 +1577,7 @@ Name: DepDelay, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">compute</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">compute</span>
 </pre></div>
 </div>
 </div>
@@ -1496,8 +1585,7 @@ Name: DepDelay, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># copied sequential code</span>
 
@@ -1532,16 +1620,15 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 46.2 ms, sys: 0 ns, total: 46.2 ms
-Wall time: 45.2 ms
+CPU times: user 45.8 ms, sys: 650 µs, total: 46.5 ms
+Wall time: 45.3 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mean</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span>
 </pre></div>
 </div>
 </div>
@@ -1562,8 +1649,7 @@ Name: DepDelay, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># your code here</span>
 </pre></div>
 </div>
@@ -1573,8 +1659,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 5.25 µs
+CPU times: user 2 µs, sys: 0 ns, total: 2 µs
+Wall time: 5.72 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1582,8 +1668,7 @@ Wall time: 5.25 µs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># This is just one possible solution, there are</span>
 <span class="c1"># several ways to do this using `delayed`</span>
@@ -1622,16 +1707,15 @@ Wall time: 5.25 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 77.4 ms, sys: 4.43 ms, total: 81.9 ms
-Wall time: 152 ms
+CPU times: user 88.4 ms, sys: 7.36 ms, total: 95.8 ms
+Wall time: 250 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># ensure the results still match</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ensure the results still match</span>
 <span class="n">mean</span>
 </pre></div>
 </div>
@@ -1671,8 +1755,7 @@ Name: DepDelay, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1682,8 +1765,8 @@ Name: DepDelay, dtype: float64
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="00_overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1700,19 +1783,17 @@ Name: DepDelay, dtype: float64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Dask Developers<br/>
-        
-            &copy; Copyright 2018, Dask Developers.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Dask Developers<br/>
+    
+        &copy; Copyright 2018, Dask Developers.<br/>
+  </p>
+</footer>
 </main>
 
 
