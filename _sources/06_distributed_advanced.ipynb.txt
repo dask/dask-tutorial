@@ -630,10 +630,10 @@
    "metadata": {},
    "source": [
     "The trouble with this approach is that Dask is meant for the execution of large datasets/computations - you probably can't simply run the whole thing \n",
-    "in one local thread, else you wouldn't have used Dask in the first place. So the code above should only be used on a small part of the data that also exihibits the error. \n",
+    "in one local thread, else you wouldn't have used Dask in the first place. So the code above should only be used on a small part of the data that also exhibits the error. \n",
     "Furthermore, the method will not work when you are dealing with futures (such as `f`, above, or after persisting) instead of delayed-based computations.\n",
     "\n",
-    "As an alternative, you can ask the scheduler to analyze your calculation and find the specific sub-task responsible for the error, and pull only it and its dependnecies locally for execution."
+    "As an alternative, you can ask the scheduler to analyze your calculation and find the specific sub-task responsible for the error, and pull only it and its dependencies locally for execution."
    ]
   },
   {

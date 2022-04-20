@@ -32,10 +32,10 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lazy execution" href="01x_lazy.html" />
@@ -95,7 +95,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
@@ -187,22 +192,22 @@
 
 
           
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
             
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
@@ -806,7 +811,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 105 ms, sys: 21.7 ms, total: 127 ms
+CPU times: user 127 ms, sys: 12.6 ms, total: 139 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -840,8 +845,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 659 µs, sys: 40 µs, total: 699 µs
-Wall time: 638 µs
+CPU times: user 784 µs, sys: 135 µs, total: 919 µs
+Wall time: 787 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -862,8 +867,8 @@ Wall time: 638 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 168 ms, sys: 34 ms, total: 202 ms
-Wall time: 2.12 s
+CPU times: user 271 ms, sys: 63.5 ms, total: 334 ms
+Wall time: 2.25 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -894,7 +899,7 @@ Wall time: 2.12 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-1e5af521-7848-4983-97ad-f74568827c06&#39;)
+Delayed(&#39;add-585da373-9a39-41cf-ae4c-8ea243045fdd&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -956,7 +961,7 @@ Delayed(&#39;add-1e5af521-7848-4983-97ad-f74568827c06&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 282 ms, sys: 48.6 ms, total: 331 ms
+CPU times: user 286 ms, sys: 51.4 ms, total: 337 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -991,8 +996,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 5.25 µs
+CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 5.48 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1017,7 +1022,7 @@ Wall time: 5.25 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-3a17e4d9-cb89-448e-a26b-e4ff6ce77676&#39;)
+Before computing: Delayed(&#39;sum-9ae86c39-7dc6-484e-b7d4-dadda1b22527&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -1071,7 +1076,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 342 ms, sys: 79.7 ms, total: 421 ms
+CPU times: user 391 ms, sys: 35.8 ms, total: 427 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -1091,8 +1096,8 @@ Wall time: 10 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 1 µs, total: 3 µs
-Wall time: 5.72 µs
+CPU times: user 4 µs, sys: 0 ns, total: 4 µs
+Wall time: 6.2 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1124,8 +1129,8 @@ Wall time: 5.72 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 131 ms, sys: 11.6 ms, total: 142 ms
-Wall time: 3.03 s
+CPU times: user 124 ms, sys: 25 ms, total: 149 ms
+Wall time: 3.04 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1524,8 +1529,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 49.5 ms, sys: 0 ns, total: 49.5 ms
-Wall time: 47.9 ms
+CPU times: user 56.2 ms, sys: 8.03 ms, total: 64.2 ms
+Wall time: 60.9 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1620,8 +1625,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 38.6 ms, sys: 3.89 ms, total: 42.5 ms
-Wall time: 41.4 ms
+CPU times: user 60 ms, sys: 680 µs, total: 60.7 ms
+Wall time: 58.4 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1659,8 +1664,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 1e+03 ns, total: 3 µs
-Wall time: 5.48 µs
+CPU times: user 2 µs, sys: 1 µs, total: 3 µs
+Wall time: 6.91 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1707,8 +1712,8 @@ Wall time: 5.48 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 84.1 ms, sys: 14.9 ms, total: 99 ms
-Wall time: 236 ms
+CPU times: user 113 ms, sys: 18.3 ms, total: 132 ms
+Wall time: 217 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">

@@ -32,10 +32,10 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Parallel and Distributed Machine Learning" href="08_machine_learning.html" />
@@ -95,7 +95,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
@@ -187,22 +192,22 @@
 
 
           
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
             
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
@@ -616,10 +621,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/07_dataframe_storage.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/07_dataframe_storage.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/07_dataframe_storage.ipynb">on Github</a>.</p>
-<p><img alt="0b3548d303d34ac78b77ad14eac2ed69" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="03b0abed0a2b4c30a6668fb2ed8db8f1" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Data-Storage">
 <h1>Data Storage<a class="headerlink" href="#Data-Storage" title="Permalink to this headline">¶</a></h1>
-<p><img alt="ab85b1ece92d49e899640312931ada1d" class="no-scaled-link" src="_images/hdd.jpg" style="width: 20%;" /> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
+<p><img alt="0d5e72981bce4c629c9da4a4a75bf361" class="no-scaled-link" src="_images/hdd.jpg" style="width: 20%;" /> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
 <p>Decompressing text and parsing CSV files is expensive. One of the most effective strategies with medium data is to use a binary storage format like HDF5. Often the performance gains from doing this is sufficient so that you can switch back to using Pandas again instead of using <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>.</p>
 <p>In this section we’ll learn how to efficiently arrange and store your datasets in on-disk binary formats. We’ll use the following:</p>
 <ol class="arabic simple">
@@ -676,6 +681,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/dask/dataframe/backends.py:187: FutureWarning: pandas.Int64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  _numeric_index_types = (pd.Int64Index, pd.Float64Index, pd.UInt64Index)
+/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/dask/dataframe/backends.py:187: FutureWarning: pandas.Float64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  _numeric_index_types = (pd.Int64Index, pd.Float64Index, pd.UInt64Index)
+/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/dask/dataframe/backends.py:187: FutureWarning: pandas.UInt64Index is deprecated and will be removed from pandas in a future version. Use pandas.Index with the appropriate dtype instead.
+  _numeric_index_types = (pd.Int64Index, pd.Float64Index, pd.UInt64Index)
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -707,33 +725,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>57</td>
-      <td>Dan</td>
-      <td>-13</td>
+      <td>55</td>
+      <td>Yvonne</td>
+      <td>2309</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>79</td>
-      <td>Ray</td>
-      <td>171</td>
+      <td>4</td>
+      <td>Michael</td>
+      <td>1469</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>15</td>
-      <td>Hannah</td>
-      <td>-347</td>
+      <td>32</td>
+      <td>Zelda</td>
+      <td>935</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>76</td>
-      <td>Dan</td>
-      <td>-29</td>
+      <td>35</td>
+      <td>Zelda</td>
+      <td>338</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Dan</td>
-      <td>-24</td>
+      <td>29</td>
+      <td>Kevin</td>
+      <td>58</td>
     </tr>
   </tbody>
 </table>
@@ -775,8 +793,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 90.3 ms, sys: 15.7 ms, total: 106 ms
-Wall time: 111 ms
+CPU times: user 108 ms, sys: 19.9 ms, total: 127 ms
+Wall time: 128 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -829,33 +847,33 @@ Wall time: 111 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>57</td>
-      <td>Dan</td>
-      <td>-13</td>
+      <td>55</td>
+      <td>Yvonne</td>
+      <td>2309</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>79</td>
-      <td>Ray</td>
-      <td>171</td>
+      <td>4</td>
+      <td>Michael</td>
+      <td>1469</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>15</td>
-      <td>Hannah</td>
-      <td>-347</td>
+      <td>32</td>
+      <td>Zelda</td>
+      <td>935</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>76</td>
-      <td>Dan</td>
-      <td>-29</td>
+      <td>35</td>
+      <td>Zelda</td>
+      <td>338</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Dan</td>
-      <td>-24</td>
+      <td>29</td>
+      <td>Kevin</td>
+      <td>58</td>
     </tr>
   </tbody>
 </table>
@@ -878,8 +896,8 @@ Wall time: 111 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 11.9 ms, sys: 7.3 ms, total: 19.2 ms
-Wall time: 14.3 ms
+CPU times: user 10.6 ms, sys: 15.9 ms, total: 26.5 ms
+Wall time: 21.5 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -888,7 +906,7 @@ Wall time: 14.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-20542636
+27315138
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -904,8 +922,8 @@ Wall time: 14.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 28.2 ms, sys: 4.04 ms, total: 32.3 ms
-Wall time: 31.8 ms
+CPU times: user 31.4 ms, sys: 11.3 ms, total: 42.6 ms
+Wall time: 41.9 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -914,7 +932,7 @@ Wall time: 31.8 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-20542636
+27315138
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -942,8 +960,8 @@ Wall time: 31.8 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 104 ms, sys: 3.88 ms, total: 108 ms
-Wall time: 107 ms
+CPU times: user 125 ms, sys: 16.1 ms, total: 141 ms
+Wall time: 140 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -996,33 +1014,33 @@ Wall time: 107 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>57</td>
-      <td>Dan</td>
-      <td>-13</td>
+      <td>55</td>
+      <td>Yvonne</td>
+      <td>2309</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>79</td>
-      <td>Ray</td>
-      <td>171</td>
+      <td>4</td>
+      <td>Michael</td>
+      <td>1469</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>15</td>
-      <td>Hannah</td>
-      <td>-347</td>
+      <td>32</td>
+      <td>Zelda</td>
+      <td>935</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>76</td>
-      <td>Dan</td>
-      <td>-29</td>
+      <td>35</td>
+      <td>Zelda</td>
+      <td>338</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>57</td>
-      <td>Dan</td>
-      <td>-24</td>
+      <td>29</td>
+      <td>Kevin</td>
+      <td>58</td>
     </tr>
   </tbody>
 </table>
@@ -1042,8 +1060,8 @@ Wall time: 107 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 21 ms, sys: 0 ns, total: 21 ms
-Wall time: 20.6 ms
+CPU times: user 37.7 ms, sys: 0 ns, total: 37.7 ms
+Wall time: 38.3 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1052,7 +1070,7 @@ Wall time: 20.6 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-20542636
+27315138
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
@@ -1087,11 +1105,11 @@ Wall time: 20.6 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-r--r-- 1 runner docker    952 Jan 14 17:56 _common_metadata
--rw-r--r-- 1 runner docker   2224 Jan 14 17:56 _metadata
--rw-r--r-- 1 runner docker 251731 Jan 14 17:56 part.0.parquet
--rw-r--r-- 1 runner docker 251731 Jan 14 17:56 part.1.parquet
--rw-r--r-- 1 runner docker 251731 Jan 14 17:56 part.2.parquet
+-rw-r--r-- 1 runner docker    952 Apr 20 16:15 _common_metadata
+-rw-r--r-- 1 runner docker    952 Apr 20 16:15 _metadata
+-rw-r--r-- 1 runner docker 251721 Apr 20 16:15 part.0.parquet
+-rw-r--r-- 1 runner docker 251721 Apr 20 16:15 part.1.parquet
+-rw-r--r-- 1 runner docker 251721 Apr 20 16:15 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1131,8 +1149,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 8.04 ms, sys: 4.02 ms, total: 12.1 ms
-Wall time: 11.9 ms
+CPU times: user 7.59 ms, sys: 0 ns, total: 7.59 ms
+Wall time: 6.94 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1141,7 +1159,7 @@ Wall time: 11.9 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-20542636
+0
 </pre></div></div>
 </div>
 <p>When archiving data, it is common to sort and partition by a column with unique identifiers, to facilitate fast look-ups later. For this data, that column is <code class="docutils literal notranslate"><span class="pre">id</span></code>. Time how long it takes to retrieve the rows corresponding to <code class="docutils literal notranslate"><span class="pre">id==100</span></code> from the raw CSV, from HDF5 and parquet versions, and finally from a new parquet version written after applying <code class="docutils literal notranslate"><span class="pre">set_index('id')</span></code>.</p>
