@@ -10,11 +10,11 @@ Dask provides multi-core execution on larger-than-memory datasets.
 
 We can think of dask at a high and a low level
 
-*  **High level collections:**  Dask provides high-level Array, Bag, and DataFrame
+*  **High-level collections:**  Dask provides high-level Array, Bag, and DataFrame
    collections that mimic NumPy, lists, and Pandas but can operate in parallel on
    datasets that don't fit into main memory.  Dask's high-level collections are
    alternatives to NumPy and Pandas for large datasets.
-*  **Low Level schedulers:** Dask provides dynamic task schedulers that
+*  **Low-level schedulers:** Dask provides dynamic task schedulers that
    execute task graphs in parallel.  These execution engines power the
    high-level collections mentioned above but can also power custom,
    user-defined workloads.  These schedulers are low-latency (around 1ms) and
