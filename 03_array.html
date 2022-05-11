@@ -717,10 +717,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/03_array.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/03_array.ipynb">on Github</a>.</p>
-<p><img alt="4a8a0a4d92e34eaf9f053912763331cf" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="cbbdc1634de5434c87eca29dbc924d7b" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Arrays">
 <h1>Arrays<a class="headerlink" href="#Arrays" title="Permalink to this headline">¶</a></h1>
-<p><img alt="793744df296c48a5b95d0a593a8bcdc2" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
+<p><img alt="716bea693b2348b39b19954a1b727eb5" class="no-scaled-link" src="_images/array.png" style="width: 25%;" /> Dask array provides a parallel, larger-than-memory, n-dimensional array using blocked algorithms. Simply put: distributed Numpy.</p>
 <ul class="simple">
 <li><p><strong>Parallel</strong>: Uses all of the cores on your computer</p></li>
 <li><p><strong>Larger-than-memory</strong>: Lets you work on datasets that are larger than your available memory by breaking up your array into many small pieces, operating on those pieces in an order that minimizes the memory footprint of your computation, and effectively streaming data from disk.</p></li>
@@ -770,10 +770,12 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data with h5py</span>
 <span class="c1"># this creates a pointer to the data, but does not actually load</span>
-<span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;random.hdf5&#39;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">dset</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/x&#39;</span><span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;random.hdf5&quot;</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">dset</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;/x&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -792,7 +794,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute sum of large array, one million numbers at a time</span>
 <span class="n">sums</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1_000_000_000</span><span class="p">,</span> <span class="mi">1_000_000</span><span class="p">):</span>
-    <span class="n">chunk</span> <span class="o">=</span> <span class="n">dset</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1_000_000</span><span class="p">]</span>  <span class="c1"># pull out numpy array</span>
+    <span class="n">chunk</span> <span class="o">=</span> <span class="n">dset</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1_000_000</span><span class="p">]</span>  <span class="c1"># pull out numpy array</span>
     <span class="n">sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
 <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span>
@@ -805,7 +807,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-5002591.8125
+5000087.8125
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean-using-a-blocked-algorithm">
@@ -832,7 +834,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sums</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">lengths</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1_000_000_000</span><span class="p">,</span> <span class="mi">1_000_000</span><span class="p">):</span>
-    <span class="n">chunk</span> <span class="o">=</span> <span class="n">dset</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1_000_000</span><span class="p">]</span>  <span class="c1"># pull out numpy array</span>
+    <span class="n">chunk</span> <span class="o">=</span> <span class="n">dset</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1_000_000</span><span class="p">]</span>  <span class="c1"># pull out numpy array</span>
     <span class="n">sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
     <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">))</span>
 
@@ -847,7 +849,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.0005183625
+1.0000175625
 </pre></div></div>
 </div>
 </div>
@@ -866,6 +868,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+
 <span class="n">x</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">dset</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">,))</span>
 <span class="n">x</span>
 </pre></div>
@@ -976,7 +979,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-5002591.5
+5000088.0
 </pre></div></div>
 </div>
 <div class="section" id="Exercise:-Compute-the-mean">
@@ -996,7 +999,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Performance-and-Parallelism">
 <h2>Performance and Parallelism<a class="headerlink" href="#Performance-and-Parallelism" title="Permalink to this headline">¶</a></h2>
-<p><img alt="f63b9aeb6ad240a482d03b7f85b97aaa" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
+<p><img alt="a82669f7fc394395a71ac1bcfe199e5a" class="no-scaled-link" src="_images/fail-case.gif" style="width: 40%;" /></p>
 <p>In our first examples we used <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to walk through the array one block at a time. For simple operations like <code class="docutils literal notranslate"><span class="pre">sum</span></code> this is optimal. However for complex operations we may want to traverse through the array differently. In particular we may want the following:</p>
 <ol class="arabic simple">
 <li><p>Use multiple cores in parallel</p></li>
@@ -1014,12 +1017,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">),</span>   <span class="c1"># 400 million element array</span>
-                              <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>   <span class="c1"># Cut into 1000x1000 sized chunks</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[::</span><span class="mi">100</span><span class="p">]</span>                            <span class="c1"># Perform NumPy-style operations</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span>
+    <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">),</span> <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># 400 million element array</span>
+<span class="p">)</span>  <span class="c1"># Cut into 1000x1000 sized chunks</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[::</span><span class="mi">100</span><span class="p">]</span>  <span class="c1"># Perform NumPy-style operations</span>
 </pre></div>
 </div>
 </div>
@@ -1045,7 +1049,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">y</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>     <span class="c1"># Time to compute the result</span>
+<span class="n">y</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>  <span class="c1"># Time to compute the result</span>
 </pre></div>
 </div>
 </div>
@@ -1054,8 +1058,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.5 s, sys: 149 ms, total: 1.64 s
-Wall time: 9.71 s
+CPU times: user 851 ms, sys: 102 ms, total: 952 ms
+Wall time: 7.8 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1064,46 +1068,46 @@ Wall time: 9.71 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([10.00072458,  9.99917179, 10.00113934, 10.00024365, 10.00043775,
-        9.99992446,  9.99848188,  9.99972385, 10.0010994 ,  9.99996142,
-       10.00133479,  9.99856597,  9.99880457, 10.00044516, 10.00050893,
-        9.99921865,  9.99979582, 10.00027084,  9.99908673, 10.00047414,
-        9.9995604 , 10.00069659,  9.99895752,  9.99845459,  9.9995803 ,
-        9.99990401, 10.00019858, 10.00221026,  9.9991652 , 10.00013155,
-        9.99936434, 10.00037824,  9.99972567, 10.00054651,  9.99972188,
-       10.00057868,  9.99987069,  9.99890409,  9.99900544, 10.00001602,
-        9.9989421 , 10.00043869,  9.99962569, 10.00013485,  9.99906586,
-       10.00041535,  9.99943413,  9.99942648, 10.00046969,  9.99921474,
-        9.99875858,  9.99975421, 10.00035682,  9.99895939, 10.00036582,
-        9.99971552,  9.99955316,  9.99906674,  9.99928543,  9.99974774,
-        9.9996768 ,  9.99872861,  9.99923638, 10.0010213 , 10.00003934,
-        9.99847296,  9.99967314,  9.99958776, 10.00042969,  9.99977398,
-       10.00047511,  9.99820553,  9.99928561,  9.99981815, 10.00064837,
-        9.99819647,  9.99909441,  9.99868315, 10.00081689,  9.99971589,
-        9.99955367, 10.00139005,  9.99927461,  9.99911732,  9.99940706,
-        9.99949398,  9.99943546,  9.99927448,  9.99970328,  9.99980741,
-        9.99995877, 10.00078965,  9.99924258,  9.99907492, 10.00001763,
-        9.99973034, 10.00006854, 10.00053597,  9.99980384, 10.00034086,
-       10.00021381, 10.00051841,  9.99923507, 10.00071217, 10.00080983,
-        9.99944687,  9.99908408, 10.00023235,  9.99926967, 10.00018479,
-        9.99979212,  9.99981815, 10.00009018, 10.00006604,  9.99950553,
-       10.00063384, 10.00060851, 10.00086382, 10.00070191, 10.00032926,
-        9.99928535, 10.00013058, 10.00034429,  9.99977839,  9.99980621,
-       10.00056911, 10.00018561,  9.99864457, 10.00005054, 10.00036673,
-        9.99960758,  9.99947295,  9.9999592 , 10.00029193,  9.99932172,
-        9.99962338, 10.00073935,  9.99917562, 10.00102933, 10.0004119 ,
-       10.00136853, 10.00048834,  9.9994065 , 10.00132026,  9.99891219,
-       10.0019192 , 10.00067288,  9.99941723, 10.0009433 , 10.00024365,
-       10.0001558 , 10.00011458,  9.99863278,  9.99981643, 10.00019687,
-       10.00005077, 10.00072948, 10.00030819, 10.00048279,  9.99950471,
-       10.00025026, 10.00071222,  9.99887685, 10.00056759, 10.00010181,
-       10.00035468, 10.00046633,  9.99916677,  9.999435  , 10.00050457,
-        9.99995194, 10.00055942, 10.0011512 , 10.00015036,  9.99869366,
-       10.00018221,  9.99956141, 10.00004981,  9.99895298,  9.99952199,
-       10.00098891, 10.00082945, 10.00001105, 10.00108039,  9.99981087,
-        9.99957728, 10.00022827,  9.9996351 ,  9.99960326,  9.99958087,
-        9.99963005, 10.00051684,  9.99987588, 10.00034538,  9.99939217,
-       10.00160792, 10.0001368 ,  9.99893066,  9.99990013,  9.99885714])
+array([ 9.99984538,  9.99927666,  9.99979374,  9.99997005, 10.00061801,
+       10.00003997,  9.99961434,  9.99873782,  9.99967522, 10.0004466 ,
+       10.00121442,  9.99987576,  9.99907175,  9.99906818,  9.99872454,
+        9.99998952, 10.00014074,  9.9996311 , 10.00099758,  9.99993504,
+       10.00116631,  9.99921682, 10.00172208, 10.00030443,  9.99950875,
+        9.99844938,  9.99924684, 10.00046709,  9.99961748, 10.00045268,
+        9.99928616, 10.00011332, 10.00087132,  9.99838632,  9.99987117,
+       10.00053867,  9.99827893,  9.99960942, 10.00035366, 10.00026822,
+       10.00048599, 10.00000726,  9.99995808, 10.00055777,  9.99981826,
+       10.00014747, 10.00007967,  9.999616  ,  9.99933405,  9.99949394,
+        9.99987959,  9.99985686, 10.0001297 ,  9.99987493, 10.00038622,
+        9.99988446, 10.00111681, 10.00029707,  9.99892399,  9.99922465,
+        9.99974999,  9.99970261,  9.99962455, 10.00013608,  9.99923291,
+        9.99944744, 10.00004429,  9.99927882, 10.00207964,  9.99997446,
+       10.00022044,  9.99968267,  9.99930579, 10.00092775, 10.00011711,
+        9.99971651, 10.0003069 , 10.00046137,  9.99960241,  9.99908189,
+       10.00087518,  9.99919979, 10.00233508,  9.99985171,  9.99951779,
+        9.99936943, 10.00029928, 10.00049204,  9.99933438, 10.00019447,
+       10.00045963,  9.99987128, 10.00062117, 10.00011404, 10.0003533 ,
+        9.99936827,  9.99861004,  9.99913463,  9.99975064,  9.9997216 ,
+        9.99987497,  9.99977918, 10.0011876 , 10.00081808, 10.00023999,
+       10.00065338,  9.99990004, 10.00046688, 10.0004987 , 10.00013287,
+        9.99994259, 10.00052156,  9.99909348, 10.00063425, 10.00088113,
+        9.99952644, 10.00044657,  9.99993182,  9.99880208, 10.0007772 ,
+        9.99992632,  9.99873718, 10.00032391, 10.00011784,  9.99955205,
+       10.00008349,  9.99939823,  9.99990399, 10.00049492,  9.9999607 ,
+        9.99977419, 10.00070059, 10.00048414, 10.00049654, 10.00016536,
+        9.99933131,  9.99911299,  9.99895991,  9.99875478,  9.99997632,
+       10.0016141 ,  9.99926672, 10.00013592,  9.99971488, 10.00034008,
+       10.00078286,  9.9996879 ,  9.99945124, 10.00114657, 10.00115564,
+        9.99913312,  9.99992586, 10.0007798 , 10.00114903, 10.000083  ,
+        9.99841707, 10.00004145,  9.9999931 ,  9.99963075,  9.99960603,
+        9.99993504,  9.99939352,  9.99982203,  9.99960154, 10.00023724,
+       10.00091639, 10.00002189, 10.0011634 ,  9.9994042 , 10.00123704,
+        9.99791621,  9.99978622, 10.00066593, 10.00075847,  9.99972276,
+       10.00072376, 10.00059404, 10.00116802, 10.00031816, 10.00035832,
+        9.99967463,  9.99940111, 10.00039598,  9.99943324, 10.00116994,
+       10.00068405, 10.0002825 ,  9.99860636,  9.99954407, 10.00000073,
+       10.00081712,  9.99938453,  9.99933725,  9.9995403 ,  9.99893366,
+       10.00103049, 10.00043918, 10.00082144, 10.00057875, 10.00087704])
 </pre></div></div>
 </div>
 </div>
@@ -1175,12 +1179,13 @@ array([10.00072458,  9.99917179, 10.00113934, 10.00024365, 10.00043775,
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-<span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;weather-big&#39;</span><span class="p">,</span> <span class="s1">&#39;*.hdf5&#39;</span><span class="p">)))</span>
-<span class="n">dsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)[</span><span class="s1">&#39;/t2m&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;weather-big&quot;</span><span class="p">,</span> <span class="s2">&quot;*.hdf5&quot;</span><span class="p">)))</span>
+<span class="n">dsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)[</span><span class="s2">&quot;/t2m&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
 <span class="n">dsets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1223,7 +1228,7 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dsets</span><span class="p">[</span><span class="mi">0</span><span class="p">][::</span><span class="mi">4</span><span class="p">,</span> <span class="p">::</span><span class="mi">4</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dsets</span><span class="p">[</span><span class="mi">0</span><span class="p">][::</span><span class="mi">4</span><span class="p">,</span> <span class="p">::</span><span class="mi">4</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1413,112 +1418,27 @@ array([[84.75, 84.75, 84.75, 84.75, 84.75],
 </table></div>
 </div>
 <p><strong>Plot the mean of this array along the time (``0th``) axis</strong></p>
+<p>Complete the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># complete the following:</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [19]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 3&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span style="color: rgb(95,135,135)"># complete the following:</span>
-<span class="ansi-green-intense-fg ansi-bold">      2</span> fig <span style="color: rgb(98,98,98)">=</span> plt<span style="color: rgb(98,98,98)">.</span>figure(figsize<span style="color: rgb(98,98,98)">=</span>(<span style="color: rgb(98,98,98)">16</span>, <span style="color: rgb(98,98,98)">8</span>))
-<span class="ansi-green-fg">----&gt; 3</span> <span class="ansi-yellow-bg">plt</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">imshow</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">cmap</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">RdBu_r</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/_api/deprecation.py:456</span>, in <span class="ansi-cyan-fg">make_keyword_only.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    450</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">len</span>(args) <span style="color: rgb(98,98,98)">&gt;</span> name_idx:
-<span class="ansi-green-intense-fg ansi-bold">    451</span>     warn_deprecated(
-<span class="ansi-green-intense-fg ansi-bold">    452</span>         since, message<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Passing the </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(name)s</span><span style="color: rgb(175,0,0)"> </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(obj_type)s</span><span style="color: rgb(175,0,0)"> </span><span style="color: rgb(175,0,0)">&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    453</span>         <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">positionally is deprecated since Matplotlib </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(since)s</span><span style="color: rgb(175,0,0)">; the </span><span style="color: rgb(175,0,0)">&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    454</span>         <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">parameter will become keyword-only </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(removal)s</span><span style="color: rgb(175,0,0)">.</span><span style="color: rgb(175,0,0)">&#34;</span>,
-<span class="ansi-green-intense-fg ansi-bold">    455</span>         name<span style="color: rgb(98,98,98)">=</span>name, obj_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">parameter of </span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>func<span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__name__</span><span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">()</span><span style="color: rgb(175,0,0)">&#34;</span>)
-<span class="ansi-green-fg">--&gt; 456</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/pyplot.py:2640</span>, in <span class="ansi-cyan-fg">imshow</span><span class="ansi-blue-fg">(X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, interpolation_stage, filternorm, filterrad, resample, url, data, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2634</span> <span style="color: rgb(175,0,255)">@_copy_docstring_and_deprecators</span>(Axes<span style="color: rgb(98,98,98)">.</span>imshow)
-<span class="ansi-green-intense-fg ansi-bold">   2635</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">imshow</span>(
-<span class="ansi-green-intense-fg ansi-bold">   2636</span>         X, cmap<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, norm<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, aspect<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, interpolation<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>,
-<span class="ansi-green-intense-fg ansi-bold">   2637</span>         alpha<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, vmin<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, vmax<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, origin<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, extent<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, <span style="color: rgb(98,98,98)">*</span>,
-<span class="ansi-green-intense-fg ansi-bold">   2638</span>         interpolation_stage<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, filternorm<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, filterrad<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">4.0</span>,
-<span class="ansi-green-intense-fg ansi-bold">   2639</span>         resample<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, url<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, data<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs):
-<span class="ansi-green-fg">-&gt; 2640</span>     __ret <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">gca</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">imshow</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-intense-fg ansi-bold">   2641</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">X</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">cmap</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">cmap</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">norm</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">norm</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">aspect</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">aspect</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2642</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">interpolation</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">interpolation</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">vmin</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">vmin</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2643</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">vmax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">vmax</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">origin</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">origin</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">extent</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">extent</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2644</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">interpolation_stage</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">interpolation_stage</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2645</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">filternorm</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">filternorm</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">filterrad</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">filterrad</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">resample</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">resample</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2646</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">data</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">if</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,0,255)">is</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,0,255)">not</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">None</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">else</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">   2647</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   2648</span>     sci(__ret)
-<span class="ansi-green-intense-fg ansi-bold">   2649</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> __ret
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/_api/deprecation.py:456</span>, in <span class="ansi-cyan-fg">make_keyword_only.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    450</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">len</span>(args) <span style="color: rgb(98,98,98)">&gt;</span> name_idx:
-<span class="ansi-green-intense-fg ansi-bold">    451</span>     warn_deprecated(
-<span class="ansi-green-intense-fg ansi-bold">    452</span>         since, message<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Passing the </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(name)s</span><span style="color: rgb(175,0,0)"> </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(obj_type)s</span><span style="color: rgb(175,0,0)"> </span><span style="color: rgb(175,0,0)">&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    453</span>         <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">positionally is deprecated since Matplotlib </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(since)s</span><span style="color: rgb(175,0,0)">; the </span><span style="color: rgb(175,0,0)">&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    454</span>         <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">parameter will become keyword-only </span><span class="ansi-bold" style="color: rgb(175,95,135)">%(removal)s</span><span style="color: rgb(175,0,0)">.</span><span style="color: rgb(175,0,0)">&#34;</span>,
-<span class="ansi-green-intense-fg ansi-bold">    455</span>         name<span style="color: rgb(98,98,98)">=</span>name, obj_type<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">parameter of </span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>func<span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__name__</span><span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">()</span><span style="color: rgb(175,0,0)">&#34;</span>)
-<span class="ansi-green-fg">--&gt; 456</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/__init__.py:1412</span>, in <span class="ansi-cyan-fg">_preprocess_data.&lt;locals&gt;.inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1409</span> <span style="color: rgb(175,0,255)">@functools</span><span style="color: rgb(98,98,98)">.</span>wraps(func)
-<span class="ansi-green-intense-fg ansi-bold">   1410</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">inner</span>(ax, <span style="color: rgb(98,98,98)">*</span>args, data<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">None</span>, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs):
-<span class="ansi-green-intense-fg ansi-bold">   1411</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> data <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg">-&gt; 1412</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">ax</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">map</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">sanitize_sequence</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1414</span>     bound <span style="color: rgb(98,98,98)">=</span> new_sig<span style="color: rgb(98,98,98)">.</span>bind(ax, <span style="color: rgb(98,98,98)">*</span>args, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
-<span class="ansi-green-intense-fg ansi-bold">   1415</span>     auto_label <span style="color: rgb(98,98,98)">=</span> (bound<span style="color: rgb(98,98,98)">.</span>arguments<span style="color: rgb(98,98,98)">.</span>get(label_namer)
-<span class="ansi-green-intense-fg ansi-bold">   1416</span>                   <span class="ansi-bold" style="color: rgb(175,0,255)">or</span> bound<span style="color: rgb(98,98,98)">.</span>kwargs<span style="color: rgb(98,98,98)">.</span>get(label_namer))
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/axes/_axes.py:5488</span>, in <span class="ansi-cyan-fg">Axes.imshow</span><span class="ansi-blue-fg">(self, X, cmap, norm, aspect, interpolation, alpha, vmin, vmax, origin, extent, interpolation_stage, filternorm, filterrad, resample, url, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5481</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>set_aspect(aspect)
-<span class="ansi-green-intense-fg ansi-bold">   5482</span> im <span style="color: rgb(98,98,98)">=</span> mimage<span style="color: rgb(98,98,98)">.</span>AxesImage(<span style="color: rgb(0,135,0)">self</span>, cmap, norm, interpolation,
-<span class="ansi-green-intense-fg ansi-bold">   5483</span>                       origin, extent, filternorm<span style="color: rgb(98,98,98)">=</span>filternorm,
-<span class="ansi-green-intense-fg ansi-bold">   5484</span>                       filterrad<span style="color: rgb(98,98,98)">=</span>filterrad, resample<span style="color: rgb(98,98,98)">=</span>resample,
-<span class="ansi-green-intense-fg ansi-bold">   5485</span>                       interpolation_stage<span style="color: rgb(98,98,98)">=</span>interpolation_stage,
-<span class="ansi-green-intense-fg ansi-bold">   5486</span>                       <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
-<span class="ansi-green-fg">-&gt; 5488</span> <span class="ansi-yellow-bg">im</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">set_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">X</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   5489</span> im<span style="color: rgb(98,98,98)">.</span>set_alpha(alpha)
-<span class="ansi-green-intense-fg ansi-bold">   5490</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> im<span style="color: rgb(98,98,98)">.</span>get_clip_path() <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
-<span class="ansi-green-intense-fg ansi-bold">   5491</span>     <span style="color: rgb(95,135,135)"># image does not already have clipping set, clip to axes patch</span>
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.8/site-packages/matplotlib/image.py:706</span>, in <span class="ansi-cyan-fg">_ImageBase.set_data</span><span class="ansi-blue-fg">(self, A)</span>
-<span class="ansi-green-intense-fg ansi-bold">    702</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A <span style="color: rgb(98,98,98)">=</span> cbook<span style="color: rgb(98,98,98)">.</span>safe_masked_invalid(A, copy<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
-<span class="ansi-green-intense-fg ansi-bold">    704</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> (<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A<span style="color: rgb(98,98,98)">.</span>dtype <span style="color: rgb(98,98,98)">!=</span> np<span style="color: rgb(98,98,98)">.</span>uint8 <span class="ansi-bold" style="color: rgb(175,0,255)">and</span>
-<span class="ansi-green-intense-fg ansi-bold">    705</span>         <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> np<span style="color: rgb(98,98,98)">.</span>can_cast(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A<span style="color: rgb(98,98,98)">.</span>dtype, <span style="color: rgb(0,135,0)">float</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">same_kind</span><span style="color: rgb(175,0,0)">&#34;</span>)):
-<span class="ansi-green-fg">--&gt; 706</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Image data of dtype </span><span class="ansi-bold" style="color: rgb(175,95,135)">{}</span><span style="color: rgb(175,0,0)"> cannot be converted to </span><span style="color: rgb(175,0,0)">&#34;</span>
-<span class="ansi-green-intense-fg ansi-bold">    707</span>                     <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">float</span><span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(98,98,98)">.</span>format(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A<span style="color: rgb(98,98,98)">.</span>dtype))
-<span class="ansi-green-intense-fg ansi-bold">    709</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A<span style="color: rgb(98,98,98)">.</span>ndim <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(98,98,98)">3</span> <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A<span style="color: rgb(98,98,98)">.</span>shape[<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>] <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(98,98,98)">1</span>:
-<span class="ansi-green-intense-fg ansi-bold">    710</span>     <span style="color: rgb(95,135,135)"># If just one dimension assume scalar and apply colormap</span>
-<span class="ansi-green-intense-fg ansi-bold">    711</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_A[:, :, <span style="color: rgb(98,98,98)">0</span>]
-
-<span class="ansi-red-fg">TypeError</span>: Image data of dtype object cannot be converted to float
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="_images/03_array_65_1.png" src="_images/03_array_65_1.png" />
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1539,12 +1459,12 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1584,7 +1504,7 @@ da.store(my_dask_array, output)
 </pre></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
@@ -1592,16 +1512,17 @@ da.store(my_dask_array, output)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
 
-<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;weather-big&#39;</span><span class="p">,</span> <span class="s1">&#39;*.hdf5&#39;</span><span class="p">)))</span>
-<span class="n">dsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)[</span><span class="s1">&#39;/t2m&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;weather-big&quot;</span><span class="p">,</span> <span class="s2">&quot;*.hdf5&quot;</span><span class="p">)))</span>
+<span class="n">dsets</span> <span class="o">=</span> <span class="p">[</span><span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)[</span><span class="s2">&quot;/t2m&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">]</span>
 
 <span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">da</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">dset</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span> <span class="k">for</span> <span class="n">dset</span> <span class="ow">in</span> <span class="n">dsets</span><span class="p">]</span>
 
@@ -1609,7 +1530,7 @@ da.store(my_dask_array, output)
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span>
 
-<span class="n">da</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;myfile.zarr&#39;</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">da</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;myfile.zarr&quot;</span><span class="p">),</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1620,27 +1541,31 @@ da.store(my_dask_array, output)
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones potential</a> is used in particle simulations in physics, chemistry and engineering. It is highly parallelizable.</p>
 <p>First, we’ll run and profile the Numpy version on 7,000 particles.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+
 <span class="c1"># make a random collection of particles</span>
 <span class="k">def</span> <span class="nf">make_cluster</span><span class="p">(</span><span class="n">natoms</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1981</span><span class="p">):</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-    <span class="n">cluster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="p">(</span><span class="n">natoms</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">-</span><span class="mf">0.5</span>
+    <span class="n">cluster</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="p">(</span><span class="n">natoms</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span>
     <span class="k">return</span> <span class="n">cluster</span>
 
+
 <span class="k">def</span> <span class="nf">lj</span><span class="p">(</span><span class="n">r2</span><span class="p">):</span>
-    <span class="n">sr6</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">r2</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
-    <span class="n">pot</span> <span class="o">=</span> <span class="mf">4.</span><span class="o">*</span><span class="p">(</span><span class="n">sr6</span><span class="o">*</span><span class="n">sr6</span> <span class="o">-</span> <span class="n">sr6</span><span class="p">)</span>
+    <span class="n">sr6</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">r2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+    <span class="n">pot</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">sr6</span> <span class="o">*</span> <span class="n">sr6</span> <span class="o">-</span> <span class="n">sr6</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pot</span>
+
 
 <span class="c1"># build the matrix of distances</span>
 <span class="k">def</span> <span class="nf">distances</span><span class="p">(</span><span class="n">cluster</span><span class="p">):</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">cluster</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
-    <span class="n">mat</span> <span class="o">=</span> <span class="p">(</span><span class="n">diff</span><span class="o">*</span><span class="n">diff</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="p">(</span><span class="n">diff</span> <span class="o">*</span> <span class="n">diff</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mat</span>
+
 
 <span class="c1"># the lj function is evaluated over the upper triangle</span>
 <span class="c1"># after removing distances near zero</span>
@@ -1653,7 +1578,7 @@ da.store(my_dask_array, output)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster</span> <span class="o">=</span> <span class="n">make_cluster</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">7e3</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
@@ -1661,7 +1586,7 @@ da.store(my_dask_array, output)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> potential(cluster)
@@ -1673,12 +1598,12 @@ da.store(my_dask_array, output)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3.66 s, sys: 2.46 s, total: 6.13 s
-Wall time: 5.86 s
+CPU times: user 2.75 s, sys: 2.45 s, total: 5.2 s
+Wall time: 5.08 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1688,7 +1613,7 @@ Wall time: 5.86 s
 </div>
 <p>Notice that the most time consuming function is <code class="docutils literal notranslate"><span class="pre">distances</span></code>:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this would open in another browser tab</span>
@@ -1713,34 +1638,35 @@ Wall time: 5.86 s
 <p>Here’s the Dask version. Only the <code class="docutils literal notranslate"><span class="pre">potential</span></code> function needs to be rewritten to best utilize Dask.</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">da.nansum</span></code> has been used over the full <span class="math notranslate nohighlight">\(NxN\)</span> distance matrix to improve parallel efficiency.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.array</span> <span class="k">as</span> <span class="nn">da</span>
+
 
 <span class="c1"># compute the potential on the entire</span>
 <span class="c1"># matrix of distances and ignore division by zero</span>
 <span class="k">def</span> <span class="nf">potential_dask</span><span class="p">(</span><span class="n">cluster</span><span class="p">):</span>
     <span class="n">d2</span> <span class="o">=</span> <span class="n">distances</span><span class="p">(</span><span class="n">cluster</span><span class="p">)</span>
-    <span class="n">energy</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">lj</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span><span class="o">/</span><span class="mf">2.</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">lj</span><span class="p">(</span><span class="n">d2</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span>
     <span class="k">return</span> <span class="n">energy</span>
 </pre></div>
 </div>
 </div>
 <p>Let’s convert the NumPy array to a Dask array. Since the entire NumPy array fits in memory it is more computationally efficient to chunk the array by number of CPU cores.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">cpu_count</span>
 
-<span class="n">dcluster</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="n">cluster</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">//</span><span class="n">cpu_count</span><span class="p">())</span>
+<span class="n">dcluster</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">cluster</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="n">cluster</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">cpu_count</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <p>This step should scale quite well with number of cores. The warnings are complaining about dividing by zero, which is why we used <code class="docutils literal notranslate"><span class="pre">da.nansum</span></code> in <code class="docutils literal notranslate"><span class="pre">potential_dask</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">potential_dask</span><span class="p">(</span><span class="n">dcluster</span><span class="p">)</span>
@@ -1753,12 +1679,12 @@ Wall time: 5.86 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 244 ms, sys: 10.6 ms, total: 255 ms
-Wall time: 3.71 s
+CPU times: user 113 ms, sys: 22.5 ms, total: 135 ms
+Wall time: 2.88 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1784,7 +1710,7 @@ Wall time: 3.71 s
 <li><p><a class="reference external" href="https://examples.dask.org/array.html">Array examples</a></p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
