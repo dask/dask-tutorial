@@ -1,7 +1,8 @@
 # Dask Tutorial
 
-This tutorial was last given at SciPy 2020 which was a virtual conference.
-[A video of the SciPy 2020 tutorial is available online](https://www.youtube.com/watch?v=EybGGLbLipI).
+This tutorial was last given at SciPy 2022.
+
+[A video of the SciPy 2020 tutorial is also available online](https://www.youtube.com/watch?v=EybGGLbLipI).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab)
 [![Build Status](https://github.com/dask/dask-tutorial/workflows/CI/badge.svg)](https://github.com/dask/dask-tutorial/actions?query=workflow%3ACI)
