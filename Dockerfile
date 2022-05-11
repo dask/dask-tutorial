@@ -9,3 +9,5 @@ USER jovyan
 RUN git clone https://github.com/dask/dask-tutorial.git ./dask-tutorial
 RUN cd dask-tutorial && conda env update -n base -f binder/environment.yml --prune && . binder/postBuild && cd ..
 RUN rm dask-tutorial/github_deploy_key_dask_dask_tutorial.enc
+
+CMD jupyter lab
