@@ -1,5 +1,7 @@
 # Dask Tutorial
 
+_NOTE: This tutorial will be presented again at SciPy 2022! We are in the progress of making some modifications (see [PR #236](https://github.com/dask/dask-tutorial/pull/236) for more info)_
+
 This tutorial was last given at SciPy 2020 which was a virtual conference.
 [A video of the SciPy 2020 tutorial is available online](https://www.youtube.com/watch?v=EybGGLbLipI).
 
