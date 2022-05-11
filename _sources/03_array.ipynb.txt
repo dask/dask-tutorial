@@ -98,10 +98,12 @@
    "source": [
     "# Load data with h5py\n",
     "# this creates a pointer to the data, but does not actually load\n",
-    "import h5py\n",
     "import os\n",
-    "f = h5py.File(os.path.join('data', 'random.hdf5'), mode='r')\n",
-    "dset = f['/x']"
+    "\n",
+    "import h5py\n",
+    "\n",
+    "f = h5py.File(os.path.join(\"data\", \"random.hdf5\"), mode=\"r\")\n",
+    "dset = f[\"/x\"]"
    ]
   },
   {
@@ -134,7 +136,7 @@
     "# Compute sum of large array, one million numbers at a time\n",
     "sums = []\n",
     "for i in range(0, 1_000_000_000, 1_000_000):\n",
-    "    chunk = dset[i: i + 1_000_000]  # pull out numpy array\n",
+    "    chunk = dset[i : i + 1_000_000]  # pull out numpy array\n",
     "    sums.append(chunk.sum())\n",
     "\n",
     "total = sum(sums)\n",
@@ -174,16 +176,14 @@
    "cell_type": "code",
    "execution_count": null,
    "metadata": {
-    "jupyter": {
-     "source_hidden": true
-    }
+    "tags": []
    },
    "outputs": [],
    "source": [
     "sums = []\n",
     "lengths = []\n",
     "for i in range(0, 1_000_000_000, 1_000_000):\n",
-    "    chunk = dset[i: i + 1_000_000]  # pull out numpy array\n",
+    "    chunk = dset[i : i + 1_000_000]  # pull out numpy array\n",
     "    sums.append(chunk.sum())\n",
     "    lengths.append(len(chunk))\n",
     "\n",
@@ -226,6 +226,7 @@
    "outputs": [],
    "source": [
     "import dask.array as da\n",
+    "\n",
     "x = da.from_array(dset, chunks=(1_000_000,))\n",
     "x"
    ]
@@ -379,12 +380,13 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "import numpy as np\n",
     "import dask.array as da\n",
+    "import numpy as np\n",
     "\n",
-    "x = da.random.normal(10, 0.1, size=(20000, 20000),   # 400 million element array \n",
-    "                              chunks=(1000, 1000))   # Cut into 1000x1000 sized chunks\n",
-    "y = x.mean(axis=0)[::100]                            # Perform NumPy-style operations"
+    "x = da.random.normal(\n",
+    "    10, 0.1, size=(20000, 20000), chunks=(1000, 1000)  # 400 million element array\n",
+    ")  # Cut into 1000x1000 sized chunks\n",
+    "y = x.mean(axis=0)[::100]  # Perform NumPy-style operations"
    ]
   },
   {
@@ -403,7 +405,7 @@
    "outputs": [],
    "source": [
     "%%time\n",
-    "y.compute()     # Time to compute the result"
+    "y.compute()  # Time to compute the result"
    ]
   },
   {
@@ -535,12 +537,13 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "import h5py\n",
-    "from glob import glob\n",
     "import os\n",
+    "from glob import glob\n",
     "\n",
-    "filenames = sorted(glob(os.path.join('data', 'weather-big', '*.hdf5')))\n",
-    "dsets = [h5py.File(filename, mode='r')['/t2m'] for filename in filenames]\n",
+    "import h5py\n",
+    "\n",
+    "filenames = sorted(glob(os.path.join(\"data\", \"weather-big\", \"*.hdf5\")))\n",
+    "dsets = [h5py.File(filename, mode=\"r\")[\"/t2m\"] for filename in filenames]\n",
     "dsets[0]"
    ]
   },
@@ -563,7 +566,7 @@
     "import matplotlib.pyplot as plt\n",
     "\n",
     "fig = plt.figure(figsize=(16, 8))\n",
-    "plt.imshow(dsets[0][::4, ::4], cmap='RdBu_r');"
+    "plt.imshow(dsets[0][::4, ::4], cmap=\"RdBu_r\");"
    ]
   },
   {
@@ -628,7 +631,8 @@
    "metadata": {
     "jupyter": {
      "source_hidden": true
-    }
+    },
+    "tags": []
    },
    "outputs": [],
    "source": [
@@ -640,7 +644,15 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "**Plot the mean of this array along the time (`0th`) axis**"
+    "**Plot the mean of this array along the time (`0th`) axis**\n",
+    "\n",
+    "Complete the following:\n",
+    "\n",
+    "```python\n",
+    "result = ...\n",
+    "fig = plt.figure(figsize=(16, 8))\n",
+    "plt.imshow(result, cmap='RdBu_r')\n",
+    "```"
    ]
   },
   {
@@ -652,11 +664,7 @@
     ]
    },
    "outputs": [],
-   "source": [
-    "# complete the following:\n",
-    "fig = plt.figure(figsize=(16, 8))\n",
-    "plt.imshow(..., cmap='RdBu_r')"
-   ]
+   "source": []
   },
   {
    "cell_type": "code",
@@ -664,13 +672,14 @@
    "metadata": {
     "jupyter": {
      "source_hidden": true
-    }
+    },
+    "tags": []
    },
    "outputs": [],
    "source": [
     "result = x.mean(axis=0)\n",
     "fig = plt.figure(figsize=(16, 8))\n",
-    "plt.imshow(result, cmap='RdBu_r');"
+    "plt.imshow(result, cmap=\"RdBu_r\");"
    ]
   },
   {
@@ -699,7 +708,7 @@
    "source": [
     "result = x[0] - x.mean(axis=0)\n",
     "fig = plt.figure(figsize=(16, 8))\n",
-    "plt.imshow(result, cmap='RdBu_r');"
+    "plt.imshow(result, cmap=\"RdBu_r\");"
    ]
   },
   {
@@ -756,13 +765,14 @@
    },
    "outputs": [],
    "source": [
-    "import h5py\n",
-    "from glob import glob\n",
     "import os\n",
-    "import dask.array as da\n",
+    "from glob import glob\n",
     "\n",
-    "filenames = sorted(glob(os.path.join('data', 'weather-big', '*.hdf5')))\n",
-    "dsets = [h5py.File(filename, mode='r')['/t2m'] for filename in filenames]\n",
+    "import dask.array as da\n",
+    "import h5py\n",
+    "\n",
+    "filenames = sorted(glob(os.path.join(\"data\", \"weather-big\", \"*.hdf5\")))\n",
+    "dsets = [h5py.File(filename, mode=\"r\")[\"/t2m\"] for filename in filenames]\n",
     "\n",
     "arrays = [da.from_array(dset, chunks=(500, 500)) for dset in dsets]\n",
     "\n",
@@ -770,7 +780,7 @@
     "\n",
     "result = x[:, ::2, ::2]\n",
     "\n",
-    "da.to_zarr(result, os.path.join('data', 'myfile.zarr'), overwrite=True)"
+    "da.to_zarr(result, os.path.join(\"data\", \"myfile.zarr\"), overwrite=True)"
    ]
   },
   {
@@ -797,22 +807,26 @@
    "source": [
     "import numpy as np\n",
     "\n",
+    "\n",
     "# make a random collection of particles\n",
     "def make_cluster(natoms, radius=40, seed=1981):\n",
     "    np.random.seed(seed)\n",
-    "    cluster = np.random.normal(0, radius, (natoms,3))-0.5\n",
+    "    cluster = np.random.normal(0, radius, (natoms, 3)) - 0.5\n",
     "    return cluster\n",
     "\n",
+    "\n",
     "def lj(r2):\n",
-    "    sr6 = (1./r2)**3\n",
-    "    pot = 4.*(sr6*sr6 - sr6)\n",
+    "    sr6 = (1.0 / r2) ** 3\n",
+    "    pot = 4.0 * (sr6 * sr6 - sr6)\n",
     "    return pot\n",
+    "\n",
     "\n",
     "# build the matrix of distances\n",
     "def distances(cluster):\n",
     "    diff = cluster[:, np.newaxis, :] - cluster[np.newaxis, :, :]\n",
-    "    mat = (diff*diff).sum(-1)\n",
+    "    mat = (diff * diff).sum(-1)\n",
     "    return mat\n",
+    "\n",
     "\n",
     "# the lj function is evaluated over the upper triangle\n",
     "# after removing distances near zero\n",
@@ -886,11 +900,12 @@
    "source": [
     "import dask.array as da\n",
     "\n",
+    "\n",
     "# compute the potential on the entire\n",
     "# matrix of distances and ignore division by zero\n",
     "def potential_dask(cluster):\n",
     "    d2 = distances(cluster)\n",
-    "    energy = da.nansum(lj(d2))/2.\n",
+    "    energy = da.nansum(lj(d2)) / 2.0\n",
     "    return energy"
    ]
   },
@@ -909,7 +924,7 @@
    "source": [
     "from os import cpu_count\n",
     "\n",
-    "dcluster = da.from_array(cluster, chunks=cluster.shape[0]//cpu_count())"
+    "dcluster = da.from_array(cluster, chunks=cluster.shape[0] // cpu_count())"
    ]
   },
   {
@@ -974,7 +989,7 @@
  "metadata": {
   "anaconda-cloud": {},
   "kernelspec": {
-   "display_name": "Python 3",
+   "display_name": "Python 3 (ipykernel)",
    "language": "python",
    "name": "python3"
   },
@@ -988,7 +1003,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.6"
+   "version": "3.10.4"
   }
  },
  "nbformat": 4,
