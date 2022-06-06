@@ -1,16 +1,82 @@
 @import "../sphinx-book-theme.css";
 
 :root {
-  --dask-dark: #d67548;
-  --dask-light: #ecb172;
+  /* Main colors */
+  --yellow: #ffc11e;
+  --white: #fff;
+  --blue: #1f5aff;
+  --dark-blue: #183d72;
+  --light-grey: #f6f6f6;
+  --grey: #33363d;
+  --dark-grey: #262326;
+  --black: #080815;
+  --green: #17955c;
+  --salmon: #fc6e6b;
+  --red: #ef1161;
+  --purple: #f61fff;
+  --pst-color-text-base: var(--black);
+  --pst-color-navbar-link: var(--yellow);
+  --pst-color-link: var(--black);
+  --pst-color-link-hover: var(--yellow);
+  --pst-color-inline-code: var(--salmon);
+
+  /* Font Family */
+  --pst-font-family-base-system: Inter-Regular;
+  --pst-font-family-monospace-system: Inconsolata-Regular;
+  --pst-font-family-base: var(--pst-font-family-base-system);
+  --pst-font-family-heading: var(--pst-font-family-base);
+  --pst-font-family-monospace: var(--pst-font-family-monospace-system);
+}
+
+@font-face {
+  font-family: Inter-Regular;
+  font-weight: 400;
+  src: local("Inter-Regular"),
+    url(../fonts/Inter-Regular.ttf) format("TrueType");
+}
+
+@font-face {
+  font-family: Inter-Bold;
+  font-weight: bold;
+  src: local("Inter-Bold"), url(../fonts/Inter-Bold.ttf) format("TrueType");
+}
+
+@font-face {
+  font-family: Inter-SemiBold;
+  font-weight: bold;
+  src: local("Inter-SemiBold"),
+    url(../fonts/Inter-SemiBold.ttf) format("TrueType");
+}
+
+@font-face {
+  font-family: Inconsolata-Regular;
+  font-weight: 400;
+  src: local("Inconsolata-Regular"),
+    url(../fonts/Inconsolata-Regular.ttf) format("TrueType");
 }
 
 code {
-  color: var(--dask-dark);
+  color: var(--salmon);
+  font-size: 16px !important;
 }
 
 body {
-  background-image: url("../images/background.png");
+  padding-top: calc(var(--pst-header-height) + 20px);
+  background-color: #fff;
+  font-family: Inter-Regular;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--black);
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../images/background-grid.svg");
   background-repeat: repeat;
 }
 
@@ -42,51 +108,76 @@ body {
   display: none;
 }
 
-#site-navigation nav ul.nav li a,
-#site-navigation nav ul.nav ul li a {
-  color: #fff;
+/* reference links */
+
+main.bd-content #main-content a {
+  color: var(--pst-color-link);
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-underline-offset: 3px;
 }
 
-#site-navigation h1,
-#site-navigation h2,
-#site-navigation h3,
-#site-navigation h4,
-#site-navigation h5,
-#site-navigation h6 {
-  color: white;
+main.bd-content #main-content a:hover {
+  color: var(--pst-color-link-hover);
 }
+
+/* navigation pane - left sidebar */
 
 #site-navigation {
-  background: #1a1a1a;
+  background: var(--light-grey);
+  background-image: url("../images/background-grid.svg");
   margin-top: 4em;
-}
-
-nav.bd-links p.caption {
-  color: var(--dask-dark);
-}
-
-#site-navigation nav ul.nav a:hover,
-#site-navigation nav ul.nav li.active > a,
-#site-navigation nav ul.nav li.active > a:hover {
-  color: #ecb172;
-  background: #303030;
 }
 
 #site-navigation nav ul.nav li a {
   padding-left: 2%;
+  color: var(--black);
+  text-decoration: none;
 }
 
-#site-navigation nav ul.nav li a,
 #site-navigation nav ul.nav ul li a {
-  color: var(--dask-light);
+  color: var(--black);
+}
+
+#site-navigation nav ul.nav a:hover {
+  color: var(--black);
+  font-weight: 700;
+  border-left: 2px solid var(--black);
+}
+
+/* #site-navigation nav ul.nav li a:active {
+    border-left: 2px solid var(--yellow)
+} */
+
+#site-navigation nav ul.nav li.active > a {
+  border-left: 2px solid var(--yellow);
+}
+
+#site-navigation nav.bd-links p.caption {
+  font-size: var(--pst-sidebar-caption-font-size);
+  text-transform: uppercase;
+  font-family: Inter-SemiBold;
+  position: relative;
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+  color: var(--black);
 }
 
 #site-navigation div.navbar_extra_footer {
-  color: #fff;
+  color: var(--black);
+  padding-bottom: 3em;
+  margin-bottom: 0;
 }
 
-#site-navigation h1.site-logo {
-  color: white;
+/* table on contents (right sidebar) */
+.bd-toc .toc-entry a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.bd-toc nav li.active > a.active {
+  font-family: Inter-SemiBold;
+  border-left: 2px solid var(--yellow);
 }
 
 .topbar,
@@ -107,8 +198,10 @@ main.bd-content {
   padding-top: 6em !important;
 }
 
+/* top bar */
+
 .dask-nav {
-  background-color: #1a1a1a;
+  background-color: var(--black);
   height: 4em;
   display: block;
   position: fixed;
@@ -121,6 +214,7 @@ main.bd-content {
 }
 
 .dask-nav ul {
+  background-color: var(--dark-grey);
   padding: 0;
   margin-bottom: 0;
   white-space: nowrap;
@@ -132,6 +226,16 @@ main.bd-content {
   transition: 0.3s;
   text-align: left;
   padding: 0.5em 2rem 0.5em 2rem;
+}
+
+.dask-nav ul > li > a {
+  color: white;
+}
+
+.dask-nav ul > li > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--yellow);
 }
 
 .dask-nav .logo {
@@ -153,25 +257,25 @@ main.bd-content {
   height: 3em;
 }
 
-a {
-  color: var(--dask-light);
+ul.navbar-nav:hover li {
+  opacity: 0.5;
+  transition: var(--transition);
 }
 
-#site-navigation div.navbar_extra_footer {
-  padding-bottom: 3em;
-  margin-bottom: 0;
+ul.navbar-nav li.nav-item:hover {
+  opacity: 1 !important;
+  transition: var(--transition);
 }
 
-.has-children label:hover {
-  background-color: #303030;
+ul.current.nav.bd-sidenav
+  li.toctree-l1.current.active
+  a.current.reference.internal {
+  font-weight: inherit;
 }
 
-.has-children label:hover i {
-  color: var(--dask-light);
-}
-
-.has-children label i {
-  color: var(--dask-light);
+.toc-entry > .nav-link.active {
+  font-family: Inter-Regular;
+  font-weight: inherit;
 }
 
 .sphinx-tabs {
@@ -182,3 +286,26 @@ a {
 .classifier::before {
   content: ": ";
 }
+
+footer {
+  bottom: 0;
+  left: 0;
+  width: 76%;
+  height: 50px;
+  background-color: var(--grey);
+  color: var(--white);
+}
+
+/* icons */
+
+/* .fa-download:before {
+    content: url('../images/icon-download.svg');
+}
+
+.fa-expand:before {
+    content: url('../images/icon-expand.svg');
+}
+
+.fa-bars:before {
+    content: url('../images/icon-menu.svg');
+} */

@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 
 <html>
@@ -36,6 +36,7 @@
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="_static/images/favicon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Lazy execution" href="01x_lazy.html" />
@@ -691,6 +692,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -699,10 +701,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -714,12 +720,15 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
@@ -811,7 +820,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 113 ms, sys: 20.2 ms, total: 134 ms
+CPU times: user 105 ms, sys: 18 ms, total: 123 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -845,8 +854,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 944 µs, sys: 154 µs, total: 1.1 ms
-Wall time: 1.97 ms
+CPU times: user 653 µs, sys: 127 µs, total: 780 µs
+Wall time: 721 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -867,8 +876,8 @@ Wall time: 1.97 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 216 ms, sys: 27.9 ms, total: 244 ms
-Wall time: 2.16 s
+CPU times: user 214 ms, sys: 38.7 ms, total: 252 ms
+Wall time: 2.17 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -899,7 +908,7 @@ Wall time: 2.16 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-2d9899a8-ad16-4e35-a58a-b88ba7a1d8a5&#39;)
+Delayed(&#39;add-e5125cde-11b2-4ccd-92f0-d9290b960c80&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -961,7 +970,7 @@ Delayed(&#39;add-2d9899a8-ad16-4e35-a58a-b88ba7a1d8a5&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 280 ms, sys: 63.8 ms, total: 344 ms
+CPU times: user 284 ms, sys: 47.9 ms, total: 332 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -996,8 +1005,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 6.68 µs
+CPU times: user 2 µs, sys: 1 µs, total: 3 µs
+Wall time: 5.96 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1022,7 +1031,7 @@ Wall time: 6.68 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;sum-e42d8db9-340a-43a2-b188-4f9c8f4242df&#39;)
+Before computing: Delayed(&#39;sum-3c927f3b-f73c-466d-8677-4e8935749bd1&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -1076,7 +1085,7 @@ After computing : 44
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 90
-CPU times: user 340 ms, sys: 86.2 ms, total: 426 ms
+CPU times: user 350 ms, sys: 75 ms, total: 425 ms
 Wall time: 10 s
 </pre></div></div>
 </div>
@@ -1096,8 +1105,8 @@ Wall time: 10 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 2 µs, sys: 0 ns, total: 2 µs
-Wall time: 5.72 µs
+CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 6.44 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1129,7 +1138,7 @@ Wall time: 5.72 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 108 ms, sys: 36.2 ms, total: 144 ms
+CPU times: user 111 ms, sys: 30 ms, total: 141 ms
 Wall time: 3.03 s
 </pre></div></div>
 </div>
@@ -1529,8 +1538,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 48.4 ms, sys: 9.01 ms, total: 57.4 ms
-Wall time: 58.2 ms
+CPU times: user 50.9 ms, sys: 8.53 ms, total: 59.4 ms
+Wall time: 58 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1625,8 +1634,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 56.3 ms, sys: 0 ns, total: 56.3 ms
-Wall time: 54 ms
+CPU times: user 60.1 ms, sys: 425 µs, total: 60.5 ms
+Wall time: 57.4 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1665,7 +1674,7 @@ Name: DepDelay, dtype: float64
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 6.44 µs
+Wall time: 6.68 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1712,8 +1721,8 @@ Wall time: 6.44 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 92.1 ms, sys: 26.4 ms, total: 119 ms
-Wall time: 196 ms
+CPU times: user 109 ms, sys: 20.7 ms, total: 129 ms
+Wall time: 219 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
