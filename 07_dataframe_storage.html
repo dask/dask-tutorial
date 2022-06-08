@@ -630,10 +630,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/07_dataframe_storage.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/07_dataframe_storage.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/07_dataframe_storage.ipynb">on Github</a>.</p>
-<p><img alt="00ac3fa2f2ef440887fba199311afccb" class="no-scaled-link" src="_images/dask_horizontal.svg" width="30%" /></p>
+<p><img alt="Dask logo" class="no-scaled-link" src="https://docs.dask.org/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
 <div class="section" id="Data-Storage">
 <h1>Data Storage<a class="headerlink" href="#Data-Storage" title="Permalink to this headline">¶</a></h1>
-<p><img alt="df0a076c451946ca8d3f72e40daa8df4" class="no-scaled-link" src="_images/hdd.jpg" style="width: 20%;" /> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
+<p><img alt="ce815b41411d4c0691deba5614f7f6c0" class="no-scaled-link" src="_images/hdd.jpg" style="width: 20%;" /> Efficient storage can dramatically improve performance, particularly when operating repeatedly from disk.</p>
 <p>Decompressing text and parsing CSV files is expensive. One of the most effective strategies with medium data is to use a binary storage format like HDF5. Often the performance gains from doing this is sufficient so that you can switch back to using Pandas again instead of using <code class="docutils literal notranslate"><span class="pre">dask.dataframe</span></code>.</p>
 <p>In this section we’ll learn how to efficiently arrange and store your datasets in on-disk binary formats. We’ll use the following:</p>
 <ol class="arabic simple">
@@ -734,33 +734,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>Yvonne</td>
-      <td>798</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>1002</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>94</td>
-      <td>Patricia</td>
-      <td>84</td>
+      <td>51</td>
+      <td>Laura</td>
+      <td>573</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>27</td>
-      <td>Patricia</td>
-      <td>5516</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>843</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>36</td>
-      <td>Norbert</td>
-      <td>2317</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>866</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>63</td>
-      <td>Patricia</td>
-      <td>1442</td>
+      <td>75</td>
+      <td>Charlie</td>
+      <td>785</td>
     </tr>
   </tbody>
 </table>
@@ -802,8 +802,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 94.7 ms, sys: 28.6 ms, total: 123 ms
-Wall time: 142 ms
+CPU times: user 79.3 ms, sys: 15.4 ms, total: 94.7 ms
+Wall time: 116 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -856,33 +856,33 @@ Wall time: 142 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>Yvonne</td>
-      <td>798</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>1002</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>94</td>
-      <td>Patricia</td>
-      <td>84</td>
+      <td>51</td>
+      <td>Laura</td>
+      <td>573</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>27</td>
-      <td>Patricia</td>
-      <td>5516</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>843</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>36</td>
-      <td>Norbert</td>
-      <td>2317</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>866</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>63</td>
-      <td>Patricia</td>
-      <td>1442</td>
+      <td>75</td>
+      <td>Charlie</td>
+      <td>785</td>
     </tr>
   </tbody>
 </table>
@@ -905,8 +905,8 @@ Wall time: 142 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 21 ms, sys: 4.16 ms, total: 25.1 ms
-Wall time: 19.3 ms
+CPU times: user 17 ms, sys: 3.62 ms, total: 20.6 ms
+Wall time: 15.7 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -915,7 +915,7 @@ Wall time: 19.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-36507003
+36794832
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -931,8 +931,8 @@ Wall time: 19.3 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 39.2 ms, sys: 3.85 ms, total: 43.1 ms
-Wall time: 42.6 ms
+CPU times: user 32.2 ms, sys: 41 µs, total: 32.3 ms
+Wall time: 31.7 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -941,7 +941,7 @@ Wall time: 42.6 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-36507003
+36794832
 </pre></div></div>
 </div>
 <p>Sadly they are about the same, or perhaps even slower.</p>
@@ -969,8 +969,8 @@ Wall time: 42.6 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 122 ms, sys: 8.02 ms, total: 130 ms
-Wall time: 129 ms
+CPU times: user 96.5 ms, sys: 8.06 ms, total: 105 ms
+Wall time: 105 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1023,33 +1023,33 @@ Wall time: 129 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>Yvonne</td>
-      <td>798</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>1002</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>94</td>
-      <td>Patricia</td>
-      <td>84</td>
+      <td>51</td>
+      <td>Laura</td>
+      <td>573</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>27</td>
-      <td>Patricia</td>
-      <td>5516</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>843</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>36</td>
-      <td>Norbert</td>
-      <td>2317</td>
+      <td>30</td>
+      <td>Zelda</td>
+      <td>866</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>63</td>
-      <td>Patricia</td>
-      <td>1442</td>
+      <td>75</td>
+      <td>Charlie</td>
+      <td>785</td>
     </tr>
   </tbody>
 </table>
@@ -1069,8 +1069,8 @@ Wall time: 129 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 26.3 ms, sys: 0 ns, total: 26.3 ms
-Wall time: 26 ms
+CPU times: user 24.3 ms, sys: 36 µs, total: 24.3 ms
+Wall time: 23.9 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1079,7 +1079,7 @@ Wall time: 26 ms
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-36507003
+36794832
 </pre></div></div>
 </div>
 <p>This is now definitely faster than before. This tells us that it’s not only the file type that we use but also how we represent our variables that influences storage performance.</p>
@@ -1114,11 +1114,11 @@ Wall time: 26 ms
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 752
--rw-r--r-- 1 runner docker    950 Jun  6 15:43 _common_metadata
--rw-r--r-- 1 runner docker    950 Jun  6 15:43 _metadata
--rw-r--r-- 1 runner docker 251729 Jun  6 15:43 part.0.parquet
--rw-r--r-- 1 runner docker 251729 Jun  6 15:43 part.1.parquet
--rw-r--r-- 1 runner docker 251729 Jun  6 15:43 part.2.parquet
+-rw-r--r-- 1 runner docker    950 Jun  8 22:21 _common_metadata
+-rw-r--r-- 1 runner docker    950 Jun  8 22:21 _metadata
+-rw-r--r-- 1 runner docker 251729 Jun  8 22:21 part.0.parquet
+-rw-r--r-- 1 runner docker 251729 Jun  8 22:21 part.1.parquet
+-rw-r--r-- 1 runner docker 251729 Jun  8 22:21 part.2.parquet
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1158,8 +1158,8 @@ dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 4.53 ms, sys: 73 µs, total: 4.61 ms
-Wall time: 4.21 ms
+CPU times: user 4.53 ms, sys: 66 µs, total: 4.59 ms
+Wall time: 4.13 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
