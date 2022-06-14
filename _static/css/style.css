@@ -121,6 +121,12 @@ main.bd-content #main-content a:hover {
   color: var(--pst-color-link-hover);
 }
 
+/* don't create a second scrollbar
+see github.com/dask/dask-sphinx-theme/issues/74 */
+.overflow-auto {
+  overflow: visible !important;
+}
+
 /* navigation pane - left sidebar */
 
 #site-navigation {
@@ -285,15 +291,6 @@ ul.current.nav.bd-sidenav
 /* See https://github.com/dask/dask/issues/8236 */
 .classifier::before {
   content: ": ";
-}
-
-footer {
-  bottom: 0;
-  left: 0;
-  width: 76%;
-  height: 50px;
-  background-color: var(--grey);
-  color: var(--white);
 }
 
 /* icons */
