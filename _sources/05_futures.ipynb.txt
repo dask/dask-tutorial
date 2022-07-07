@@ -1,0 +1,323 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<img src=\"http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg\"\n",
+    "     align=\"right\"\n",
+    "     width=\"30%\"\n",
+    "     alt=\"Dask logo\\\">\n",
+    "\n",
+    "# Non-blocking calculations with `distributed Futures`\n",
+    "\n",
+    "In the previous chapter, we showed that executing a calculation (created using delayed) with the distributed executor is identical to any other executor. However, we now have access to additional functionality, and control over what data is held in memory.\n",
+    "\n",
+    "The `futures` interface (derived from the built-in `concurrent.futures`) provide fine-grained real-time execution for custom situations. We can submit individual functions for evaluation with one set of inputs, or evaluated over a sequence of inputs with `submit()` and `map()`. The call returns immediately, giving one or more *futures*, whose status begins as \"pending\" and later becomes \"finished\". There is no blocking of the local Python session.\n",
+    "\n",
+    "**Related Documentation**\n",
+    "\n",
+    "* [Futures documentation](https://docs.dask.org/en/latest/futures.html)\n",
+    "* [Futures screencast](https://www.youtube.com/watch?v=07EiCpdhtDE)\n",
+    "* [Futures examples](https://examples.dask.org/futures.html)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from dask.distributed import Client\n",
+    "\n",
+    "client = Client(n_workers=4)\n",
+    "client"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## A Typical Workflow\n",
+    "\n",
+    "This is the same workflow that we saw in the delayed notebook. It is for-loopy and the data is not necessarily an array or a dataframe. The following example outlines a read-transform-write:\n",
+    "\n",
+    "```python\n",
+    "def process_file(filename):\n",
+    "    data = read_a_file(filename)\n",
+    "    data = do_a_transformation(data)\n",
+    "    destination = f\"results/{filename}\"\n",
+    "    write_out_data(data, destination)\n",
+    "    return destination\n",
+    "\n",
+    "futures = []\n",
+    "for filename in filenames:\n",
+    "    future = client.submit(process_file, filename)\n",
+    "    futures.append(future)\n",
+    "    \n",
+    "futures\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Basics\n",
+    "\n",
+    "Just like we did in the delayed notebook, let's make some toy functions, `inc` and `add`, that sleep for a while to simulate work. We'll then time running these functions normally."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from time import sleep\n",
+    "\n",
+    "def inc(x):\n",
+    "    sleep(1)\n",
+    "    return x + 1\n",
+    "\n",
+    "def double(x):\n",
+    "    sleep(2)\n",
+    "    return 2 * x\n",
+    "\n",
+    "def add(x, y):\n",
+    "    sleep(1)\n",
+    "    return x + y"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can run these locally"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "inc(1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Or we can submit them to run remotely with Dask. This immediately returns a future that points to the ongoing computation, and eventually to the stored result."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "future = client.submit(inc, 1)  # returns immediately with pending future\n",
+    "future"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If you wait a second, and then check on the future again, you’ll see that it has finished."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "future"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You can block on the computation and gather the result with the `.result()` method."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "future.result()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Other ways to wait for a future\n",
+    "```python\n",
+    "from dask.distributed import wait, progress\n",
+    "progress(future)\n",
+    "```\n",
+    "\n",
+    "shows a progress bar in *this* notebook, rather than having to go to the dashboard. This progress bar is also asynchronous, and doesn't block the execution of other code in the meanwhile.\n",
+    "\n",
+    "```python\n",
+    "wait(future)\n",
+    "```\n",
+    "blocks and forces the notebook to wait until the computation pointed to by `future` is done. However, note that if the result of `inc()` is sitting in the cluster, it would take **no time** to execute the computation now, because Dask notices that we are asking for the result of a computation it already knows about. More on this later.\n",
+    "\n",
+    "#### Other ways to gather results\n",
+    "```python\n",
+    "client.gather(futures)\n",
+    "```\n",
+    "\n",
+    "gathers results from more than one future."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `client.compute`\n",
+    "\n",
+    "Generally, any Dask operation that is executed using `.compute()` (or `dask.compute()` can be submitted for asynchronous execution using `client.compute()` instead, and this applies to all collections.\n",
+    "\n",
+    "Here is an example from the delayed notebook:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import dask\n",
+    "\n",
+    "@dask.delayed\n",
+    "def inc(x):\n",
+    "    sleep(1)\n",
+    "    return x + 1\n",
+    "\n",
+    "@dask.delayed\n",
+    "def add(x, y):\n",
+    "    sleep(1)\n",
+    "    return x + y\n",
+    "\n",
+    "x = inc(1)\n",
+    "y = inc(2)\n",
+    "z = add(x, y)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# notice the difference from z.compute()\n",
+    "# notice that this cell completes immediately\n",
+    "future = client.compute(z)\n",
+    "future"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "future.result()  # waits until result is ready"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When using futures, the *computation moves to the data* rather than the other way around, and the client, in the local Python session, need never see the intermediate values."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### `client.submit`\n",
+    "\n",
+    "`client.submit` takes a function and arguments, pushes these to the cluster, returning a *Future* representing the result to be computed. The function is passed to a worker process for evaluation. This looks a lot like doing `client.compute()`, above, except now we are passing the function and arguments directly to the cluster."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def inc(x):\n",
+    "    sleep(1)\n",
+    "    return x + 1\n",
+    "\n",
+    "future_x = client.submit(inc, 1)\n",
+    "future_y = client.submit(inc, 2)\n",
+    "future_z = client.submit(sum, [future_x, future_y])\n",
+    "future_z"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "future_z.result()  # waits until result is ready"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The arguments to`client.submit` can be regular Python functions and objects, futures from other submit operations or `dask.delayed` objects."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### How does it work?\n",
+    "\n",
+    "Each future represents a result held, or being evaluated by the cluster. Thus we can control caching of intermediate values - when a future is no longer referenced, its value is forgotten. In the solution, above, futures are held for each of the function calls. These results would not need to be re-evaluated if we chose to submit more work that needed them.\n",
+    "\n",
+    "We can explicitly pass data from our local session into the cluster using `client.scatter()`, but usually it is better to construct functions that do the loading of data within the workers themselves, so that there is no need to serialize and communicate the data. Most of the loading functions within Dask, such as `dd.read_csv`, work this way. Similarly, we normally don't want to `gather()` results that are too big in memory.\n",
+    "\n",
+    "The [full API](http://distributed.readthedocs.io/en/latest/api.html) of the distributed scheduler gives details of interacting with the cluster, which remember, can be on your local machine or possibly on a massive computational resource. \n",
+    "\n",
+    "The futures API offers a work submission style that can easily emulate the map/reduce paradigm (see `client.map()`) that may be familiar to many people. The intermediate results, represented by futures, can be passed to new tasks without having to bring the pull locally from the cluster, and new work can be assigned to work on the output of previous jobs that haven't even begun yet."
+   ]
+  }
+ ],
+ "metadata": {
+  "anaconda-cloud": {},
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

@@ -1,4 +1,6 @@
 @import "../sphinx-book-theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700");
 
 :root {
   /* Main colors */
@@ -21,49 +23,23 @@
   --pst-color-inline-code: var(--salmon);
 
   /* Font Family */
-  --pst-font-family-base-system: Inter-Regular;
-  --pst-font-family-monospace-system: Inconsolata-Regular;
+  --pst-font-family-base-system: Inter;
+  --pst-font-family-monospace-system: Inconsolata;
   --pst-font-family-base: var(--pst-font-family-base-system);
   --pst-font-family-heading: var(--pst-font-family-base);
   --pst-font-family-monospace: var(--pst-font-family-monospace-system);
 }
 
-@font-face {
-  font-family: Inter-Regular;
-  font-weight: 400;
-  src: local("Inter-Regular"),
-    url(../fonts/Inter-Regular.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: Inter-Bold;
-  font-weight: bold;
-  src: local("Inter-Bold"), url(../fonts/Inter-Bold.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: Inter-SemiBold;
-  font-weight: bold;
-  src: local("Inter-SemiBold"),
-    url(../fonts/Inter-SemiBold.ttf) format("TrueType");
-}
-
-@font-face {
-  font-family: Inconsolata-Regular;
-  font-weight: 400;
-  src: local("Inconsolata-Regular"),
-    url(../fonts/Inconsolata-Regular.ttf) format("TrueType");
-}
-
 code {
   color: var(--salmon);
+  font-family: var(--pst-font-family-monospace);
   font-size: 16px !important;
 }
 
 body {
   padding-top: calc(var(--pst-header-height) + 20px);
   background-color: #fff;
-  font-family: Inter-Regular;
+  font-family: var(--pst-font-family-base);
   font-weight: 400;
   line-height: 1.65;
   color: var(--black);
@@ -162,7 +138,8 @@ see github.com/dask/dask-sphinx-theme/issues/74 */
 #site-navigation nav.bd-links p.caption {
   font-size: var(--pst-sidebar-caption-font-size);
   text-transform: uppercase;
-  font-family: Inter-SemiBold;
+  font-family: var(--pst-font-family-base);
+  font-weight: 700;
   position: relative;
   margin-top: 1.25em;
   margin-bottom: 0.5em;
@@ -182,7 +159,8 @@ see github.com/dask/dask-sphinx-theme/issues/74 */
 }
 
 .bd-toc nav li.active > a.active {
-  font-family: Inter-SemiBold;
+  font-family: var(--pst-font-family-base);
+  font-weight: 700;
   border-left: 2px solid var(--yellow);
 }
 
@@ -280,7 +258,7 @@ ul.current.nav.bd-sidenav
 }
 
 .toc-entry > .nav-link.active {
-  font-family: Inter-Regular;
+  font-family: var(--pst-font-family-base);
   font-weight: inherit;
 }
 
