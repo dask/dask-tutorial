@@ -44,19 +44,12 @@ In the main repo directory
 
     conda env create -f binder/environment.yml
     conda activate dask-tutorial
-    jupyter labextension install dask-labextension
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install @bokeh/jupyter_bokeh
 
 #### 2b) Install into an existing environment
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py pillow matplotlib scipy toolz pytables snakeviz scikit-image dask distributed -c conda-forge
-
-You may find the following libraries helpful for some exercises
-
-    conda install python-graphviz -c conda-forge
+    conda install numpy pandas h5py python-graphviz pillow matplotlib scipy toolz pytables snakeviz scikit-image dask distributed -c conda-forge
 
 Note that these options will alter your existing environment, potentially changing the versions of packages you already
 have installed.
@@ -77,17 +70,15 @@ can be used to access the notebook from browser. You may need to replace the giv
 
 #### You should follow only one of the options above!
 
-### Launch notebook
+### Launch Jupyter
 
 From the repo directory
-
-    jupyter notebook
-
-Or
 
     jupyter lab
 
 This was already done for method c) and does not need repeating.
+
+You are welcome to use Jupyter notebook if you prefer, but we'll be using lab in the live tutorial.
 
 ## Links
 
@@ -106,26 +97,14 @@ This was already done for method c) and does not need repeating.
 
 0. [Overview](00_overview.ipynb) - dask's place in the universe.
 
-1. [Delayed](01_dask.delayed.ipynb) - the single-function way to parallelize general python code.
+1. [Dataframe](01_dataframe.ipynb) - parallelized operations on many pandas dataframes spread across your cluster.
 
-1x. [Lazy](01x_lazy.ipynb) - some of the principles behind lazy execution, for the interested.
+2. [Array](02_array.ipynb) - blocked numpy-like functionality with a collection of numpy arrays spread across your cluster.
 
-2. [Bag](02_bag.ipynb) - the first high-level collection: a generalized iterator for use
-with a functional programming style and to clean messy data.
+3. [Delayed](03_dask.delayed.ipynb) - the single-function way to parallelize general python code.
 
-3. [Array](03_array.ipynb) - blocked numpy-like functionality with a collection of
-numpy arrays spread across your cluster.
+4. [Deployment/Distributed](04_distributed.ipynb) - Dask's scheduler for clusters, with details of how to view the UI.
 
-7. [Dataframe](04_dataframe.ipynb) - parallelized operations on many pandas dataframes
-spread across your cluster.
+5. [Distributed Futures](05_futures.ipynb) - non-blocking results that compute asynchronously.
 
-5. [Distributed](05_distributed.ipynb) - Dask's scheduler for clusters, with details of
-how to view the UI.
-
-6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed
-computing, including how to debug.
-
-7. [Dataframe Storage](07_dataframe_storage.ipynb) - efficient ways to read and write
-dataframes to disc.
-
-8. [Machine Learning](08_machine_learning.ipynb) - applying dask to machine-learning problems.
+6. Conclusion
