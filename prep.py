@@ -10,15 +10,13 @@ import urllib.request
 import pandas as pd
 import dask.array as da
 
-import sources
-
 DATASETS = ["random", "flights", "all"]
 here = os.path.dirname(__file__)
 data_dir = os.path.abspath(os.path.join(here, 'data'))
 
 
 def parse_args(args=None):
-    parser = argparse.ArgumentParser(description='Downloads, generates and prepares data for the Dask tutorial.'))
+    parser = argparse.ArgumentParser(description='Downloads, generates and prepares data for the Dask tutorial.')
     parser.add_argument("--small", action="store_true", default=None,
                         help="Whether to use smaller example datasets. Checks DASK_TUTORIAL_SMALL environment variable if not specified.")
     parser.add_argument("-d", "--dataset", choices=DATASETS, help="Datasets to generate.", default="all")
