@@ -12,7 +12,8 @@ import h5py
 import numpy as np
 import pandas as pd
 import holidays
-from skimage.transform import resize
+# from skimage.transform import resize
+import dask.array as da
 
 from accounts import account_entries, account_params, json_entries
 
@@ -117,22 +118,22 @@ def random_array(small=None):
     if small is None:
         small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
 
-    if small:
-        blocksize = 5000
-    else:
-        blocksize = 1000000
-
-    nblocks = 1000
-    shape = nblocks * blocksize
-
     t0 = time.time()
-    if os.path.exists(os.path.join(data_dir, 'random.hdf5')):
+    if os.path.exists(os.path.join(data_dir, 'random.zarr')) and os.path.exists(os.path.join(data_dir, 'random_sc.zarr')):
         return
 
-    with h5py.File(os.path.join(data_dir, 'random.hdf5'), mode='w') as f:
-        dset = f.create_dataset('/x', shape=(shape,), dtype='f4')
-        for i in range(0, shape, blocksize):
-            dset[i: i + blocksize] = np.random.exponential(size=blocksize)
+    if small:
+        size = 20_000_000
+        random_arr = da.random.random(size=(size,), chunks=(625000,))
+        random_arr_small_chunks = da.random.random(size=(size,), chunks=(1000,))
+    else:
+        size = 200_000_000
+        random_arr = da.random.random(size=(size,), chunks=(6250000,))
+        random_arr_small_chunks = da.random.random(size=(size,), chunks=(10000,))
+
+    random_arr.to_zarr(os.path.join(data_dir, 'random.zarr'))
+    random_arr_small_chunks.to_zarr(os.path.join(data_dir, 'random_sc.zarr'))
+
 
     t1 = time.time()
     print("Created random data for array exercise in {:0.2f}s".format(t1 - t0))
@@ -189,44 +190,44 @@ def accounts_json(small=None):
     print("Created JSON accounts in {:0.2f}s".format(t1 - t0))
 
 
-def create_weather(small=None):
-    t0 = time.time()
-    if small is None:
-        small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
+# def create_weather(small=None):
+#     t0 = time.time()
+#     if small is None:
+#         small = bool(os.environ.get("DASK_TUTORIAL_SMALL", False))
 
-    if small:
-        growth = 1
-    else:
-        growth = 32
-    filenames = sorted(glob(os.path.join(data_dir, 'weather-small', '*.hdf5')))
+#     if small:
+#         growth = 1
+#     else:
+#         growth = 32
+#     filenames = sorted(glob(os.path.join(data_dir, 'weather-small', '*.hdf5')))
 
-    if not filenames:
-        ws_dir = os.path.join(data_dir, 'weather-small')
-        raise ValueError('Did not find any hdf5 files in {}'.format(ws_dir))
+#     if not filenames:
+#         ws_dir = os.path.join(data_dir, 'weather-small')
+#         raise ValueError('Did not find any hdf5 files in {}'.format(ws_dir))
 
-    if not os.path.exists(os.path.join(data_dir, 'weather-big')):
-        os.mkdir(os.path.join(data_dir, 'weather-big'))
+#     if not os.path.exists(os.path.join(data_dir, 'weather-big')):
+#         os.mkdir(os.path.join(data_dir, 'weather-big'))
 
-    if all(os.path.exists(fn.replace('small', 'big')) for fn in filenames):
-        return
+#     if all(os.path.exists(fn.replace('small', 'big')) for fn in filenames):
+#         return
 
-    for fn in filenames:
-        with h5py.File(fn, mode='r') as f:
-            x = f['/t2m'][:]
+#     for fn in filenames:
+#         with h5py.File(fn, mode='r') as f:
+#             x = f['/t2m'][:]
 
-        if small:
-             y = x
-             chunks = (180, 180)
-        else:
-            y = resize(x, (x.shape[0] * growth, x.shape[1] * growth), mode='constant')
-            chunks = (500, 500)
+#         if small:
+#              y = x
+#              chunks = (180, 180)
+#         else:
+#             y = resize(x, (x.shape[0] * growth, x.shape[1] * growth), mode='constant')
+#             chunks = (500, 500)
 
-        out_fn = os.path.join(data_dir, 'weather-big', os.path.split(fn)[-1])
+#         out_fn = os.path.join(data_dir, 'weather-big', os.path.split(fn)[-1])
 
-        with h5py.File(out_fn, mode='w') as f:
-            f.create_dataset('/t2m', data=y, chunks=chunks)
-    t1 = time.time()
-    print("Created weather dataset in {:0.2f}s".format(t1 - t0))
+#         with h5py.File(out_fn, mode='w') as f:
+#             f.create_dataset('/t2m', data=y, chunks=chunks)
+#     t1 = time.time()
+#     print("Created weather dataset in {:0.2f}s".format(t1 - t0))
 
 
 def main(args=None):
