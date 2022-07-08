@@ -16,13 +16,8 @@ This tutorial was last given at SciPy 2020 in Austin Texas.
    :maxdepth: 1
 
    00_overview
-   01_dask.delayed
-   01x_lazy
-   02_bag
-   03_array
-   04_dataframe
-   05_distributed
-   06_distributed_advanced
-   07_dataframe_storage
-   08_machine_learning
-   Homework
+   01_dataframe
+   02_array
+   03_dask.delayed
+   04_distributed
+   05_futures
