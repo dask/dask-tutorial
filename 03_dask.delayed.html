@@ -39,6 +39,8 @@
     <link rel="shortcut icon" href="_static/images/favicon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Distributed" href="04_distributed.html" />
+    <link rel="prev" title="Dask Arrays" href="02_array.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,10 +116,48 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="00_overview.html">
    Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_dataframe.html">
+   Dask DataFrame API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_array.html">
+   Dask Arrays
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Parallelize code with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dask.delayed
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_distributed.html">
+   Distributed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_futures.html">
+   Non-blocking calculations with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     distributed
+    </span>
+    <span class="pre">
+     Futures
+    </span>
+   </code>
   </a>
  </li>
 </ul>
@@ -794,7 +834,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 114 ms, sys: 17.9 ms, total: 132 ms
+CPU times: user 95.8 ms, sys: 21.8 ms, total: 118 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -838,8 +878,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 546 µs, sys: 0 ns, total: 546 µs
-Wall time: 473 µs
+CPU times: user 280 µs, sys: 67 µs, total: 347 µs
+Wall time: 313 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -860,7 +900,7 @@ Wall time: 473 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 211 ms, sys: 23.8 ms, total: 234 ms
+CPU times: user 156 ms, sys: 62.4 ms, total: 219 ms
 Wall time: 2.15 s
 </pre></div></div>
 </div>
@@ -892,7 +932,7 @@ Wall time: 2.15 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-001acf5c-c4ad-4fa5-988e-b38f56ff72f0&#39;)
+Delayed(&#39;add-f08d7756-5316-4760-95d7-eb9f2f32eb7a&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -958,7 +998,7 @@ Delayed(&#39;add-001acf5c-c4ad-4fa5-988e-b38f56ff72f0&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 317 ms, sys: 43.9 ms, total: 361 ms
+CPU times: user 265 ms, sys: 63.2 ms, total: 328 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -993,8 +1033,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 5.48 µs
+CPU times: user 3 µs, sys: 1e+03 ns, total: 4 µs
+Wall time: 6.68 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1023,7 +1063,7 @@ Wall time: 5.48 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;add-75fdf14c6898ccf25e49c75ffd81e1a8&#39;)
+Before computing: Delayed(&#39;add-850a87ffd34923fbc23581b55288c621&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -1076,9 +1116,9 @@ After computing : 44
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-9c1bf930f3a057922541c35933504bbe&#39;)
-CPU times: user 194 ms, sys: 31.8 ms, total: 225 ms
-Wall time: 5 s
+Delayed(&#39;add-03c2ce57e298276b6c152f01ee0d056d&#39;)
+CPU times: user 175 ms, sys: 34.4 ms, total: 209 ms
+Wall time: 5.01 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1097,8 +1137,8 @@ Wall time: 5 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 6.44 µs
+CPU times: user 2 µs, sys: 0 ns, total: 2 µs
+Wall time: 5.48 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1135,8 +1175,8 @@ Wall time: 6.44 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 134 ms, sys: 39 ms, total: 173 ms
-Wall time: 3.04 s
+CPU times: user 148 ms, sys: 12.6 ms, total: 160 ms
+Wall time: 3.05 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1535,8 +1575,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 48.3 ms, sys: 807 µs, total: 49.1 ms
-Wall time: 51.7 ms
+CPU times: user 56 ms, sys: 561 µs, total: 56.5 ms
+Wall time: 57.2 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1584,7 +1624,7 @@ Name: DepDelay, dtype: float64
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 CPU times: user 3 µs, sys: 1e+03 ns, total: 4 µs
-Wall time: 6.2 µs
+Wall time: 5.72 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1633,8 +1673,8 @@ Wall time: 6.2 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 76.4 ms, sys: 16.5 ms, total: 92.9 ms
-Wall time: 208 ms
+CPU times: user 67.3 ms, sys: 15.4 ms, total: 82.7 ms
+Wall time: 203 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1709,7 +1749,21 @@ Name: DepDelay, dtype: float64
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02_array.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Dask Arrays</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04_distributed.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Distributed</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
