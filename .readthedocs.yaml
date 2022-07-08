@@ -11,7 +11,9 @@ build:
   tools:
     python: "mambaforge-4.10"
   jobs:
-    post_build:
+    post_create_environment:
+      - mamba install -c conda-forge nbconvert nbformat jupyter_client ipykernel
+      - pip install nbsphinx dask-sphinx-theme>=3.0.0 sphinx
       - python prep.py --small
 
 # Build documentation in the docs/ directory with Sphinx
