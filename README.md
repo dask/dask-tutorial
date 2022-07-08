@@ -49,7 +49,7 @@ In the main repo directory
 
 You will need the following core libraries
 
-    conda install -c conda-forge ipycytoscape jupyterlab python-graphviz matplotlib zarr xarray pooch scipy dask distributed 
+    conda install -c conda-forge ipycytoscape jupyterlab python-graphviz matplotlib zarr xarray pooch scipy dask distributed dask-labextension
 
 Note that these options will alter your existing environment, potentially changing the versions of packages you already
 have installed.
