@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Distributed &#8212; Dask Tutorial  documentation</title>
+    <title>Distributed - spread your data and computation across a cluster &#8212; Dask Tutorial  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -39,8 +39,8 @@
     <link rel="shortcut icon" href="_static/images/favicon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Non-blocking calculations with distributed Futures" href="05_futures.html" />
-    <link rel="prev" title="Parallelize code with dask.delayed" href="03_dask.delayed.html" />
+    <link rel="next" title="Futures - non-blocking distributed calculations" href="05_futures.html" />
+    <link rel="prev" title="dask.delayed - parallelize any code" href="03_dask.delayed.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,40 +124,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="01_dataframe.html">
-   Dask DataFrame API
+   Dask DataFrame - parallelized pandas
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_array.html">
-   Dask Arrays
+   Dask Arrays - parallelized numpy
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_dask.delayed.html">
-   Parallelize code with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     dask.delayed
-    </span>
-   </code>
+   dask.delayed - parallelize any code
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Distributed
+   Distributed - spread your data and computation across a cluster
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_futures.html">
-   Non-blocking calculations with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     distributed
-    </span>
-    <span class="pre">
-     Futures
-    </span>
-   </code>
+   Futures - non-blocking distributed calculations
   </a>
  </li>
 </ul>
@@ -283,7 +270,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Distributed</h1>
+                <h1>Distributed - spread your data and computation across a cluster</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -624,9 +611,9 @@ div.rendered_html tbody tr:hover {
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/04_distributed.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/04_distributed.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/04_distributed.ipynb">on Github</a>.</p>
 <p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Distributed">
-<h1>Distributed<a class="headerlink" href="#Distributed" title="Permalink to this headline">¶</a></h1>
-<p>As we covered at the beginning Dask has the ability to run work on mulitple machines using the distributed scheduler.</p>
+<div class="section" id="Distributed---spread-your-data-and-computation-across-a-cluster">
+<h1>Distributed - spread your data and computation across a cluster<a class="headerlink" href="#Distributed---spread-your-data-and-computation-across-a-cluster" title="Permalink to this headline">¶</a></h1>
+<p>As we covered at the beginning Dask has the ability to run work on multiple machines using the distributed scheduler.</p>
 <p>Until now we have actually been using the distributed scheduler for our work, but just on a single machine.</p>
 <p>When we instantiate a <code class="docutils literal notranslate"><span class="pre">Client()</span></code> object with no arguments it will attempt to locate a Dask cluster. It will check your local Dask config and environment variables to see if connection information has been specified. If not it will create an instance of <code class="docutils literal notranslate"><span class="pre">LocalCluster</span></code> and use that.</p>
 <p><em>Specifying connection information in config is useful for system administrators to provide access to their users. We do this in the</em><a class="reference external" href="https://github.com/dask/helm-chart/blob/master/dask/templates/dask-jupyter-deployment.yaml#L46-L48">Dask Helm Chart for Kubernetes</a><em>, the chart installs a multi-node Dask cluster and a Jupyter server on a Kubernetes cluster and Jupyter is preconfigured to discover the distributed cluster.</em></p>
@@ -654,7 +641,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7fe0a78cf2b24e2e81598899a5f3be98"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b694a7533e4342cbbd0ea37569e83126"}</script></div>
 </div>
 <p>Creating a cluster object will create a Dask scheduler and a number of Dask workers. If no arguments are specified then it will autodetect the number of CPU cores your system has and the amount of memory and create workers to appropriately fill that.</p>
 <p>You can also specify these arguments yourself. Let’s have a look at the docstring to see the options we have available.</p>
@@ -694,133 +681,133 @@ div.rendered_html tbody tr:hover {
 <summary style='display:list-item'>Scheduler</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,150 - distributed.scheduler - INFO - State start</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:29,507 - distributed.scheduler - INFO - State start</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,154 - distributed.scheduler - INFO - Clear task state</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:29,510 - distributed.scheduler - INFO - Clear task state</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,155 - distributed.scheduler - INFO -   Scheduler at:     tcp://127.0.0.1:36619</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:29,510 - distributed.scheduler - INFO -   Scheduler at:     tcp://127.0.0.1:46825</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,155 - distributed.scheduler - INFO -   dashboard at:            127.0.0.1:8787</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:29,510 - distributed.scheduler - INFO -   dashboard at:            127.0.0.1:8787</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,066 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:38491&#x27;, name: 0, status: running, memory: 0, processing: 0&gt;</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,417 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:38825&#x27;, name: 1, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,069 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:38491</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,420 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:38825</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,101 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:39533&#x27;, name: 1, status: running, memory: 0, processing: 0&gt;</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,432 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:33569&#x27;, name: 0, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,101 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:39533</p>
-
-
-</details>
-
-<details>
-<summary style='display:list-item'>tcp://127.0.0.1:38491</summary>
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:38491</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:38491</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO -          dashboard at:            127.0.0.1:44815</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:36619</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO - -------------------------------------------------</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO -               Threads:                          1</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO -                Memory:                   3.39 GiB</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO -       Local Directory: /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-hg7eqlub</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,883 - distributed.worker - INFO - -------------------------------------------------</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,070 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:36619</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,070 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,432 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:33569</p>
 
 
 </details>
 
 <details>
-<summary style='display:list-item'>tcp://127.0.0.1:39533</summary>
+<summary style='display:list-item'>tcp://127.0.0.1:33569</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:39533</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:39533</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:33569</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO -          dashboard at:            127.0.0.1:45099</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:33569</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:36619</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO -          dashboard at:            127.0.0.1:35579</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:46825</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO -               Threads:                          1</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO -                Memory:                   3.39 GiB</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO -               Threads:                          1</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO -       Local Directory: /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-v6uomjbn</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO -                Memory:                   3.39 GiB</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:23,939 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO -       Local Directory: /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-4xi3eefs</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,102 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:36619</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,262 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-07-08 15:08:24,102 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,433 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:46825</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,433 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+</details>
+
+<details>
+<summary style='display:list-item'>tcp://127.0.0.1:38825</summary>
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:38825</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:38825</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO -          dashboard at:            127.0.0.1:44507</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:46825</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO -               Threads:                          1</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO -                Memory:                   3.39 GiB</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO -       Local Directory: /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-tnczsgz2</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,244 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,420 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:46825</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2022-07-08 16:44:30,420 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 </details></div>
@@ -862,7 +849,7 @@ div.rendered_html tbody tr:hover {
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-d0173b1a-fecf-11ec-908b-000d3a52cde2</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-3d136811-fedd-11ec-928a-00224834cd6e</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -891,7 +878,7 @@ div.rendered_html tbody tr:hover {
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">8fa9cc8a</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">ee0faed9</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -928,11 +915,11 @@ div.rendered_html tbody tr:hover {
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-387b230e-33db-4e99-96f1-814f2b08aeca</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-9dfb7d52-c08f-49b6-bb84-d2075e839b4c</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:36619
+                        <strong>Comm:</strong> tcp://127.0.0.1:46825
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 2
@@ -974,7 +961,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:38491
+                            <strong>Comm: </strong> tcp://127.0.0.1:33569
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -982,7 +969,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:44815/status" target="_blank">http://127.0.0.1:44815/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35579/status" target="_blank">http://127.0.0.1:35579/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 3.39 GiB
@@ -990,13 +977,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:41457
+                            <strong>Nanny: </strong> tcp://127.0.0.1:33275
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-hg7eqlub
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-4xi3eefs
                         </td>
                     </tr>
 
@@ -1019,7 +1006,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:39533
+                            <strong>Comm: </strong> tcp://127.0.0.1:38825
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1027,7 +1014,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:45099/status" target="_blank">http://127.0.0.1:45099/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:44507/status" target="_blank">http://127.0.0.1:44507/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 3.39 GiB
@@ -1035,13 +1022,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:41861
+                            <strong>Nanny: </strong> tcp://127.0.0.1:40149
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-v6uomjbn
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-tnczsgz2
                         </td>
                     </tr>
 
@@ -1195,7 +1182,7 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-tutorial/lib/python3.9/site-packages/distributed/node.py:180: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 42021 instead
+Hosting the HTTP server on port 40021 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -1244,7 +1231,7 @@ Hosting the HTTP server on port 42021 instead
 <div class="highlight"><pre>
 /usr/share/miniconda3/envs/dask-tutorial/lib/python3.9/site-packages/distributed/node.py:180: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 37273 instead
+Hosting the HTTP server on port 36777 instead
   warnings.warn(
 </pre></div></div>
 </div>
@@ -1265,7 +1252,7 @@ Hosting the HTTP server on port 37273 instead
 <h3>UCX<a class="headerlink" href="#UCX" title="Permalink to this headline">¶</a></h3>
 <p>On systems with high performance networking such as Infiniband or NVLink Dask can also leverage <a class="reference external" href="https://openucx.org/">UCX</a> which provides a unified communication protocol that automatically upgrades communication to use the fastest hardware available. This is vital for good performance on HPC systems with Infiniband or systems with multiple GPU workers.</p>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"cb0f797c13764ba18a8e1378e6f60fbf": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "faeda17a4d904f73a1b8137708573c58": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "338f22885f02432cac3d47c38fe23a63": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "d57f6b38bdd346768edd82b79948c58b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_faeda17a4d904f73a1b8137708573c58", "placeholder": "\u200b", "style": "IPY_MODEL_338f22885f02432cac3d47c38fe23a63", "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">8fa9cc8a</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 2\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 2\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 6.78 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-387b230e-33db-4e99-96f1-814f2b08aeca</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:36619\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 6.78 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:38491\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:44815/status\" target=\"_blank\">http://127.0.0.1:44815/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.39 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:41457\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-hg7eqlub\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:39533\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:45099/status\" target=\"_blank\">http://127.0.0.1:45099/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.39 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:41861\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-v6uomjbn\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "121925321b50423fae8063b432607139": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "9a63485e6e3c48338bb30dd0eca9303e": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_cb0f797c13764ba18a8e1378e6f60fbf", "step": 1, "style": "IPY_MODEL_121925321b50423fae8063b432607139", "value": 0}}, "5c506d3f31144f4883c29ddf8f43bef6": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "d142ddcf59e54eaca845acc044b8a954": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_cb0f797c13764ba18a8e1378e6f60fbf", "style": "IPY_MODEL_5c506d3f31144f4883c29ddf8f43bef6", "tooltip": ""}}, "b028b48cf686481f9a915caa256d4e36": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "f2e2a82bcf2e4a6297251947852f0ed2": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_cb0f797c13764ba18a8e1378e6f60fbf", "step": 1, "style": "IPY_MODEL_b028b48cf686481f9a915caa256d4e36", "value": 0}}, "390af19947014f75af2166785e70d9d0": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c3efe1b2f6e147e396de30b12fa9d815": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_cb0f797c13764ba18a8e1378e6f60fbf", "step": 1, "style": "IPY_MODEL_390af19947014f75af2166785e70d9d0", "value": 0}}, "62f44fc9dc8d47afa9b3e5d0f21fca49": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "6c9eebe047e2476cab0fb56f975711a9": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_cb0f797c13764ba18a8e1378e6f60fbf", "style": "IPY_MODEL_62f44fc9dc8d47afa9b3e5d0f21fca49", "tooltip": ""}}, "3d113a48e4b24a99b21dab3bb053bd61": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5f2f3864aced49a1b339342970c60552": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_9a63485e6e3c48338bb30dd0eca9303e", "IPY_MODEL_d142ddcf59e54eaca845acc044b8a954"], "layout": "IPY_MODEL_3d113a48e4b24a99b21dab3bb053bd61"}}, "d8696d69d5934363b9dd360b95348b46": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e363505ce8be4c54a26551dce963fa0c": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_f2e2a82bcf2e4a6297251947852f0ed2", "IPY_MODEL_c3efe1b2f6e147e396de30b12fa9d815", "IPY_MODEL_6c9eebe047e2476cab0fb56f975711a9"], "layout": "IPY_MODEL_d8696d69d5934363b9dd360b95348b46"}}, "bdbfcd64cec14ab29dd2429da2613af3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8bec472b1df0456bb5cb365ee87b56ec": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Manual Scaling", "1": "Adaptive Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_5f2f3864aced49a1b339342970c60552", "IPY_MODEL_e363505ce8be4c54a26551dce963fa0c"], "layout": "IPY_MODEL_bdbfcd64cec14ab29dd2429da2613af3", "selected_index": null}}, "151205ec76914d28bf20ad4c26894741": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a8a749b3e7204e70a3119d8a12406fbd": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c02f408161c241aab5a9ea2a96339a9a": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_151205ec76914d28bf20ad4c26894741", "placeholder": "\u200b", "style": "IPY_MODEL_a8a749b3e7204e70a3119d8a12406fbd", "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 2</td></tr>\n        </table>\n        "}}, "002aa3d620a34349a59df62bdd53138f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7fe0a78cf2b24e2e81598899a5f3be98": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "TabModel", "_titles": {"0": "Status", "1": "Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_d57f6b38bdd346768edd82b79948c58b", "IPY_MODEL_ca9dab48e51746bf9b7fcbf184b63e27"], "layout": "IPY_MODEL_002aa3d620a34349a59df62bdd53138f", "selected_index": 0}}, "ba588fcef50f45959376efeace33cbe5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ca9dab48e51746bf9b7fcbf184b63e27": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_c02f408161c241aab5a9ea2a96339a9a", "IPY_MODEL_8bec472b1df0456bb5cb365ee87b56ec"], "layout": "IPY_MODEL_ba588fcef50f45959376efeace33cbe5"}}}, "version_major": 2, "version_minor": 0}
+{"state": {"f4959064be14407ca024578dafd8ff34": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "84c965a712a043109fd07b45e2c03226": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8cfea3d31446444285ca8718ec934e08": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "ff0f2b1e828f4e21b4396e27e5b467f3": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_84c965a712a043109fd07b45e2c03226", "placeholder": "\u200b", "style": "IPY_MODEL_8cfea3d31446444285ca8718ec934e08", "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">ee0faed9</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 2\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 2\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 6.78 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-9dfb7d52-c08f-49b6-bb84-d2075e839b4c</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:46825\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 6.78 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:33569\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:35579/status\" target=\"_blank\">http://127.0.0.1:35579/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.39 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:33275\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-4xi3eefs\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:38825\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:44507/status\" target=\"_blank\">http://127.0.0.1:44507/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.39 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:40149\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-tnczsgz2\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "a81b599fa4bc4476bbf4401c9b304e38": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "8f5baba0e5274c9c94231e0dd145d426": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_f4959064be14407ca024578dafd8ff34", "step": 1, "style": "IPY_MODEL_a81b599fa4bc4476bbf4401c9b304e38", "value": 0}}, "e363b49221004560881271b0029e3601": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "66e7e817e255480b8d257dea219849c1": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_f4959064be14407ca024578dafd8ff34", "style": "IPY_MODEL_e363b49221004560881271b0029e3601", "tooltip": ""}}, "4f1501ea3b944d7faf13594101fec7d7": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "6d79debe77124e189f17d31e2b2dbb56": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_f4959064be14407ca024578dafd8ff34", "step": 1, "style": "IPY_MODEL_4f1501ea3b944d7faf13594101fec7d7", "value": 0}}, "21a27a7524c04faba0413d09d0a101d5": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "110b79e0980d4fc39d288aee65ea4725": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_f4959064be14407ca024578dafd8ff34", "step": 1, "style": "IPY_MODEL_21a27a7524c04faba0413d09d0a101d5", "value": 0}}, "b844e398d35d4a138bcb5c3d4def091c": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_color": null, "font_weight": ""}}, "216faea22bf6416ebd7bde473602c388": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_f4959064be14407ca024578dafd8ff34", "style": "IPY_MODEL_b844e398d35d4a138bcb5c3d4def091c", "tooltip": ""}}, "9f59a6c04a15462294aa8498cd140058": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5be66ed855564090bd5dd17ea0ffff5c": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_8f5baba0e5274c9c94231e0dd145d426", "IPY_MODEL_66e7e817e255480b8d257dea219849c1"], "layout": "IPY_MODEL_9f59a6c04a15462294aa8498cd140058"}}, "d160a256d99a49d49d02f42475297c96": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dc9a4342252d4933bbc908ee52a86e31": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_6d79debe77124e189f17d31e2b2dbb56", "IPY_MODEL_110b79e0980d4fc39d288aee65ea4725", "IPY_MODEL_216faea22bf6416ebd7bde473602c388"], "layout": "IPY_MODEL_d160a256d99a49d49d02f42475297c96"}}, "1995b2e483ce467b8fe23872041a233d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "00d9258d79e94e80b089864452017280": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "AccordionModel", "_titles": {"0": "Manual Scaling", "1": "Adaptive Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_5be66ed855564090bd5dd17ea0ffff5c", "IPY_MODEL_dc9a4342252d4933bbc908ee52a86e31"], "layout": "IPY_MODEL_1995b2e483ce467b8fe23872041a233d", "selected_index": null}}, "27f39227e359421b9caaec916a1f8aff": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "acaa589b831e47c0a2772c53ddfe70b2": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "2ca0808dca66486aa929c5e6675a8f14": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_27f39227e359421b9caaec916a1f8aff", "placeholder": "\u200b", "style": "IPY_MODEL_acaa589b831e47c0a2772c53ddfe70b2", "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 2</td></tr>\n        </table>\n        "}}, "46407cc4642e4f53b57d2f37ae58ad29": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b694a7533e4342cbbd0ea37569e83126": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "TabModel", "_titles": {"0": "Status", "1": "Scaling"}, "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_ff0f2b1e828f4e21b4396e27e5b467f3", "IPY_MODEL_e0483aeda4304b6f9277931b636466ae"], "layout": "IPY_MODEL_46407cc4642e4f53b57d2f37ae58ad29", "selected_index": 0}}, "55f3a66c4b3243ad9b012b3839562bf4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e0483aeda4304b6f9277931b636466ae": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_2ca0808dca66486aa929c5e6675a8f14", "IPY_MODEL_00d9258d79e94e80b089864452017280"], "layout": "IPY_MODEL_55f3a66c4b3243ad9b012b3839562bf4"}}}, "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
@@ -1280,13 +1267,13 @@ Hosting the HTTP server on port 37273 instead
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Parallelize code with <code class="docutils literal notranslate"><span class="pre">dask.delayed</span></code></p>
+            <p class="prev-next-title">dask.delayed - parallelize any code</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05_futures.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Non-blocking calculations with <code class="docutils literal notranslate"><span class="pre">distributed</span> <span class="pre">Futures</span></code></p>
+        <p class="prev-next-title">Futures - non-blocking distributed calculations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

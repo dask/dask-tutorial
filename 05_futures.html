@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Non-blocking calculations with distributed Futures &#8212; Dask Tutorial  documentation</title>
+    <title>Futures - non-blocking distributed calculations &#8212; Dask Tutorial  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -39,7 +39,7 @@
     <link rel="shortcut icon" href="_static/images/favicon.svg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Distributed" href="04_distributed.html" />
+    <link rel="prev" title="Distributed - spread your data and computation across a cluster" href="04_distributed.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,40 +123,27 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="01_dataframe.html">
-   Dask DataFrame API
+   Dask DataFrame - parallelized pandas
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_array.html">
-   Dask Arrays
+   Dask Arrays - parallelized numpy
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_dask.delayed.html">
-   Parallelize code with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     dask.delayed
-    </span>
-   </code>
+   dask.delayed - parallelize any code
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_distributed.html">
-   Distributed
+   Distributed - spread your data and computation across a cluster
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Non-blocking calculations with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     distributed
-    </span>
-    <span class="pre">
-     Futures
-    </span>
-   </code>
+   Futures - non-blocking distributed calculations
   </a>
  </li>
 </ul>
@@ -287,7 +274,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Non-blocking calculations with distributed Futures</h1>
+                <h1>Futures - non-blocking distributed calculations</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -633,8 +620,8 @@ div.rendered_html tbody tr:hover {
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/05_futures.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/05_futures.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/05_futures.ipynb">on Github</a>.</p>
 <p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Non-blocking-calculations-with-distributed-Futures">
-<h1>Non-blocking calculations with <code class="docutils literal notranslate"><span class="pre">distributed</span> <span class="pre">Futures</span></code><a class="headerlink" href="#Non-blocking-calculations-with-distributed-Futures" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Futures---non-blocking-distributed-calculations">
+<h1>Futures - non-blocking distributed calculations<a class="headerlink" href="#Futures---non-blocking-distributed-calculations" title="Permalink to this headline">¶</a></h1>
 <p>In the previous chapter, we showed that executing a calculation (created using delayed) with the distributed executor is identical to any other executor. However, we now have access to additional functionality, and control over what data is held in memory.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">futures</span></code> interface (derived from the built-in <code class="docutils literal notranslate"><span class="pre">concurrent.futures</span></code>) provide fine-grained real-time execution for custom situations. We can submit individual functions for evaluation with one set of inputs, or evaluated over a sequence of inputs with <code class="docutils literal notranslate"><span class="pre">submit()</span></code> and <code class="docutils literal notranslate"><span class="pre">map()</span></code>. The call returns immediately, giving one or more <em>futures</em>, whose status begins as “pending” and later becomes “finished”. There is no blocking of the local Python session.</p>
 <p><strong>Related Documentation</strong></p>
@@ -659,8 +646,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-07-08 15:08:33,482 - distributed.diskutils - INFO - Found stale lock file and directory &#39;/home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-54e6qphd&#39;, purging
-2022-07-08 15:08:33,482 - distributed.diskutils - INFO - Found stale lock file and directory &#39;/home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-v_syu_dr&#39;, purging
+2022-07-08 16:44:39,733 - distributed.diskutils - INFO - Found stale lock file and directory &#39;/home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-dg9nhjwp&#39;, purging
+2022-07-08 16:44:39,734 - distributed.diskutils - INFO - Found stale lock file and directory &#39;/home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-2_r1o6et&#39;, purging
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -672,7 +659,7 @@ div.rendered_html tbody tr:hover {
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-d45e5e0c-fecf-11ec-91b7-000d3a52cde2</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-4155a3fc-fedd-11ec-93ac-00224834cd6e</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -701,7 +688,7 @@ div.rendered_html tbody tr:hover {
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">5ec1af00</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">62a70425</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -738,11 +725,11 @@ div.rendered_html tbody tr:hover {
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-315c6f94-f5d0-4f68-998f-45054e153dea</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-8c7717f2-c2f5-43d5-9496-10dc926cd110</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:34727
+                        <strong>Comm:</strong> tcp://127.0.0.1:39119
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 4
@@ -784,7 +771,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:37485
+                            <strong>Comm: </strong> tcp://127.0.0.1:42161
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -792,7 +779,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:46613/status" target="_blank">http://127.0.0.1:46613/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:38011/status" target="_blank">http://127.0.0.1:38011/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -800,13 +787,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:44405
+                            <strong>Nanny: </strong> tcp://127.0.0.1:39371
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-r5pkxub3
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-_q2qlc38
                         </td>
                     </tr>
 
@@ -829,7 +816,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:44791
+                            <strong>Comm: </strong> tcp://127.0.0.1:34995
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -837,7 +824,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:46323/status" target="_blank">http://127.0.0.1:46323/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:40211/status" target="_blank">http://127.0.0.1:40211/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -845,13 +832,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:46559
+                            <strong>Nanny: </strong> tcp://127.0.0.1:35655
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-luil9dei
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-m9hlhwen
                         </td>
                     </tr>
 
@@ -874,7 +861,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:38837
+                            <strong>Comm: </strong> tcp://127.0.0.1:46749
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -882,7 +869,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35149/status" target="_blank">http://127.0.0.1:35149/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:38401/status" target="_blank">http://127.0.0.1:38401/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -890,13 +877,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:40111
+                            <strong>Nanny: </strong> tcp://127.0.0.1:37127
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-i5eae235
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-rmgl6m5a
                         </td>
                     </tr>
 
@@ -919,7 +906,7 @@ div.rendered_html tbody tr:hover {
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:44957
+                            <strong>Comm: </strong> tcp://127.0.0.1:39361
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -927,7 +914,7 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36841/status" target="_blank">http://127.0.0.1:36841/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35955/status" target="_blank">http://127.0.0.1:35955/status</a>
                         </td>
                         <td style="text-align: left;">
                             <strong>Memory: </strong> 1.70 GiB
@@ -935,13 +922,13 @@ div.rendered_html tbody tr:hover {
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:41361
+                            <strong>Nanny: </strong> tcp://127.0.0.1:40249
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-t242w9of
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-ejyca96y
                         </td>
                     </tr>
 
@@ -1053,7 +1040,7 @@ div.rendered_html tbody tr:hover {
 <span style="color: var(--jp-ui-font-color2, gray)"> type:</span> NoneType,
 
 
-<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> inc-b35aca8f1d277541407a16ff2090e6da</div>
+<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> inc-08842e2785cf6a31c1fa6d613fe5e7e7</div>
 </div>
 <p>If you wait a second, and then check on the future again, you’ll see that it has finished.</p>
 <div class="nbinput docutils container">
@@ -1080,7 +1067,7 @@ div.rendered_html tbody tr:hover {
 <span style="color: var(--jp-ui-font-color2, gray)"> type:</span> NoneType,
 
 
-<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> inc-b35aca8f1d277541407a16ff2090e6da</div>
+<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> inc-08842e2785cf6a31c1fa6d613fe5e7e7</div>
 </div>
 <p>You can block on the computation and gather the result with the <code class="docutils literal notranslate"><span class="pre">.result()</span></code> method.</p>
 <div class="nbinput docutils container">
@@ -1171,7 +1158,7 @@ div.rendered_html tbody tr:hover {
 <span style="color: var(--jp-ui-font-color2, gray)"> type:</span> NoneType,
 
 
-<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> add-f387504a-f92f-4eb8-83d8-936c44d06981</div>
+<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> add-076a94ce-e9cc-415c-a1ff-0b398f3a186a</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -1226,7 +1213,7 @@ div.rendered_html tbody tr:hover {
 <span style="color: var(--jp-ui-font-color2, gray)"> type:</span> NoneType,
 
 
-<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> sum-28b8e64f70b0027d2fe88558be360199</div>
+<span style="color: var(--jp-ui-font-color2, gray)"> key:</span> sum-7f8146f9a4e2049e14a25ebd4dc4268e</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
@@ -1268,7 +1255,7 @@ div.rendered_html tbody tr:hover {
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Distributed</p>
+            <p class="prev-next-title">Distributed - spread your data and computation across a cluster</p>
         </div>
     </a>
 </div>
