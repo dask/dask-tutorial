@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Dask Tutorial  documentation</title>
+    <title>Welcome to the Dask Tutorial &#8212; Dask Tutorial  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -119,7 +119,7 @@
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Introduction
+   Welcome to the Dask Tutorial
   </a>
  </li>
  <li class="toctree-l1">
@@ -219,8 +219,35 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Overview">
-   Overview
+  <a class="reference internal nav-link" href="#An-example-Dask-computation">
+   An example Dask computation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#What-is-Dask?">
+   What is Dask?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-Collections">
+     Dask Collections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-Cluster">
+     Dask Cluster
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-Ecosystem">
+     Dask Ecosystem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dask-Use-Cases">
+   Dask Use Cases
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -229,26 +256,28 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Links">
-   Links
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Tutorial-Structure">
    Tutorial Structure
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Print-Hello,-world!">
+     Exercise: Print
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Hello,
+      </span>
+      <span class="pre">
+       world!
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Exercise:-Print-Hello,-world!">
-   Exercise: Print
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Hello,
-    </span>
-    <span class="pre">
-     world!
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#Useful-Links">
+   Useful Links
   </a>
  </li>
 </ul>
@@ -261,7 +290,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Welcome to the Dask Tutorial</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -272,8 +301,35 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Overview">
-   Overview
+  <a class="reference internal nav-link" href="#An-example-Dask-computation">
+   An example Dask computation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#What-is-Dask?">
+   What is Dask?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-Collections">
+     Dask Collections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-Cluster">
+     Dask Cluster
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Dask-Ecosystem">
+     Dask Ecosystem
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Dask-Use-Cases">
+   Dask Use Cases
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -282,26 +338,28 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Links">
-   Links
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Tutorial-Structure">
    Tutorial Structure
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#Exercise:-Print-Hello,-world!">
+     Exercise: Print
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Hello,
+      </span>
+      <span class="pre">
+       world!
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Exercise:-Print-Hello,-world!">
-   Exercise: Print
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     Hello,
-    </span>
-    <span class="pre">
-     world!
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#Useful-Links">
+   Useful Links
   </a>
  </li>
 </ul>
@@ -592,41 +650,413 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/00_overview.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/00_overview.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/00_overview.ipynb">on Github</a>.</p>
-<p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Introduction">
-<h1>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline">¶</a></h1>
-<p>Welcome to the Dask Tutorial.</p>
-<p>Dask is a parallel computing library that scales the existing Python ecosystem. This tutorial will introduce Dask and parallel data analysis more generally.</p>
-<p>Dask can scale down to your laptop and up to a cluster. Here, we’ll use an environment you setup on your laptop to analyze medium sized datasets in parallel locally.</p>
-<div class="section" id="Overview">
-<h2>Overview<a class="headerlink" href="#Overview" title="Permalink to this headline">¶</a></h2>
-<p>Dask provides multi-core and distributed parallel execution on larger-than-memory datasets.</p>
-<p>We can think of Dask at a high and a low level</p>
-<ul class="simple">
-<li><p><strong>High-level collections:</strong> Dask provides high-level Array, Bag, and DataFrame collections that mimic NumPy, lists, and Pandas but can operate in parallel on datasets that don’t fit into memory. Dask’s high-level collections are alternatives to NumPy and Pandas for large datasets.</p></li>
-<li><p><strong>Low-level schedulers:</strong> Dask provides dynamic task schedulers that execute task graphs in parallel. These execution engines power the high-level collections mentioned above but can also power custom, user-defined workloads. These schedulers are low-latency (around 1ms) and work hard to run computations in a small memory footprint. Dask’s schedulers are an alternative to direct use of <code class="docutils literal notranslate"><span class="pre">threading</span></code> or <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> libraries in complex cases or other task scheduling systems like
-<code class="docutils literal notranslate"><span class="pre">Luigi</span></code> or <code class="docutils literal notranslate"><span class="pre">IPython</span> <span class="pre">parallel</span></code>.</p></li>
+<div class="section" id="Welcome-to-the-Dask-Tutorial">
+<h1>Welcome to the Dask Tutorial<a class="headerlink" href="#Welcome-to-the-Dask-Tutorial" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Dask logo" class="no-scaled-link" src="https://docs.dask.org/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
+<p>Dask is a parallel and distributed computing library that scales the existing Python and PyData ecosystem.</p>
+<p>Dask can scale up to your full laptop capacity and out to a cloud cluster.</p>
+<div class="section" id="An-example-Dask-computation">
+<h2>An example Dask computation<a class="headerlink" href="#An-example-Dask-computation" title="Permalink to this headline">¶</a></h2>
+<p>In the following lines of code, we’re reading the NYC taxi cab data from 2015 and finding the mean tip amount. Don’t worry about the code, this is just for a quick demonstration. We’ll go over all of this in the next notebook. :)</p>
+<p><strong>Note for learners:</strong> This might be heavy for Binder.</p>
+<p><strong>Note for instructors:</strong> Don’t forget to open the Dask Dashboard!</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-c572aa9c-0040-11ed-8b62-002248a98c65</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> distributed.LocalCluster</td>
+
+        </tr>
+
+
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+
+
+        </table>
+
+
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">de9a49d3</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 2
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 2
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 6.78 GiB
+                </td>
+            </tr>
+
+            <tr>
+    <td style="text-align: left;"><strong>Status:</strong> running</td>
+    <td style="text-align: left;"><strong>Using processes:</strong> True</td>
+</tr>
+
+
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-c3c185b2-a2a6-4196-9f50-d3e1fd5610aa</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://127.0.0.1:40303
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 2
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 2
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 6.78 GiB
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 0</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:40849
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36375/status" target="_blank">http://127.0.0.1:36375/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.39 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:35259
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-m0n5nuk5
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 1</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:39215
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:46289/status" target="_blank">http://127.0.0.1:46289/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.39 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:33417
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-y9sw55_6
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+
+
+    </div>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
+    <span class="s2">&quot;s3://dask-data/nyc-taxi/nyc-2015.parquet/part.*.parquet&quot;</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;passenger_count&quot;</span><span class="p">,</span> <span class="s2">&quot;tip_amount&quot;</span><span class="p">],</span>
+    <span class="n">storage_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;anon&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;passenger_count&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tip_amount</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+passenger_count
+0    1.590343
+1    1.752130
+2    1.705595
+3    1.579748
+4    1.459269
+5    1.728534
+6    1.680769
+7    3.863473
+8    5.060718
+9    5.075917
+Name: tip_amount, dtype: float64
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="What-is-Dask?">
+<h2>What is <a class="reference external" href="%22https://www.dask.org/%22">Dask</a>?<a class="headerlink" href="#What-is-Dask?" title="Permalink to this headline">¶</a></h2>
+<p>There are many parts to the “Dask” the project: * Collections/API also known as “core-library”. * Distributed – to create clusters * Intergrations and broader ecosystem</p>
+<div class="section" id="Dask-Collections">
+<h3>Dask Collections<a class="headerlink" href="#Dask-Collections" title="Permalink to this headline">¶</a></h3>
+<p>Dask provides <strong>multi-core</strong> and <strong>distributed+parallel</strong> execution on <strong>larger-than-memory</strong> datasets</p>
+<p>We can think of Dask’s APIs (also called collections) at a high and a low level:</p>
+<center><p><img alt="High vs Low level clothes analogy" class="no-scaled-link" src="_images/high_vs_low_level_coll_analogy.png" style="width: 75%;" /></p>
+</center><ul class="simple">
+<li><p><strong>High-level collections:</strong> Dask provides high-level Array, Bag, and DataFrame collections that mimic NumPy, lists, and pandas but can operate in parallel on datasets that don’t fit into memory.</p></li>
+<li><p><strong>Low-level collections:</strong> Dask also provides low-level Delayed and Futures collections that give you finer control to build custom parallel and distributed computations.</p></li>
 </ul>
-<p>Different users operate at different levels but it is useful to understand both.</p>
-<p>The Dask <a class="reference external" href="https://stories.dask.org/en/latest/">use cases</a> provides a number of sample workflows where Dask should be a good fit.</p>
+</div>
+<div class="section" id="Dask-Cluster">
+<h3>Dask Cluster<a class="headerlink" href="#Dask-Cluster" title="Permalink to this headline">¶</a></h3>
+<p>Most of the times when you are using Dask, you will be using a distributed scheduler, which exists in the context of a Dask cluster. The Dask cluster is structured as:</p>
+<center><p><img alt="Distributed overview" class="no-scaled-link" src="_images/distributed-overview.png" style="width: 75%;" /></p>
+</center></div>
+<div class="section" id="Dask-Ecosystem">
+<h3>Dask Ecosystem<a class="headerlink" href="#Dask-Ecosystem" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the core Dask library and its distributed scheduler, the Dask ecosystem connects several additional initiatives, including:</p>
+<ul class="simple">
+<li><p>Dask-ML (parallel scikit-learn-style API)</p></li>
+<li><p>Dask-image</p></li>
+<li><p>Dask-cuDF</p></li>
+<li><p>Dask-sql</p></li>
+<li><p>Dask-snowflake</p></li>
+<li><p>Dask-mongo</p></li>
+<li><p>Dask-bigquery</p></li>
+</ul>
+<p>Community libraries that have built-in dask integrations like:</p>
+<ul class="simple">
+<li><p>Xarray</p></li>
+<li><p>XGBoost</p></li>
+<li><p>Prefect</p></li>
+<li><p>Airflow</p></li>
+</ul>
+<p>Dask deployment libraries - Dask-kubernetes - Dask-YARN - Dask-gateway - Dask-cloudprovider - jobqueue</p>
+<p>… When we talk about the Dask project we include all these efforts as part of the community.</p>
+</div>
+</div>
+<div class="section" id="Dask-Use-Cases">
+<h2>Dask Use Cases<a class="headerlink" href="#Dask-Use-Cases" title="Permalink to this headline">¶</a></h2>
+<p>Dask is used in multiple fields such as:</p>
+<ul class="simple">
+<li><p>Geospatial</p></li>
+<li><p>Finance</p></li>
+<li><p>Astrophysics</p></li>
+<li><p>Microbiology</p></li>
+<li><p>Environmental science</p></li>
+</ul>
+<p>Check out the Dask <a class="reference external" href="https://stories.dask.org/en/latest/">use cases</a> page that provides a number of sample workflows.</p>
 </div>
 <div class="section" id="Prepare">
 <h2>Prepare<a class="headerlink" href="#Prepare" title="Permalink to this headline">¶</a></h2>
-<p>You should clone this repository:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/dask/dask-tutorial
 </pre></div>
 </div>
-<p>The included file <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> in the <code class="docutils literal notranslate"><span class="pre">binder</span></code> subdirectory contains a list of all of the packages needed to run this tutorial. To install them using <code class="docutils literal notranslate"><span class="pre">conda</span></code>, you can do</p>
+<p>and then install necessary packages. There are three different ways to achieve this, pick the one that best suits you, and <strong>only pick one option</strong>. They are, in order of preference:</p>
+<p>In the main repo directory</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda env create -f binder/environment.yml
 conda activate dask-tutorial
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
-jupyter labextension install @bokeh/jupyter_bokeh
 </pre></div>
 </div>
-<p>Do this <em>before</em> running this notebook.</p>
+<p>You will need the following core libraries</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge ipycytoscape jupyterlab python-graphviz matplotlib zarr xarray pooch scipy dask distributed dask-labextension
+</pre></div>
 </div>
-<div class="section" id="Links">
-<h2>Links<a class="headerlink" href="#Links" title="Permalink to this headline">¶</a></h2>
+<p>Note that these options will alter your existing environment, potentially changing the versions of packages you already have installed.</p>
+</div>
+<div class="section" id="Tutorial-Structure">
+<h2>Tutorial Structure<a class="headerlink" href="#Tutorial-Structure" title="Permalink to this headline">¶</a></h2>
+<p>Each section is a Jupyter notebook. There’s a mixture of text, code, and exercises.</p>
+<ol class="arabic simple" start="0">
+<li><p><a class="reference internal" href="#"><span class="doc">Overview</span></a> - dask’s place in the universe.</p></li>
+<li><p><a class="reference internal" href="01_dataframe.html"><span class="doc">Dataframe</span></a> - parallelized operations on many pandas dataframes spread across your cluster.</p></li>
+<li><p><a class="reference internal" href="02_array.html"><span class="doc">Array</span></a> - blocked numpy-like functionality with a collection of numpy arrays spread across your cluster.</p></li>
+<li><p><a class="reference internal" href="03_dask.delayed.html"><span class="doc">Delayed</span></a> - the single-function way to parallelize general python code.</p></li>
+<li><p><a class="reference internal" href="04_distributed.html"><span class="doc">Deployment/Distributed</span></a> - Dask’s scheduler for clusters, with details of how to view the UI.</p></li>
+<li><p><a class="reference internal" href="05_futures.html"><span class="doc">Distributed Futures</span></a> - non-blocking results that compute asynchronously.</p></li>
+<li><p>Conclusion</p></li>
+</ol>
+<p>If you haven’t used Jupyterlab, it’s similar to the Jupyter Notebook. If you haven’t used the Notebook, the quick intro is</p>
+<ol class="arabic simple">
+<li><p>There are two modes: command and edit</p></li>
+<li><p>From command mode, press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to edit a cell (like this markdown cell)</p></li>
+<li><p>From edit mode, press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> to change to command mode</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code> to execute a cell and move to the next cell.</p></li>
+</ol>
+<p>The toolbar has commands for executing, converting, and creating cells.</p>
+<div class="section" id="Exercise:-Print-Hello,-world!">
+<h3>Exercise: Print <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code><a class="headerlink" href="#Exercise:-Print-Hello,-world!" title="Permalink to this headline">¶</a></h3>
+<p>Each notebook will have exercises for you to solve. You’ll be given a blank or partially completed cell, followed by a hidden cell with a solution. For example.</p>
+<p>Print the text “Hello, world!”.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+<p>The next cell has the solution. Click the ellipses to expand the solution, and always make sure to run the solution cell, in case later sections of the notebook depend on the output from the solution.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Hello, world!
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Useful-Links">
+<h2>Useful Links<a class="headerlink" href="#Useful-Links" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Reference</p>
 <ul>
@@ -645,52 +1075,6 @@ jupyter labextension install @bokeh/jupyter_bokeh
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="Tutorial-Structure">
-<h2>Tutorial Structure<a class="headerlink" href="#Tutorial-Structure" title="Permalink to this headline">¶</a></h2>
-<p>Each section is a Jupyter notebook. There’s a mixture of text, code, and exercises.</p>
-<p>If you haven’t used Jupyterlab, it’s similar to the Jupyter Notebook. If you haven’t used the Notebook, the quick intro is</p>
-<ol class="arabic simple">
-<li><p>There are two modes: command and edit</p></li>
-<li><p>From command mode, press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to edit a cell (like this markdown cell)</p></li>
-<li><p>From edit mode, press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> to change to command mode</p></li>
-<li><p>Press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code> to execute a cell and move to the next cell.</p></li>
-</ol>
-<p>The toolbar has commands for executing, converting, and creating cells.</p>
-<p>The layout of the tutorial will be as follows: - Foundations: an explanation of what Dask is, how it works, and how to use lower-level primitives to set up computations. Casual users may wish to skip this section, although we consider it useful knowledge for all users. - Distributed: information on running Dask on the distributed scheduler, which enables scale-up to distributed settings and enhanced monitoring of task operations. The distributed scheduler is now generally the recommended engine
-for executing task work, even on single workstations or laptops. - Collections: convenient abstractions giving a familiar feel to big data - bag: Python iterators with a functional paradigm, such as found in func/iter-tools and toolz - generalize lists/generators to big data; this will seem very familiar to users of PySpark’s <a class="reference external" href="http://spark.apache.org/docs/2.1.0/api/python/pyspark.html#pyspark.RDD">RDD</a> - array: massive multi-dimensional numerical data, with Numpy functionality - dataframes:
-massive tabular data, with Pandas functionality</p>
-<p>Whereas there is a wealth of information in the documentation, linked above, here we aim to give practical advice to aid your understanding and application of Dask in everyday situations. This means that you should not expect every feature of Dask to be covered, but the examples hopefully are similar to the kinds of work-flows that you have in mind.</p>
-</div>
-<div class="section" id="Exercise:-Print-Hello,-world!">
-<h2>Exercise: Print <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code><a class="headerlink" href="#Exercise:-Print-Hello,-world!" title="Permalink to this headline">¶</a></h2>
-<p>Each notebook will have exercises for you to solve. You’ll be given a blank or partially completed cell, followed by a hidden cell with a solution. For example.</p>
-<p>Print the text “Hello, world!”.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
-</pre></div>
-</div>
-</div>
-<p>The next cell has the solution. Click the ellipses to expand the solution, and always make sure to run the solution cell, in case later sections of the notebook depend on the output from the solution.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Hello, world!
-</pre></div></div>
-</div>
 </div>
 </div>
 
