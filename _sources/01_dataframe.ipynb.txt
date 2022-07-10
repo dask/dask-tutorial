@@ -771,7 +771,7 @@
     "\n",
     "You can open an issue on the [Dask issue tracker](https://github.com/dask/dask/issues) to check how feasible the function could be to implement, and you can consider contributing this function to Dask.\n",
     "\n",
-    "If it's a custom function or tricky to implement, `dask.dataframe` provides a few methods to make applying custom functions to Dask DataFrames easier:\n",
+    "In case it's a custom function or tricky to implement, `dask.dataframe` provides a few methods to make applying custom functions to Dask DataFrames easier:\n",
     "\n",
     "- [`map_partitions`](https://docs.dask.org/en/latest/generated/dask.dataframe.DataFrame.map_partitions.html): to run a function on each partition (each pandas DataFrame) of the Dask DataFrame\n",
     "- [`map_overlap`](https://docs.dask.org/en/latest/generated/dask.dataframe.rolling.map_overlap.html): to run a function on each partition (each pandas DataFrame) of the Dask DataFrame, with some rows shared between neighboring partitions\n",
@@ -797,34 +797,55 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The \"Distance\" column in `ddf` is currently in miles. Let's say we want to convert the units to kilometers and we have a general helper function as shown below. In this case, we can use `map_partitions` to apply this function across each of the internal pandas `DataFrame`s in parallel. "
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": null,
    "metadata": {},
    "outputs": [],
    "source": [
-    "# TODO: update with df.a + df.b - df.c\n",
+    "def my_custom_converter(df, multiplier=1):\n",
+    "    return df * multiplier\n",
     "\n",
-    "def my_custom_function(df, parameter_a=True):\n",
-    "    # toy function just for demonstration\n",
-    "    if parameter_a:\n",
-    "        # do something with df\n",
-    "        return df\n",
-    "    return df\n",
+    "meta = pd.Series(name=\"Distance\", dtype=\"float64\")\n",
     "\n",
-    "meta = ddf.head()\n",
-    "\n",
-    "ddf = ddf.map_partitions(my_custom_function, parameter_a=True, meta=meta)"
+    "distance_km = ddf.Distance.map_partitions(my_custom_converter, multiplier=0.6, meta=meta)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "distance_km.visualize()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "distance_km.head()"
    ]
   },
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "We suggest using Dask's `apply` and `map` functions when you can because they already use `map_partitions` internally.\n",
+    "### What is `meta`?\n",
     "\n",
-    "Using the correct `meta` is important here, because your output will depend on it. A few notes about `meta`:\n",
-    "* Think of `meta` as a suggestion that Dask uses while it is operating lazily. Importantly `meta` _never infers with the output structure_.\n",
-    "* The best way to specify `meta` is using a small pandas DataFrame or Series that match the structure of your final output."
+    "Since Dask operates lazily, it doesn't always have enough information to infer the output structure (which includes datatypes) of certain operations.\n",
+    "\n",
+    "`meta` is a _suggestion_ to Dask about the output of your computation. Importantly, `meta` _never infers with the output structure_. Dask uses this `meta` until it can determine the actual output structure.\n",
+    "\n",
+    "Even though there are many ways to define `meta`, we suggest using a small pandas Series or DataFrame that matches the structure of your final output."
    ]
   },
   {
@@ -840,7 +861,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "It's good practice to close any Dask cluster you create:"
+    "It's good practice to always close any Dask cluster you create:"
    ]
   },
   {
@@ -850,29 +871,6 @@
    "outputs": [],
    "source": [
     "client.shutdown()"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## Final thoughts"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "`dask.dataframe` operations use `pandas` operations internally. Generally, they run at about the same speed except in the following two cases:\n",
-    "\n",
-    "1.  Dask introduces a bit of overhead, around 1ms per task. This is usually negligible.\n",
-    "2.  When pandas releases the GIL `dask.dataframe` can call several pandas operations in parallel within a process, increasing speed somewhat proportional to the number of cores. For operations which don't release the GIL, multiple processes would be needed to get the same speedup.\n",
-    "\n",
-    "**To reiterate**, in this tutorial you used a small dataset consisting of a few CSV files. This dataset is small enough that you would normally use pandas. We've chosen this size so that exercises finish quickly. `dask.dataframe` only really becomes meaningful for problems significantly larger than this, when pandas breaks with the dreaded \n",
-    "\n",
-    "    MemoryError:  ...\n",
-    "    \n",
-    "Furthermore, the distributed scheduler (you will learn about it later) allows the same `dask.dataframe` expressions to be executed across a cluster. To enable massive \"big data\" processing, one could execute data ingestion functions such as `read_parquet`, where the data is held on storage accessible to every worker node (e.g., amazon's S3), and because most operations begin by selecting only some columns, transforming and filtering the data, only relatively small amounts of data need to be communicated between the machines."
    ]
   }
  ],
