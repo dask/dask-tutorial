@@ -1,0 +1,20 @@
+name: Comment with Binder link on PRs
+
+on: pull_request
+
+jobs:
+  binder_link_comment:
+    runs-on: ubuntu-latest
+    name: Comment on PRs with w Binder link to try out the changes
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            Beep boop! Here is a Binder link where you can try out this change.
+            [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${{github.repository}}/${{github.ref}})
+          GITHUB_TOKEN: ${{ secrets.DASK_BOT_TOKEN }}
+          comment_includes: "Binder link"
