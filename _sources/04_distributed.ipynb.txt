@@ -65,7 +65,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "LocalCluster?"
+    "?LocalCluster"
    ]
   },
   {
@@ -289,7 +289,7 @@
     "async with Scheduler() as scheduler:\n",
     "    async with Worker(scheduler.address) as worker:\n",
     "        async with Client(scheduler.address, asynchronous=True) as client:\n",
-    "            print(await client.submit(lambda: 1+1))"
+    "            print(await client.submit(lambda: 1 + 1))"
    ]
   },
   {
@@ -342,8 +342,10 @@
     "\n",
     "async with Scheduler(security=security) as scheduler:\n",
     "    async with Worker(scheduler.address, security=security) as worker:\n",
-    "        async with Client(scheduler.address, security=security, asynchronous=True) as client:\n",
-    "            print(await client.submit(lambda: 1+1))"
+    "        async with Client(\n",
+    "            scheduler.address, security=security, asynchronous=True\n",
+    "        ) as client:\n",
+    "            print(await client.submit(lambda: 1 + 1))"
    ]
   },
   {

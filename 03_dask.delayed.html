@@ -791,9 +791,11 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
+
 <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
 
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -821,7 +823,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 99 ms, sys: 12 ms, total: 111 ms
+CPU times: user 104 ms, sys: 33 ms, total: 137 ms
 Wall time: 3 s
 </pre></div></div>
 </div>
@@ -835,10 +837,12 @@ Wall time: 3 s
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask</span>
 
+
 <span class="nd">@dask</span><span class="o">.</span><span class="n">delayed</span>
 <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
 
 <span class="nd">@dask</span><span class="o">.</span><span class="n">delayed</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -865,8 +869,8 @@ Wall time: 3 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 420 µs, sys: 71 µs, total: 491 µs
-Wall time: 393 µs
+CPU times: user 344 µs, sys: 84 µs, total: 428 µs
+Wall time: 363 µs
 </pre></div></div>
 </div>
 <p>This ran immediately, since nothing has really happened yet.</p>
@@ -887,8 +891,8 @@ Wall time: 393 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 175 ms, sys: 41.4 ms, total: 216 ms
-Wall time: 2.14 s
+CPU times: user 234 ms, sys: 49.7 ms, total: 284 ms
+Wall time: 2.19 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -919,7 +923,7 @@ Wall time: 2.14 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-f22f04fd-0606-4c89-9e3b-7c684b2a9608&#39;)
+Delayed(&#39;add-b0d2a4e1-3687-4fb1-bd27-07e1bda6b27a&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -967,9 +971,11 @@ Delayed(&#39;add-f22f04fd-0606-4c89-9e3b-7c684b2a9608&#39;)
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="c1"># Sequential code</span>
 
+
 <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
@@ -985,7 +991,7 @@ Delayed(&#39;add-f22f04fd-0606-4c89-9e3b-7c684b2a9608&#39;)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 269 ms, sys: 55 ms, total: 324 ms
+CPU times: user 274 ms, sys: 99.9 ms, total: 374 ms
 Wall time: 8.01 s
 </pre></div></div>
 </div>
@@ -1020,8 +1026,8 @@ Wall time: 8.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 1e+03 ns, total: 4 µs
-Wall time: 7.39 µs
+CPU times: user 3 µs, sys: 0 ns, total: 3 µs
+Wall time: 6.2 µs
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1032,6 +1038,7 @@ Wall time: 7.39 µs
 <span class="k">def</span> <span class="nf">inc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
@@ -1050,7 +1057,7 @@ Wall time: 7.39 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Before computing: Delayed(&#39;add-147e43a1b7421b1164ad2b677e67cb71&#39;)
+Before computing: Delayed(&#39;add-b2cca40771340612036efa28656c2cb3&#39;)
 After computing : 44
 </pre></div></div>
 </div>
@@ -1071,8 +1078,10 @@ After computing : 44
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
 
+
 <span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="ow">not</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span>
+
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1103,8 +1112,8 @@ After computing : 44
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Delayed(&#39;add-f7f7b99b7ede4ed9212fca2348ffffe8&#39;)
-CPU times: user 172 ms, sys: 30.2 ms, total: 202 ms
+Delayed(&#39;add-561bac8d8c56e619684922ca55313463&#39;)
+CPU times: user 205 ms, sys: 27.7 ms, total: 233 ms
 Wall time: 5.01 s
 </pre></div></div>
 </div>
@@ -1124,8 +1133,8 @@ Wall time: 5.01 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 7.15 µs
+CPU times: user 3 µs, sys: 1 µs, total: 4 µs
+Wall time: 6.68 µs
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1137,11 +1146,12 @@ Wall time: 7.15 µs
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
 
+
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">is_even</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># even</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>          <span class="c1"># odd</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># odd</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">inc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
@@ -1162,8 +1172,8 @@ Wall time: 7.15 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 137 ms, sys: 15.6 ms, total: 153 ms
-Wall time: 3.05 s
+CPU times: user 160 ms, sys: 23 ms, total: 183 ms
+Wall time: 3.06 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1224,7 +1234,8 @@ Wall time: 3.05 s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">)))</span>
+
+<span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;nycflights&quot;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1265,8 @@ Wall time: 3.05 s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;1990.csv&#39;</span><span class="p">))</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;nycflights&quot;</span><span class="p">,</span> <span class="s2">&quot;1990.csv&quot;</span><span class="p">))</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1495,7 +1507,7 @@ array([&#39;EWR&#39;, &#39;LGA&#39;, &#39;JFK&#39;], dtype=object)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean departure delay per-airport for one year</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1521,7 +1533,8 @@ Name: DepDelay, dtype: float64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
-<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;nycflights&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">)))</span>
+
+<span class="n">filenames</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;nycflights&quot;</span><span class="p">,</span> <span class="s2">&quot;*.csv&quot;</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1538,7 +1551,7 @@ Name: DepDelay, dtype: float64
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 
     <span class="c1"># Groupby origin airport</span>
-    <span class="n">by_origin</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span>
+    <span class="n">by_origin</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span>
 
     <span class="c1"># Sum of all departure delays by origin</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">by_origin</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1562,8 +1575,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 47.7 ms, sys: 7.28 ms, total: 55 ms
-Wall time: 56.3 ms
+CPU times: user 55.3 ms, sys: 11.1 ms, total: 66.3 ms
+Wall time: 73.4 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1610,8 +1623,8 @@ Name: DepDelay, dtype: float64
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 3 µs, sys: 0 ns, total: 3 µs
-Wall time: 6.91 µs
+CPU times: user 3 µs, sys: 1 µs, total: 4 µs
+Wall time: 6.68 µs
 </pre></div></div>
 </div>
 <p>If you load the solution, add <code class="docutils literal notranslate"><span class="pre">%%time</span></code> to the top of the cell to measure the running time.</p>
@@ -1624,10 +1637,12 @@ Wall time: 6.91 µs
 <span class="c1"># This is just one possible solution, there are</span>
 <span class="c1"># several ways to do this using `dask.delayed`</span>
 
+
 <span class="nd">@dask</span><span class="o">.</span><span class="n">delayed</span>
 <span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="c1"># Read in file</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
 
 <span class="n">sums</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1636,7 +1651,7 @@ Wall time: 6.91 µs
     <span class="n">df</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 
     <span class="c1"># Groupby origin airport</span>
-    <span class="n">by_origin</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span>
+    <span class="n">by_origin</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span>
 
     <span class="c1"># Sum of all departure delays by origin</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">by_origin</span><span class="o">.</span><span class="n">DepDelay</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1660,8 +1675,8 @@ Wall time: 6.91 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 74.3 ms, sys: 12.5 ms, total: 86.8 ms
-Wall time: 205 ms
+CPU times: user 113 ms, sys: 11.8 ms, total: 125 ms
+Wall time: 272 ms
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
