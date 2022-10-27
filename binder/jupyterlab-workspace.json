@@ -3,18 +3,6 @@
     "file-browser-filebrowser:cwd": {
       "path": ""
     },
-    "dask-dashboard-launcher:individual-progress": {
-      "data": {
-        "route": "individual-progress",
-        "label": "Progress"
-      }
-    },
-    "dask-dashboard-launcher:individual-task-stream": {
-      "data": {
-        "route": "individual-task-stream",
-        "label": "Task Stream"
-      }
-    },
     "layout-restorer:data": {
       "main": {
         "dock": {
@@ -44,51 +32,108 @@
                   "type": "tab-area",
                   "currentIndex": 0,
                   "widgets": [
-                    "dask-dashboard-launcher:individual-task-stream"
+                    "dask-dashboard-launcher:/individual-task-stream"
                   ]
                 },
                 {
-                  "type": "tab-area",
-                  "currentIndex": 0,
-                  "widgets": [
-                    "dask-dashboard-launcher:individual-progress"
+                  "type": "split-area",
+                  "orientation": "horizontal",
+                  "sizes": [
+                    0.5,
+                    0.5
+                  ],
+                  "children": [
+                    {
+                      "type": "tab-area",
+                      "currentIndex": 0,
+                      "widgets": [
+                        "dask-dashboard-launcher:/individual-progress"
+                      ]
+                    },
+                    {
+                      "type": "tab-area",
+                      "currentIndex": 0,
+                      "widgets": [
+                        "dask-dashboard-launcher:/individual-workers-memory"
+                      ]
+                    }
                   ]
                 }
               ]
             }
           ]
         },
-        "mode": "multiple-document",
-        "current": "notebook:00_overview.ipynb"
+        "current": "dask-dashboard-launcher:/individual-workers-memory"
+      },
+      "down": {
+        "size": 0,
+        "widgets": []
       },
       "left": {
         "collapsed": false,
         "current": "filebrowser",
         "widgets": [
           "filebrowser",
+          "jp-property-inspector",
           "running-sessions",
           "dask-dashboard-launcher",
-          "command-palette",
-          "tab-manager"
+          "@jupyterlab/toc:plugin",
+          "extensionmanager.main-view"
         ]
       },
       "right": {
         "collapsed": true,
-        "widgets": []
-      }
-    },
-    "dask-dashboard-launcher": {
-      "url": "DASK_DASHBOARD_URL",
-      "cluster": ""
+        "widgets": [
+          "debugger-sidebar"
+        ]
+      },
+      "relativeSizes": [
+        0.14820850561134083,
+        0.8517914943886592,
+        0
+      ]
     },
     "notebook:00_overview.ipynb": {
       "data": {
         "path": "00_overview.ipynb",
         "factory": "Notebook"
       }
+    },
+    "dask-dashboard-launcher": {
+      "url": "http://127.0.0.1:8787/",
+      "cluster": ""
+    },
+    "dask-dashboard-launcher:/individual-task-stream": {
+      "data": {
+        "item": {
+          "route": "/individual-task-stream",
+          "label": "Task Stream",
+          "key": "Task Stream"
+        }
+      }
+    },
+    "dask-dashboard-launcher:/individual-progress": {
+      "data": {
+        "item": {
+          "route": "/individual-progress",
+          "label": "Progress",
+          "key": "Progress"
+        }
+      }
+    },
+    "dask-dashboard-launcher:/individual-workers-memory": {
+      "data": {
+        "item": {
+          "route": "/individual-workers-memory",
+          "label": "Workers Memory",
+          "key": "Workers Memory"
+        }
+      }
     }
   },
   "metadata": {
-    "id": "/lab"
+    "id": "default",
+    "last_modified": "2022-10-27T17:00:17.619420+00:00",
+    "created": "2022-10-27T17:00:17.619420+00:00"
   }
 }

@@ -1,11 +1,16 @@
 #!/bin/bash
 
 # Replace DASK_DASHBOARD_URL with the proxy location
-sed -i -e "s|DASK_DASHBOARD_URL|/user/${JUPYTERHUB_USER}/proxy/8787|g" binder/jupyterlab-workspace.json
+sed -i -e "s|DASK_DASHBOARD_URL|${JUPYTERHUB_BASE_URL}user/${JUPYTERHUB_USER}/proxy/8787|g" binder/example.jupyterlab-workspace
 export DASK_DISTRIBUTED__DASHBOARD__LINK="${JUPYTERHUB_SERVICE_PREFIX}proxy/{port}/status"
 
+# TODO: Importing of workspace via CLI is currently broken.
+# remove this workaround once https://github.com/jupyterlab/jupyterlab/issues/10805 is resolved
+mkdir -p ~/.jupyter/lab/workspaces/
+mv binder/jupyterlab-workspace.json ~/.jupyter/lab/workspaces/default-37a8.jupyterlab-workspace
 # Import the workspace
-jupyter lab workspaces import binder/jupyterlab-workspace.json
+# jupyter lab workspaces import binder/example.jupyterlab-workspace
+
 export DASK_TUTORIAL_SMALL=1
 
 exec "$@"
