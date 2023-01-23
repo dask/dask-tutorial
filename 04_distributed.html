@@ -441,10 +441,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -637,209 +638,11 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.9/site-packages/IPython/core/formatters.py:921</span>, in <span class="ansi-cyan-fg">IPythonDisplayFormatter.__call__</span><span class="ansi-blue-fg">(self, obj)</span>
-<span class="ansi-green-intense-fg ansi-bold">    919</span> method <span style="color: rgb(98,98,98)">=</span> get_real_method(obj, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>print_method)
-<span class="ansi-green-intense-fg ansi-bold">    920</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> method <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg">--&gt; 921</span>     <span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    922</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>
-
-File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/python3.9/site-packages/distributed/deploy/cluster.py:461</span>, in <span class="ansi-cyan-fg">Cluster._ipython_display_</span><span class="ansi-blue-fg">(self, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    459</span> widget <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_widget()
-<span class="ansi-green-intense-fg ansi-bold">    460</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> widget <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg">--&gt; 461</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">widget</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_ipython_display_</span>(<span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    462</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
-<span class="ansi-green-intense-fg ansi-bold">    463</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">IPython</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">display</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> display
-
-<span class="ansi-red-fg">AttributeError</span>: &#39;Tab&#39; object has no attribute &#39;_ipython_display_&#39;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
-    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
-    </div>
-    <div style="margin-left: 48px;">
-        <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">05c8bab5</p>
-        <table style="width: 100%; text-align: left;">
-            <tr>
-                <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
-                </td>
-                <td style="text-align: left;">
-                    <strong>Workers:</strong> 2
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;">
-                    <strong>Total threads:</strong> 2
-                </td>
-                <td style="text-align: left;">
-                    <strong>Total memory:</strong> 15.63 GiB
-                </td>
-            </tr>
-
-            <tr>
-    <td style="text-align: left;"><strong>Status:</strong> running</td>
-    <td style="text-align: left;"><strong>Using processes:</strong> True</td>
-</tr>
-
-
-        </table>
-
-        <details>
-            <summary style="margin-bottom: 20px;">
-                <h3 style="display: inline;">Scheduler Info</h3>
-            </summary>
-
-            <div style="">
-    <div>
-        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
-        <div style="margin-left: 48px;">
-            <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-32173bc8-0809-4acf-a8ff-8f3dfc74db9f</p>
-            <table style="width: 100%; text-align: left;">
-                <tr>
-                    <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:41887
-                    </td>
-                    <td style="text-align: left;">
-                        <strong>Workers:</strong> 2
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
-                    </td>
-                    <td style="text-align: left;">
-                        <strong>Total threads:</strong> 2
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: left;">
-                        <strong>Started:</strong> Just now
-                    </td>
-                    <td style="text-align: left;">
-                        <strong>Total memory:</strong> 15.63 GiB
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <details style="margin-left: 48px;">
-        <summary style="margin-bottom: 20px;">
-            <h3 style="display: inline;">Workers</h3>
-        </summary>
-
-
-        <div style="margin-bottom: 20px;">
-            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
-            <div style="margin-left: 48px;">
-            <details>
-                <summary>
-                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 0</h4>
-                </summary>
-                <table style="width: 100%; text-align: left;">
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:38595
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Total threads: </strong> 1
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:40451/status" target="_blank">http://127.0.0.1:40451/status</a>
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Memory: </strong> 7.81 GiB
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:44539
-                        </td>
-                        <td style="text-align: left;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-3ud08l4n
-                        </td>
-                    </tr>
-
-
-
-
-
-                </table>
-            </details>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
-            <div style="margin-left: 48px;">
-            <details>
-                <summary>
-                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 1</h4>
-                </summary>
-                <table style="width: 100%; text-align: left;">
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:36409
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Total threads: </strong> 1
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35523/status" target="_blank">http://127.0.0.1:35523/status</a>
-                        </td>
-                        <td style="text-align: left;">
-                            <strong>Memory: </strong> 7.81 GiB
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:35227
-                        </td>
-                        <td style="text-align: left;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-k4wm46j0
-                        </td>
-                    </tr>
-
-
-
-
-
-                </table>
-            </details>
-            </div>
-        </div>
-
-
-    </details>
-</div>
-
-        </details>
-    </div>
-</div></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1c454ccea32d415d9eaa3c693b82fa0c"}</script></div>
 </div>
 <p>Creating a cluster object will create a Dask scheduler and a number of Dask workers. If no arguments are specified then it will autodetect the number of CPU cores your system has and the amount of memory and create workers to appropriately fill that.</p>
 <p>You can also specify these arguments yourself. Let’s have a look at the docstring to see the options we have available.</p>
@@ -879,133 +682,137 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
 <summary style='display:list-item'>Scheduler</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:14,815 - distributed.scheduler - INFO - State start</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,334 - distributed.scheduler - INFO - State start</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:14,817 - distributed.scheduler - INFO - Clear task state</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,337 - distributed.scheduler - INFO -   Scheduler at:     tcp://127.0.0.1:39241</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:14,817 - distributed.scheduler - INFO -   Scheduler at:     tcp://127.0.0.1:41887</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,337 - distributed.scheduler - INFO -   dashboard at:            127.0.0.1:8787</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:14,818 - distributed.scheduler - INFO -   dashboard at:            127.0.0.1:8787</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,020 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:38943&#x27;, name: 0, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,503 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:38595&#x27;, name: 0, status: running, memory: 0, processing: 0&gt;</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,021 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:38943</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,504 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:38595</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,045 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:37431&#x27;, name: 1, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,519 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:36409&#x27;, name: 1, status: running, memory: 0, processing: 0&gt;</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,519 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:36409</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,045 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:37431</p>
 
 
 </details>
 
 <details>
-<summary style='display:list-item'>tcp://127.0.0.1:36409</summary>
+<summary style='display:list-item'>tcp://127.0.0.1:37431</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:36409</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:36409</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:37431</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO -          dashboard at:            127.0.0.1:35523</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:37431</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:41887</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO -           Worker name:                          1</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO -          dashboard at:            127.0.0.1:36125</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO -               Threads:                          1</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:39241</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO -                Memory:                   7.81 GiB</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO -       Local Directory: /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-k4wm46j0</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,789 - distributed.worker - INFO -               Threads:                          1</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,309 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,790 - distributed.worker - INFO -                Memory:                   3.39 GiB</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,520 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:41887</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,790 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-8d5eo89_</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,520 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,790 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,045 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:39241</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,045 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 </details>
 
 <details>
-<summary style='display:list-item'>tcp://127.0.0.1:38595</summary>
+<summary style='display:list-item'>tcp://127.0.0.1:38943</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:38595</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:38595</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:38943</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO -          dashboard at:            127.0.0.1:40451</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:38943</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:41887</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -           Worker name:                          0</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -          dashboard at:            127.0.0.1:35245</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO -               Threads:                          1</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:39241</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO -                Memory:                   7.81 GiB</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO -       Local Directory: /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-3ud08l4n</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -               Threads:                          1</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,314 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -                Memory:                   3.39 GiB</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,506 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:41887</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-oushm5r2</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2022-10-27 21:24:15,506 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:07,772 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,022 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:39241</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2023-01-23 15:05:08,022 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 </details></div>
@@ -1047,7 +854,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-b5a73606-563d-11ed-9133-002248465dbc</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-536250ff-9b2f-11ed-9476-0022482ae632</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -1069,6 +876,12 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
         </table>
 
 
+            <button style="margin-bottom: 12px;" data-commandlinker-command="dask:populate-and-launch-layout" data-commandlinker-args='{"url": "http://127.0.0.1:8787/status" }'>
+                Launch dashboard in JupyterLab
+            </button>
+
+
+
             <details>
             <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
             <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
@@ -1076,7 +889,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">05c8bab5</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">3d7d354d</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
@@ -1091,7 +904,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
                     <strong>Total threads:</strong> 2
                 </td>
                 <td style="text-align: left;">
-                    <strong>Total memory:</strong> 15.63 GiB
+                    <strong>Total memory:</strong> 6.78 GiB
                 </td>
             </tr>
 
@@ -1113,11 +926,11 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-32173bc8-0809-4acf-a8ff-8f3dfc74db9f</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-2b7936e6-095e-47b6-9ad2-355d176904ad</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:41887
+                        <strong>Comm:</strong> tcp://127.0.0.1:39241
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 2
@@ -1136,7 +949,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
                         <strong>Started:</strong> Just now
                     </td>
                     <td style="text-align: left;">
-                        <strong>Total memory:</strong> 15.63 GiB
+                        <strong>Total memory:</strong> 6.78 GiB
                     </td>
                 </tr>
             </table>
@@ -1159,7 +972,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:38595
+                            <strong>Comm: </strong> tcp://127.0.0.1:38943
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1167,21 +980,21 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:40451/status" target="_blank">http://127.0.0.1:40451/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35245/status" target="_blank">http://127.0.0.1:35245/status</a>
                         </td>
                         <td style="text-align: left;">
-                            <strong>Memory: </strong> 7.81 GiB
+                            <strong>Memory: </strong> 3.39 GiB
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:44539
+                            <strong>Nanny: </strong> tcp://127.0.0.1:39249
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-3ud08l4n
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-oushm5r2
                         </td>
                     </tr>
 
@@ -1204,7 +1017,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:36409
+                            <strong>Comm: </strong> tcp://127.0.0.1:37431
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -1212,21 +1025,21 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35523/status" target="_blank">http://127.0.0.1:35523/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36125/status" target="_blank">http://127.0.0.1:36125/status</a>
                         </td>
                         <td style="text-align: left;">
-                            <strong>Memory: </strong> 7.81 GiB
+                            <strong>Memory: </strong> 3.39 GiB
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:35227
+                            <strong>Nanny: </strong> tcp://127.0.0.1:40037
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-k4wm46j0
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-8d5eo89_
                         </td>
                     </tr>
 
@@ -1298,7 +1111,7 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
 </pre></div>
 </div>
 <p>Then we can connect a worker on the address that the scheduler is listening on.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dask-worker tcp://10.51.100.80:8786 --nworkers<span class="o">=</span>auto
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dask-worker<span class="w"> </span>tcp://10.51.100.80:8786<span class="w"> </span>--nworkers<span class="o">=</span>auto
 <span class="go">2022-07-07 14:12:53,915 - distributed.nanny - INFO -         Start Nanny at: &#39;tcp://10.51.100.80:58051&#39;</span>
 <span class="go">2022-07-07 14:12:53,922 - distributed.nanny - INFO -         Start Nanny at: &#39;tcp://10.51.100.80:58052&#39;</span>
 <span class="go">2022-07-07 14:12:53,924 - distributed.nanny - INFO -         Start Nanny at: &#39;tcp://10.51.100.80:58053&#39;</span>
@@ -1376,20 +1189,20 @@ File <span class="ansi-green-fg">/usr/share/miniconda3/envs/dask-tutorial/lib/py
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-tutorial/lib/python3.9/site-packages/distributed/node.py:180: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 42299 instead
-  warnings.warn(
+2
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2
+/usr/share/miniconda3/envs/dask-tutorial/lib/python3.11/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 43991 instead
+  warnings.warn(
 </pre></div></div>
 </div>
 <p>Most of the time we never have to create these components ourselves and instead can rely on cluster manager objects to do this for us. But in some situations it can be useful to be able to contruct a cluster yourself manually.</p>
@@ -1427,20 +1240,20 @@ Hosting the HTTP server on port 42299 instead
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
+<div class="output_area docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-tutorial/lib/python3.9/site-packages/distributed/node.py:180: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 46231 instead
-  warnings.warn(
+2
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2
+/usr/share/miniconda3/envs/dask-tutorial/lib/python3.11/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 44855 instead
+  warnings.warn(
 </pre></div></div>
 </div>
 </div>
@@ -1452,7 +1265,7 @@ Hosting the HTTP server on port 46231 instead
 <h3>UCX<a class="headerlink" href="#UCX" title="Permalink to this headline">¶</a></h3>
 <p>On systems with high performance networking such as Infiniband or NVLink Dask can also leverage <a class="reference external" href="https://openucx.org/">UCX</a> which provides a unified communication protocol that automatically upgrades communication to use the fastest hardware available. This is vital for good performance on HPC systems with Infiniband or systems with multiple GPU workers.</p>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"34eeeaa731c14f849a7e9220cc4b86d3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "f1290959faaf45e3bb41c39fab1e20d0": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "55a661554af84a2f96966bc1e0b443c0": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "672a59cc07294eb3b5abc7effe2fc787": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_f1290959faaf45e3bb41c39fab1e20d0", "placeholder": "\u200b", "style": "IPY_MODEL_55a661554af84a2f96966bc1e0b443c0", "tabbable": null, "tooltip": null, "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">05c8bab5</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 2\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 2\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 15.63 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-32173bc8-0809-4acf-a8ff-8f3dfc74db9f</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:41887\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 15.63 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:38595\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:40451/status\" target=\"_blank\">http://127.0.0.1:40451/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 7.81 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:44539\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-3ud08l4n\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:36409\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:35523/status\" target=\"_blank\">http://127.0.0.1:35523/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 7.81 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:35227\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /home/runner/work/dask-tutorial/dask-tutorial/dask-worker-space/worker-k4wm46j0\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "eb9fed4575b744638479749225516238": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "8db88d45a93c4d8190421ce890b5576a": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_34eeeaa731c14f849a7e9220cc4b86d3", "step": 1, "style": "IPY_MODEL_eb9fed4575b744638479749225516238", "tabbable": null, "tooltip": null, "value": 0}}, "ff1dcf831a98409a947f0c607d18a3d3": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "bca56850ec8a4238805bb7b130a15846": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_34eeeaa731c14f849a7e9220cc4b86d3", "style": "IPY_MODEL_ff1dcf831a98409a947f0c607d18a3d3", "tabbable": null, "tooltip": null}}, "3e34b8d1fd304a33ae8273988ea4c1b3": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "84ee8342175144f4838c18132f3b836a": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_34eeeaa731c14f849a7e9220cc4b86d3", "step": 1, "style": "IPY_MODEL_3e34b8d1fd304a33ae8273988ea4c1b3", "tabbable": null, "tooltip": null, "value": 0}}, "b94fac81fd2b411d98a427ba39b8188d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "896813e813e741e49d8bd4ff6a7d79dd": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_34eeeaa731c14f849a7e9220cc4b86d3", "step": 1, "style": "IPY_MODEL_b94fac81fd2b411d98a427ba39b8188d", "tabbable": null, "tooltip": null, "value": 0}}, "c9b659ad04aa4444bce9b5507c2eeb01": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "c03db0bf645c42fe89a645cacc404048": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_34eeeaa731c14f849a7e9220cc4b86d3", "style": "IPY_MODEL_c9b659ad04aa4444bce9b5507c2eeb01", "tabbable": null, "tooltip": null}}, "20a9fd4b13f14c808d152a7506b037f7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "441589acf9134f779960fe64e49a7432": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_8db88d45a93c4d8190421ce890b5576a", "IPY_MODEL_bca56850ec8a4238805bb7b130a15846"], "layout": "IPY_MODEL_20a9fd4b13f14c808d152a7506b037f7", "tabbable": null, "tooltip": null}}, "23bd3a28775c4d488b19e27200e2709c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "17e93c98c7c0442db97a8ee42c41d08e": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_84ee8342175144f4838c18132f3b836a", "IPY_MODEL_896813e813e741e49d8bd4ff6a7d79dd", "IPY_MODEL_c03db0bf645c42fe89a645cacc404048"], "layout": "IPY_MODEL_23bd3a28775c4d488b19e27200e2709c", "tabbable": null, "tooltip": null}}, "c35fef1ca048449281fadb253ca8a076": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "041a8b796931442e857fba57ece9ad2e": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "AccordionModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_441589acf9134f779960fe64e49a7432", "IPY_MODEL_17e93c98c7c0442db97a8ee42c41d08e"], "layout": "IPY_MODEL_c35fef1ca048449281fadb253ca8a076", "selected_index": null, "tabbable": null, "titles": ["Manual Scaling", "Adaptive Scaling"], "tooltip": null}}, "7774a78fd18f42949686033034a9cd5b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b447fb966ec649018aafe20d839823c5": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "9710c66837914b1f8604fd0845d14488": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_7774a78fd18f42949686033034a9cd5b", "placeholder": "\u200b", "style": "IPY_MODEL_b447fb966ec649018aafe20d839823c5", "tabbable": null, "tooltip": null, "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 2</td></tr>\n        </table>\n        "}}, "a08db60804bd43339eb9290cd6154130": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7a200e08d64b40eaab9f30f20b5caadd": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TabModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_672a59cc07294eb3b5abc7effe2fc787", "IPY_MODEL_fb37b5650f8e40e58ba50b15062b6227"], "layout": "IPY_MODEL_a08db60804bd43339eb9290cd6154130", "selected_index": 0, "tabbable": null, "titles": ["Status", "Scaling"], "tooltip": null}}, "ca037a32d10341a1a50a63c3da14d6cc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fb37b5650f8e40e58ba50b15062b6227": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_9710c66837914b1f8604fd0845d14488", "IPY_MODEL_041a8b796931442e857fba57ece9ad2e"], "layout": "IPY_MODEL_ca037a32d10341a1a50a63c3da14d6cc", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
+{"state": {"465d5e9012ee455a86effa1430b37a08": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "42ee52290be0400e9b826f43f0c9e542": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ad52163fa1334bddbcfd5d46d969633a": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "18c725cae33e4526872d40afa00dd24d": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_42ee52290be0400e9b826f43f0c9e542", "placeholder": "\u200b", "style": "IPY_MODEL_ad52163fa1334bddbcfd5d46d969633a", "tabbable": null, "tooltip": null, "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">3d7d354d</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 2\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 2\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 6.78 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-2b7936e6-095e-47b6-9ad2-355d176904ad</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:39241\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 6.78 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:38943\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:35245/status\" target=\"_blank\">http://127.0.0.1:35245/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.39 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:39249\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-oushm5r2\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:37431\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:36125/status\" target=\"_blank\">http://127.0.0.1:36125/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.39 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:40037\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-8d5eo89_\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "75481e53c96545f2b77eca735939a69f": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "c903b846ebfd4ffc8177918e59cc6a0c": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_465d5e9012ee455a86effa1430b37a08", "step": 1, "style": "IPY_MODEL_75481e53c96545f2b77eca735939a69f", "tabbable": null, "tooltip": null, "value": 0}}, "a60cf7a9384a431aaf10975b8bc70d8a": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "5ba1081bf5ef425c929d30cee51b52c6": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_465d5e9012ee455a86effa1430b37a08", "style": "IPY_MODEL_a60cf7a9384a431aaf10975b8bc70d8a", "tabbable": null, "tooltip": null}}, "4c5ad3f7771d4657a8b45383dadc9c31": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "033e418f0aef43a49a3c4852a12c7730": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_465d5e9012ee455a86effa1430b37a08", "step": 1, "style": "IPY_MODEL_4c5ad3f7771d4657a8b45383dadc9c31", "tabbable": null, "tooltip": null, "value": 0}}, "f0d94e94e8f14dc38b2d24568c2ce920": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "bd4a6fc1b6c242be8ea32d47eba719bf": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_465d5e9012ee455a86effa1430b37a08", "step": 1, "style": "IPY_MODEL_f0d94e94e8f14dc38b2d24568c2ce920", "tabbable": null, "tooltip": null, "value": 0}}, "2e246519c3884055aac60a0fd85b1e98": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "38344325da7f41398f79cb5338858bba": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_465d5e9012ee455a86effa1430b37a08", "style": "IPY_MODEL_2e246519c3884055aac60a0fd85b1e98", "tabbable": null, "tooltip": null}}, "744f8abaa83744c9bb52c73c922fb2b2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e84952494c7b4fb3a942577c04868555": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_c903b846ebfd4ffc8177918e59cc6a0c", "IPY_MODEL_5ba1081bf5ef425c929d30cee51b52c6"], "layout": "IPY_MODEL_744f8abaa83744c9bb52c73c922fb2b2", "tabbable": null, "tooltip": null}}, "387746872ec7466fb042f4ea9d5bcfc6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4f3799b30e704d03af92f5008db2d55f": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_033e418f0aef43a49a3c4852a12c7730", "IPY_MODEL_bd4a6fc1b6c242be8ea32d47eba719bf", "IPY_MODEL_38344325da7f41398f79cb5338858bba"], "layout": "IPY_MODEL_387746872ec7466fb042f4ea9d5bcfc6", "tabbable": null, "tooltip": null}}, "bc0f86c491e54ee5afc80906f34ef663": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "76826d6364724abdb55369c24ac2ff48": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "AccordionModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_e84952494c7b4fb3a942577c04868555", "IPY_MODEL_4f3799b30e704d03af92f5008db2d55f"], "layout": "IPY_MODEL_bc0f86c491e54ee5afc80906f34ef663", "selected_index": null, "tabbable": null, "titles": ["Manual Scaling", "Adaptive Scaling"], "tooltip": null}}, "7a4d638eb880414190eb7363f51b91d4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "de6227fe0d19455bbd7d43b110599471": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "27a06b7c3e764624a0ad0f148b2b0f79": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_7a4d638eb880414190eb7363f51b91d4", "placeholder": "\u200b", "style": "IPY_MODEL_de6227fe0d19455bbd7d43b110599471", "tabbable": null, "tooltip": null, "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 2</td></tr>\n        </table>\n        "}}, "e9e6b6861ce74557bc682282e839c19d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1c454ccea32d415d9eaa3c693b82fa0c": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TabModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_18c725cae33e4526872d40afa00dd24d", "IPY_MODEL_4327504786d8440b906f1ec5b04570e7"], "layout": "IPY_MODEL_e9e6b6861ce74557bc682282e839c19d", "selected_index": 0, "tabbable": null, "titles": ["Status", "Scaling"], "tooltip": null}}, "9489e49d70c74c9e93f4654e1c455136": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4327504786d8440b906f1ec5b04570e7": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_27a06b7c3e764624a0ad0f148b2b0f79", "IPY_MODEL_76826d6364724abdb55369c24ac2ff48"], "layout": "IPY_MODEL_9489e49d70c74c9e93f4654e1c455136", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
