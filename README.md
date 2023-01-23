@@ -83,8 +83,8 @@ You are welcome to use Jupyter notebook if you prefer, but we'll be using lab in
 
 3. [Delayed](03_dask.delayed.ipynb) - 10 min - the single-function way to parallelize general python code.
 
-4. [Deployment/Distributed](04_distributed.ipynb) - 10 min- Dask's scheduler for clusters, with details of how to view the UI.
+4. [Deployment/Distributed](04_distributed.ipynb) - 10 min - Dask's scheduler for clusters, with details of how to view the UI.
 
 5. [Distributed Futures](05_futures.ipynb) - 10 min - non-blocking results that compute asynchronously.
 
-6. Conclusion - 10 min -
+6. Conclusion - 10 min
