@@ -75,16 +75,16 @@ You are welcome to use Jupyter notebook if you prefer, but we'll be using lab in
 
 ## Outline
 
-0. [Overview](00_overview.ipynb) - dask's place in the universe.
+0. [Overview](00_overview.ipynb) - 10 min - dask's place in the universe.
 
-1. [Dataframe](01_dataframe.ipynb) - parallelized operations on many pandas dataframes spread across your cluster.
+1. [Dataframe](01_dataframe.ipynb) - 10 min - parallelized operations on many pandas dataframes spread across your cluster.
 
-2. [Array](02_array.ipynb) - blocked numpy-like functionality with a collection of numpy arrays spread across your cluster.
+2. [Array](02_array.ipynb) - 30 min - blocked numpy-like functionality with a collection of numpy arrays spread across your cluster.
 
-3. [Delayed](03_dask.delayed.ipynb) - the single-function way to parallelize general python code.
+3. [Delayed](03_dask.delayed.ipynb) - 10 min - the single-function way to parallelize general python code.
 
-4. [Deployment/Distributed](04_distributed.ipynb) - Dask's scheduler for clusters, with details of how to view the UI.
+4. [Deployment/Distributed](04_distributed.ipynb) - 10 min - Dask's scheduler for clusters, with details of how to view the UI.
 
-5. [Distributed Futures](05_futures.ipynb) - non-blocking results that compute asynchronously.
+5. [Distributed Futures](05_futures.ipynb) - 10 min - non-blocking results that compute asynchronously.
 
-6. Conclusion
+6. Conclusion - 10 min
