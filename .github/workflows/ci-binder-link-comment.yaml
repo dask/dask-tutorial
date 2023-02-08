@@ -1,0 +1,18 @@
+name: Comment with Binder link
+
+on: pull_request_target
+
+jobs:
+  binder_link_comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: |
+            Beep boop! Here is a Binder link where you can try out this change. [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${{ (github.event.pull_request_target || github.event.pull_request).head.repo.full_name }}/${{ (github.event.pull_request_target || github.event.pull_request).head.sha }})
+          comment_includes: "Binder link"
+          GITHUB_TOKEN: ${{ secrets.DASK_BOT_TOKEN }}

@@ -1,34 +1,12 @@
 # Dask Tutorial
 
-_NOTE: This tutorial will be presented again at SciPy 2022! We are in the progress of making some modifications (see [PR #236](https://github.com/dask/dask-tutorial/pull/236) for more info)_
-
-This tutorial was last given at SciPy 2020 which was a virtual conference.
-[A video of the SciPy 2020 tutorial is available online](https://www.youtube.com/watch?v=EybGGLbLipI).
+This tutorial was last given at SciPy 2022 in Austin Texas.
+[A video of the SciPy 2022 tutorial is available online](https://youtu.be/J0NcbvkYPoE).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab)
 [![Build Status](https://github.com/dask/dask-tutorial/workflows/CI/badge.svg)](https://github.com/dask/dask-tutorial/actions?query=workflow%3ACI)
 
-Dask provides multi-core execution on larger-than-memory datasets.
-
-We can think of dask at a high and a low level
-
-*  **High-level collections:**  Dask provides high-level Array, Bag, and DataFrame
-   collections that mimic NumPy, lists, and Pandas but can operate in parallel on
-   datasets that don't fit into main memory.  Dask's high-level collections are
-   alternatives to NumPy and Pandas for large datasets.
-*  **Low-level schedulers:** Dask provides dynamic task schedulers that
-   execute task graphs in parallel.  These execution engines power the
-   high-level collections mentioned above but can also power custom,
-   user-defined workloads.  These schedulers are low-latency (around 1ms) and
-   work hard to run computations in a small memory footprint.  Dask's
-   schedulers are an alternative to direct use of `threading` or
-   `multiprocessing` libraries in complex cases or other task scheduling
-   systems like `Luigi` or `IPython parallel`.
-
-Different users operate at different levels but it is useful to understand
-both.  This tutorial will interleave between high-level use of `dask.array` and
-`dask.dataframe` (even sections) and low-level use of dask graphs and
-schedulers (odd sections.)
+Dask is a parallel and distributed computing library that scales the existing Python and PyData ecosystem. Dask can scale up to your full laptop capacity and out to a cloud cluster.
 
 ## Prepare
 
@@ -46,19 +24,12 @@ In the main repo directory
 
     conda env create -f binder/environment.yml
     conda activate dask-tutorial
-    jupyter labextension install dask-labextension
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install @bokeh/jupyter_bokeh
 
 #### 2b) Install into an existing environment
 
 You will need the following core libraries
 
-    conda install numpy pandas h5py pillow matplotlib scipy toolz pytables snakeviz scikit-image dask distributed -c conda-forge
-
-You may find the following libraries helpful for some exercises
-
-    conda install python-graphviz -c conda-forge
+    conda install -c conda-forge ipycytoscape jupyterlab python-graphviz matplotlib zarr xarray pooch pyarrow s3fs scipy dask distributed dask-labextension
 
 Note that these options will alter your existing environment, potentially changing the versions of packages you already
 have installed.
@@ -79,17 +50,15 @@ can be used to access the notebook from browser. You may need to replace the giv
 
 #### You should follow only one of the options above!
 
-### Launch notebook
+### Launch Jupyter
 
 From the repo directory
-
-    jupyter notebook
-
-Or
 
     jupyter lab
 
 This was already done for method c) and does not need repeating.
+
+You are welcome to use Jupyter notebook if you prefer, but we'll be using lab in the live tutorial.
 
 ## Links
 
@@ -108,26 +77,14 @@ This was already done for method c) and does not need repeating.
 
 0. [Overview](00_overview.ipynb) - dask's place in the universe.
 
-1. [Delayed](01_dask.delayed.ipynb) - the single-function way to parallelize general python code.
+1. [Dataframe](01_dataframe.ipynb) - parallelized operations on many pandas dataframes spread across your cluster.
 
-1x. [Lazy](01x_lazy.ipynb) - some of the principles behind lazy execution, for the interested.
+2. [Array](02_array.ipynb) - blocked numpy-like functionality with a collection of numpy arrays spread across your cluster.
 
-2. [Bag](02_bag.ipynb) - the first high-level collection: a generalized iterator for use
-with a functional programming style and to clean messy data.
+3. [Delayed](03_dask.delayed.ipynb) - the single-function way to parallelize general python code.
 
-3. [Array](03_array.ipynb) - blocked numpy-like functionality with a collection of
-numpy arrays spread across your cluster.
+4. [Deployment/Distributed](04_distributed.ipynb) - Dask's scheduler for clusters, with details of how to view the UI.
 
-7. [Dataframe](04_dataframe.ipynb) - parallelized operations on many pandas dataframes
-spread across your cluster.
+5. [Distributed Futures](05_futures.ipynb) - non-blocking results that compute asynchronously.
 
-5. [Distributed](05_distributed.ipynb) - Dask's scheduler for clusters, with details of
-how to view the UI.
-
-6. [Advanced Distributed](06_distributed_advanced.ipynb) - further details on distributed
-computing, including how to debug.
-
-7. [Dataframe Storage](07_dataframe_storage.ipynb) - efficient ways to read and write
-dataframes to disc.
-
-8. [Machine Learning](08_machine_learning.ipynb) - applying dask to machine-learning problems.
+6. Conclusion
