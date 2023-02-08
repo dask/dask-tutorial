@@ -25,10 +25,8 @@ This tutorial was last given at SciPy 2020 in Austin Texas.
 More tutorials from our community
 ---------------------------------
 
-- Coiled offers recurring free 1 hour-long tutorials. See the `Coiled website <https://www.coiled.io/tutorials>`_ for upcoming sessions.
+- You may want to check out these free, recurring, `hour-long tutorials offered by Coiled <https://www.coiled.io/tutorials>`_.
 - `Quansight <https://quansight.com/training>`_ offers a number of PyData courses, including Dask and Dask-ML.
-
-.. to do: add in other tutorial sessions
 
 For a more comprehensive list of past talks and other resources see `Talks & Tutorials <https://docs.dask.org/en/latest/presentations.html>`_ in the Dask documentation.
 
