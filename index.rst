@@ -6,7 +6,6 @@ You can run this tutorial in a live session here: |Binder|
 This tutorial was last given at SciPy 2020 in Austin Texas.
 `A video is available online <https://www.youtube.com/watch?v=EybGGLbLipI>`_.
 
-
 ..
 .. |Binder| image:: https://static.mybinder.org/badge_logo.svg
    :target: https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab
@@ -21,3 +20,14 @@ This tutorial was last given at SciPy 2020 in Austin Texas.
    03_dask.delayed
    04_distributed
    05_futures
+
+
+More tutorials from our community
+---------------------------------
+
+- You may want to check out these free, recurring, `hour-long tutorials offered by Coiled <https://www.coiled.io/tutorials>`_.
+- `Quansight <https://quansight.com/training>`_ offers a number of PyData courses, including Dask and Dask-ML.
+
+For a more comprehensive list of past talks and other resources see `Talks & Tutorials <https://docs.dask.org/en/latest/presentations.html>`_ in the Dask documentation.
+
+
