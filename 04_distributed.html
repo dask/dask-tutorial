@@ -1,65 +1,66 @@
- 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Distributed - spread your data and computation across a cluster &#8212; Dask Tutorial  documentation</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=f0d2d131" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="_static/images/favicon.svg"/>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_distributed';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Futures - non-blocking distributed calculations" href="05_futures.html" />
     <link rel="prev" title="dask.delayed - parallelize any code" href="03_dask.delayed.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-<!-- Google Tag Manager (noscript) -->
-<noscript
-  ><iframe
-    src="https://www.googletagmanager.com/ns.html?id=GTM-P4GQM59"
-    height="0"
-    width="0"
-    style="display: none; visibility: hidden"
-  ></iframe
-></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
 <nav class="dask-nav container-fluid">
   <ul>
     <li class="logo">
@@ -98,265 +99,289 @@
 </nav>
 
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Dask Tutorial  documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="00_overview.html">
-   Welcome to the Dask Tutorial
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="01_dataframe.html">
-   Dask DataFrame - parallelized pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02_array.html">
-   Dask Arrays - parallelized numpy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_dask.delayed.html">
-   dask.delayed - parallelize any code
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Distributed - spread your data and computation across a cluster
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05_futures.html">
-   Futures - non-blocking distributed calculations
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-</div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
-
-          
-
-
-          
-<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
-<div class="sbt-scroll-pixel-helper"></div>
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            <div class="topbar-left">
-                
-                <label class="nav-toggle-button" for="__navigation">
-                    <div class="visually-hidden">Toggle navigation</div>
-                    <i class="fas fa-bars"></i>
-                </label>
-                
-            </div>
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/04_distributed.ipynb.txt"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
 
-            <!-- Source interaction buttons -->
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
+  
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+<a class="navbar-brand logo" href="_static/images/dask-horizontal-white.svg">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Dask Tutorial  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
 
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Local-Cluster">
-   Local Cluster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Remote-clusters-via-SSH">
-   Remote clusters via SSH
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Scalable-clusters">
-   Scalable clusters
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Cluster-components">
-   Cluster components
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Cluster-networking">
-   Cluster networking
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#TLS/SSL-for-secure-communication">
-     TLS/SSL for secure communication
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#Websockets">
-     Websockets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#UCX">
-     UCX
-    </a>
-   </li>
-  </ul>
- </li>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_overview.html">Welcome to the Dask Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_dataframe.html">Dask DataFrame - parallelized pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_array.html">Dask Arrays - parallelized numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_dask.delayed.html">dask.delayed - parallelize any code</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distributed - spread your data and computation across a cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_futures.html">Futures - non-blocking distributed calculations</a></li>
 </ul>
 
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/04_distributed.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distributed - spread your data and computation across a cluster</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Local-Cluster">Local Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Remote-clusters-via-SSH">Remote clusters via SSH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Scalable-clusters">Scalable clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Cluster-components">Cluster components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Cluster-networking">Cluster networking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TLS/SSL-for-secure-communication">TLS/SSL for secure communication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Websockets">Websockets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#UCX">UCX</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Distributed - spread your data and computation across a cluster</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Local-Cluster">
-   Local Cluster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Remote-clusters-via-SSH">
-   Remote clusters via SSH
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Scalable-clusters">
-   Scalable clusters
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Cluster-components">
-   Cluster components
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Cluster-networking">
-   Cluster networking
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#TLS/SSL-for-secure-communication">
-     TLS/SSL for secure communication
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#Websockets">
-     Websockets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#UCX">
-     UCX
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p>You can run this notebook in a <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/04_distributed.ipynb">live session</a> <a class="reference external" href="https://mybinder.org/v2/gh/dask/dask-tutorial/main?urlpath=lab/tree/04_distributed.ipynb"><img alt="Binder" src="https://static.mybinder.org/badge_logo.svg" /></a> or view it <a class="reference external" href="https://github.com/dask/dask-tutorial/blob/main/04_distributed.ipynb">on Github</a>.</p>
-<p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" width="30%" /></p>
-<div class="section" id="Distributed---spread-your-data-and-computation-across-a-cluster">
-<h1>Distributed - spread your data and computation across a cluster<a class="headerlink" href="#Distributed---spread-your-data-and-computation-across-a-cluster" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Dask logo\" class="no-scaled-link" src="http://dask.readthedocs.io/en/latest/_images/dask_horizontal.svg" style="width: 30%;" /></p>
+<section id="Distributed---spread-your-data-and-computation-across-a-cluster">
+<h1>Distributed - spread your data and computation across a cluster<a class="headerlink" href="#Distributed---spread-your-data-and-computation-across-a-cluster" title="Link to this heading">#</a></h1>
 <p>As we covered at the beginning Dask has the ability to run work on multiple machines using the distributed scheduler.</p>
 <p>Until now we have actually been using the distributed scheduler for our work, but just on a single machine.</p>
 <p>When we instantiate a <code class="docutils literal notranslate"><span class="pre">Client()</span></code> object with no arguments it will attempt to locate a Dask cluster. It will check your local Dask config and environment variables to see if connection information has been specified. If not it will create an instance of <code class="docutils literal notranslate"><span class="pre">LocalCluster</span></code> and use that.</p>
 <p><em>Specifying connection information in config is useful for system administrators to provide access to their users. We do this in the</em> <a class="reference external" href="https://github.com/dask/helm-chart/blob/master/dask/templates/dask-jupyter-deployment.yaml#L46-L48">Dask Helm Chart for Kubernetes</a><em>, the chart installs a multi-node Dask cluster and a Jupyter server on a Kubernetes cluster and Jupyter is preconfigured to discover the distributed cluster.</em></p>
-<div class="section" id="Local-Cluster">
-<h2>Local Cluster<a class="headerlink" href="#Local-Cluster" title="Permalink to this headline">¶</a></h2>
+<section id="Local-Cluster">
+<h2>Local Cluster<a class="headerlink" href="#Local-Cluster" title="Link to this heading">#</a></h2>
 <p>Let’s explore the <code class="docutils literal notranslate"><span class="pre">LocalCluster</span></code> object ourselves and see what it is doing.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">Client</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">Client</span>
 </pre></div>
 </div>
 </div>
@@ -373,7 +398,7 @@
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ed9733efeaa0491d8e9b6c5cdc7a94b1"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a19cb9e75ff74826b001a05e67dd5a88"}</script></div>
 </div>
 <p>Creating a cluster object will create a Dask scheduler and a number of Dask workers. If no arguments are specified then it will autodetect the number of CPU cores your system has and the amount of memory and create workers to appropriately fill that.</p>
 <p>You can also specify these arguments yourself. Let’s have a look at the docstring to see the options we have available.</p>
@@ -413,137 +438,259 @@
 <summary style='display:list-item'>Scheduler</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:32,886 - distributed.scheduler - INFO - State start</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,462 - distributed.scheduler - INFO - State start</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:32,889 - distributed.scheduler - INFO -   Scheduler at:     tcp://127.0.0.1:43973</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,465 - distributed.scheduler - INFO -   Scheduler at:     tcp://127.0.0.1:35869</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:32,889 - distributed.scheduler - INFO -   dashboard at:            127.0.0.1:8787</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,465 - distributed.scheduler - INFO -   dashboard at:            127.0.0.1:8787</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,648 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:40465&#x27;, name: 0, status: running, memory: 0, processing: 0&gt;</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,368 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:41251&#x27;, name: 1, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,650 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:40465</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,371 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:41251</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,677 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:33157&#x27;, name: 1, status: running, memory: 0, processing: 0&gt;</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,372 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:40757&#x27;, name: 2, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,677 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:33157</p>
-
-
-</details>
-
-<details>
-<summary style='display:list-item'>tcp://127.0.0.1:33157</summary>
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:33157</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,372 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:40757</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:33157</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,373 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:45497&#x27;, name: 3, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -           Worker name:                          1</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,373 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:45497</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -          dashboard at:            127.0.0.1:36055</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,374 - distributed.scheduler - INFO - Register worker &lt;WorkerState &#x27;tcp://127.0.0.1:33319&#x27;, name: 0, status: running, memory: 0, processing: 0&gt;</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:43973</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO - -------------------------------------------------</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -               Threads:                          1</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -                Memory:                   3.38 GiB</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-cym14mrp</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,384 - distributed.worker - INFO - -------------------------------------------------</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,678 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:43973</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,678 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,375 - distributed.scheduler - INFO - Starting worker compute stream, tcp://127.0.0.1:33319</p>
 
 
 </details>
 
 <details>
-<summary style='display:list-item'>tcp://127.0.0.1:40465</summary>
+<summary style='display:list-item'>tcp://127.0.0.1:33319</summary>
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:40465</p>
-
-
-
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:40465</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:33319</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -           Worker name:                          0</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:33319</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -          dashboard at:            127.0.0.1:36305</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -           Worker name:                          0</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:43973</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -          dashboard at:            127.0.0.1:38067</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:35869</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -               Threads:                          1</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -                Memory:                   3.38 GiB</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -               Threads:                          1</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-a3z__l3w</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -                Memory:                   3.91 GiB</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,377 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-9c1di9lv</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,650 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:43973</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,006 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 
-    <p style="font-family: monospace; margin: 0;">2023-06-29 15:04:33,650 - distributed.worker - INFO - -------------------------------------------------</p>
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,375 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,375 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+</details>
+
+<details>
+<summary style='display:list-item'>tcp://127.0.0.1:40757</summary>
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:40757</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:40757</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -           Worker name:                          2</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -          dashboard at:            127.0.0.1:37961</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -               Threads:                          1</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -                Memory:                   3.91 GiB</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-2o9fsacr</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,008 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,372 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,373 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+</details>
+
+<details>
+<summary style='display:list-item'>tcp://127.0.0.1:41251</summary>
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:41251</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:41251</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -           Worker name:                          1</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -          dashboard at:            127.0.0.1:44879</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -               Threads:                          1</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -                Memory:                   3.91 GiB</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-n4n21vbm</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:37,999 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,370 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,371 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+</details>
+
+<details>
+<summary style='display:list-item'>tcp://127.0.0.1:45497</summary>
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -       Start worker at:      tcp://127.0.0.1:45497</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -          Listening to:      tcp://127.0.0.1:45497</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -           Worker name:                          3</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -          dashboard at:            127.0.0.1:45731</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO - Waiting to connect to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -               Threads:                          1</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -                Memory:                   3.91 GiB</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO -       Local Directory: /tmp/dask-worker-space/worker-fqor9vyi</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,000 - distributed.worker - INFO - -------------------------------------------------</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,373 - distributed.worker - INFO -         Registered to:      tcp://127.0.0.1:35869</p>
+
+
+
+    <p style="font-family: monospace; margin: 0;">2025-11-04 15:45:38,374 - distributed.worker - INFO - -------------------------------------------------</p>
 
 
 </details></div>
@@ -585,7 +732,7 @@
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-41bd1dc3-168e-11ee-94c2-6045bd777373</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-4fae7e5f-b995-11f0-93f2-7c1e521a36f9</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -620,22 +767,22 @@
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">02d54ad8</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">3e794469</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
                     <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
                 </td>
                 <td style="text-align: left;">
-                    <strong>Workers:</strong> 2
+                    <strong>Workers:</strong> 4
                 </td>
             </tr>
             <tr>
                 <td style="text-align: left;">
-                    <strong>Total threads:</strong> 2
+                    <strong>Total threads:</strong> 4
                 </td>
                 <td style="text-align: left;">
-                    <strong>Total memory:</strong> 6.77 GiB
+                    <strong>Total memory:</strong> 15.62 GiB
                 </td>
             </tr>
 
@@ -657,14 +804,14 @@
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-8d6187e8-46c7-4580-97e2-798535abe5fe</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-5dd4c459-0a77-4af0-b241-b9791a6d2d24</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://127.0.0.1:43973
+                        <strong>Comm:</strong> tcp://127.0.0.1:35869
                     </td>
                     <td style="text-align: left;">
-                        <strong>Workers:</strong> 2
+                        <strong>Workers:</strong> 4
                     </td>
                 </tr>
                 <tr>
@@ -672,7 +819,7 @@
                         <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
                     </td>
                     <td style="text-align: left;">
-                        <strong>Total threads:</strong> 2
+                        <strong>Total threads:</strong> 4
                     </td>
                 </tr>
                 <tr>
@@ -680,7 +827,7 @@
                         <strong>Started:</strong> Just now
                     </td>
                     <td style="text-align: left;">
-                        <strong>Total memory:</strong> 6.77 GiB
+                        <strong>Total memory:</strong> 15.62 GiB
                     </td>
                 </tr>
             </table>
@@ -703,7 +850,7 @@
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:40465
+                            <strong>Comm: </strong> tcp://127.0.0.1:33319
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -711,21 +858,21 @@
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36305/status" target="_blank">http://127.0.0.1:36305/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:38067/status" target="_blank">http://127.0.0.1:38067/status</a>
                         </td>
                         <td style="text-align: left;">
-                            <strong>Memory: </strong> 3.38 GiB
+                            <strong>Memory: </strong> 3.91 GiB
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:37999
+                            <strong>Nanny: </strong> tcp://127.0.0.1:42789
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-a3z__l3w
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-9c1di9lv
                         </td>
                     </tr>
 
@@ -748,7 +895,7 @@
                 <table style="width: 100%; text-align: left;">
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Comm: </strong> tcp://127.0.0.1:33157
+                            <strong>Comm: </strong> tcp://127.0.0.1:41251
                         </td>
                         <td style="text-align: left;">
                             <strong>Total threads: </strong> 1
@@ -756,21 +903,111 @@
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:36055/status" target="_blank">http://127.0.0.1:36055/status</a>
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:44879/status" target="_blank">http://127.0.0.1:44879/status</a>
                         </td>
                         <td style="text-align: left;">
-                            <strong>Memory: </strong> 3.38 GiB
+                            <strong>Memory: </strong> 3.91 GiB
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: left;">
-                            <strong>Nanny: </strong> tcp://127.0.0.1:43181
+                            <strong>Nanny: </strong> tcp://127.0.0.1:40545
                         </td>
                         <td style="text-align: left;"></td>
                     </tr>
                     <tr>
                         <td colspan="2" style="text-align: left;">
-                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-cym14mrp
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-n4n21vbm
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 2</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:40757
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:37961/status" target="_blank">http://127.0.0.1:37961/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.91 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:39579
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-2o9fsacr
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 3</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:45497
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:45731/status" target="_blank">http://127.0.0.1:45731/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.91 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:33359
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-fqor9vyi
                         </td>
                     </tr>
 
@@ -804,11 +1041,11 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Remote-clusters-via-SSH">
-<h2>Remote clusters via SSH<a class="headerlink" href="#Remote-clusters-via-SSH" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Remote-clusters-via-SSH">
+<h2>Remote clusters via SSH<a class="headerlink" href="#Remote-clusters-via-SSH" title="Link to this heading">#</a></h2>
 <p>A common way to distribute your work onto multiple machines is via SSH. Dask has a cluster manager which will handle creating SSH connections for you called <code class="docutils literal notranslate"><span class="pre">SSHCluster</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">SSHCluster</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSHCluster</span>
 </pre></div>
 </div>
 <p>When constructing this cluster manager we need to pass a list of addresses, either hostnames or IP addresses, which we will SSH into and attempt to start a Dask scheduler or worker on.</p>
@@ -819,17 +1056,17 @@
 <p>When we create our <code class="docutils literal notranslate"><span class="pre">SSHCluster</span></code> object we have given a list of three hostnames.</p>
 <p>The first host in the list will be used as the scheduler, all other hosts will be used as workers. If you’re on the same network it wouldn’t be unreasonable to set your local machine as the scheduler and then use other machines as workers.</p>
 <p>If your servers are remote to you, in the cloud for instance, you may want the scheduler to be a remote machine too to avoid network bottlenecks.</p>
-</div>
-<div class="section" id="Scalable-clusters">
-<h2>Scalable clusters<a class="headerlink" href="#Scalable-clusters" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Scalable-clusters">
+<h2>Scalable clusters<a class="headerlink" href="#Scalable-clusters" title="Link to this heading">#</a></h2>
 <p>Both of the clusters we have seen so far are fixed size clusters. We are either running locally and using all the resources in our machine, or we are using an explicit number of other machines via SSH.</p>
 <p>With some cluster managers it is possible to increase and descrease the number of workers either by calling <code class="docutils literal notranslate"><span class="pre">cluster.scale(n)</span></code> in your code where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the desired number of workers. Or you can let Dask do this dynamically by calling <code class="docutils literal notranslate"><span class="pre">cluster.adapt(minimum=1,</span> <span class="pre">maximum=100)</span></code> where minimum and maximum are your preferred limits for Dask to abide to.</p>
 <p>It is always good to keep your minimum to at least 1 as Dask will start running work on a single worker in order to profile how long things take and extrapolate how many additional workers it thinks it needs. Getting new workers may take time depending on your setup so keeping this at 1 or above means this profilling will start immediately.</p>
 <p>We currently have cluster managers for <a class="reference external" href="https://kubernetes.dask.org/en/latest/">Kubernetes</a>, <a class="reference external" href="https://yarn.dask.org/en/latest/">Hadoop/Yarn</a>, <a class="reference external" href="https://cloudprovider.dask.org/en/latest/">cloud platforms</a> and <a class="reference external" href="http://jobqueue.dask.org/en/latest/">batch systems including PBS, SLURM and SGE</a>.</p>
 <p>These cluster managers allow users who have access to resources such as these to bootstrap Dask clusters on to them. If an institution wishes to provide a central service that users can request Dask clusters from there is also <a class="reference external" href="https://gateway.dask.org/">Dask Gateway</a>.</p>
-</div>
-<div class="section" id="Cluster-components">
-<h2>Cluster components<a class="headerlink" href="#Cluster-components" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Cluster-components">
+<h2>Cluster components<a class="headerlink" href="#Cluster-components" title="Link to this heading">#</a></h2>
 <p>The minimum requirements for a functioning Dask cluster is a scheduler process and one worker process.</p>
 <p>We can start these processes manually via the CLI. Let’s start with the scheduler.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dask-scheduler
@@ -898,7 +1135,7 @@
 </pre></div>
 </div>
 <p>Then in Python we can connect a client to this cluster and submit some work.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s2">&quot;tcp://10.51.100.80:8786&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -908,7 +1145,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Scheduler</span><span class="p">,</span> <span class="n">Worker</span><span class="p">,</span> <span class="n">Client</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scheduler</span><span class="p">,</span> <span class="n">Worker</span><span class="p">,</span> <span class="n">Client</span>
 
 <span class="k">async</span> <span class="k">with</span> <span class="n">Scheduler</span><span class="p">()</span> <span class="k">as</span> <span class="n">scheduler</span><span class="p">:</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">Worker</span><span class="p">(</span><span class="n">scheduler</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="k">as</span> <span class="n">worker</span><span class="p">:</span>
@@ -930,32 +1167,32 @@
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-tutorial/lib/python3.10/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
+/usr/share/miniconda/envs/dask-tutorial/lib/python3.10/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 34129 instead
+Hosting the HTTP server on port 44271 instead
   warnings.warn(
 </pre></div></div>
 </div>
 <p>Most of the time we never have to create these components ourselves and instead can rely on cluster manager objects to do this for us. But in some situations it can be useful to be able to contruct a cluster yourself manually.</p>
 <p>You may also see a <code class="docutils literal notranslate"><span class="pre">Nanny</span></code> process being referenced from time to time. This is a wrapper for the worker that handles restarting the process if it is killed. When we run <code class="docutils literal notranslate"><span class="pre">dask-worker</span></code> via the CLI a nanny is automatically created for us.</p>
-</div>
-<div class="section" id="Cluster-networking">
-<h2>Cluster networking<a class="headerlink" href="#Cluster-networking" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="Cluster-networking">
+<h2>Cluster networking<a class="headerlink" href="#Cluster-networking" title="Link to this heading">#</a></h2>
 <p>By default Dask uses a custom TCP based remote procedure call protocol to communicate between processes. The scheduler and workers all listen on TCP ports for communication.</p>
 <p>When you start a scheduler it typically listens on port <code class="docutils literal notranslate"><span class="pre">8786</span></code>. When a worker is created it listens on a random high port and communicates that port to the scheduler when it first connects.</p>
 <p>The scheduler maintains a list of all workers and their address which can be accessed via the workers, therefore both the scheduler and any of the workers can open connections to any other worker at any time. Connections are closed automatically when not in use.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Client</span></code> will only ever connect to the scheduler and all communication to the workers will pass through it. This means that when deploying Dask clusters the scheduler and workers must typically be on the same network and able to access each other via IP and port directly. But the client can run wherever as long as it can access the scheduler communication port. It is common to configure firewall rules or load balancers to provide access to just the scheduler port.</p>
 <p>Dask also supports other network protocols such as <a class="reference external" href="https://distributed.dask.org/en/stable/tls.html">TLS</a>, <a class="reference external" href="https://distributed.dask.org/en/stable/protocol.html">websockets</a> and <a class="reference external" href="https://docs.rapids.ai/api/dask-cuda/nightly/examples/ucx.html">UCX</a>.</p>
-<div class="section" id="TLS/SSL-for-secure-communication">
-<h3>TLS/SSL for secure communication<a class="headerlink" href="#TLS/SSL-for-secure-communication" title="Permalink to this headline">¶</a></h3>
+<section id="TLS/SSL-for-secure-communication">
+<h3>TLS/SSL for secure communication<a class="headerlink" href="#TLS/SSL-for-secure-communication" title="Link to this heading">#</a></h3>
 <p>Dask cluster components can use certificates to mutually authenticate and communicate securely if run in an untrusted envronment. You can either generate certificates for the scheduler, worker and client automatically and distribute those or you can generate temporary credentials.</p>
 <p>Some cluster managers such as <code class="docutils literal notranslate"><span class="pre">dask-cloudprovider</span></code> will automatically enable TLS and generate one-time certificates when exposing clusters to the internet from the public cloud.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Scheduler</span><span class="p">,</span> <span class="n">Worker</span><span class="p">,</span> <span class="n">Client</span>
-<span class="kn">from</span> <span class="nn">distributed.security</span> <span class="kn">import</span> <span class="n">Security</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scheduler</span><span class="p">,</span> <span class="n">Worker</span><span class="p">,</span> <span class="n">Client</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">distributed.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">Security</span>
 
 <span class="n">security</span> <span class="o">=</span> <span class="n">Security</span><span class="o">.</span><span class="n">temporary</span><span class="p">()</span>
 
@@ -981,89 +1218,133 @@ Hosting the HTTP server on port 34129 instead
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/usr/share/miniconda3/envs/dask-tutorial/lib/python3.10/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
+/usr/share/miniconda/envs/dask-tutorial/lib/python3.10/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
 Perhaps you already have a cluster running?
-Hosting the HTTP server on port 34081 instead
+Hosting the HTTP server on port 37909 instead
   warnings.warn(
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Websockets">
-<h3>Websockets<a class="headerlink" href="#Websockets" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="Websockets">
+<h3>Websockets<a class="headerlink" href="#Websockets" title="Link to this heading">#</a></h3>
 <p>Dask can also communicate via websockets instead of TCP. There is a very small performance overhead to doing this but it means that the dashboard and communication happen on the same port and can be reverse proxied by a layer 7 proxy like nginx. This is necessary for some deployment scenarios where you cannot exprt ports but you can proxy web services.</p>
-</div>
-<div class="section" id="UCX">
-<h3>UCX<a class="headerlink" href="#UCX" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="UCX">
+<h3>UCX<a class="headerlink" href="#UCX" title="Link to this heading">#</a></h3>
 <p>On systems with high performance networking such as Infiniband or NVLink Dask can also leverage <a class="reference external" href="https://openucx.org/">UCX</a> which provides a unified communication protocol that automatically upgrades communication to use the fastest hardware available. This is vital for good performance on HPC systems with Infiniband or systems with multiple GPU workers.</p>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"88d6a062203d4eb3b36026bb4071a5ab": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "6161a4e1fa594dfea90ba5337f771fea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b76d0861b1e646fc9a01e018caf85518": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "5e3ebc19ac6d402588c7bfd5aa1eafae": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_6161a4e1fa594dfea90ba5337f771fea", "placeholder": "\u200b", "style": "IPY_MODEL_b76d0861b1e646fc9a01e018caf85518", "tabbable": null, "tooltip": null, "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">02d54ad8</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 2\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 2\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 6.77 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-8d6187e8-46c7-4580-97e2-798535abe5fe</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:43973\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 2\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 6.77 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:40465\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:36305/status\" target=\"_blank\">http://127.0.0.1:36305/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.38 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:37999\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-a3z__l3w\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:33157\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:36055/status\" target=\"_blank\">http://127.0.0.1:36055/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.38 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:43181\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-cym14mrp\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "9e4a804103854331848b3d8a51111be9": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "b29cd2fe29624192a1a3ad6a4aac1ab6": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_88d6a062203d4eb3b36026bb4071a5ab", "step": 1, "style": "IPY_MODEL_9e4a804103854331848b3d8a51111be9", "tabbable": null, "tooltip": null, "value": 0}}, "f2cd17ad84c14acda01eb1ce895dedc0": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "e681c813f33c45298eb0c6ded241bf12": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_88d6a062203d4eb3b36026bb4071a5ab", "style": "IPY_MODEL_f2cd17ad84c14acda01eb1ce895dedc0", "tabbable": null, "tooltip": null}}, "00f7502f40474958bc828e4969f17954": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "aa3ff7827c7e4472a3b8bb1a4bbe326e": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_88d6a062203d4eb3b36026bb4071a5ab", "step": 1, "style": "IPY_MODEL_00f7502f40474958bc828e4969f17954", "tabbable": null, "tooltip": null, "value": 0}}, "72e22c5aeb424eabad76bae6d58ce282": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "7196839a88d94d25b33733a5eeed733b": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_88d6a062203d4eb3b36026bb4071a5ab", "step": 1, "style": "IPY_MODEL_72e22c5aeb424eabad76bae6d58ce282", "tabbable": null, "tooltip": null, "value": 0}}, "5795fca93b9440b1bb3acb26562cbe33": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "f8e956c9ee1e427f83a7dbe83a68783a": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_88d6a062203d4eb3b36026bb4071a5ab", "style": "IPY_MODEL_5795fca93b9440b1bb3acb26562cbe33", "tabbable": null, "tooltip": null}}, "c4fd118204ab4a44aafcd8fda1169eff": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "74b85aba1d1d491d98c45bbe69ad74f9": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_b29cd2fe29624192a1a3ad6a4aac1ab6", "IPY_MODEL_e681c813f33c45298eb0c6ded241bf12"], "layout": "IPY_MODEL_c4fd118204ab4a44aafcd8fda1169eff", "tabbable": null, "tooltip": null}}, "2600d96167914fd2afc99daec6e4eb38": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "677b327bb1bd4455836d6a498bef933d": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_aa3ff7827c7e4472a3b8bb1a4bbe326e", "IPY_MODEL_7196839a88d94d25b33733a5eeed733b", "IPY_MODEL_f8e956c9ee1e427f83a7dbe83a68783a"], "layout": "IPY_MODEL_2600d96167914fd2afc99daec6e4eb38", "tabbable": null, "tooltip": null}}, "470445fec8dd4fd9b47eef7dced19a66": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e7f750fe8049497cb020965d555dc8ca": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "AccordionModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_74b85aba1d1d491d98c45bbe69ad74f9", "IPY_MODEL_677b327bb1bd4455836d6a498bef933d"], "layout": "IPY_MODEL_470445fec8dd4fd9b47eef7dced19a66", "selected_index": null, "tabbable": null, "titles": ["Manual Scaling", "Adaptive Scaling"], "tooltip": null}}, "0b59ad7900c34ebf84cc7526d6b62ece": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "67408bd6ebc045138f25e813007b6b08": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "0f61916bf3854663b988a29e7f61ce01": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_0b59ad7900c34ebf84cc7526d6b62ece", "placeholder": "\u200b", "style": "IPY_MODEL_67408bd6ebc045138f25e813007b6b08", "tabbable": null, "tooltip": null, "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 2</td></tr>\n        </table>\n        "}}, "dd90db06b52442d0a72f1eeaf763ab66": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ed9733efeaa0491d8e9b6c5cdc7a94b1": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TabModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_5e3ebc19ac6d402588c7bfd5aa1eafae", "IPY_MODEL_898ee6de529f49a2980839bf76c4e220"], "layout": "IPY_MODEL_dd90db06b52442d0a72f1eeaf763ab66", "selected_index": 0, "tabbable": null, "titles": ["Status", "Scaling"], "tooltip": null}}, "83f7ae40d55040a8843a558ac212ecbe": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "898ee6de529f49a2980839bf76c4e220": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_0f61916bf3854663b988a29e7f61ce01", "IPY_MODEL_e7f750fe8049497cb020965d555dc8ca"], "layout": "IPY_MODEL_83f7ae40d55040a8843a558ac212ecbe", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
-</script></div>
-</div>
-</div>
+{"state": {"c8d081d90ae04cebb7ce2f59bac06e61": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "150px"}}, "75c3daf481ab45d681fc1c798b8bf1dd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6ad1e2a4d9eb493bb9f315bb45fa2af1": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "905c586e605d4e8880fb445cb6b5b033": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_75c3daf481ab45d681fc1c798b8bf1dd", "placeholder": "\u200b", "style": "IPY_MODEL_6ad1e2a4d9eb493bb9f315bb45fa2af1", "tabbable": null, "tooltip": null, "value": "<div class=\"jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output\">\n    <div style=\"width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;\">\n    </div>\n    <div style=\"margin-left: 48px;\">\n        <h3 style=\"margin-bottom: 0px; margin-top: 0px;\">LocalCluster</h3>\n        <p style=\"color: #9D9D9D; margin-bottom: 0px;\">3e794469</p>\n        <table style=\"width: 100%; text-align: left;\">\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Workers:</strong> 4\n                </td>\n            </tr>\n            <tr>\n                <td style=\"text-align: left;\">\n                    <strong>Total threads:</strong> 4\n                </td>\n                <td style=\"text-align: left;\">\n                    <strong>Total memory:</strong> 15.62 GiB\n                </td>\n            </tr>\n            \n            <tr>\n    <td style=\"text-align: left;\"><strong>Status:</strong> running</td>\n    <td style=\"text-align: left;\"><strong>Using processes:</strong> True</td>\n</tr>\n\n            \n        </table>\n\n        <details>\n            <summary style=\"margin-bottom: 20px;\">\n                <h3 style=\"display: inline;\">Scheduler Info</h3>\n            </summary>\n\n            <div style=\"\">\n    <div>\n        <div style=\"width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;\"> </div>\n        <div style=\"margin-left: 48px;\">\n            <h3 style=\"margin-bottom: 0px;\">Scheduler</h3>\n            <p style=\"color: #9D9D9D; margin-bottom: 0px;\">Scheduler-5dd4c459-0a77-4af0-b241-b9791a6d2d24</p>\n            <table style=\"width: 100%; text-align: left;\">\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Comm:</strong> tcp://127.0.0.1:35869\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Workers:</strong> 4\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Dashboard:</strong> <a href=\"http://127.0.0.1:8787/status\" target=\"_blank\">http://127.0.0.1:8787/status</a>\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total threads:</strong> 4\n                    </td>\n                </tr>\n                <tr>\n                    <td style=\"text-align: left;\">\n                        <strong>Started:</strong> Just now\n                    </td>\n                    <td style=\"text-align: left;\">\n                        <strong>Total memory:</strong> 15.62 GiB\n                    </td>\n                </tr>\n            </table>\n        </div>\n    </div>\n\n    <details style=\"margin-left: 48px;\">\n        <summary style=\"margin-bottom: 20px;\">\n            <h3 style=\"display: inline;\">Workers</h3>\n        </summary>\n\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 0</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:33319\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:38067/status\" target=\"_blank\">http://127.0.0.1:38067/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.91 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:42789\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-9c1di9lv\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 1</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:41251\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:44879/status\" target=\"_blank\">http://127.0.0.1:44879/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.91 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:40545\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-n4n21vbm\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 2</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:40757\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:37961/status\" target=\"_blank\">http://127.0.0.1:37961/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.91 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:39579\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-2o9fsacr\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n        <div style=\"margin-bottom: 20px;\">\n            <div style=\"width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;\"> </div>\n            <div style=\"margin-left: 48px;\">\n            <details>\n                <summary>\n                    <h4 style=\"margin-bottom: 0px; display: inline;\">Worker: 3</h4>\n                </summary>\n                <table style=\"width: 100%; text-align: left;\">\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Comm: </strong> tcp://127.0.0.1:45497\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Total threads: </strong> 1\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Dashboard: </strong> <a href=\"http://127.0.0.1:45731/status\" target=\"_blank\">http://127.0.0.1:45731/status</a>\n                        </td>\n                        <td style=\"text-align: left;\">\n                            <strong>Memory: </strong> 3.91 GiB\n                        </td>\n                    </tr>\n                    <tr>\n                        <td style=\"text-align: left;\">\n                            <strong>Nanny: </strong> tcp://127.0.0.1:33359\n                        </td>\n                        <td style=\"text-align: left;\"></td>\n                    </tr>\n                    <tr>\n                        <td colspan=\"2\" style=\"text-align: left;\">\n                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-fqor9vyi\n                        </td>\n                    </tr>\n\n                    \n\n                    \n\n                </table>\n            </details>\n            </div>\n        </div>\n        \n\n    </details>\n</div>\n\n        </details>\n    </div>\n</div>"}}, "8b75914a4848482d86f337d1e55d5eaa": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "b6d7181a6f01445db03b5ff07bb738c6": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Workers", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_c8d081d90ae04cebb7ce2f59bac06e61", "step": 1, "style": "IPY_MODEL_8b75914a4848482d86f337d1e55d5eaa", "tabbable": null, "tooltip": null, "value": 0}}, "3db0042ae78848fdac95f7639ee8d424": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "09ab0357312747318e61053bebe56d9e": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Scale", "disabled": false, "icon": "", "layout": "IPY_MODEL_c8d081d90ae04cebb7ce2f59bac06e61", "style": "IPY_MODEL_3db0042ae78848fdac95f7639ee8d424", "tabbable": null, "tooltip": null}}, "608e9b5287814061a0602a736948eed1": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "976bce9cd812470da679619704834db2": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Minimum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_c8d081d90ae04cebb7ce2f59bac06e61", "step": 1, "style": "IPY_MODEL_608e9b5287814061a0602a736948eed1", "tabbable": null, "tooltip": null, "value": 0}}, "0287b5a481c34825907f7fc00baa2cfa": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "description_width": ""}}, "0b40ee3acdcf4fef855890e0bac912ba": {"model_name": "IntTextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "IntTextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "IntTextView", "continuous_update": false, "description": "Maximum", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_c8d081d90ae04cebb7ce2f59bac06e61", "step": 1, "style": "IPY_MODEL_0287b5a481c34825907f7fc00baa2cfa", "tabbable": null, "tooltip": null, "value": 0}}, "430bcd9b9ba140e1aa60d7d4bd5e5d88": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "35a72f4b6fa5405d965066d3c09a3d89": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Adapt", "disabled": false, "icon": "", "layout": "IPY_MODEL_c8d081d90ae04cebb7ce2f59bac06e61", "style": "IPY_MODEL_430bcd9b9ba140e1aa60d7d4bd5e5d88", "tabbable": null, "tooltip": null}}, "0b8820f453cc4a32acc21fc3b0bd2b1c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ef0c2848846644d996b8074628401f6e": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_b6d7181a6f01445db03b5ff07bb738c6", "IPY_MODEL_09ab0357312747318e61053bebe56d9e"], "layout": "IPY_MODEL_0b8820f453cc4a32acc21fc3b0bd2b1c", "tabbable": null, "tooltip": null}}, "0d6e70d600f54471876a5201742f1cce": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8da83f4b3c59492c80329002c5162863": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_976bce9cd812470da679619704834db2", "IPY_MODEL_0b40ee3acdcf4fef855890e0bac912ba", "IPY_MODEL_35a72f4b6fa5405d965066d3c09a3d89"], "layout": "IPY_MODEL_0d6e70d600f54471876a5201742f1cce", "tabbable": null, "tooltip": null}}, "4152191f93f1459fb5ed07a05f1da535": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": "500px", "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1ea795586d4e44509d61076078b414e5": {"model_name": "AccordionModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "AccordionModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "AccordionView", "box_style": "", "children": ["IPY_MODEL_ef0c2848846644d996b8074628401f6e", "IPY_MODEL_8da83f4b3c59492c80329002c5162863"], "layout": "IPY_MODEL_4152191f93f1459fb5ed07a05f1da535", "selected_index": null, "tabbable": null, "titles": ["Manual Scaling", "Adaptive Scaling"], "tooltip": null}}, "e26f70b2fa86485183ad9bc1e1ca6442": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "47818919015f49bb95f230d60c0b7947": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "e179c5c5dd604f6cb087ff61f4cff02b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_e26f70b2fa86485183ad9bc1e1ca6442", "placeholder": "\u200b", "style": "IPY_MODEL_47818919015f49bb95f230d60c0b7947", "tabbable": null, "tooltip": null, "value": "\n        <table>\n            <tr><td style=\"text-align: left;\">Scaling mode: Manual</td></tr>\n            <tr><td style=\"text-align: left;\">Workers: 4</td></tr>\n        </table>\n        "}}, "1075ccd0b8814bb999d59e174ef6d49d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a19cb9e75ff74826b001a05e67dd5a88": {"model_name": "TabModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TabModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "TabView", "box_style": "", "children": ["IPY_MODEL_905c586e605d4e8880fb445cb6b5b033", "IPY_MODEL_6d1e0ac0cac448c589ae0589009c5c8b"], "layout": "IPY_MODEL_1075ccd0b8814bb999d59e174ef6d49d", "selected_index": 0, "tabbable": null, "titles": ["Status", "Scaling"], "tooltip": null}}, "ea528583fbed44eba0ac54ad96d9724a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6d1e0ac0cac448c589ae0589009c5c8b": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_e179c5c5dd604f6cb087ff61f4cff02b", "IPY_MODEL_1ea795586d4e44509d61076078b414e5"], "layout": "IPY_MODEL_ea528583fbed44eba0ac54ad96d9724a", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
+</script></section>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03_dask.delayed.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">dask.delayed - parallelize any code</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_dask.delayed.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">dask.delayed - parallelize any code</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="05_futures.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="05_futures.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Futures - non-blocking distributed calculations</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Dask Developers<br/>
-    
-        &copy; Copyright 2018, Dask Developers.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Local-Cluster">Local Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Remote-clusters-via-SSH">Remote clusters via SSH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Scalable-clusters">Scalable clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Cluster-components">Cluster components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Cluster-networking">Cluster networking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#TLS/SSL-for-secure-communication">TLS/SSL for secure communication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Websockets">Websockets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#UCX">UCX</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dask Developers
+</p>
 
-<!-- Google Tag Manager -->
-<script>
-  (function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({
-      "gtm.start": new Date().getTime(),
-      event: "gtm.js",
-    });
-    var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s),
-      dl = l != "dataLayer" ? "&l=" + l : "";
-    j.async = true;
-    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-    f.parentNode.insertBefore(j, f);
-  })(
-    window,
-    document,
-    "script",
-    "dataLayer",
-    "GTM-P4GQM59"
-  );
-</script>
-<!-- End Google Tag Manager -->
+  </div>
+  
+  <div class="footer-item">
+    
 
+  <p class="copyright">
+    
+      © Copyright 2018, Dask Developers.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

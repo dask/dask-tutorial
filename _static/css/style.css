@@ -1,58 +1,16 @@
 @import "../sphinx-book-theme.css";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700");
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700");
 
 :root {
-  /* Main colors */
-  --yellow: #ffc11e;
-  --white: #fff;
-  --blue: #1f5aff;
-  --dark-blue: #183d72;
-  --light-grey: #f6f6f6;
-  --grey: #33363d;
-  --dark-grey: #262326;
-  --black: #080815;
-  --green: #17955c;
-  --salmon: #fc6e6b;
-  --red: #ef1161;
-  --purple: #f61fff;
-  --pst-color-text-base: var(--black);
-  --pst-color-navbar-link: var(--yellow);
-  --pst-color-link: var(--black);
-  --pst-color-link-hover: var(--yellow);
-  --pst-color-inline-code: var(--salmon);
-
-  /* Font Family */
-  --pst-font-family-base-system: Inter;
-  --pst-font-family-monospace-system: Inconsolata;
-  --pst-font-family-base: var(--pst-font-family-base-system);
-  --pst-font-family-heading: var(--pst-font-family-base);
-  --pst-font-family-monospace: var(--pst-font-family-monospace-system);
+  --dask-dark: #d67548;
+  --dask-light: #ecb172;
 }
 
 code {
-  color: var(--salmon);
-  font-family: var(--pst-font-family-monospace);
-  font-size: 16px !important;
+  color: var(--dask-dark);
 }
 
 body {
-  padding-top: calc(var(--pst-header-height) + 20px);
-  background-color: #fff;
-  font-family: var(--pst-font-family-base);
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--black);
-}
-
-*,
-:after,
-:before {
-  box-sizing: border-box;
-}
-
-body {
-  background-image: url("../images/background-grid.svg");
+  background-image: url("../images/background.png");
   background-repeat: repeat;
 }
 
@@ -84,84 +42,51 @@ body {
   display: none;
 }
 
-/* reference links */
-
-main.bd-content #main-content a {
-  color: var(--pst-color-link);
-  text-decoration: underline;
-  text-decoration-color: var(--yellow);
-  text-underline-offset: 3px;
+#site-navigation nav ul.nav li a,
+#site-navigation nav ul.nav ul li a {
+  color: #fff;
 }
 
-main.bd-content #main-content a:hover {
-  color: var(--pst-color-link-hover);
+#site-navigation h1,
+#site-navigation h2,
+#site-navigation h3,
+#site-navigation h4,
+#site-navigation h5,
+#site-navigation h6 {
+  color: white;
 }
-
-/* don't create a second scrollbar
-see github.com/dask/dask-sphinx-theme/issues/74 */
-.overflow-auto {
-  overflow: visible !important;
-}
-
-/* navigation pane - left sidebar */
 
 #site-navigation {
-  background: var(--light-grey);
-  background-image: url("../images/background-grid.svg");
+  background: #1a1a1a;
   margin-top: 4em;
+}
+
+nav.bd-links p.caption {
+  color: var(--dask-dark);
+}
+
+#site-navigation nav ul.nav a:hover,
+#site-navigation nav ul.nav li.active > a,
+#site-navigation nav ul.nav li.active > a:hover {
+  color: #ecb172;
+  background: #303030;
 }
 
 #site-navigation nav ul.nav li a {
   padding-left: 2%;
-  color: var(--black);
-  text-decoration: none;
 }
 
+#site-navigation nav ul.nav li a,
 #site-navigation nav ul.nav ul li a {
-  color: var(--black);
-}
-
-#site-navigation nav ul.nav a:hover {
-  color: var(--black);
-  font-weight: 700;
-  border-left: 2px solid var(--black);
-}
-
-/* #site-navigation nav ul.nav li a:active {
-    border-left: 2px solid var(--yellow)
-} */
-
-#site-navigation nav ul.nav li.active > a {
-  border-left: 2px solid var(--yellow);
-}
-
-#site-navigation nav.bd-links p.caption {
-  font-size: var(--pst-sidebar-caption-font-size);
-  text-transform: uppercase;
-  font-family: var(--pst-font-family-base);
-  font-weight: 700;
-  position: relative;
-  margin-top: 1.25em;
-  margin-bottom: 0.5em;
-  color: var(--black);
+  color: var(--dask-light);
 }
 
 #site-navigation div.navbar_extra_footer {
-  color: var(--black);
-  padding-bottom: 3em;
-  margin-bottom: 0;
+  color: #fff;
 }
 
-/* table on contents (right sidebar) */
-.bd-toc .toc-entry a {
-  color: var(--black);
-  text-decoration: none;
-}
-
-.bd-toc nav li.active > a.active {
-  font-family: var(--pst-font-family-base);
-  font-weight: 700;
-  border-left: 2px solid var(--yellow);
+#site-navigation h1.site-logo {
+  color: white;
 }
 
 .topbar,
@@ -182,10 +107,8 @@ main.bd-content {
   padding-top: 6em !important;
 }
 
-/* top bar */
-
 .dask-nav {
-  background-color: var(--black);
+  background-color: #1a1a1a;
   height: 4em;
   display: block;
   position: fixed;
@@ -198,7 +121,6 @@ main.bd-content {
 }
 
 .dask-nav ul {
-  background-color: var(--dark-grey);
   padding: 0;
   margin-bottom: 0;
   white-space: nowrap;
@@ -210,16 +132,6 @@ main.bd-content {
   transition: 0.3s;
   text-align: left;
   padding: 0.5em 2rem 0.5em 2rem;
-}
-
-.dask-nav ul > li > a {
-  color: white;
-}
-
-.dask-nav ul > li > a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--yellow);
 }
 
 .dask-nav .logo {
@@ -241,25 +153,25 @@ main.bd-content {
   height: 3em;
 }
 
-ul.navbar-nav:hover li {
-  opacity: 0.5;
-  transition: var(--transition);
+a {
+  color: var(--dask-light);
 }
 
-ul.navbar-nav li.nav-item:hover {
-  opacity: 1 !important;
-  transition: var(--transition);
+#site-navigation div.navbar_extra_footer {
+  padding-bottom: 3em;
+  margin-bottom: 0;
 }
 
-ul.current.nav.bd-sidenav
-  li.toctree-l1.current.active
-  a.current.reference.internal {
-  font-weight: inherit;
+.has-children label:hover {
+  background-color: #303030;
 }
 
-.toc-entry > .nav-link.active {
-  font-family: var(--pst-font-family-base);
-  font-weight: inherit;
+.has-children label:hover i {
+  color: var(--dask-light);
+}
+
+.has-children label i {
+  color: var(--dask-light);
 }
 
 .sphinx-tabs {
@@ -270,17 +182,3 @@ ul.current.nav.bd-sidenav
 .classifier::before {
   content: ": ";
 }
-
-/* icons */
-
-/* .fa-download:before {
-    content: url('../images/icon-download.svg');
-}
-
-.fa-expand:before {
-    content: url('../images/icon-expand.svg');
-}
-
-.fa-bars:before {
-    content: url('../images/icon-menu.svg');
-} */
